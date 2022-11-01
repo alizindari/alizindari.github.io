@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+</script>
+<html lang="en" >
+<head>
+  <script async="true" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=AM_CHTML"> </script>
+  <meta charset="UTF-8">
+  <title>CodePen - CSS Animated Header</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+
+<body>
+<!-- partial:index.partial.html -->
+<div class="header">
+  <div class="sides">
+    <a href="index.html" class="logo">Home</a>
+  </div>
+  <div class="sides">  </a></div>
+  <div class="info">
+  <h4><a href="#category">Convergence of SGD</a></h4>
+    
+    <div class="meta">
+      <a  href="https://twitter.com/nodws" target="_b" class="author"></a><br>
+      By <a href="https://twitter.com/nodws" target="_b">Ali Zindari</a> on May 30, 2022
+    </div>
+  </div>
+</div>
+<section class="content">
+  <p style="font-size:160%;text-align: left;">Stochastic gradient descent (SGD) is widely being used in Machine
+  Learning (ML) and Deep Learning (DL) nowadays. This is due to the fact that computing the gradient over the 
+full dataset is computationally expensive given the massive real-world datasets. In this regard, SGD works perfectly
+with much lower computations compared to GD. This algorithm samples one data point randomly at each step and updates the
+loss function only with respect to that data point. In this blog, I will provide the convergence proof for SGD 
+with different settings. <br><br> The goal is minimazing an objective function on a dataset of N samples. </p>
+<p style="font-size:160%;text-align: center;">
+  `f(x) = \sum_{i=1}^N f_i(x)`<br>
+</p>
+<p style="font-size:160%;text-align: left;">
+  Here is the update rule for SGD:<br>
+</p>
+<p style="font-size:160%;text-align: center;">
+   `x_{t+1} = x_t - \eta_t g_t(x_t)`
+</p>
+
+<p style="font-size:160%;text-align: left;">
+  Where `g_t` is the stochastic gradient at point `x_t`, `g_t =  \nabla f_i(x_t)` and `\mathbb{E} [g_t] = \nabla f(x_t)`.<br>
+  ------------------------------------------------------------------------------------------------------------------
+</p>
+
+<p style="font-size:160%;text-align: left;">
+  <b> Proof 1: </b> I assume that we want to minimize a function `f: \mathbb{R}^d \rightarrow \mathbb{R}` which is convex and differentiable. We also 
+  assume that `\mathbb{E}[||g_t(x_t)||^2] < G^2` and `||x_0 - x^\star||^2 < B^2`.
+</p>
+
+<p style="font-size:160%;text-align: left;">
+  `||x_{t+1} - x^\star||^2 = ||x_t - \eta_t g_t - x^\star||^2 = 
+  ||x_t - x^\star||^2 + \eta_t^2||g_t||^2 -2\eta_t g_t^T(x_t - x^\star) `<br><br>
+  `\rightarrow \mathbb{E}[||x_{t+1} - x^\star||^2|x_t] = \mathbb{E}[||x_{t} - x^\star||^2|x_t] + \eta_t^2 \mathbb{E}[||g_t||^2 |x_t]
+  -2\eta_t \mathbb{E}[g_t^T | x_t](x_t - x^\star)` <br><br>
+  `\rightarrow \mathbb{E}[||x_{t+1} - x^\star||^2|x_t] < ||x_{t} - x^\star||^2 + \eta_t^2G^2-2\eta_t \nabla f(x_t)^T(x_t - x^\star)`<br><br>
+  From the convexity of `f` we can say:<br> `f(y)>f(x) + \nabla f(x)^T(y-x) \rightarrow f(x_t)-f(x^\star)> \nabla f(x_t)^T(x_t-x^\star)`<br><br>
+  `\rightarrow \mathbb{E}[||x_{t+1} - x^\star||^2|x_t] < ||x_{t} - x^\star||^2 + \eta_t^2G^2-2\eta_t[f(x_t) -  f(x^\star)]`<br><br>      
+  `\rightarrow \mathbb{E}[||x_{t+1} - x^\star||^2 - ||x_{t} - x^\star||^2 ] <  \eta_t^2G^2-2\eta_t[f(x_t) -  f(x^\star)]`
+  `\rightarrow \sum_{t=0}^{T-1} \mathbb{E}[||x_{t+1} - x^\star||^2 - ||x_{t} - x^\star||^2 ] < \sum_{t=0}^{T-1} \eta_t^2G^2- \sum_{t=0}^{T-1} 2\eta_t[f(x_t) -  f(x^\star)]`
+  `\rightarrow \mathbb{E}[||x_{T} - x^\star||^2 - ||x_{0} - x^\star||^2 ] < T \eta_t^2G^2- \sum_{t=0}^{T-1} 2\eta_t[f(x_t) -  f(x^\star)]`
+  `\rightarrow \sum_{t=0}^{T-1} 2\eta_t[f(x_t) -  f(x^\star)]   < T \eta_t^2G^2 + ||x_0 - x^\star||^2 - ||x_T - x^\star||^2`
+  `\rightarrow \sum_{t=0}^{T-1} 2\eta_t[f(x_t) -  f(x^\star)]   < T \eta_t^2G^2 + R^2` <br>
+  `\rightarrow \frac{1}{T} \sum_{t=0}^{T-1} f(x_t) -  f(x^\star)   <  \frac{\eta_t G^2}{2} + \frac{R^2}{2\eta_t T}`<br><br>
+  Now we take the derivative of right hand side w.r.t `\eta_t` to minimize and and find a fixed `\eta`.<br><br>
+  `\frac{d}{d \eta_t} (frac{\eta_t G^2}{2} + \frac{R^2}{2\eta_t T}) = 0 \rightarrow \eta_t = \frac{R}{G \sqrt{T}}`<br><br>
+  Then we replace this learning rate and we have: <br><br>
+  `\rightarrow \frac{1}{T} \sum_{t=0}^{T-1} f(x_t) -  f(x^\star) < \frac{RG}{\sqrt{T}}`
+</p>
+
+
+ 
+</section>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
