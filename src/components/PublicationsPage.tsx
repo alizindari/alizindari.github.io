@@ -5,54 +5,54 @@ import autoencoderImage from '@/assets/pub-autoencoder.jpg';
 
 const PublicationsPage = () => {
   const publications = [
-    {
-      id: 1,
-      title: "The Limits and Potentials of Local SGD for Distributed Heterogeneous Learning with Intermittent Communication",
-      authors: "K.K.Patel, M.Glasgow, A.Zindari, L.Wang, S.Stich, Z.Cheng, N.Joshi, N.Srebro",
-      venue: "Conference on Learning Theory (COLT)",
-      year: "2024",
-      type: "Conference", 
-      image: localSgdImage,
-      abstract: "We analyze the theoretical limits and potentials of Local SGD in distributed heterogeneous learning settings with intermittent communication. Our work provides new convergence guarantees and insights into the effectiveness of this popular distributed optimization method.",
-      doi: "arXiv:2405.11667",
-      pdf: "https://arxiv.org/pdf/2405.11667"
-    },
-    {
-      id: 2,
-      title: "On the Convergence of Local SGD Under Third-Order Smoothness and Hessian Similarity",
-      authors: "A.Zindari, R.Luo, S.Stich",
-      venue: "Opt4ML workshop @ NeurIPS",
-      year: "2023",
-      type: "Conference",
-      image: convergenceImage, 
-      abstract: "This paper investigates the convergence properties of Local SGD under third-order smoothness assumptions and Hessian similarity conditions, providing theoretical insights into distributed optimization in non-convex settings.",
-      doi: "Opt4ML 2023",
-      pdf: "https://opt-ml.org/papers/2023/paper51.pdf"
-    },
-    {
-      id: 3,
-      title: "Segmentation of Lungs COVID Infected Regions by Attention Mechanism and Synthetic Generated Data",
-      authors: "A.Zindari, P.Yazdkhasti, Z.Nabizadeh, P.Khadivi, N.Karimi, S.Samavi",
-      venue: "arXiv preprint",
-      year: "2021",
-      type: "Journal",
-      image: covidSegmentationImage,
-      abstract: "We propose an attention-based approach for segmenting COVID-19 infected regions in lung CT images, enhanced with synthetic data generation techniques to improve model robustness and accuracy.",
-      doi: "arXiv:2108.08895", 
-      pdf: "https://arxiv.org/ftp/arxiv/papers/2108/2108.08895.pdf"
-    },
-    {
-      id: 4,
-      title: "Bifurcated Autoencoder for Segmentation of COVID-19 Infected Regions in CT Images",
-      authors: "P. Yazdkhasti, A. Zindari, Z. Nabizadeh, R. Roshandel, P. Khadvi, N. Karimi, S. Samavi",
-      venue: "arXiv preprint", 
-      year: "2020",
-      type: "Journal",
-      image: autoencoderImage,
-      abstract: "This work introduces a bifurcated autoencoder architecture specifically designed for accurate segmentation of COVID-19 infected regions in CT images, demonstrating improved performance over traditional approaches.",
-      doi: "arXiv:2011.00631",
-      pdf: "https://arxiv.org/ftp/arxiv/papers/2011/2011.00631.pdf"
-    }
+    // {
+    //   id: 1,
+    //   title: "The Limits and Potentials of Local SGD for Distributed Heterogeneous Learning with Intermittent Communication",
+    //   authors: "K.K.Patel, M.Glasgow, A.Zindari, L.Wang, S.Stich, Z.Cheng, N.Joshi, N.Srebro",
+    //   venue: "Conference on Learning Theory (COLT)",
+    //   year: "2024",
+    //   type: "Conference", 
+    //   image: localSgdImage,
+    //   abstract: "We analyze the theoretical limits and potentials of Local SGD in distributed heterogeneous learning settings with intermittent communication. Our work provides new convergence guarantees and insights into the effectiveness of this popular distributed optimization method.",
+    //   doi: "arXiv:2405.11667",
+    //   pdf: "https://arxiv.org/pdf/2405.11667"
+    // },
+    // {
+    //   id: 2,
+    //   title: "On the Convergence of Local SGD Under Third-Order Smoothness and Hessian Similarity",
+    //   authors: "A.Zindari, R.Luo, S.Stich",
+    //   venue: "Opt4ML workshop @ NeurIPS",
+    //   year: "2023",
+    //   type: "Conference",
+    //   image: convergenceImage, 
+    //   abstract: "This paper investigates the convergence properties of Local SGD under third-order smoothness assumptions and Hessian similarity conditions, providing theoretical insights into distributed optimization in non-convex settings.",
+    //   doi: "Opt4ML 2023",
+    //   pdf: "https://opt-ml.org/papers/2023/paper51.pdf"
+    // },
+    // {
+    //   id: 3,
+    //   title: "Segmentation of Lungs COVID Infected Regions by Attention Mechanism and Synthetic Generated Data",
+    //   authors: "A.Zindari, P.Yazdkhasti, Z.Nabizadeh, P.Khadivi, N.Karimi, S.Samavi",
+    //   venue: "arXiv preprint",
+    //   year: "2021",
+    //   type: "Journal",
+    //   image: covidSegmentationImage,
+    //   abstract: "We propose an attention-based approach for segmenting COVID-19 infected regions in lung CT images, enhanced with synthetic data generation techniques to improve model robustness and accuracy.",
+    //   doi: "arXiv:2108.08895", 
+    //   pdf: "https://arxiv.org/ftp/arxiv/papers/2108/2108.08895.pdf"
+    // },
+    // {
+    //   id: 4,
+    //   title: "Bifurcated Autoencoder for Segmentation of COVID-19 Infected Regions in CT Images",
+    //   authors: "P. Yazdkhasti, A. Zindari, Z. Nabizadeh, R. Roshandel, P. Khadvi, N. Karimi, S. Samavi",
+    //   venue: "arXiv preprint", 
+    //   year: "2020",
+    //   type: "Journal",
+    //   image: autoencoderImage,
+    //   abstract: "This work introduces a bifurcated autoencoder architecture specifically designed for accurate segmentation of COVID-19 infected regions in CT images, demonstrating improved performance over traditional approaches.",
+    //   doi: "arXiv:2011.00631",
+    //   pdf: "https://arxiv.org/ftp/arxiv/papers/2011/2011.00631.pdf"
+    // }
   ];
 
   const getVenueColor = (type: string) => {
