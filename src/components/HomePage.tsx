@@ -3,13 +3,23 @@ import { useState } from 'react';
 const HomePage = () => {
   const newsItems = [
     {
+      date: "2025-09-01",
+      title: "Paper accepted at NeurIPS 2025!",
+      description: "Our work on Local SGD has been accepted to NeurIPS 2025! I will be attending EurIPS in Copenhagen! Let me know if you wanna chat."
+    },
+    {
+      date: "2025-05-01",
+      title: "Paper accepted at ICML 2025!",
+      description: "Our Decoupled SGDA paper has been accepted to ICML 2025!"
+    },
+    {
       date: "2024-07-01",
       title: "ICML 2024 in Vienna",
       description: "I will be attending ICML 2024 in Vienna."
     },
     {
       date: "2024-04-01",
-      title: "Paper accepted at COLT 2024",
+      title: "Paper accepted at COLT 2024!",
       description: "Our paper on Local SGD has been accepted to COLT 2024!"
     },
     {
@@ -37,9 +47,7 @@ const HomePage = () => {
   const researchAreas = [
     "Optimization Theory",
     "Deep Learning Theory", 
-    "Distributed Learning",
-    "Minimax Optimization",
-    "Communication-Efficient Methods"
+    "High Dimensional Probability and Learning Theory"
   ];
 
   const [showAllNews, setShowAllNews] = useState(false);
@@ -53,12 +61,11 @@ const HomePage = () => {
             Ali Zindari
           </h1>
           <div className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Master's Student, Mathematics & Computer Science • Researcher at CISPA
+            Master's Student at Saarland University • Researcher at CISPA
           </div>
           <p className="text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-8">
             I'm a Master's student in Mathematics and Computer Science at Saarland University and a researcher at CISPA 
-            working at MLO Lab with Prof. Sebastian Stich. My main focus is on Optimization Theory, particularly in 
-            minimax and decentralized settings. Feel free to contact me at{' '}
+            working at MLO Lab with Prof. Sebastian U. Stich. Feel free to contact me at{' '}
             <a href="mailto:zindari.ali@gmail.com" className="text-primary hover:underline">
               zindari.ali@gmail.com
             </a>
@@ -82,21 +89,30 @@ const HomePage = () => {
           <h2 className="section-heading">About</h2>
           <div className="card-academic">
             <p className="text-foreground leading-relaxed mb-4">
+              My main research interests nowadays are:
+            </p>
+            <ul className="list-disc list-inside space-y-2 mb-4">
+              {researchAreas.map((area, index) => (
+                <li key={index} className="text-foreground">
+                  {area}
+                </li>
+              ))}
+            </ul>
+            <p className="text-foreground leading-relaxed mb-4">
               My research has primarily focused on optimization theory, particularly in distributed settings and minimax 
               problems. I have worked on understanding the effectiveness of Local SGD from a theoretical perspective, 
               providing new convergence guarantees for this method. More recently, I have been developing 
               communication-efficient approaches for solving minimax problems in distributed settings.
             </p>
             <p className="text-foreground leading-relaxed">
-              Lately, my interests have shifted toward deep learning theory, specifically the role of optimizers in 
-              both training and testing phases, with a focus on generalization error. I aim to gain deeper insights 
-              into how the implicit bias of modern optimizers affects generalization performance.
+              Lately, my interests have shifted toward deep learning theory  with a focus on generalization error. I'm
+              interested in the use of high dimensional probablity tools to understand neural networks.
             </p>
           </div>
         </section>
 
         {/* Research Areas */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <h2 className="section-heading">Research Interests</h2>
           <div className="card-academic">
             <ul className="list-disc list-inside space-y-2 mb-4">
@@ -118,7 +134,7 @@ const HomePage = () => {
               of deep learning systems.
             </p>
           </div>
-        </section>
+        </section> */}
 
         {/* News & Updates */}
         <section>
