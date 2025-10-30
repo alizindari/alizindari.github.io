@@ -87,51 +87,51 @@ const PublicationsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-heading font-bold text-foreground mb-4">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
             Publications
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Peer-reviewed research contributions to the fields of machine learning and computer science
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-8">
+        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
           {publications.map((pub) => (
-            <article key={pub.id} className="card-academic">
-              <div className="flex gap-8">
-                <div className="flex-shrink-0">
+            <article key={pub.id} className="card-academic p-4 sm:p-6">
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8">
+                <div className="flex-shrink-0 w-full md:w-72">
                   <img 
                     src={pub.image} 
                     alt={`${pub.title} visualization`}
-                    className="w-72 h-72 object-cover rounded-lg border border-border shadow-card"
+                    className="w-full h-64 sm:h-72 md:w-72 md:h-72 object-cover rounded-lg border border-border shadow-card"
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between mb-3">
-                    <h2 className="text-xl font-heading font-semibold text-foreground leading-tight">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
+                    <h2 className="text-lg sm:text-xl font-heading font-semibold text-foreground leading-tight flex-1">
                       {pub.title}
                     </h2>
-                    <div className="flex items-center gap-2 ml-4">
+                    <div className="flex items-center gap-2">
                       <span className={`px-3 py-1 text-xs font-medium rounded-full ${getVenueColor(pub.type)}`}>
                         {pub.type}
                       </span>
-                      <span className="text-sm text-muted-foreground whitespace-nowrap">
+                      <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
                         {pub.year}
                       </span>
                     </div>
                   </div>
                   
-                  <p className="text-muted-foreground mb-2">
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-2 break-words">
                     {pub.authors}
                   </p>
                   
-                  <p className="text-primary font-medium mb-4">
+                  <p className="text-sm sm:text-base text-primary font-medium mb-3 sm:mb-4">
                     {pub.venue}
                   </p>
                   
-                  <p className="text-foreground leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm md:text-base text-foreground leading-relaxed mb-4 sm:mb-6">
                     {pub.abstract}
                   </p>
                   
@@ -140,7 +140,7 @@ const PublicationsPage = () => {
                       href={pub.pdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                      className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm"
                     >
                       <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

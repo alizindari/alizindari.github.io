@@ -54,27 +54,27 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Hero Section */}
-        <section className="mb-16 text-center">
-          <h1 className="text-5xl font-heading font-bold text-foreground mb-6">
+        <section className="mb-12 sm:mb-16 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6 px-2">
             Ali Zindari
           </h1>
-          <div className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <div className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
             Master's Student at Saarland University • Researcher at CISPA
           </div>
-          <p className="text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-8">
+          <p className="text-sm sm:text-base md:text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
             I'm a Master's student in Mathematics and Computer Science at Saarland University and a researcher at CISPA 
             working at MLO Lab with Prof. Sebastian U. Stich. Feel free to contact me at{' '}
-            <a href="mailto:zindari.ali@gmail.com" className="text-primary hover:underline">
+            <a href="mailto:zindari.ali@gmail.com" className="text-primary hover:underline break-all">
               zindari.ali@gmail.com
             </a>
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center px-4">
             <a 
               href="/cv.pdf" 
               target="_blank"
-              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+              className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm sm:text-base"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -85,26 +85,26 @@ const HomePage = () => {
         </section>
 
         {/* About Section */}
-        <section className="mb-16">
-          <h2 className="section-heading">About</h2>
-          <div className="card-academic">
-            <p className="text-foreground leading-relaxed mb-4">
+        <section className="mb-12 sm:mb-16">
+          <h2 className="section-heading text-xl sm:text-2xl">About</h2>
+          <div className="card-academic p-4 sm:p-6">
+            <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4">
               My main research interests nowadays are:
             </p>
-            <ul className="list-disc list-inside space-y-2 mb-4">
+            <ul className="list-disc list-inside space-y-2 mb-4 text-sm sm:text-base">
               {researchAreas.map((area, index) => (
                 <li key={index} className="text-foreground">
                   {area}
                 </li>
               ))}
             </ul>
-            <p className="text-foreground leading-relaxed mb-4">
+            <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4">
               My research has primarily focused on optimization theory, particularly in distributed settings and minimax 
               problems. I have worked on understanding the effectiveness of Local SGD from a theoretical perspective, 
               providing new convergence guarantees for this method. More recently, I have been developing 
               communication-efficient approaches for solving minimax problems in distributed settings.
             </p>
-            <p className="text-foreground leading-relaxed">
+            <p className="text-sm sm:text-base text-foreground leading-relaxed">
               Lately, my interests have shifted toward deep learning theory  with a focus on generalization error. I'm
               interested in the use of high dimensional probablity tools to understand neural networks.
             </p>
@@ -138,22 +138,22 @@ const HomePage = () => {
 
         {/* News & Updates */}
         <section>
-          <h2 className="section-heading">News & Updates</h2>
+          <h2 className="section-heading text-xl sm:text-2xl">News & Updates</h2>
           <div className="space-y-3">
             {(showAllNews ? newsItems : newsItems.slice(0, 4)).map((item, index) => (
-              <div key={index} className="flex items-start gap-4 py-2">
+              <div key={index} className="flex items-start gap-3 sm:gap-4 py-2">
                 <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="font-medium text-foreground mb-1">
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-medium text-sm sm:text-base text-foreground mb-1">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
-                    <span className="text-xs text-muted-foreground whitespace-nowrap">
+                    <span className="text-xs text-muted-foreground sm:whitespace-nowrap">
                       {new Date(item.date).toLocaleDateString('en-US', { 
                         year: 'numeric', 
                         month: 'short'
@@ -165,7 +165,7 @@ const HomePage = () => {
             ))}
             <button
               onClick={() => setShowAllNews(!showAllNews)}
-              className="text-sm text-primary hover:underline mt-4"
+              className="text-xs sm:text-sm text-primary hover:underline mt-4"
               aria-expanded={showAllNews}
             >
               {showAllNews ? 'Hide older news ←' : 'Show older news →'}

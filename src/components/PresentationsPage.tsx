@@ -46,52 +46,52 @@ const PresentationsPage = () => {
   ];
 
   return (
-    <main className="min-h-screen py-12 px-4">
+    <main className="min-h-screen py-8 sm:py-12 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
-        <header className="mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Presentations</h1>
-          <p className="text-lg text-muted-foreground">
+        <header className="mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">Presentations</h1>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
             Conference talks and invited presentations on machine learning and optimization
           </p>
         </header>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {presentations.map((presentation) => (
             <article 
               key={presentation.id}
               className="bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow"
             >
-              <div className="md:flex">
-                <div className="md:w-1/3 h-82 md:h-52 overflow-hidden bg-muted">
+              <div className="flex flex-col md:flex-row">
+                <div className="md:w-1/3 h-48 sm:h-64 md:h-52 overflow-hidden bg-muted flex-shrink-0">
                   <img 
                     src={presentation.image} 
                     alt={presentation.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="md:w-2/3 p-6">
-                  <h2 className="text-2xl font-semibold text-foreground mb-3">
+                <div className="md:w-2/3 p-4 sm:p-6">
+                  <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2 sm:mb-3">
                     {presentation.title}
                   </h2>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-sm font-medium text-primary">
+                  <div className="flex items-center gap-2 mb-3 sm:mb-4 flex-wrap">
+                    <span className="text-xs sm:text-sm font-medium text-primary">
                       {presentation.venue}
                     </span>
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-xs sm:text-sm text-muted-foreground">
                       • {presentation.year}
                     </span>
                   </div>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
                     {presentation.description}
                   </p>
                   <a
                     href={presentation.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base text-primary hover:underline font-medium"
                   >
                     View Slides (PDF)
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                   </a>
                 </div>
               </div>
