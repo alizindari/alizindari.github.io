@@ -45,7 +45,7 @@ const PresentationsPage = () => {
       id: 1,
       title: "Convergence of First-Order Methods for Saddle Point Problems",
       venue: "Saarland University",
-      year: 2025,
+      year: 2024,
       image: games_for_ml,
       description: "Presentation about convergence of EG, GDA and PPM for simple quadratics.",
       pdfUrl: games_pdf
