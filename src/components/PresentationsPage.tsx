@@ -3,6 +3,13 @@ import master_thesis_image from '@/assets/presentations/Master_Thesis.pdf';
 import deep_linear_models from '@/assets/presentations/deep_linear_models.pdf';
 import imprecise_ml from '@/assets/presentations/imprecise_ml.pdf';
 import games_for_ml from '@/assets/presentations/games.pdf';
+
+// Import PDF files for links
+import master_thesis_pdf from '@/files/presentations/Master_Thesis_Presentation.pdf';
+import deep_linear_models_pdf from '@/files/presentations/deep_linear_models.pdf';
+import imprecise_ml_pdf from '@/files/presentations/imprecise_ml_seminar.pdf';
+import games_pdf from '@/files/presentations/gml_presentation.pdf';
+
 import { ExternalLink } from 'lucide-react';
 
 const PresentationsPage = () => {
@@ -14,7 +21,7 @@ const PresentationsPage = () => {
       year: 2025,
       image: master_thesis_image,
       description: "My master thesis presentation on new rates for Local SGD.",
-      pdfUrl: "/src/files/presentations/Master_Thesis_Presentation.pdf"
+      pdfUrl: master_thesis_pdf
     },
     {
       id: 3,
@@ -23,7 +30,7 @@ const PresentationsPage = () => {
       year: 2025,
       image: deep_linear_models,
       description: "Presentation for a master seminar at Saarland University on deep linear networks.",
-      pdfUrl: "/src/files/presentations/deep_linear_models.pdf"
+      pdfUrl: deep_linear_models_pdf
     },
     {
       id: 2,
@@ -32,7 +39,7 @@ const PresentationsPage = () => {
       year: 2025,
       image: imprecise_ml,
       description: "Presentation about imprecise ML for a master seminar.",
-      pdfUrl: "/src/files/presentations/imprecise_ml_seminar.pdf"
+      pdfUrl: imprecise_ml_pdf
     },
     {
       id: 1,
@@ -41,7 +48,7 @@ const PresentationsPage = () => {
       year: 2025,
       image: games_for_ml,
       description: "Presentation about convergence of EG, GDA and PPM for simple quadratics.",
-      pdfUrl: "/src/files/presentations/gml_presentation.pdf"
+      pdfUrl: games_pdf
     }
   ];
 
