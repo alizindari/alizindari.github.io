@@ -70,10 +70,15 @@ const HomePage = () => {
           </div>
           <p className="text-sm sm:text-base md:text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
             I'm a Master's student in Mathematics and Computer Science at Saarland University and a researcher at CISPA 
-            working at MLO Lab with Prof. Sebastian U. Stich. Feel free to contact me at{' '}
-            <a href="mailto:zindari.ali@gmail.com" className="text-primary hover:underline break-all">
-              zindari.ali@gmail.com
-            </a>
+            working at MLO Lab with{' '}
+            <a 
+              href="https://tml.cs.uni-saarland.de/team/sebastian.html" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-primary hover:underline"
+            >
+              Prof. Sebastian U. Stich
+            </a>.
           </p>
           <div className="flex justify-center gap-4 sm:gap-6 px-4">
             <a 
