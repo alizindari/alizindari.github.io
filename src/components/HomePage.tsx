@@ -79,44 +79,44 @@ const HomePage = () => {
             <a 
               href="/cv.pdf" 
               target="_blank"
-              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              className="hover:opacity-70 transition-opacity"
               aria-label="Download CV"
             >
-              <img src={resumeIcon} alt="CV" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={resumeIcon} alt="CV" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
               href="https://scholar.google.com/citations?user=YOUR_USER_ID"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              className="hover:opacity-70 transition-opacity"
               aria-label="Google Scholar"
             >
-              <img src={googleScholarIcon} alt="Google Scholar" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={googleScholarIcon} alt="Google Scholar" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
               href="https://www.linkedin.com/in/YOUR_LINKEDIN_ID"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              className="hover:opacity-70 transition-opacity"
               aria-label="LinkedIn"
             >
-              <img src={linkedinIcon} alt="LinkedIn" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={linkedinIcon} alt="LinkedIn" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
               href="mailto:zindari.ali@gmail.com"
-              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              className="hover:opacity-70 transition-opacity"
               aria-label="Email"
             >
-              <img src={gmailIcon} alt="Email" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={gmailIcon} alt="Email" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
               href="https://twitter.com/YOUR_TWITTER_HANDLE"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              className="hover:opacity-70 transition-opacity"
               aria-label="X/Twitter"
             >
-              <img src={xIcon} alt="X" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={xIcon} alt="X" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
           </div>
         </section>
