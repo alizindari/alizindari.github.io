@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FileDown, Mail, Twitter } from 'lucide-react';
 
 const HomePage = () => {
   const newsItems = [
@@ -70,16 +71,41 @@ const HomePage = () => {
               zindari.ali@gmail.com
             </a>
           </p>
-          <div className="flex justify-center px-4">
+          <div className="flex justify-center gap-4 sm:gap-6 px-4">
             <a 
               href="/cv.pdf" 
               target="_blank"
-              className="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm sm:text-base"
+              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              aria-label="Download CV"
             >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <FileDown className="w-5 h-5 sm:w-6 sm:h-6" />
+            </a>
+            <a 
+              href="https://scholar.google.com/citations?user=YOUR_USER_ID"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              aria-label="Google Scholar"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0L6.5 5.5L9.5 8.5L12 6L14.5 8.5L17.5 5.5L12 0ZM12 3.5L10 5.5L12 7.5L14 5.5L12 3.5ZM6 7L2 11V24H22V11L18 7L12 13L6 7ZM5 12.5L12 19.5L19 12.5V22H5V12.5Z"/>
               </svg>
-              Download CV
+            </a>
+            <a 
+              href="mailto:zindari.ali@gmail.com"
+              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
+            </a>
+            <a 
+              href="https://twitter.com/YOUR_TWITTER_HANDLE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              aria-label="Twitter"
+            >
+              <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
           </div>
         </section>
