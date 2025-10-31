@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { FileDown, Mail, Twitter } from 'lucide-react';
+import resumeIcon from '@/assets/icons/resume.svg';
+import linkedinIcon from '@/assets/icons/linkedin.svg';
+import xIcon from '@/assets/icons/x.svg';
+import googleScholarIcon from '@/assets/icons/google_scholar.svg';
+import gmailIcon from '@/assets/icons/gmail.svg';
 
 const HomePage = () => {
   const newsItems = [
@@ -78,7 +82,7 @@ const HomePage = () => {
               className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
               aria-label="Download CV"
             >
-              <FileDown className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={resumeIcon} alt="CV" className="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
             <a 
               href="https://scholar.google.com/citations?user=YOUR_USER_ID"
@@ -87,25 +91,32 @@ const HomePage = () => {
               className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
               aria-label="Google Scholar"
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0L6.5 5.5L9.5 8.5L12 6L14.5 8.5L17.5 5.5L12 0ZM12 3.5L10 5.5L12 7.5L14 5.5L12 3.5ZM6 7L2 11V24H22V11L18 7L12 13L6 7ZM5 12.5L12 19.5L19 12.5V22H5V12.5Z"/>
-              </svg>
+              <img src={googleScholarIcon} alt="Google Scholar" className="w-5 h-5 sm:w-6 sm:h-6" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/YOUR_LINKEDIN_ID"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <img src={linkedinIcon} alt="LinkedIn" className="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
             <a 
               href="mailto:zindari.ali@gmail.com"
               className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
               aria-label="Email"
             >
-              <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={gmailIcon} alt="Email" className="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
             <a 
               href="https://twitter.com/YOUR_TWITTER_HANDLE"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
-              aria-label="Twitter"
+              aria-label="X/Twitter"
             >
-              <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src={xIcon} alt="X" className="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
           </div>
         </section>
