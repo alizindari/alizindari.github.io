@@ -72,7 +72,7 @@ const HomePage = () => {
             I'm a Master's student in Mathematics and Computer Science at Saarland University and a researcher at CISPA 
             working at MLO Lab with{' '}
             <a 
-              href="https://tml.cs.uni-saarland.de/team/sebastian.html" 
+              href="https://sstich.ch" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-primary hover:underline"
