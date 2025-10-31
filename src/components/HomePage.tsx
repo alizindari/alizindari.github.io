@@ -90,7 +90,7 @@ const HomePage = () => {
               <img src={resumeIcon} alt="CV" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
-              href="https://scholar.google.com/citations?user=YOUR_USER_ID"
+              href="https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
@@ -99,7 +99,7 @@ const HomePage = () => {
               <img src={googleScholarIcon} alt="Google Scholar" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
-              href="https://www.linkedin.com/in/YOUR_LINKEDIN_ID"
+              href="https://www.linkedin.com/in/ali-zindari-a64bb6187/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
@@ -115,7 +115,7 @@ const HomePage = () => {
               <img src={gmailIcon} alt="Email" className="w-8 h-8 sm:w-10 sm:h-10" />
             </a>
             <a 
-              href="https://twitter.com/YOUR_TWITTER_HANDLE"
+              href="https://x.com/ali__zindari"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-70 transition-opacity"
