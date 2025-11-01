@@ -4,6 +4,7 @@ import linkedinIcon from '@/assets/icons/linkedin.svg';
 import xIcon from '@/assets/icons/x.svg';
 import googleScholarIcon from '@/assets/icons/google_scholar.svg';
 import gmailIcon from '@/assets/icons/gmail.svg';
+import cv from '@/files/homepage/CV.pdf';
 
 const HomePage = () => {
   const newsItems = [
@@ -82,7 +83,7 @@ const HomePage = () => {
           </p>
           <div className="flex justify-center gap-4 sm:gap-6 px-4">
             <a 
-              href="/cv.pdf" 
+              href="/files/homepage/CV.pdf" 
               target="_blank"
               className="hover:opacity-70 transition-opacity"
               aria-label="Download CV"
