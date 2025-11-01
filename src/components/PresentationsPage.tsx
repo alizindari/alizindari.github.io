@@ -92,7 +92,7 @@ const PresentationsPage = () => {
                     {presentation.description}
                   </p>
                   <a
-                    href={presentation.pdfUrl}
+                    href={`/view/pdf?src=${encodeURIComponent(presentation.pdfUrl)}&title=${encodeURIComponent(presentation.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-sm sm:text-base text-primary hover:underline font-medium"
