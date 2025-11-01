@@ -83,7 +83,7 @@ const HomePage = () => {
           </p>
           <div className="flex justify-center gap-4 sm:gap-6 px-4">
             <a 
-              href="/cv" 
+              href={cv} 
               target="_blank"
               className="hover:opacity-70 transition-opacity"
               aria-label="Download CV"
