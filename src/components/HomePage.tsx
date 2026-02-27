@@ -34,6 +34,11 @@ const HomePage = () => {
       description: "Our paper has been accepted to Opt4ML workshop @ NeurIPS!"
     },
     {
+      date: "2025-11-01",
+      title: "Started PhD at EPFL in the ELLIS program!",
+      description: "I started my PhD at EPFL, supervised by Prof. Sebastian U. Stich and Prof. Martin Jaggi."
+    },
+    {
       date: "2023-04-01",
       title: "Joined MLO Lab",
       description: "I joined Prof. Sebastian Stich's group as a research assistant."
@@ -67,18 +72,24 @@ const HomePage = () => {
             Ali Zindari
           </h1>
           <div className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-            Master's Student at Saarland University • Researcher at CISPA
+            PhD Student at{' '}
+            <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EPFL</a>
+            {' '}•{' '}
+            <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
+            {' '}Program
           </div>
           <p className="text-sm sm:text-base md:text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
-            I'm a Master's student in Mathematics and Computer Science at Saarland University and a researcher at CISPA 
-            working at MLO Lab with{' '}
-            <a 
-              href="https://sstich.ch" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-primary hover:underline"
-            >
+            I'm a PhD student in the{' '}
+            <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
+            {' '}program at{' '}
+            <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EPFL</a>
+            , supervised by{' '}
+            <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               Prof. Sebastian U. Stich
+            </a>
+            {' '}and{' '}
+            <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+              Prof. Martin Jaggi
             </a>.
           </p>
           <div className="flex justify-center gap-4 sm:gap-6 px-4">
