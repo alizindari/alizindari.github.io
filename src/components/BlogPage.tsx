@@ -196,15 +196,17 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
           ) : (
             filteredPosts.map((post) => (
               <article key={post.id} className="card-academic p-4 sm:p-6 overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300" onClick={() => onPostClick?.(post.id)}>
-                <img
-                  src={post.image}
-                  alt={`${post.title} cover image`}
-                  loading="lazy"
-                  className="w-full h-40 sm:h-48 object-cover rounded-t-lg -mx-4 sm:-mx-6 -mt-4 sm:-mt-6 mb-4 sm:mb-6"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = '/placeholder.svg';
-                  }}
-                />
+                <div className="-mx-4 sm:-mx-6 -mt-4 sm:-mt-6 mb-4 sm:mb-6 h-40 sm:h-48 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={`${post.title} cover image`}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = '/placeholder.svg';
+                    }}
+                  />
+                </div>
                 <div>
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 gap-2">
                     <div className="flex-1 min-w-0">

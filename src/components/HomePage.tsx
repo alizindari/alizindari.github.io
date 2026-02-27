@@ -56,9 +56,9 @@ const HomePage = () => {
   ];
 
   const researchAreas = [
-    "Optimization Theory",
-    "Deep Learning Theory", 
-    "High Dimensional Probability and Learning Theory"
+    "Theory of Deep Learning",
+    "Optimization of Problems with Structure (e.g. neural networks)",
+    "High-Dimensional Probability",
   ];
 
   const [showAllNews, setShowAllNews] = useState(false);
@@ -147,9 +147,9 @@ const HomePage = () => {
           <h2 className="section-heading text-xl sm:text-2xl">About</h2>
           <div className="card-academic p-4 sm:p-6 text-black" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
             <p className="text-sm sm:text-base leading-relaxed mb-4">
-              My main research interests nowadays are:
+              My research sits at the intersection of:
             </p>
-            <ul className="list-disc list-inside space-y-2 mb-4 text-sm sm:text-base">
+            <ul className="list-disc list-inside space-y-2 mb-5 text-sm sm:text-base">
               {researchAreas.map((area, index) => (
                 <li key={index}>
                   {area}
@@ -157,14 +157,25 @@ const HomePage = () => {
               ))}
             </ul>
             <p className="text-sm sm:text-base leading-relaxed mb-4">
-              My research has primarily focused on optimization theory, particularly in distributed settings and minimax 
-              problems. I have worked on understanding the effectiveness of Local SGD from a theoretical perspective, 
-              providing new convergence guarantees for this method. More recently, I have been developing 
-              communication-efficient approaches for solving minimax problems in distributed settings.
+              At the core, I'm thinking about what is it about the structure of a neural network, combined with a specific
+              optimization procedure, that gives rise to the ability to generalize? I want to understand the
+              mechanisms behind the learning process: how gradient-based methods navigate the loss landscape and what
+              role architecture plays in shaping those dynamics.
+            </p>
+            <p className="text-sm sm:text-base leading-relaxed mb-4">
+              I find it interesting that when you place many neurons together in the right structure and train them
+              with the right procedure, something that looks like intelligence <em>emerges</em>. Understanding
+              why and when this emergence happens is one of my major questions. 
+            </p>
+            <p className="text-sm sm:text-base leading-relaxed mb-4">
+              I'm also thinking about <strong>continual learning</strong> and the problem of catastrophic forgetting:
+              when a network learns new tasks sequentially, it tends to overwrite what it learned before. I'm
+              interested in designing mechanisms that prevent this, ideally by understanding <em>why</em> forgetting happens in the first place.
             </p>
             <p className="text-sm sm:text-base leading-relaxed">
-              Lately, my interests have shifted toward deep learning theory  with a focus on generalization error. I'm
-              interested in the use of high dimensional probablity tools to understand neural networks.
+              Previously, my work focused on optimization theory in distributed and minimax settings particularly
+              Local SGD and communication-efficient methods for minimax problems. That work gave me a solid
+              theoretical foundation I now bring to these newer questions about deep learning.
             </p>
           </div>
         </section>
