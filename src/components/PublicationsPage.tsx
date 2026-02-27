@@ -61,7 +61,7 @@ const PublicationsPage = () => {
       authors: "A.Zindari, P.Yazdkhasti, Z.Nabizadeh, P.Khadivi, N.Karimi, S.Samavi",
       venue: "arXiv preprint",
       year: "2021",
-      type: "Journal",
+      type: "Workshop",
       image: gan,
       abstract: "We propose an attention-based approach for segmenting COVID-19 infected regions in lung CT images, enhanced with synthetic data generation techniques to improve model robustness and accuracy.",
       doi: "arXiv:2108.08895", 
@@ -73,7 +73,7 @@ const PublicationsPage = () => {
       authors: "P. Yazdkhasti, A. Zindari, Z. Nabizadeh, R. Roshandel, P. Khadvi, N. Karimi, S. Samavi",
       venue: "arXiv preprint", 
       year: "2020",
-      type: "Journal",
+      type: "Workshop",
       image: bifurcated,
       abstract: "This work introduces a bifurcated autoencoder architecture specifically designed for accurate segmentation of COVID-19 infected regions in CT images, demonstrating improved performance over traditional approaches.",
       doi: "arXiv:2011.00631",
@@ -92,9 +92,9 @@ const PublicationsPage = () => {
           <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
             Publications
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
+          {/* <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Peer-reviewed research contributions to the fields of machine learning and computer science
-          </p>
+          </p> */}
         </div>
 
         <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
