@@ -67,11 +67,11 @@ const HomePage = () => {
     <div className="min-h-screen bg-gradient-subtle">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Hero Section */}
-        <section className="mb-12 sm:mb-16 text-center">
+        <section className="mb-12 sm:mb-16 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6 px-2">
             Ali Zindari
           </h1>
-          <div className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+          <div className="text-base sm:text-lg md:text-xl text-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
             PhD Student at{' '}
             <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CISPA</a>
             {' '}&{' '}
@@ -145,24 +145,24 @@ const HomePage = () => {
         {/* About Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="section-heading text-xl sm:text-2xl">About</h2>
-          <div className="card-academic p-4 sm:p-6" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-            <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4">
+          <div className="card-academic p-4 sm:p-6 text-black" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
+            <p className="text-sm sm:text-base leading-relaxed mb-4">
               My main research interests nowadays are:
             </p>
             <ul className="list-disc list-inside space-y-2 mb-4 text-sm sm:text-base">
               {researchAreas.map((area, index) => (
-                <li key={index} className="text-foreground">
+                <li key={index}>
                   {area}
                 </li>
               ))}
             </ul>
-            <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4">
+            <p className="text-sm sm:text-base leading-relaxed mb-4">
               My research has primarily focused on optimization theory, particularly in distributed settings and minimax 
               problems. I have worked on understanding the effectiveness of Local SGD from a theoretical perspective, 
               providing new convergence guarantees for this method. More recently, I have been developing 
               communication-efficient approaches for solving minimax problems in distributed settings.
             </p>
-            <p className="text-sm sm:text-base text-foreground leading-relaxed">
+            <p className="text-sm sm:text-base leading-relaxed">
               Lately, my interests have shifted toward deep learning theory  with a focus on generalization error. I'm
               interested in the use of high dimensional probablity tools to understand neural networks.
             </p>
