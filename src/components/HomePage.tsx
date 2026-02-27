@@ -9,6 +9,11 @@ import cv from '@/files/homepage/CV.pdf';
 const HomePage = () => {
   const newsItems = [
     {
+      date: "2025-11-01",
+      title: "Started PhD at CISPA & EPFL in the ELLIS program!",
+      description: "I started my PhD jointly at CISPA and EPFL, supervised by Prof. Sebastian U. Stich and Prof. Martin Jaggi."
+    },
+    {
       date: "2025-09-01",
       title: "Paper accepted at NeurIPS 2025!",
       description: "Our work on Local SGD has been accepted to NeurIPS 2025! I will be attending EurIPS in Copenhagen! Let me know if you wanna chat."
@@ -32,11 +37,6 @@ const HomePage = () => {
       date: "2023-10-01",
       title: "Paper accepted at Opt4ML workshop",
       description: "Our paper has been accepted to Opt4ML workshop @ NeurIPS!"
-    },
-    {
-      date: "2025-11-01",
-      title: "Started PhD at EPFL in the ELLIS program!",
-      description: "I started my PhD at EPFL, supervised by Prof. Sebastian U. Stich and Prof. Martin Jaggi."
     },
     {
       date: "2023-04-01",
@@ -73,6 +73,8 @@ const HomePage = () => {
           </h1>
           <div className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
             PhD Student at{' '}
+            <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CISPA</a>
+            {' '}&{' '}
             <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EPFL</a>
             {' '}•{' '}
             <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
@@ -81,7 +83,9 @@ const HomePage = () => {
           <p className="text-sm sm:text-base md:text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
             I'm a PhD student in the{' '}
             <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
-            {' '}program at{' '}
+            {' '}program, jointly at{' '}
+            <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CISPA</a>
+            {' '}and{' '}
             <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EPFL</a>
             , supervised by{' '}
             <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
@@ -141,7 +145,7 @@ const HomePage = () => {
         {/* About Section */}
         <section className="mb-12 sm:mb-16">
           <h2 className="section-heading text-xl sm:text-2xl">About</h2>
-          <div className="card-academic p-4 sm:p-6">
+          <div className="card-academic p-4 sm:p-6" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
             <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4">
               My main research interests nowadays are:
             </p>
