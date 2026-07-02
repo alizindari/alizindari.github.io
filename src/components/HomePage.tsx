@@ -57,8 +57,8 @@ const HomePage = () => {
 
   const researchAreas = [
     "Theory of Deep Learning",
+    "High Dimensional and Dynamical Systems",
     "Optimization of Problems with Structure (e.g. neural networks)",
-    "High-Dimensional Probability",
   ];
 
   const [showAllNews, setShowAllNews] = useState(false);
@@ -68,10 +68,10 @@ const HomePage = () => {
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Hero Section */}
         <section className="mb-12 sm:mb-16 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6 px-2">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6 px-2">
             Ali Zindari
           </h1>
-          <div className="text-base sm:text-lg md:text-xl text-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
+          <div className="text-lg sm:text-xl md:text-2xl text-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
             PhD Student at{' '}
             <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CISPA</a>
             {' '}&{' '}
@@ -80,7 +80,7 @@ const HomePage = () => {
             <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
             {' '}Program
           </div>
-          <p className="text-sm sm:text-base md:text-lg text-foreground leading-relaxed max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
+          <p className="text-base sm:text-lg md:text-xl text-foreground leading-relaxed max-w-none mx-auto mb-6 sm:mb-8 px-4 xl:whitespace-nowrap">
             I'm a PhD student in the{' '}
             <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
             {' '}program, jointly at{' '}
@@ -146,36 +146,27 @@ const HomePage = () => {
         <section className="mb-12 sm:mb-16">
           <h2 className="section-heading text-xl sm:text-2xl">About</h2>
           <div className="card-academic p-4 sm:p-6 text-black" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-            <p className="text-sm sm:text-base leading-relaxed mb-4">
+            <p className="text-base sm:text-lg leading-relaxed mb-4">
               My research sits at the intersection of:
             </p>
-            <ul className="list-disc list-inside space-y-2 mb-5 text-sm sm:text-base">
+            <ul className="list-disc list-inside space-y-2 mb-5 text-base sm:text-lg">
               {researchAreas.map((area, index) => (
                 <li key={index}>
                   {area}
                 </li>
               ))}
             </ul>
-            <p className="text-sm sm:text-base leading-relaxed mb-4">
-              At the core, I'm thinking about what is it about the structure of a neural network, combined with a specific
-              optimization procedure, that gives rise to the ability to generalize? I want to understand the
-              mechanisms behind the learning process: how gradient-based methods navigate the loss landscape and what
-              role architecture plays in shaping those dynamics.
+            <p className="text-base sm:text-lg leading-relaxed mb-4">
+              Generally speaking, I am interested in how capabilities emerge in systems with many interacting parts, especially highly overparameterized neural networks. It still feels surprising to me that with the right architecture, learning method, and scale, something that looks like intelligence can come out of the training process. I want to understand why that happens.
             </p>
-            <p className="text-sm sm:text-base leading-relaxed mb-4">
-              I find it interesting that when you place many neurons together in the right structure and train them
-              with the right procedure, something that looks like intelligence <em>emerges</em>. Understanding
-              why and when this emergence happens is one of my major questions. 
+            <p className="text-base sm:text-lg leading-relaxed mb-4">
+              Recently, I have been thinking about fine-tuning, forgetting, and continual learning, and about how architecture fits into the picture. More specifically, I want to understand why forgetting happens in the first place: when it is truly catastrophic, when it is only a small drift, and what that says about how a model stores knowledge. I am especially interested in the role of memory: how knowledge should be stored so that it is not easily overwritten by new training, and whether forgotten knowledge can be recovered rather than learned again from scratch.
             </p>
-            <p className="text-sm sm:text-base leading-relaxed mb-4">
-              I'm also thinking about <strong>continual learning</strong> and the problem of catastrophic forgetting:
-              when a network learns new tasks sequentially, it tends to overwrite what it learned before. I'm
-              interested in designing mechanisms that prevent this, ideally by understanding <em>why</em> forgetting happens in the first place.
+            <p className="text-base sm:text-lg leading-relaxed mb-4">
+              
             </p>
-            <p className="text-sm sm:text-base leading-relaxed">
-              Previously, my work focused on optimization theory in distributed and minimax settings particularly
-              Local SGD and communication-efficient methods for minimax problems. That work gave me a solid
-              theoretical foundation I now bring to these newer questions about deep learning.
+            <p className="text-base sm:text-lg leading-relaxed">
+              
             </p>
           </div>
         </section>
@@ -211,18 +202,18 @@ const HomePage = () => {
           <div className="space-y-3">
             {(showAllNews ? newsItems : newsItems.slice(0, 4)).map((item, index) => (
               <div key={index} className="flex items-start gap-3 sm:gap-4 py-2">
-                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm sm:text-base text-foreground mb-1">
+                      <h3 className="font-medium text-base sm:text-lg text-foreground mb-1">
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-muted-foreground">
+                      <p className="text-sm sm:text-base text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
-                    <span className="text-xs text-muted-foreground sm:whitespace-nowrap">
+                    <span className="text-sm text-muted-foreground sm:whitespace-nowrap">
                       {new Date(item.date).toLocaleDateString('en-US', { 
                         year: 'numeric', 
                         month: 'short'
@@ -234,7 +225,7 @@ const HomePage = () => {
             ))}
             <button
               onClick={() => setShowAllNews(!showAllNews)}
-              className="text-xs sm:text-sm text-primary hover:underline mt-4"
+              className="text-sm sm:text-base text-primary hover:underline mt-4"
               aria-expanded={showAllNews}
             >
               {showAllNews ? 'Hide older news ←' : 'Show older news →'}

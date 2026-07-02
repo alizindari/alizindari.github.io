@@ -4,9 +4,49 @@ import localsgd_colt from '@/assets/papers/localsgd_colt.pdf';
 import localsgd_opt from '@/assets/papers/localised_opt.pdf';
 import gan from '@/assets/papers/gan.pdf';
 import bifurcated from '@/assets/papers/bifurcated.pdf';
+import learningWhenToAdapt from '@/assets/papers/learning_when_to_adapt.svg';
+import loraFullFineTuning from '@/assets/papers/lora_full_finetuning.svg';
+
+type Publication = {
+  id: number;
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  type: string;
+  tags?: string[];
+  image: string;
+  abstract: string;
+  doi: string;
+  pdf: string;
+};
 
 const PublicationsPage = () => {
-  const publications = [
+  const publications: Publication[] = [
+    {
+      id: 8,
+      title: "Learning When to Adapt",
+      authors: "A.Zindari, X.Jiang, R.Mulayoff, S.Stich",
+      venue: "arXiv preprint",
+      year: "2026",
+      type: "arXiv",
+      image: learningWhenToAdapt,
+      abstract: "This paper introduces DISeL, a dynamic input-sensitive LoRA method that gates rank-one components depending on the input. The goal is to adapt on fine-tuning data while preserving pretrained behavior elsewhere, reducing forgetting without giving up competitive task performance.",
+      doi: "arXiv:2605.19028",
+      pdf: "https://arxiv.org/pdf/2605.19028"
+    },
+    {
+      id: 7,
+      title: "LoRA vs. Full Fine-Tuning: A Theoretical Perspective",
+      authors: "A.Zindari, R.Mulayoff, S.Stich",
+      venue: "arXiv preprint",
+      year: "2026",
+      type: "arXiv",
+      image: loraFullFineTuning,
+      abstract: "This paper compares LoRA and full fine-tuning through a linear regression model and studies when low-rank adaptation can generalize better. The analysis highlights how task mismatch, rank, and sample regime shape the tradeoff between expressivity and test performance.",
+      doi: "arXiv:2605.19018",
+      pdf: "https://arxiv.org/pdf/2605.19018"
+    },
     {
       id: 6,
       title: "Revisiting Consensus Error: A Fine-grained Analysis of Local SGD under Second-order Data Heterogeneity",
@@ -81,8 +121,28 @@ const PublicationsPage = () => {
     }
   ];
 
-  const getVenueColor = (type: string) => {
-    return type === 'Journal' ? 'bg-primary/10 text-primary' : 'bg-accent text-accent-foreground';
+  const getTagColor = (tag: string) => {
+    if (tag === 'arXiv' || tag === 'Journal') {
+      return 'bg-primary/10 text-primary';
+    }
+
+    if (tag === 'cs.LG') {
+      return 'bg-muted text-muted-foreground';
+    }
+
+    return 'bg-accent text-accent-foreground';
+  };
+
+  const renderAuthors = (authors: string) => {
+    const namePattern = /(A\. ?Zindari|Ali Zindari)/g;
+
+    return authors.split(namePattern).map((part, index) => (
+      /^(A\. ?Zindari|Ali Zindari)$/.test(part) ? (
+        <span key={index} className="font-medium text-foreground underline decoration-primary decoration-2 underline-offset-4">
+          {part}
+        </span>
+      ) : part
+    ));
   };
 
   return (
@@ -113,10 +173,12 @@ const PublicationsPage = () => {
                     <h2 className="text-lg sm:text-xl font-heading font-semibold text-foreground leading-tight flex-1">
                       {pub.title}
                     </h2>
-                    <div className="flex items-center gap-2">
-                      <span className={`px-3 py-1 text-xs font-medium rounded-full ${getVenueColor(pub.type)}`}>
-                        {pub.type}
-                      </span>
+                    <div className="flex items-center gap-2 flex-wrap sm:justify-end">
+                      {[pub.type, ...(pub.tags ?? [])].map((tag) => (
+                        <span key={tag} className={`px-3 py-1 text-xs font-medium rounded-full ${getTagColor(tag)}`}>
+                          {tag}
+                        </span>
+                      ))}
                       <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
                         {pub.year}
                       </span>
@@ -124,7 +186,7 @@ const PublicationsPage = () => {
                   </div>
                   
                   <p className="text-xs sm:text-sm text-muted-foreground mb-2 break-words">
-                    {pub.authors}
+                    {renderAuthors(pub.authors)}
                   </p>
                   
                   <p className="text-sm sm:text-base text-primary font-medium mb-3 sm:mb-4">

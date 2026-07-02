@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-label="Full fine-tuning update compared with LoRA low-rank factorization">
+  <rect width="768" height="768" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#111111"/>
+    </marker>
+  </defs>
+
+  <text x="190" y="156" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="31">full update</text>
+  <text x="578" y="156" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="31">LoRA update</text>
+
+  <g transform="translate(86 224)">
+    <rect x="0" y="0" width="208" height="208" rx="6" fill="none" stroke="#111111" stroke-width="5"/>
+    <g>
+      <rect x="30" y="30" width="34" height="34" rx="4" fill="#dce7f3"/>
+      <rect x="76" y="30" width="34" height="34" rx="4" fill="#aec7df"/>
+      <rect x="122" y="30" width="34" height="34" rx="4" fill="#7fa7c9"/>
+      <rect x="168" y="30" width="18" height="34" rx="4" fill="#477ea5"/>
+
+      <rect x="30" y="76" width="34" height="34" rx="4" fill="#c7d9eb"/>
+      <rect x="76" y="76" width="34" height="34" rx="4" fill="#90b4d1"/>
+      <rect x="122" y="76" width="34" height="34" rx="4" fill="#5c8fb6"/>
+      <rect x="168" y="76" width="18" height="34" rx="4" fill="#2f5d7c"/>
+
+      <rect x="30" y="122" width="34" height="34" rx="4" fill="#aec7df"/>
+      <rect x="76" y="122" width="34" height="34" rx="4" fill="#7fa7c9"/>
+      <rect x="122" y="122" width="34" height="34" rx="4" fill="#477ea5"/>
+      <rect x="168" y="122" width="18" height="34" rx="4" fill="#1f3f58"/>
+
+      <rect x="30" y="168" width="34" height="18" rx="4" fill="#90b4d1"/>
+      <rect x="76" y="168" width="34" height="18" rx="4" fill="#5c8fb6"/>
+      <rect x="122" y="168" width="34" height="18" rx="4" fill="#2f5d7c"/>
+      <rect x="168" y="168" width="18" height="18" rx="4" fill="#18324a"/>
+    </g>
+  </g>
+
+  <text x="190" y="492" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="29">update matrix</text>
+
+  <line x1="382" y1="188" x2="382" y2="610" stroke="#d8dee7" stroke-width="4" stroke-dasharray="10 12"/>
+
+  <g transform="translate(444 226)">
+    <rect x="0" y="0" width="58" height="216" rx="6" fill="#2a9d8f" stroke="#111111" stroke-width="5"/>
+    <g fill="#dff3ee">
+      <rect x="14" y="24" width="30" height="26" rx="3"/>
+      <rect x="14" y="70" width="30" height="26" rx="3"/>
+      <rect x="14" y="116" width="30" height="26" rx="3"/>
+      <rect x="14" y="162" width="30" height="26" rx="3"/>
+    </g>
+
+    <circle cx="86" cy="108" r="8" fill="#111111"/>
+
+    <rect x="118" y="76" width="184" height="64" rx="6" fill="#274c77" stroke="#111111" stroke-width="5"/>
+    <g fill="#dce7f3">
+      <rect x="140" y="92" width="30" height="32" rx="3"/>
+      <rect x="184" y="92" width="30" height="32" rx="3"/>
+      <rect x="228" y="92" width="30" height="32" rx="3"/>
+      <rect x="272" y="92" width="16" height="32" rx="3"/>
+    </g>
+
+    <text x="29" y="270" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="30">A</text>
+    <text x="210" y="270" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="30">B</text>
+  </g>
+
+  <path d="M578 520H578" stroke="#111111" stroke-width="1"/>
+  <text x="578" y="532" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="29">update = A B</text>
+
+  <g transform="translate(456 580)">
+    <rect x="0" y="0" width="244" height="44" rx="22" fill="#ffffff" stroke="#111111" stroke-width="4"/>
+    <circle cx="42" cy="22" r="13" fill="#2a9d8f"/>
+    <circle cx="92" cy="22" r="13" fill="#2a9d8f"/>
+    <circle cx="142" cy="22" r="13" fill="#d8dee7"/>
+    <circle cx="192" cy="22" r="13" fill="#d8dee7"/>
+  </g>
+  <text x="578" y="668" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="26">only r directions are trained</text>
+</svg>

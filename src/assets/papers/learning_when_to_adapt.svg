@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-label="DISeL gated LoRA schematic">
+  <rect width="768" height="768" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#111111"/>
+    </marker>
+  </defs>
+
+  <g transform="translate(68 330)">
+    <circle cx="0" cy="0" r="34" fill="#ffffff" stroke="#111111" stroke-width="5"/>
+    <text x="0" y="83" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="30">x</text>
+  </g>
+
+  <path d="M112 330H168" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g transform="translate(194 296)">
+    <rect x="0" y="0" width="158" height="68" rx="7" fill="#274c77" stroke="#111111" stroke-width="5"/>
+    <g fill="#dce7f3">
+      <rect x="20" y="18" width="28" height="32" rx="3"/>
+      <rect x="64" y="18" width="28" height="32" rx="3"/>
+      <rect x="108" y="18" width="28" height="32" rx="3"/>
+    </g>
+    <text x="79" y="122" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="31">B x</text>
+  </g>
+
+  <path d="M372 330H426" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g transform="translate(452 256)">
+    <rect x="0" y="0" width="148" height="148" rx="7" fill="#ffffff" stroke="#111111" stroke-width="5"/>
+    <rect x="23" y="23" width="32" height="32" rx="5" fill="#2a9d8f"/>
+    <rect x="58" y="58" width="32" height="32" rx="5" fill="#2a9d8f"/>
+    <rect x="93" y="93" width="32" height="32" rx="5" fill="#d8dee7"/>
+    <circle cx="39" cy="74" r="4" fill="#e6ebf1"/>
+    <circle cx="39" cy="109" r="4" fill="#e6ebf1"/>
+    <circle cx="74" cy="39" r="4" fill="#e6ebf1"/>
+    <circle cx="74" cy="109" r="4" fill="#e6ebf1"/>
+    <circle cx="109" cy="39" r="4" fill="#e6ebf1"/>
+    <circle cx="109" cy="74" r="4" fill="#e6ebf1"/>
+    <text x="74" y="208" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="31">G(x)</text>
+  </g>
+
+  <path d="M620 330H666" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g transform="translate(686 246)">
+    <rect x="0" y="0" width="58" height="168" rx="7" fill="#2a9d8f" stroke="#111111" stroke-width="5"/>
+    <g fill="#dff3ee">
+      <rect x="14" y="22" width="30" height="24" rx="3"/>
+      <rect x="14" y="62" width="30" height="24" rx="3"/>
+      <rect x="14" y="102" width="30" height="24" rx="3"/>
+      <rect x="14" y="142" width="30" height="14" rx="3"/>
+    </g>
+    <text x="29" y="227" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="31">A</text>
+  </g>
+
+  <g transform="translate(254 574)">
+    <rect x="0" y="0" width="260" height="56" rx="28" fill="#ffffff" stroke="#111111" stroke-width="5"/>
+    <circle cx="56" cy="28" r="14" fill="#2a9d8f"/>
+    <circle cx="130" cy="28" r="14" fill="#2a9d8f"/>
+    <circle cx="204" cy="28" r="14" fill="#d8dee7"/>
+    <text x="130" y="114" text-anchor="middle" fill="#111111" font-family="Georgia, 'Times New Roman', serif" font-size="31">A G(x) B x</text>
+  </g>
+</svg>
