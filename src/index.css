@@ -143,6 +143,15 @@
            transition-colors duration-200 shadow-sm;
   }
 
+  .blog-article,
+  .blog-article h1,
+  .blog-article h2,
+  .blog-article h3,
+  .blog-article p,
+  .blog-article li {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
   .math-inline .katex {
     font-size: 0.9em;
   }

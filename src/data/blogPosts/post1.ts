@@ -1,30 +1,60 @@
 import { BlogPost } from './types';
-import blogImage from '@/assets/blog-saddle-point.jpg';
 
 export const post1: BlogPost = {
   id: 1,
-  title: "Convergence Rate of First-Order Methods for Saddle Point Problems",
+  title: "Convergence of Gradient Descent for Smooth Functions",
   author: "Ali Zindari",
-  date: "2023-12-01",
-  excerpt: "An in-depth analysis of convergence rates for first-order optimization methods in minimax and saddle point problems, with theoretical guarantees and practical implications.",
-  image: blogImage,
-  math: "\\min_x \\max_y f(x, y)",
-  tags: ["optimization theory", "saddle point", "convergence analysis", "minimax optimization", "game theory"],
-  content: `# Convergence Rate of First-Order Methods for Saddle Point Problems
+  date: "2026-02-27",
+  excerpt: "A short proof of the standard descent guarantee for gradient descent on smooth nonconvex functions.",
+  image: "/blog-cover-welcome.svg",
+  math: "\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",
+  tags: ["optimization", "gradient descent", "smoothness"],
+  content: `# Convergence of Gradient Descent for Smooth Functions
 
-Saddle point problems arise naturally in many machine learning applications, particularly in minimax optimization and game theory. Understanding the convergence properties of first-order methods for these problems is crucial for developing efficient algorithms.
+I want this blog to be a place for small notes about math and machine learning. As a first test, here is the standard descent argument for gradient descent on a smooth function.
 
-## Problem Formulation
+## Gradient descent for smooth functions
 
-Consider the minimax optimization problem:
+Assume $f : \\mathbb{R}^d \\to \\mathbb{R}$ is $L$-smooth and bounded below by $f_\\star$. Recall that $L$-smoothness means
 
-$$\\min_x \\max_y f(x, y)$$
+$$
+f(y) \\leq f(x) + \\langle \\nabla f(x), y - x \\rangle + \\frac{L}{2}\\lVert y - x\\rVert^2.
+$$
 
-where $f(x, y)$ is a smooth function that is convex in $x$ and concave in $y$. This formulation appears in many contexts, including adversarial training, robust optimization, and generative adversarial networks.
+Gradient descent with stepsize $\\eta = 1/L$ is
 
-## Theoretical Analysis
+$$
+x_{t+1} = x_t - \\frac{1}{L}\\nabla f(x_t).
+$$
 
-We analyze the convergence rates of various first-order methods including gradient descent-ascent, extragradient methods, and accelerated variants. Our analysis provides new insights into the role of problem structure and algorithm design in achieving optimal convergence rates.
+Plugging $y = x_{t+1}$ into the smoothness inequality gives
 
-The key challenge in saddle point optimization is that standard gradient methods may not converge, even for bilinear problems. We present conditions under which convergence can be guaranteed and derive explicit convergence rates.`
+$$
+\\begin{aligned}
+f(x_{t+1})
+&\\leq f(x_t)
+  - \\frac{1}{L}\\lVert\\nabla f(x_t)\\rVert^2
+  + \\frac{L}{2}\\left\\lVert\\frac{1}{L}\\nabla f(x_t)\\right\\rVert^2 \\\\
+&= f(x_t) - \\frac{1}{2L}\\lVert\\nabla f(x_t)\\rVert^2.
+\\end{aligned}
+$$
+
+So each step decreases the function value by an amount proportional to $\\lVert\\nabla f(x_t)\\rVert^2$. Summing this inequality for $t = 0, \\ldots, T-1$ gives
+
+$$
+\\sum_{t=0}^{T-1}\\lVert\\nabla f(x_t)\\rVert^2
+\\leq 2L\\bigl(f(x_0) - f(x_T)\\bigr)
+\\leq 2L\\bigl(f(x_0) - f_\\star\\bigr).
+$$
+
+Therefore,
+
+$$
+\\min_{0 \\leq t < T}\\lVert\\nabla f(x_t)\\rVert^2
+\\leq
+\\frac{2L\\bigl(f(x_0) - f_\\star\\bigr)}{T}.
+$$
+
+This is the basic $O(1/T)$ convergence guarantee for reaching an approximate stationary point.
+`
 };

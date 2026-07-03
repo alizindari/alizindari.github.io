@@ -81,13 +81,7 @@ const HomePage = () => {
             {' '}Program
           </div>
           <p className="text-base sm:text-lg md:text-xl text-foreground leading-relaxed max-w-none mx-auto mb-6 sm:mb-8 px-4 xl:whitespace-nowrap">
-            I'm a PhD student in the{' '}
-            <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
-            {' '}program, jointly at{' '}
-            <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CISPA</a>
-            {' '}and{' '}
-            <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EPFL</a>
-            , supervised by{' '}
+            Supervised by{' '}
             <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
               Prof. Sebastian U. Stich
             </a>

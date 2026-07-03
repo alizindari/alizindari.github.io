@@ -1,5 +1,4 @@
 import { InlineMath, BlockMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
 
 interface MathRendererProps {
   children: string;
