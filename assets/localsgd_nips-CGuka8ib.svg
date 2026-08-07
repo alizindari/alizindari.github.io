@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Consensus error under second-order data heterogeneity</title>
+  <desc id="desc">Nearly matching local Hessians above Local SGD trajectories that diverge during local updates and merge at synchronization rounds.</desc>
+  <rect width="768" height="768" fill="#ffffff"/>
+  <defs>
+    <marker id="consensus-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    </marker>
+    <style>
+      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .line { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .soft { fill: none; stroke: #bdc8d2; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <g aria-label="similar local Hessians">
+    <g transform="translate(86 58)">
+      <rect width="128" height="128" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <g stroke="#ffffff" stroke-width="4">
+        <rect x="18" y="18" width="28" height="28" rx="4" fill="#214d73"/>
+        <rect x="50" y="18" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="82" y="18" width="28" height="28" rx="4" fill="#dceaf4"/>
+        <rect x="18" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="50" y="50" width="28" height="28" rx="4" fill="#159987"/>
+        <rect x="82" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="18" y="82" width="28" height="28" rx="4" fill="#dceaf4"/>
+        <rect x="50" y="82" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="82" y="82" width="28" height="28" rx="4" fill="#214d73"/>
+      </g>
+      <text x="64" y="161" text-anchor="middle" class="label" font-size="28" font-style="italic">∇²F₁</text>
+    </g>
+    <text x="254" y="132" text-anchor="middle" class="label" font-size="38">≈</text>
+    <g transform="translate(298 58)">
+      <rect width="128" height="128" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <g stroke="#ffffff" stroke-width="4">
+        <rect x="18" y="18" width="28" height="28" rx="4" fill="#214d73"/>
+        <rect x="50" y="18" width="28" height="28" rx="4" fill="#86adc9"/>
+        <rect x="82" y="18" width="28" height="28" rx="4" fill="#dceaf4"/>
+        <rect x="18" y="50" width="28" height="28" rx="4" fill="#86adc9"/>
+        <rect x="50" y="50" width="28" height="28" rx="4" fill="#159987"/>
+        <rect x="82" y="50" width="28" height="28" rx="4" fill="#86adc9"/>
+        <rect x="18" y="82" width="28" height="28" rx="4" fill="#dceaf4"/>
+        <rect x="50" y="82" width="28" height="28" rx="4" fill="#86adc9"/>
+        <rect x="82" y="82" width="28" height="28" rx="4" fill="#214d73"/>
+      </g>
+      <text x="64" y="161" text-anchor="middle" class="label" font-size="28" font-style="italic">∇²F₂</text>
+    </g>
+    <text x="466" y="132" text-anchor="middle" class="label" font-size="38">≈</text>
+    <g transform="translate(510 58)">
+      <rect width="128" height="128" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <g stroke="#ffffff" stroke-width="4">
+        <rect x="18" y="18" width="28" height="28" rx="4" fill="#214d73"/>
+        <rect x="50" y="18" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="82" y="18" width="28" height="28" rx="4" fill="#dceaf4"/>
+        <rect x="18" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="50" y="50" width="28" height="28" rx="4" fill="#159987"/>
+        <rect x="82" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="18" y="82" width="28" height="28" rx="4" fill="#dceaf4"/>
+        <rect x="50" y="82" width="28" height="28" rx="4" fill="#8fb5d0"/>
+        <rect x="82" y="82" width="28" height="28" rx="4" fill="#214d73"/>
+      </g>
+      <text x="64" y="161" text-anchor="middle" class="label" font-size="28" font-style="italic">∇²F₃</text>
+    </g>
+  </g>
+
+  <line x1="64" y1="252" x2="704" y2="252" stroke="#dce3ea" stroke-width="3"/>
+  <path d="M102 290V274H362V290M406 290V274H666V290" class="soft"/>
+  <text x="232" y="312" text-anchor="middle" class="label" font-size="27" font-style="italic">K steps</text>
+  <text x="536" y="312" text-anchor="middle" class="label" font-size="27" font-style="italic">K steps</text>
+
+  <g aria-label="local trajectories and synchronization">
+    <circle cx="96" cy="468" r="26" fill="#e5f5f1" stroke="#182431" stroke-width="5"/>
+    <text x="96" y="478" text-anchor="middle" class="label" font-size="30" font-style="italic">x⁰</text>
+
+    <path d="M127 458C188 424 253 364 344 350" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round"/>
+    <path d="M128 465C206 447 270 425 344 414" fill="none" stroke="#4d7fa3" stroke-width="7" stroke-linecap="round"/>
+    <path d="M128 474C206 489 270 510 344 522" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round"/>
+    <path d="M124 482C188 526 257 584 344 602" fill="none" stroke="#e07a5f" stroke-width="7" stroke-linecap="round"/>
+    <g fill="#ffffff" stroke-width="5">
+      <circle cx="176" cy="424" r="8" stroke="#214d73"/><circle cx="252" cy="380" r="8" stroke="#214d73"/><circle cx="344" cy="350" r="9" stroke="#214d73"/>
+      <circle cx="184" cy="450" r="8" stroke="#4d7fa3"/><circle cx="265" cy="426" r="8" stroke="#4d7fa3"/><circle cx="344" cy="414" r="9" stroke="#4d7fa3"/>
+      <circle cx="184" cy="490" r="8" stroke="#159987"/><circle cx="265" cy="510" r="8" stroke="#159987"/><circle cx="344" cy="522" r="9" stroke="#159987"/>
+      <circle cx="176" cy="526" r="8" stroke="#e07a5f"/><circle cx="252" cy="574" r="8" stroke="#e07a5f"/><circle cx="344" cy="602" r="9" stroke="#e07a5f"/>
+    </g>
+
+    <line x1="382" y1="330" x2="382" y2="624" stroke="#9eabb7" stroke-width="3" stroke-dasharray="10 10"/>
+    <path d="M354 350L380 445M354 414L380 455M354 522L380 479M354 602L380 489" class="soft"/>
+    <circle cx="386" cy="468" r="29" fill="#159987" stroke="#182431" stroke-width="5"/>
+    <text x="386" y="478" text-anchor="middle" class="label" font-size="29" fill="#ffffff" style="fill:#ffffff">x̄</text>
+
+    <path d="M419 458C476 427 540 392 642 380" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round"/>
+    <path d="M420 464C492 449 552 434 642 426" fill="none" stroke="#4d7fa3" stroke-width="7" stroke-linecap="round"/>
+    <path d="M420 474C492 485 552 497 642 505" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round"/>
+    <path d="M418 481C476 510 542 542 642 554" fill="none" stroke="#e07a5f" stroke-width="7" stroke-linecap="round"/>
+    <g fill="#ffffff" stroke-width="5">
+      <circle cx="486" cy="426" r="8" stroke="#214d73"/><circle cx="560" cy="396" r="8" stroke="#214d73"/><circle cx="642" cy="380" r="9" stroke="#214d73"/>
+      <circle cx="492" cy="450" r="8" stroke="#4d7fa3"/><circle cx="565" cy="434" r="8" stroke="#4d7fa3"/><circle cx="642" cy="426" r="9" stroke="#4d7fa3"/>
+      <circle cx="492" cy="486" r="8" stroke="#159987"/><circle cx="565" cy="498" r="8" stroke="#159987"/><circle cx="642" cy="505" r="9" stroke="#159987"/>
+      <circle cx="486" cy="511" r="8" stroke="#e07a5f"/><circle cx="560" cy="540" r="8" stroke="#e07a5f"/><circle cx="642" cy="554" r="9" stroke="#e07a5f"/>
+    </g>
+    <line x1="684" y1="354" x2="684" y2="580" stroke="#9eabb7" stroke-width="3" stroke-dasharray="10 10"/>
+    <path d="M652 380L680 450M652 426L680 458M652 505L680 479M652 554L680 487" class="soft"/>
+    <circle cx="688" cy="468" r="29" fill="#159987" stroke="#182431" stroke-width="5"/>
+    <text x="688" y="478" text-anchor="middle" class="label" font-size="29" style="fill:#ffffff">x̄</text>
+  </g>
+
+  <path d="M360 350H372M360 602H372M366 350V602" fill="none" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
+  <text x="248" y="696" text-anchor="middle" class="label" font-size="30" font-style="italic">consensus error</text>
+  <path d="M390 684H604" class="line" marker-end="url(#consensus-arrow)"/>
+</svg>

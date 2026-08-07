@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Full fine-tuning and LoRA update geometry</title>
+  <desc id="desc">A dense unconstrained update and a low-rank factorized update with their corresponding singular spectra.</desc>
+  <rect width="768" height="768" fill="#ffffff"/>
+
+  <defs>
+    <style>
+      .lora-label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .lora-outline { fill: #ffffff; stroke: #182431; stroke-width: 5; }
+    </style>
+  </defs>
+
+  <text x="192" y="98" text-anchor="middle" class="lora-label" font-size="40">Full FT</text>
+  <text x="576" y="98" text-anchor="middle" class="lora-label" font-size="40">LoRA</text>
+  <line x1="384" y1="58" x2="384" y2="708" stroke="#dce3ea" stroke-width="3"/>
+
+  <g aria-label="dense full fine-tuning update">
+    <rect x="76" y="150" width="232" height="232" rx="8" class="lora-outline"/>
+    <g stroke="#ffffff" stroke-width="4">
+      <rect x="96" y="170" width="36" height="36" rx="4" fill="#dceaf4"/>
+      <rect x="136" y="170" width="36" height="36" rx="4" fill="#b9d1e3"/>
+      <rect x="176" y="170" width="36" height="36" rx="4" fill="#86adc9"/>
+      <rect x="216" y="170" width="36" height="36" rx="4" fill="#4d7fa3"/>
+      <rect x="256" y="170" width="32" height="36" rx="4" fill="#214d73"/>
+
+      <rect x="96" y="210" width="36" height="36" rx="4" fill="#c9dcea"/>
+      <rect x="136" y="210" width="36" height="36" rx="4" fill="#8fb5d0"/>
+      <rect x="176" y="210" width="36" height="36" rx="4" fill="#5f8faf"/>
+      <rect x="216" y="210" width="36" height="36" rx="4" fill="#2d5e82"/>
+      <rect x="256" y="210" width="32" height="36" rx="4" fill="#173b59"/>
+
+      <rect x="96" y="250" width="36" height="36" rx="4" fill="#aac8dc"/>
+      <rect x="136" y="250" width="36" height="36" rx="4" fill="#709bbb"/>
+      <rect x="176" y="250" width="36" height="36" rx="4" fill="#3d708f"/>
+      <rect x="216" y="250" width="36" height="36" rx="4" fill="#214d73"/>
+      <rect x="256" y="250" width="32" height="36" rx="4" fill="#102f48"/>
+
+      <rect x="96" y="290" width="36" height="36" rx="4" fill="#86adc9"/>
+      <rect x="136" y="290" width="36" height="36" rx="4" fill="#4d7fa3"/>
+      <rect x="176" y="290" width="36" height="36" rx="4" fill="#285978"/>
+      <rect x="216" y="290" width="36" height="36" rx="4" fill="#163b59"/>
+      <rect x="256" y="290" width="32" height="36" rx="4" fill="#0c263b"/>
+
+      <rect x="96" y="330" width="36" height="32" rx="4" fill="#5f8faf"/>
+      <rect x="136" y="330" width="36" height="32" rx="4" fill="#315f7e"/>
+      <rect x="176" y="330" width="36" height="32" rx="4" fill="#1d4866"/>
+      <rect x="216" y="330" width="36" height="32" rx="4" fill="#102f48"/>
+      <rect x="256" y="330" width="32" height="32" rx="4" fill="#081d2e"/>
+    </g>
+    <text x="192" y="430" text-anchor="middle" class="lora-label" font-size="34" font-style="italic">Δ</text>
+  </g>
+
+  <g aria-label="LoRA low-rank factors">
+    <rect x="438" y="150" width="74" height="232" rx="8" fill="#159987" stroke="#182431" stroke-width="5"/>
+    <g fill="#e2f5f1">
+      <rect x="458" y="171" width="34" height="30" rx="4"/>
+      <rect x="458" y="216" width="34" height="30" rx="4"/>
+      <rect x="458" y="261" width="34" height="30" rx="4"/>
+      <rect x="458" y="306" width="34" height="30" rx="4"/>
+    </g>
+    <circle cx="544" cy="266" r="8" fill="#182431"/>
+    <rect x="576" y="230" width="150" height="72" rx="8" fill="#214d73" stroke="#182431" stroke-width="5"/>
+    <g fill="#dceaf4">
+      <rect x="594" y="249" width="28" height="34" rx="4"/>
+      <rect x="635" y="249" width="28" height="34" rx="4"/>
+      <rect x="676" y="249" width="28" height="34" rx="4"/>
+    </g>
+    <text x="475" y="430" text-anchor="middle" class="lora-label" font-size="34" font-style="italic">A</text>
+    <text x="651" y="430" text-anchor="middle" class="lora-label" font-size="34" font-style="italic">B</text>
+  </g>
+
+  <g aria-label="full update spectrum" transform="translate(84 520)">
+    <line x1="0" y1="126" x2="216" y2="126" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
+    <rect x="12" y="15" width="22" height="111" rx="3" fill="#214d73"/>
+    <rect x="43" y="29" width="22" height="97" rx="3" fill="#315f7e"/>
+    <rect x="74" y="43" width="22" height="83" rx="3" fill="#4d7fa3"/>
+    <rect x="105" y="58" width="22" height="68" rx="3" fill="#709bbb"/>
+    <rect x="136" y="73" width="22" height="53" rx="3" fill="#8fb5d0"/>
+    <rect x="167" y="89" width="22" height="37" rx="3" fill="#b9d1e3"/>
+    <rect x="198" y="101" width="18" height="25" rx="3" fill="#dceaf4"/>
+    <text x="108" y="174" text-anchor="middle" class="lora-label" font-size="31">rank ≤ d</text>
+  </g>
+
+  <g aria-label="rank-r LoRA spectrum" transform="translate(468 520)">
+    <line x1="0" y1="126" x2="216" y2="126" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
+    <rect x="12" y="15" width="22" height="111" rx="3" fill="#159987"/>
+    <rect x="43" y="29" width="22" height="97" rx="3" fill="#159987"/>
+    <rect x="74" y="43" width="22" height="83" rx="3" fill="#159987"/>
+    <rect x="105" y="112" width="22" height="14" rx="3" fill="#dce3ea"/>
+    <rect x="136" y="112" width="22" height="14" rx="3" fill="#dce3ea"/>
+    <rect x="167" y="112" width="22" height="14" rx="3" fill="#dce3ea"/>
+    <rect x="198" y="112" width="18" height="14" rx="3" fill="#dce3ea"/>
+    <path d="M9 141V153H99V141" fill="none" stroke="#159987" stroke-width="4" stroke-linecap="round"/>
+    <text x="108" y="192" text-anchor="middle" class="lora-label" font-size="31">rank ≤ r</text>
+  </g>
+</svg>
