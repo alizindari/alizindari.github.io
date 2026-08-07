@@ -1,9 +1,9 @@
-import localsgd_nips from '@/assets/papers/localsgd_nips.pdf';
-import decoupled_icml from '@/assets/papers/decoupled.pdf';
-import localsgd_colt from '@/assets/papers/localsgd_colt.pdf';
-import localsgd_opt from '@/assets/papers/localised_opt.pdf';
-import gan from '@/assets/papers/gan.pdf';
-import bifurcated from '@/assets/papers/bifurcated.pdf';
+import localsgd_nips from '@/assets/papers/localsgd_nips.svg';
+import decoupled_icml from '@/assets/papers/decoupled.svg';
+import localsgd_colt from '@/assets/papers/localsgd_colt.svg';
+import localsgd_opt from '@/assets/papers/localised_opt.svg';
+import gan from '@/assets/papers/gan.svg';
+import bifurcated from '@/assets/papers/bifurcated.svg';
 import learningWhenToAdapt from '@/assets/papers/learning_when_to_adapt.svg';
 import loraFullFineTuning from '@/assets/papers/lora_full_finetuning.svg';
 
@@ -55,7 +55,7 @@ const PublicationsPage = () => {
       year: "2025",
       type: "NeurIPS", 
       image: localsgd_nips,
-      abstract: "Recent work has suggested that a second-order heterogeneity assumption may suffice to justify the empirical gains of local SGD. We confirm this conjecture by establishing new upper and lower bounds on the convergence of local SGD. These bounds demonstrate how a low second-order heterogeneity, combined with third-order smoothness, enables local SGD to interpolate between heterogeneous and homogeneous regimes while maintaining communication efficiency",
+      abstract: "We establish upper and lower bounds for Local SGD under second-order data heterogeneity and third-order smoothness. The results show how Local SGD can interpolate between heterogeneous and homogeneous regimes while remaining communication-efficient.",
       doi: "arXiv:2405.11667",
       pdf: "https://openreview.net/pdf?id=u1QFeoxnhW"
     },
@@ -146,7 +146,7 @@ const PublicationsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="times-page min-h-screen bg-gradient-subtle">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
@@ -157,18 +157,18 @@ const PublicationsPage = () => {
           </p> */}
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
+        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-7">
           {publications.map((pub) => (
-            <article key={pub.id} className="card-academic p-4 sm:p-6">
-              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8">
-                <div className="flex-shrink-0 w-full md:w-72">
+            <article key={pub.id} className="card-academic p-4 sm:p-5">
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6">
+                <div className="flex-shrink-0 w-full md:w-60">
                   <img 
                     src={pub.image} 
                     alt={`${pub.title} visualization`}
-                    className="w-full h-64 sm:h-72 md:w-72 md:h-72 object-cover rounded-lg border border-border shadow-card"
+                    className="w-full h-64 sm:h-72 md:w-60 md:h-60 object-contain bg-white rounded-lg border border-border shadow-card"
                   />
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex flex-1 min-w-0 flex-col">
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
                     <h2 className="text-lg sm:text-xl font-heading font-semibold text-foreground leading-tight flex-1">
                       {pub.title}

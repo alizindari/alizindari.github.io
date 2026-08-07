@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Bifurcated autoencoder for lung and infection segmentation</title>
+  <desc id="desc">A CT image passes through a shared encoder, splits into separate lung and infection decoders, and fuses both masks into the final segmentation.</desc>
+  <rect width="768" height="768" fill="#ffffff"/>
+  <defs>
+    <marker id="bif-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    </marker>
+    <marker id="bif-teal-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#159987"/>
+    </marker>
+    <marker id="bif-coral-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#e07a5f"/>
+    </marker>
+    <style>
+      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .flow { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <g aria-label="CT input">
+    <rect x="314" y="42" width="140" height="158" rx="16" fill="#182431" stroke="#182431" stroke-width="5"/>
+    <ellipse cx="384" cy="121" rx="54" ry="63" fill="#dce3ea"/>
+    <path d="M377 82C360 72 342 83 339 104C336 129 346 160 363 168C375 174 379 158 379 139Z" fill="#40566a"/>
+    <path d="M391 82C408 72 426 83 429 104C432 129 422 160 405 168C393 174 389 158 389 139Z" fill="#40566a"/>
+    <circle cx="355" cy="131" r="8" fill="#e07a5f"/>
+    <circle cx="413" cy="111" r="6" fill="#e07a5f"/>
+  </g>
+
+  <path d="M384 207V228" class="flow" marker-end="url(#bif-arrow)"/>
+  <g aria-label="shared encoder">
+    <rect x="284" y="248" width="200" height="42" rx="8" fill="#dceaf4" stroke="#182431" stroke-width="4"/>
+    <rect x="304" y="306" width="160" height="42" rx="8" fill="#8fb5d0" stroke="#182431" stroke-width="4"/>
+    <rect x="329" y="364" width="110" height="42" rx="8" fill="#214d73" stroke="#182431" stroke-width="4"/>
+    <path d="M384 290V300M384 348V358" class="flow" marker-end="url(#bif-arrow)"/>
+    <text x="384" y="276" text-anchor="middle" class="label" font-size="25">shared encoder</text>
+  </g>
+
+  <circle cx="384" cy="438" r="25" fill="#ffffff" stroke="#182431" stroke-width="5"/>
+  <path d="M373 438H395M384 427V449" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
+
+  <g aria-label="lung decoder branch">
+    <path d="M359 444C312 451 277 460 245 476" fill="none" stroke="#159987" stroke-width="6" marker-end="url(#bif-teal-arrow)"/>
+    <rect x="188" y="461" width="100" height="34" rx="7" fill="#e5f5f1" stroke="#159987" stroke-width="4"/>
+    <rect x="151" y="511" width="138" height="38" rx="7" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+    <path d="M220 496V504" fill="none" stroke="#159987" stroke-width="5" marker-end="url(#bif-teal-arrow)"/>
+    <text x="220" y="446" text-anchor="middle" class="label" font-size="27">lung</text>
+  </g>
+
+  <g aria-label="infection decoder branch">
+    <path d="M409 444C456 451 491 460 523 476" fill="none" stroke="#e07a5f" stroke-width="6" marker-end="url(#bif-coral-arrow)"/>
+    <rect x="480" y="461" width="100" height="34" rx="7" fill="#f9e3dc" stroke="#e07a5f" stroke-width="4"/>
+    <rect x="479" y="511" width="138" height="38" rx="7" fill="#f3c2b3" stroke="#e07a5f" stroke-width="4"/>
+    <path d="M548 496V504" fill="none" stroke="#e07a5f" stroke-width="5" marker-end="url(#bif-coral-arrow)"/>
+    <text x="548" y="446" text-anchor="middle" class="label" font-size="27">infection</text>
+  </g>
+
+  <g aria-label="lung mask">
+    <rect x="62" y="572" width="158" height="146" rx="14" fill="#f8fafc" stroke="#182431" stroke-width="5"/>
+    <path d="M134 598C111 586 84 607 84 642C84 674 99 697 122 700C138 702 144 684 144 659V620C144 608 141 602 134 598Z" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+    <path d="M151 598C174 586 201 607 201 642C201 674 186 697 163 700C147 702 141 684 141 659V620C141 608 144 602 151 598Z" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+  </g>
+
+  <g aria-label="infection mask">
+    <rect x="548" y="572" width="158" height="146" rx="14" fill="#f8fafc" stroke="#182431" stroke-width="5"/>
+    <circle cx="596" cy="633" r="18" fill="#e07a5f"/>
+    <circle cx="654" cy="612" r="13" fill="#e07a5f"/>
+    <circle cx="667" cy="666" r="10" fill="#e07a5f"/>
+    <path d="M617 672C629 654 647 655 652 672C656 687 644 700 630 697C616 694 609 684 617 672Z" fill="#e07a5f"/>
+  </g>
+
+  <path d="M151 550C139 555 134 560 134 566" fill="none" stroke="#159987" stroke-width="5" marker-end="url(#bif-teal-arrow)"/>
+  <path d="M617 550C629 555 634 560 634 566" fill="none" stroke="#e07a5f" stroke-width="5" marker-end="url(#bif-coral-arrow)"/>
+
+  <g aria-label="fused output mask">
+    <rect x="305" y="566" width="158" height="158" rx="14" fill="#ffffff" stroke="#182431" stroke-width="5"/>
+    <path d="M377 592C354 580 327 601 327 638C327 674 342 701 365 705C381 708 387 687 387 660V615C387 603 384 596 377 592Z" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+    <path d="M394 592C417 580 444 601 444 638C444 674 429 701 406 705C390 708 384 687 384 660V615C384 603 387 596 394 592Z" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+    <circle cx="350" cy="640" r="14" fill="#e07a5f"/>
+    <circle cx="418" cy="620" r="10" fill="#e07a5f"/>
+    <circle cx="413" cy="675" r="8" fill="#e07a5f"/>
+  </g>
+
+  <path d="M228 645H293" class="flow" marker-end="url(#bif-arrow)"/>
+  <path d="M540 645H475" class="flow" marker-end="url(#bif-arrow)"/>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Third-order smoothness and Hessian similarity for Local SGD</title>
+  <desc id="desc">Three nearly matching local Hessian matrices above a smooth objective and its close second-order approximation, with local iterates moving toward a shared average.</desc>
+  <rect width="768" height="768" fill="#ffffff"/>
+  <defs>
+    <marker id="third-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    </marker>
+    <marker id="third-teal-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#159987"/>
+    </marker>
+    <style>
+      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .axis { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; }
+      .guide { fill: none; stroke: #bdc8d2; stroke-width: 3; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <g aria-label="similar Hessians">
+    <g transform="translate(72 56)">
+      <rect width="142" height="142" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <g stroke="#ffffff" stroke-width="4">
+        <rect x="18" y="18" width="32" height="32" rx="4" fill="#214d73"/><rect x="55" y="18" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="18" width="32" height="32" rx="4" fill="#dceaf4"/>
+        <rect x="18" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="55" y="55" width="32" height="32" rx="4" fill="#159987"/><rect x="92" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/>
+        <rect x="18" y="92" width="32" height="32" rx="4" fill="#dceaf4"/><rect x="55" y="92" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="92" width="32" height="32" rx="4" fill="#214d73"/>
+      </g>
+      <text x="71" y="176" text-anchor="middle" class="label" font-size="29" font-style="italic">∇²F₁</text>
+    </g>
+    <text x="252" y="140" text-anchor="middle" class="label" font-size="39">≈</text>
+    <g transform="translate(313 56)">
+      <rect width="142" height="142" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <g stroke="#ffffff" stroke-width="4">
+        <rect x="18" y="18" width="32" height="32" rx="4" fill="#214d73"/><rect x="55" y="18" width="32" height="32" rx="4" fill="#86adc9"/><rect x="92" y="18" width="32" height="32" rx="4" fill="#dceaf4"/>
+        <rect x="18" y="55" width="32" height="32" rx="4" fill="#86adc9"/><rect x="55" y="55" width="32" height="32" rx="4" fill="#159987"/><rect x="92" y="55" width="32" height="32" rx="4" fill="#86adc9"/>
+        <rect x="18" y="92" width="32" height="32" rx="4" fill="#dceaf4"/><rect x="55" y="92" width="32" height="32" rx="4" fill="#86adc9"/><rect x="92" y="92" width="32" height="32" rx="4" fill="#214d73"/>
+      </g>
+      <text x="71" y="176" text-anchor="middle" class="label" font-size="29" font-style="italic">∇²F₂</text>
+    </g>
+    <text x="493" y="140" text-anchor="middle" class="label" font-size="39">≈</text>
+    <g transform="translate(554 56)">
+      <rect width="142" height="142" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <g stroke="#ffffff" stroke-width="4">
+        <rect x="18" y="18" width="32" height="32" rx="4" fill="#214d73"/><rect x="55" y="18" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="18" width="32" height="32" rx="4" fill="#dceaf4"/>
+        <rect x="18" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="55" y="55" width="32" height="32" rx="4" fill="#159987"/><rect x="92" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/>
+        <rect x="18" y="92" width="32" height="32" rx="4" fill="#dceaf4"/><rect x="55" y="92" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="92" width="32" height="32" rx="4" fill="#214d73"/>
+      </g>
+      <text x="71" y="176" text-anchor="middle" class="label" font-size="29" font-style="italic">∇²F₃</text>
+    </g>
+  </g>
+
+  <line x1="58" y1="276" x2="710" y2="276" stroke="#dce3ea" stroke-width="3"/>
+
+  <g aria-label="smooth objective and quadratic approximation">
+    <path d="M76 676H706" class="axis" marker-end="url(#third-arrow)"/>
+    <path d="M76 676V320" class="axis" marker-end="url(#third-arrow)"/>
+    <path d="M102 346C192 548 278 633 387 636C502 639 589 535 682 342" fill="none" stroke="#214d73" stroke-width="8" stroke-linecap="round"/>
+    <path d="M111 356C204 532 287 615 387 619C491 623 575 525 671 354" fill="none" stroke="#159987" stroke-width="6" stroke-dasharray="13 11" stroke-linecap="round"/>
+    <text x="132" y="336" class="label" font-size="31" font-style="italic" style="fill:#214d73">F</text>
+    <text x="628" y="330" class="label" font-size="31" font-style="italic" style="fill:#159987">T₂F</text>
+
+    <path d="M240 520V548M530 530V555" class="guide"/>
+    <circle cx="240" cy="520" r="9" fill="#214d73"/>
+    <circle cx="240" cy="548" r="9" fill="#159987"/>
+    <circle cx="530" cy="530" r="9" fill="#214d73"/>
+    <circle cx="530" cy="555" r="9" fill="#159987"/>
+
+    <path d="M140 390C205 470 263 530 331 589" fill="none" stroke="#4d7fa3" stroke-width="6" stroke-linecap="round" marker-end="url(#third-arrow)"/>
+    <path d="M635 410C578 487 524 544 445 594" fill="none" stroke="#e07a5f" stroke-width="6" stroke-linecap="round" marker-end="url(#third-arrow)"/>
+    <circle cx="151" cy="405" r="14" fill="#ffffff" stroke="#4d7fa3" stroke-width="5"/>
+    <circle cx="622" cy="424" r="14" fill="#ffffff" stroke="#e07a5f" stroke-width="5"/>
+    <circle cx="343" cy="600" r="14" fill="#ffffff" stroke="#4d7fa3" stroke-width="5"/>
+    <circle cx="432" cy="603" r="14" fill="#ffffff" stroke="#e07a5f" stroke-width="5"/>
+    <path d="M359 604H413" fill="none" stroke="#182431" stroke-width="5" marker-end="url(#third-teal-arrow)"/>
+    <path d="M416 604H369" fill="none" stroke="#182431" stroke-width="5" marker-end="url(#third-arrow)"/>
+    <rect x="370" y="586" width="36" height="36" rx="7" fill="#159987" stroke="#182431" stroke-width="5" transform="rotate(45 388 604)"/>
+    <text x="388" y="725" text-anchor="middle" class="label" font-size="30" font-style="italic">x̄</text>
+  </g>
+</svg>

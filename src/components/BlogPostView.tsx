@@ -15,7 +15,7 @@ const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps)
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
+      <div className="blog-post-view min-h-screen bg-gradient-subtle flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-heading font-bold text-foreground mb-4">Post not found</h1>
           <button 
@@ -63,22 +63,22 @@ const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps)
         } else if (line.startsWith('### ')) {
           return <h3 key={key} className="text-lg sm:text-xl font-heading font-medium text-foreground mb-2 sm:mb-3 mt-3 sm:mt-5">{renderInlineMath(line.slice(4), key)}</h3>;
         } else if (line.startsWith('- ')) {
-          return <li key={key} className="text-base sm:text-lg text-foreground leading-relaxed ml-4">{renderInlineMath(line.slice(2), key)}</li>;
+          return <li key={key} className="text-base sm:text-lg text-foreground leading-[1.5] ml-4">{renderInlineMath(line.slice(2), key)}</li>;
         } else if (line.trim() === '') {
-          return <br key={key} />;
+          return null;
         } else if (line.match(/^\d+\./)) {
-          return <li key={key} className="text-base sm:text-lg text-foreground leading-relaxed ml-4 list-decimal">{renderInlineMath(line.replace(/^\d+\.\s*/, ''), key)}</li>;
+          return <li key={key} className="text-base sm:text-lg text-foreground leading-[1.5] ml-4 list-decimal">{renderInlineMath(line.replace(/^\d+\.\s*/, ''), key)}</li>;
         } else if (line.startsWith('**') && line.endsWith('**')) {
-          return <p key={key} className="text-base sm:text-lg text-foreground leading-relaxed mb-3 sm:mb-4 font-semibold">{renderInlineMath(line.slice(2, -2), key)}</p>;
+          return <p key={key} className="text-base sm:text-lg text-foreground leading-[1.5] mb-3 font-semibold">{renderInlineMath(line.slice(2, -2), key)}</p>;
         } else {
-          return <p key={key} className="text-base sm:text-lg text-foreground leading-relaxed mb-3 sm:mb-4">{renderInlineMath(line, key)}</p>;
+          return <p key={key} className="text-base sm:text-lg text-foreground leading-[1.5] mb-3">{renderInlineMath(line, key)}</p>;
         }
       });
     });
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="blog-post-view min-h-screen bg-gradient-subtle">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Navigation */}
         <div className="flex items-center justify-between mb-6 sm:mb-8 gap-2">
@@ -138,7 +138,7 @@ const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps)
 
           {/* Content */}
           <div className="card-academic p-4 sm:p-6">
-            <div className="blog-article prose prose-sm sm:prose-base md:prose-lg max-w-none">
+            <div className="blog-article max-w-none">
               {renderContent(post.content)}
             </div>
           </div>

@@ -1,9 +1,5 @@
 import { useState } from 'react';
-import resumeIcon from '@/assets/icons/resume.svg';
-import linkedinIcon from '@/assets/icons/linkedin.svg';
-import xIcon from '@/assets/icons/x.svg';
-import googleScholarIcon from '@/assets/icons/google_scholar.svg';
-import gmailIcon from '@/assets/icons/gmail.svg';
+import { ChevronDown, ChevronUp, FileText, GraduationCap, Linkedin, Mail } from 'lucide-react';
 import cv from '@/files/homepage/CV.pdf';
 
 const HomePage = () => {
@@ -58,175 +54,173 @@ const HomePage = () => {
   const researchAreas = [
     "Theory of Deep Learning",
     "High Dimensional and Dynamical Systems",
-    "Optimization of Problems with Structure (e.g. neural networks)",
+    "Structured Optimization, especially for neural networks",
   ];
 
   const [showAllNews, setShowAllNews] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Hero Section */}
-        <section className="mb-12 sm:mb-16 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold text-foreground mb-4 sm:mb-6 px-2">
-            Ali Zindari
-          </h1>
-          <div className="text-lg sm:text-xl md:text-2xl text-foreground mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-            PhD Student at{' '}
-            <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">CISPA</a>
-            {' '}&{' '}
-            <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EPFL</a>
-            {' '}•{' '}
-            <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ELLIS</a>
-            {' '}Program
-          </div>
-          <p className="text-base sm:text-lg md:text-xl text-foreground leading-relaxed max-w-none mx-auto mb-6 sm:mb-8 px-4 xl:whitespace-nowrap">
-            Supervised by{' '}
-            <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              Prof. Sebastian U. Stich
-            </a>
-            {' '}and{' '}
-            <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-              Prof. Martin Jaggi
-            </a>.
-          </p>
-          <div className="flex justify-center gap-4 sm:gap-6 px-4">
-            <a 
-              href={cv} 
-              target="_blank"
-              className="hover:opacity-70 transition-opacity"
-              aria-label="Download CV"
-            >
-              <img src={resumeIcon} alt="CV" className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
-              aria-label="Google Scholar"
-            >
-              <img src={googleScholarIcon} alt="Google Scholar" className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/ali-zindari-a64bb6187/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
-              aria-label="LinkedIn"
-            >
-              <img src={linkedinIcon} alt="LinkedIn" className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="mailto:zindari.ali@gmail.com"
-              className="hover:opacity-70 transition-opacity"
-              aria-label="Email"
-            >
-              <img src={gmailIcon} alt="Email" className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
-            <a 
-              href="https://x.com/ali__zindari"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
-              aria-label="X/Twitter"
-            >
-              <img src={xIcon} alt="X" className="w-8 h-8 sm:w-10 sm:h-10" />
-            </a>
+    <div className="times-page min-h-screen bg-background">
+      <main className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+        <section className="border-b border-border pb-12 sm:pb-14">
+          <div className="max-w-4xl">
+            <h1 className="text-5xl font-bold text-foreground sm:text-6xl lg:text-7xl">
+              Ali Zindari
+            </h1>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg xl:whitespace-nowrap">
+              I&apos;m a PhD student in the{' '}
+              <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                ELLIS
+              </a>{' '}
+              program, jointly at{' '}
+              <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                CISPA
+              </a>{' '}
+              and{' '}
+              <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                EPFL
+              </a>
+              , supervised by{' '}
+              <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                Prof. Sebastian U. Stich
+              </a>{' '}
+              and{' '}
+              <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                Prof. Martin Jaggi
+              </a>
+              .
+            </p>
+
+            <div className="mt-8 flex items-center gap-2.5" aria-label="Profile links">
+              <a
+                href={cv}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                aria-label="Open CV"
+                title="CV"
+              >
+                <FileText size={19} strokeWidth={1.8} />
+              </a>
+              <a
+                href="https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                aria-label="Google Scholar"
+                title="Google Scholar"
+              >
+                <GraduationCap size={21} strokeWidth={1.8} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ali-zindari-a64bb6187/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <Linkedin size={19} strokeWidth={1.8} />
+              </a>
+              <a
+                href="mailto:zindari.ali@gmail.com"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                aria-label="Email"
+                title="Email"
+              >
+                <Mail size={19} strokeWidth={1.8} />
+              </a>
+              <a
+                href="https://x.com/ali__zindari"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                aria-label="X"
+                title="X"
+              >
+                <span className="font-sans text-base font-semibold" aria-hidden="true">X</span>
+              </a>
+            </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section className="mb-12 sm:mb-16">
-          <h2 className="section-heading text-xl sm:text-2xl">About</h2>
-          <div className="card-academic p-4 sm:p-6 text-black" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
-            <p className="text-base sm:text-lg leading-relaxed mb-4">
-              My research sits at the intersection of:
-            </p>
-            <ul className="list-disc list-inside space-y-2 mb-5 text-base sm:text-lg">
-              {researchAreas.map((area, index) => (
-                <li key={index}>
+        <section className="grid gap-8 py-12 sm:py-14 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-14" aria-labelledby="about-heading">
+          <div>
+            <h2 id="about-heading" className="text-3xl font-bold text-foreground">
+              About
+            </h2>
+            <p className="mt-2 text-base text-muted-foreground">Research interests</p>
+            <ul className="mt-6 border-t border-border text-base sm:text-lg">
+              {researchAreas.map((area) => (
+                <li key={area} className="border-b border-border py-3.5 leading-snug text-foreground">
                   {area}
                 </li>
               ))}
             </ul>
-            <p className="text-base sm:text-lg leading-relaxed mb-4">
-              Generally speaking, I am interested in how capabilities emerge in systems with many interacting parts, especially highly overparameterized neural networks. It still feels surprising to me that with the right architecture, learning method, and scale, something that looks like intelligence can come out of the training process. I want to understand why that happens.
+          </div>
+
+          <div className="space-y-6 text-justify text-lg leading-8 text-foreground hyphens-auto">
+            <p>
+              Generally speaking, I&apos;m interested in how useful capabilities <span className="font-semibold text-primary">emerge</span> in transformers with many parameters. It seems that to have useful models, we need several elements to come together: a proper architecture, a good optimizer, enough <span className="font-semibold text-primary">degrees of freedom</span> in the model (high overparameterization), and <span className="font-semibold text-primary">randomness</span> and <span className="font-semibold text-primary">noise</span> in the optimization process. I would like to use tools from high-dimensional statistics, dynamical systems, and optimization to see what we can explain about these models.
             </p>
-            <p className="text-base sm:text-lg leading-relaxed mb-4">
-              Recently, I have been thinking about fine-tuning, forgetting, and continual learning, and about how architecture fits into the picture. More specifically, I want to understand why forgetting happens in the first place: when it is truly catastrophic, when it is only a small drift, and what that says about how a model stores knowledge. I am especially interested in the role of memory: how knowledge should be stored so that it is not easily overwritten by new training, and whether forgotten knowledge can be recovered rather than learned again from scratch.
-            </p>
-            <p className="text-base sm:text-lg leading-relaxed mb-4">
-              
-            </p>
-            <p className="text-base sm:text-lg leading-relaxed">
-              
+            <p>
+              Lately, I&apos;ve been curious about the role of <strong className="font-semibold text-primary">memory</strong> in models and how it can actually help. I want to understand the best way to add memory to transformer architectures, how <strong className="font-semibold text-primary">compression</strong> can preserve useful <strong className="font-semibold text-primary">information</strong> and lead to good predictions, and what kind of memory <strong className="font-semibold text-primary">hierarchy</strong> we need, perhaps something closer to human memory, with both fast and slow parts. This could help models avoid forgetting and truly learn continuously.
             </p>
           </div>
         </section>
 
-        {/* Research Areas */}
-        {/* <section className="mb-16">
-          <h2 className="section-heading">Research Interests</h2>
-          <div className="card-academic">
-            <ul className="list-disc list-inside space-y-2 mb-4">
-              {researchAreas.map((area, index) => (
-                <li key={index} className="text-foreground">
-                  {area}
-                </li>
-              ))}
-            </ul>
-            <p className="text-foreground leading-relaxed mb-4">
-              My research primarily focuses on optimization theory in distributed and minimax settings. I am particularly 
-              interested in understanding the theoretical foundations of decentralized learning algorithms and developing 
-              communication-efficient methods for large-scale machine learning systems.
-            </p>
-            <p className="text-foreground leading-relaxed">
-              Recently, I have been exploring the intersection of optimization and deep learning theory, specifically 
-              investigating how different optimizers affect generalization performance and their implicit biases during 
-              training. This work aims to bridge the gap between practical optimization methods and theoretical understanding 
-              of deep learning systems.
-            </p>
+        <section className="grid gap-8 border-t border-border py-12 sm:py-14 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-14" aria-labelledby="news-heading">
+          <div>
+            <h2 id="news-heading" className="text-3xl font-bold text-foreground">
+              News
+            </h2>
+            <p className="mt-2 text-base text-muted-foreground">Recent updates</p>
           </div>
-        </section> */}
 
-        {/* News & Updates */}
-        <section>
-          <h2 className="section-heading text-xl sm:text-2xl">News & Updates</h2>
-          <div className="space-y-3">
+          <div>
             {(showAllNews ? newsItems : newsItems.slice(0, 4)).map((item, index) => (
-              <div key={index} className="flex items-start gap-3 sm:gap-4 py-2">
-                <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0"></div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-base sm:text-lg text-foreground mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-muted-foreground">
-                        {item.description}
-                      </p>
-                    </div>
-                    <span className="text-sm text-muted-foreground sm:whitespace-nowrap">
-                      {new Date(item.date).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'short'
-                      })}
-                    </span>
-                  </div>
+              <article
+                key={`${item.date}-${item.title}`}
+                className={`grid gap-2 border-t border-border py-5 first:border-t-0 first:pt-0 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-5 ${
+                  index === (showAllNews ? newsItems.length : 4) - 1 ? 'pb-3' : ''
+                }`}
+              >
+                <time dateTime={item.date} className="text-sm text-muted-foreground sm:pt-1">
+                  {new Date(item.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short'
+                  })}
+                </time>
+                <div>
+                  <h3 className="text-lg font-semibold leading-snug text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-base leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
-              </div>
+              </article>
             ))}
             <button
               onClick={() => setShowAllNews(!showAllNews)}
-              className="text-sm sm:text-base text-primary hover:underline mt-4"
+              className="mt-5 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline sm:ml-[8rem]"
               aria-expanded={showAllNews}
             >
-              {showAllNews ? 'Hide older news ←' : 'Show older news →'}
+              {showAllNews ? (
+                <>
+                  Hide older news
+                  <ChevronUp size={17} aria-hidden="true" />
+                </>
+              ) : (
+                <>
+                  Show older news
+                  <ChevronDown size={17} aria-hidden="true" />
+                </>
+              )}
             </button>
           </div>
         </section>
-      </div>
+      </main>
     </div>
   );
 };

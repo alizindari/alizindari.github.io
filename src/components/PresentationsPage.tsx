@@ -1,8 +1,8 @@
 
-import master_thesis_image from '@/assets/presentations/Master_Thesis.pdf';
-import deep_linear_models from '@/assets/presentations/deep_linear_models.pdf';
-import imprecise_ml from '@/assets/presentations/imprecise_ml.pdf';
-import games_for_ml from '@/assets/presentations/games.pdf';
+import master_thesis_image from '@/assets/presentations/Master_Thesis.svg';
+import deep_linear_models from '@/assets/presentations/deep_linear_models.svg';
+import imprecise_ml from '@/assets/presentations/imprecise_ml.svg';
+import games_for_ml from '@/assets/presentations/games.svg';
 
 // Import PDF files for links
 import master_thesis_pdf from '@/files/presentations/Master_Thesis_Presentation.pdf';
@@ -53,7 +53,7 @@ const PresentationsPage = () => {
   ];
 
   return (
-    <main className="min-h-screen py-8 sm:py-12 px-4 sm:px-6">
+    <main className="times-page min-h-screen py-8 sm:py-12 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
         <header className="mb-8 sm:mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">Presentations</h1>
@@ -70,10 +70,10 @@ const PresentationsPage = () => {
             >
               <div className="flex flex-col md:flex-row">
                 <div className="md:w-1/3 h-48 sm:h-64 md:h-52 overflow-hidden bg-muted flex-shrink-0">
-                  <img 
-                    src={presentation.image} 
-                    alt={presentation.title}
-                    className="w-full h-full object-cover"
+                  <img
+                    src={presentation.image}
+                    alt={`${presentation.title} preview`}
+                    className="h-full w-full bg-white object-contain"
                   />
                 </div>
                 <div className="md:w-2/3 p-4 sm:p-6">

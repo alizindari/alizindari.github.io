@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Attention-based COVID infection segmentation with synthetic CT data</title>
+  <desc id="desc">Real and generated CT slices feed an attention-focused segmentation model that produces a lung infection mask.</desc>
+  <rect width="768" height="768" fill="#ffffff"/>
+  <defs>
+    <marker id="attention-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    </marker>
+    <style>
+      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .flow { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+    <symbol id="ct-slice" viewBox="0 0 160 190">
+      <rect x="2" y="2" width="156" height="186" rx="14" fill="#182431" stroke="#182431" stroke-width="4"/>
+      <ellipse cx="80" cy="95" rx="62" ry="76" fill="#dce3ea"/>
+      <path d="M73 48C55 39 36 50 31 74C27 94 34 130 55 142C68 148 75 135 75 115Z" fill="#40566a"/>
+      <path d="M87 48C105 39 124 50 129 74C133 94 126 130 105 142C92 148 85 135 85 115Z" fill="#40566a"/>
+      <path d="M77 54V137" stroke="#9eabb7" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="49" cy="103" r="10" fill="#e07a5f" opacity=".9"/>
+      <circle cx="112" cy="84" r="8" fill="#e07a5f" opacity=".78"/>
+      <circle cx="105" cy="116" r="6" fill="#e07a5f" opacity=".7"/>
+    </symbol>
+    <symbol id="ct-clean" viewBox="0 0 160 190">
+      <rect x="2" y="2" width="156" height="186" rx="14" fill="#182431" stroke="#182431" stroke-width="4"/>
+      <ellipse cx="80" cy="95" rx="62" ry="76" fill="#dce3ea"/>
+      <path d="M73 48C55 39 36 50 31 74C27 94 34 130 55 142C68 148 75 135 75 115Z" fill="#40566a"/>
+      <path d="M87 48C105 39 124 50 129 74C133 94 126 130 105 142C92 148 85 135 85 115Z" fill="#40566a"/>
+      <path d="M77 54V137" stroke="#9eabb7" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+
+  <g aria-label="real CT input">
+    <text x="137" y="86" text-anchor="middle" class="label" font-size="31">real</text>
+    <use href="#ct-slice" x="61" y="105" width="152" height="180"/>
+  </g>
+
+  <g aria-label="synthetic CT input">
+    <text x="137" y="434" text-anchor="middle" class="label" font-size="31" font-style="italic">G(z)</text>
+    <rect x="77" y="467" width="150" height="178" rx="14" fill="#dceaf4" stroke="#8fb5d0" stroke-width="4"/>
+    <rect x="67" y="454" width="150" height="178" rx="14" fill="#ffffff" stroke="#4d7fa3" stroke-width="4"/>
+    <use href="#ct-slice" x="51" y="437" width="152" height="180"/>
+    <path d="M80 459L88 476L106 484L88 492L80 509L72 492L54 484L72 476Z" fill="#159987" stroke="#ffffff" stroke-width="3"/>
+  </g>
+
+  <path d="M224 206C273 228 293 274 310 322" class="flow" marker-end="url(#attention-arrow)"/>
+  <path d="M220 526C269 500 294 453 312 409" class="flow" marker-end="url(#attention-arrow)"/>
+  <circle cx="273" cy="367" r="24" fill="#ffffff" stroke="#182431" stroke-width="4"/>
+  <path d="M261 367H285M273 355V379" stroke="#182431" stroke-width="5" stroke-linecap="round"/>
+
+  <g aria-label="attention focus">
+    <rect x="320" y="217" width="238" height="300" rx="18" fill="#f8fafc" stroke="#182431" stroke-width="5"/>
+    <use href="#ct-slice" x="352" y="247" width="174" height="207"/>
+    <circle cx="406" cy="360" r="31" fill="none" stroke="#e07a5f" stroke-width="6"/>
+    <circle cx="406" cy="360" r="49" fill="none" stroke="#e07a5f" stroke-width="4" opacity=".55"/>
+    <path d="M362 307V285H384M480 285H502V307M362 410V432H384M480 432H502V410" fill="none" stroke="#159987" stroke-width="6" stroke-linecap="round"/>
+    <g transform="translate(356 470)">
+      <rect width="32" height="20" rx="4" fill="#dce3ea"/>
+      <rect x="40" width="32" height="20" rx="4" fill="#8fb5d0"/>
+      <rect x="80" width="32" height="20" rx="4" fill="#159987"/>
+      <rect x="120" width="32" height="20" rx="4" fill="#4d7fa3"/>
+    </g>
+    <text x="439" y="562" text-anchor="middle" class="label" font-size="31">attention</text>
+  </g>
+
+  <path d="M568 367H601" class="flow" marker-end="url(#attention-arrow)"/>
+
+  <g aria-label="infection mask output">
+    <rect x="620" y="251" width="116" height="232" rx="16" fill="#f8fafc" stroke="#182431" stroke-width="5"/>
+    <path d="M673 292C650 283 635 304 637 337C639 370 650 414 672 433C683 441 687 424 687 396V327C687 307 683 296 673 292Z" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+    <path d="M694 292C717 283 732 304 730 337C728 370 717 414 695 433C684 441 680 424 680 396V327C680 307 684 296 694 292Z" fill="#bfe8df" stroke="#159987" stroke-width="4"/>
+    <path d="M648 353C658 341 672 346 675 361C678 377 669 388 655 385C642 382 639 365 648 353Z" fill="#e07a5f"/>
+    <circle cx="711" cy="335" r="11" fill="#e07a5f"/>
+    <circle cx="706" cy="382" r="8" fill="#e07a5f"/>
+    <text x="678" y="528" text-anchor="middle" class="label" font-size="31">mask</text>
+  </g>
+
+  <path d="M329 678H700" fill="none" stroke="#dce3ea" stroke-width="4"/>
+  <g transform="translate(342 648)">
+    <circle cx="0" cy="30" r="9" fill="#4d7fa3"/>
+    <circle cx="45" cy="30" r="9" fill="#159987"/>
+    <circle cx="90" cy="30" r="9" fill="#e07a5f"/>
+    <path d="M13 30H31M58 30H76" class="flow" marker-end="url(#attention-arrow)"/>
+  </g>
+</svg>

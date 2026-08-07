@@ -92,7 +92,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
   });
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="blog-page min-h-screen bg-gradient-subtle">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div className="text-center mb-8 sm:mb-12">
           {selectedTag && (

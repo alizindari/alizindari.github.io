@@ -125,7 +125,7 @@
 
 @layer components {
   .nav-tab {
-    @apply px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground 
+    @apply px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-medium text-muted-foreground hover:text-foreground
            border-b-2 border-transparent hover:border-primary/20 transition-colors duration-200;
   }
 
@@ -141,6 +141,29 @@
   .card-academic {
     @apply bg-card border border-border rounded-lg p-4 sm:p-6 hover:bg-card-hover 
            transition-colors duration-200 shadow-sm;
+  }
+
+  .times-page,
+  .times-page h1,
+  .times-page h2,
+  .times-page h3,
+  .times-page button,
+  .times-page a {
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .blog-page,
+  .blog-page h1,
+  .blog-page h2,
+  .blog-page h3,
+  .blog-page button,
+  .blog-page input,
+  .blog-post-view,
+  .blog-post-view h1,
+  .blog-post-view h2,
+  .blog-post-view h3,
+  .blog-post-view button {
+    font-family: 'Times New Roman', Times, serif;
   }
 
   .blog-article,

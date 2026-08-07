@@ -22,8 +22,11 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
   };
 
   return (
-    <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+    <nav
+      className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50"
+      style={{ fontFamily: "'Times New Roman', Times, serif" }}
+    >
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         {/* Desktop Navigation */}
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4 md:space-x-8 w-full">
@@ -62,7 +65,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
-                className={`block w-full text-left px-4 py-3 rounded-lg transition-colors ${
+                className={`block w-full text-left px-4 py-3 text-lg rounded-lg transition-colors ${
                   activeTab === tab.id
                     ? 'bg-primary text-primary-foreground font-medium'
                     : 'text-foreground hover:bg-muted'

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Decoupled SGDA with intermittent strategy communication</title>
+  <desc id="desc">Two players take independent local updates while repeatedly using stale copies of the opponent strategy, then exchange strategies at the round boundary.</desc>
+  <rect width="768" height="768" fill="#ffffff"/>
+  <defs>
+    <marker id="decoupled-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    </marker>
+    <marker id="decoupled-blue-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#214d73"/>
+    </marker>
+    <marker id="decoupled-teal-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L13 6L1 11Z" fill="#159987"/>
+    </marker>
+    <style>
+      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .outline { fill: #ffffff; stroke: #182431; stroke-width: 5; }
+      .ghost { fill: #f8fafc; stroke: #9eabb7; stroke-width: 4; stroke-dasharray: 7 7; }
+    </style>
+  </defs>
+
+  <path d="M104 96V76H654V96" fill="none" stroke="#bdc8d2" stroke-width="4" stroke-linecap="round"/>
+  <text x="379" y="130" text-anchor="middle" class="label" font-size="34" font-style="italic">K local steps</text>
+
+  <line x1="105" y1="168" x2="105" y2="626" stroke="#dce3ea" stroke-width="4" stroke-dasharray="12 12"/>
+  <line x1="656" y1="168" x2="656" y2="626" stroke="#dce3ea" stroke-width="4" stroke-dasharray="12 12"/>
+
+  <g aria-label="u player local updates">
+    <circle cx="105" cy="248" r="38" fill="#214d73" stroke="#182431" stroke-width="5"/>
+    <text x="105" y="260" text-anchor="middle" class="label" font-size="37" font-style="italic" style="fill:#ffffff">u⁰</text>
+    <path d="M150 246C207 236 250 218 300 207" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round" marker-end="url(#decoupled-blue-arrow)"/>
+    <path d="M322 204C369 196 410 188 452 183" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round" marker-end="url(#decoupled-blue-arrow)"/>
+    <path d="M474 181C527 176 574 178 616 184" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round" marker-end="url(#decoupled-blue-arrow)"/>
+    <g fill="#ffffff" stroke="#214d73" stroke-width="6">
+      <circle cx="312" cy="205" r="15"/>
+      <circle cx="464" cy="182" r="15"/>
+      <circle cx="636" cy="188" r="18"/>
+    </g>
+    <text x="640" y="150" text-anchor="middle" class="label" font-size="29" font-style="italic">uᴷ</text>
+  </g>
+
+  <g aria-label="stale v state used by u updates">
+    <g transform="translate(272 300)">
+      <circle r="24" class="ghost"/><text y="9" text-anchor="middle" class="label" font-size="25" font-style="italic" opacity=".58">v⁰</text>
+    </g>
+    <g transform="translate(424 300)">
+      <circle r="24" class="ghost"/><text y="9" text-anchor="middle" class="label" font-size="25" font-style="italic" opacity=".58">v⁰</text>
+    </g>
+    <g transform="translate(596 300)">
+      <circle r="24" class="ghost"/><text y="9" text-anchor="middle" class="label" font-size="25" font-style="italic" opacity=".58">v⁰</text>
+    </g>
+    <path d="M272 271L304 222M424 271L456 201M596 271L630 209" fill="none" stroke="#9eabb7" stroke-width="4" stroke-dasharray="7 8" stroke-linecap="round"/>
+  </g>
+
+  <line x1="75" y1="384" x2="693" y2="384" stroke="#dce3ea" stroke-width="3"/>
+
+  <g aria-label="v player local updates">
+    <circle cx="105" cy="520" r="38" fill="#159987" stroke="#182431" stroke-width="5"/>
+    <text x="105" y="532" text-anchor="middle" class="label" font-size="37" font-style="italic" style="fill:#ffffff">v⁰</text>
+    <path d="M150 522C207 532 250 550 300 561" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round" marker-end="url(#decoupled-teal-arrow)"/>
+    <path d="M322 564C369 572 410 580 452 585" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round" marker-end="url(#decoupled-teal-arrow)"/>
+    <path d="M474 587C527 592 574 590 616 584" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round" marker-end="url(#decoupled-teal-arrow)"/>
+    <g fill="#ffffff" stroke="#159987" stroke-width="6">
+      <circle cx="312" cy="563" r="15"/>
+      <circle cx="464" cy="586" r="15"/>
+      <circle cx="636" cy="580" r="18"/>
+    </g>
+    <text x="640" y="634" text-anchor="middle" class="label" font-size="29" font-style="italic">vᴷ</text>
+  </g>
+
+  <g aria-label="stale u state used by v updates">
+    <g transform="translate(272 468)">
+      <circle r="24" class="ghost"/><text y="9" text-anchor="middle" class="label" font-size="25" font-style="italic" opacity=".58">u⁰</text>
+    </g>
+    <g transform="translate(424 468)">
+      <circle r="24" class="ghost"/><text y="9" text-anchor="middle" class="label" font-size="25" font-style="italic" opacity=".58">u⁰</text>
+    </g>
+    <g transform="translate(596 468)">
+      <circle r="24" class="ghost"/><text y="9" text-anchor="middle" class="label" font-size="25" font-style="italic" opacity=".58">u⁰</text>
+    </g>
+    <path d="M272 497L304 546M424 497L456 567M596 497L630 559" fill="none" stroke="#9eabb7" stroke-width="4" stroke-dasharray="7 8" stroke-linecap="round"/>
+  </g>
+
+  <path d="M690 225V543" fill="none" stroke="#182431" stroke-width="5" stroke-linecap="round" marker-end="url(#decoupled-arrow)"/>
+  <path d="M674 543V225" fill="none" stroke="#182431" stroke-width="5" stroke-linecap="round" marker-end="url(#decoupled-arrow)"/>
+  <circle cx="682" cy="384" r="34" fill="#ffffff" stroke="#182431" stroke-width="5"/>
+  <path d="M666 375H695M695 375L686 366M695 375L686 384M698 393H669M669 393L678 384M669 393L678 402" fill="none" stroke="#182431" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="384" y="706" text-anchor="middle" class="label" font-size="34">1 communication round</text>
+</svg>
