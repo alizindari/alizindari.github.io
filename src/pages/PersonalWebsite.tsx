@@ -1,81 +1,124 @@
-import { useState, useEffect, useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import HomePage from '../components/HomePage';
-import BlogPage from '../components/BlogPage';
-import BlogPostView from '../components/BlogPostView';
-import PublicationsPage from '../components/PublicationsPage';
-import PresentationsPage from '../components/PresentationsPage';
+import PageMetadata from '../components/PageMetadata';
+
+const BlogPage = lazy(() => import('../components/BlogPage'));
+const BlogPostView = lazy(() => import('../components/BlogPostView'));
+const PublicationsPage = lazy(() => import('../components/PublicationsPage'));
+const PresentationsPage = lazy(() => import('../components/PresentationsPage'));
+
+const PageLoading = () => (
+  <div className="flex min-h-[50vh] items-center justify-center" role="status">
+    <span className="text-sm text-muted-foreground">Loading page...</span>
+  </div>
+);
+
+const postMetadata: Record<string, { title: string; description: string }> = {
+  'convergence-of-gradient-descent-for-smooth-functions': {
+    title: 'Convergence of Gradient Descent for Smooth Functions | Ali Zindari',
+    description: 'A concise derivation of the standard convergence guarantee for gradient descent on smooth nonconvex functions.',
+  },
+  'washing-machine-dilemma': {
+    title: 'The Washing Machine Dilemma | Ali Zindari',
+    description: 'A playful optimization model for balancing wardrobe size, laundry costs, capacity, drying time, and uncertainty.',
+  },
+};
 
 const PersonalWebsite = () => {
-  const [activeTab, setActiveTab] = useState('home');
-  const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
-  const [selectedBlogTag, setSelectedBlogTag] = useState<string | null>(null);
-  const [blogScrollPosition, setBlogScrollPosition] = useState(0);
-  const restoringScrollRef = useRef(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { slug, tag } = useParams<{ slug?: string; tag?: string }>();
+  const blogScrollPositionRef = useRef(0);
+  const previousPathRef = useRef(location.pathname);
 
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    setSelectedPostId(null);
-    setSelectedBlogTag(null);
-    // Reset scroll position when switching tabs
-    setBlogScrollPosition(0);
-  };
+  const activeTab = location.pathname.startsWith('/blog')
+    ? 'blog'
+    : location.pathname.startsWith('/publications')
+      ? 'publications'
+      : location.pathname.startsWith('/presentations')
+        ? 'presentations'
+        : 'home';
 
-  // Scroll to top when tab changes
+  const metadata = slug
+    ? postMetadata[slug] ?? {
+        title: 'Post not found | Ali Zindari',
+        description: 'The requested blog post could not be found.',
+        noIndex: true,
+      }
+    : tag
+      ? {
+          title: `Posts tagged ${tag} | Ali Zindari`,
+          description: `Blog posts by Ali Zindari tagged ${tag}.`,
+        }
+      : activeTab === 'blog'
+        ? {
+            title: 'Blog | Ali Zindari',
+            description: 'Notes and explorations by Ali Zindari on machine learning, mathematics, optimization, and related questions.',
+          }
+        : activeTab === 'publications'
+          ? {
+              title: 'Publications | Ali Zindari',
+              description: 'Research publications by Ali Zindari on optimization, distributed learning, fine-tuning, and machine learning theory.',
+            }
+          : activeTab === 'presentations'
+            ? {
+                title: 'Presentations | Ali Zindari',
+                description: 'Thesis and seminar presentations by Ali Zindari on machine learning and optimization.',
+              }
+            : {
+                title: 'Ali Zindari | Machine Learning Research',
+                description: 'Ali Zindari is an ELLIS PhD student at CISPA and EPFL working on deep learning theory, optimization, and memory in transformer models.',
+              };
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [activeTab]);
+    const previousPath = previousPathRef.current;
+    const returningFromPost = /^\/blog\/?$/.test(location.pathname)
+      && previousPath.startsWith('/blog/')
+      && !previousPath.startsWith('/blog/tag/');
 
-  // Scroll to top when blog post is selected, restore position when deselected
-  useEffect(() => {
-    if (selectedPostId !== null) {
-      // Going to a blog post - scroll to top
-      window.scrollTo({ top: 0, behavior: 'instant' });
-    } else if (activeTab === 'blog' && !restoringScrollRef.current) {
-      // Returning to blog - restore scroll position
-      restoringScrollRef.current = true;
+    if (returningFromPost) {
       setTimeout(() => {
-        window.scrollTo({ top: blogScrollPosition, behavior: 'instant' });
-        restoringScrollRef.current = false;
+        window.scrollTo({ top: blogScrollPositionRef.current, behavior: 'instant' });
       }, 0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
-  }, [selectedPostId, activeTab, blogScrollPosition]);
 
-  const handlePostClick = (postId: number) => {
-    // Store current scroll position before navigating to post
-    setBlogScrollPosition(window.scrollY);
-    setSelectedPostId(postId);
+    previousPathRef.current = location.pathname;
+  }, [location.pathname]);
+
+  const handlePostClick = (postSlug: string) => {
+    blogScrollPositionRef.current = window.scrollY;
+    navigate(`/blog/${postSlug}/`);
   };
 
   const handleTagClick = (tag: string) => {
-    setSelectedBlogTag(tag);
+    navigate(`/blog/tag/${encodeURIComponent(tag)}/`);
   };
 
   const handleBackToBlog = () => {
-    setSelectedPostId(null);
+    navigate('/blog/');
   };
 
   const handleBackFromTag = () => {
-    setSelectedBlogTag(null);
+    navigate('/blog/');
   };
 
   const handleGoHome = () => {
-    setSelectedPostId(null);
-    setSelectedBlogTag(null);
-    setActiveTab('home');
+    navigate('/');
   };
 
   const handleOpenTagFromPost = (tag: string) => {
-    setSelectedBlogTag(tag);
-    setSelectedPostId(null);
-    setActiveTab('blog');
+    navigate(`/blog/tag/${encodeURIComponent(tag)}/`);
   };
 
   const renderContent = () => {
-    if (selectedPostId !== null) {
+    if (slug) {
       return (
         <BlogPostView 
-          postId={selectedPostId} 
+          postSlug={slug}
           onBack={handleBackToBlog}
           onHome={handleGoHome}
           onTagClick={handleOpenTagFromPost}
@@ -91,7 +134,7 @@ const PersonalWebsite = () => {
           <BlogPage 
             onPostClick={handlePostClick}
             onTagClick={handleTagClick}
-            selectedTag={selectedBlogTag}
+            selectedTag={tag ?? null}
             onBackFromTag={handleBackFromTag}
           />
         );
@@ -106,8 +149,16 @@ const PersonalWebsite = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
-      {renderContent()}
+      <PageMetadata
+        title={metadata.title}
+        description={metadata.description}
+        type={slug ? 'article' : 'website'}
+        noIndex={'noIndex' in metadata ? metadata.noIndex : false}
+      />
+      <Navigation activeTab={activeTab} />
+      <Suspense fallback={<PageLoading />}>
+        {renderContent()}
+      </Suspense>
     </div>
   );
 };

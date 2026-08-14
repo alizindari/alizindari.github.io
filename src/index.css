@@ -182,6 +182,25 @@
   .math-display .katex {
     font-size: 1em;
   }
+
+  .math-display {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.2rem 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .math-display .katex-display {
+    min-width: max-content;
+    margin: 0.5rem 0;
+  }
+
+  .recharts-wrapper,
+  .recharts-surface {
+    max-width: 100%;
+    overflow: hidden;
+  }
   
   @media (min-width: 640px) {
     .math-inline .katex {

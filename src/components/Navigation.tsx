@@ -1,49 +1,50 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface NavigationProps {
   activeTab: string;
-  onTabChange: (tab: string) => void;
 }
 
-const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
+const Navigation = ({ activeTab }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const tabs = [
-    { id: 'home', label: 'Home' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'publications', label: 'Publications' },
-    { id: 'presentations', label: 'Presentations' }
+    { id: 'home', label: 'Home', path: '/' },
+    { id: 'blog', label: 'Blog', path: '/blog/' },
+    { id: 'publications', label: 'Publications', path: '/publications/' },
+    { id: 'presentations', label: 'Presentations', path: '/presentations/' }
   ];
-
-  const handleTabClick = (tabId: string) => {
-    onTabChange(tabId);
-    setMobileMenuOpen(false);
-  };
 
   return (
     <nav
       className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50"
       style={{ fontFamily: "'Times New Roman', Times, serif" }}
+      aria-label="Primary navigation"
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         {/* Desktop Navigation */}
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4 md:space-x-8 w-full">
-            <div className="font-heading text-lg md:text-xl font-semibold text-foreground">
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-heading text-lg font-semibold text-foreground transition-colors hover:text-primary md:text-xl"
+            >
               Ali Zindari
-            </div>
+            </Link>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-1 flex-1">
               {tabs.map((tab) => (
-                <button
+                <Link
                   key={tab.id}
-                  onClick={() => onTabChange(tab.id)}
+                  to={tab.path}
                   className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
+                  aria-current={activeTab === tab.id ? 'page' : undefined}
                 >
                   {tab.label}
-                </button>
+                </Link>
               ))}
             </div>
             
@@ -51,7 +52,9 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden ml-auto p-2 text-foreground hover:bg-muted rounded-lg transition-colors"
-              aria-label="Toggle menu"
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -60,19 +63,21 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-border py-4 space-y-2">
+          <div id="mobile-navigation" className="md:hidden border-t border-border py-4 space-y-2">
             {tabs.map((tab) => (
-              <button
+              <Link
                 key={tab.id}
-                onClick={() => handleTabClick(tab.id)}
+                to={tab.path}
+                onClick={() => setMobileMenuOpen(false)}
                 className={`block w-full text-left px-4 py-3 text-lg rounded-lg transition-colors ${
                   activeTab === tab.id
                     ? 'bg-primary text-primary-foreground font-medium'
                     : 'text-foreground hover:bg-muted'
                 }`}
+                aria-current={activeTab === tab.id ? 'page' : undefined}
               >
                 {tab.label}
-              </button>
+              </Link>
             ))}
           </div>
         )}

@@ -2,6 +2,7 @@ import { BlogPost } from './types';
 
 export const post1: BlogPost = {
   id: 1,
+  slug: "convergence-of-gradient-descent-for-smooth-functions",
   title: "Convergence of Gradient Descent for Smooth Functions",
   author: "Ali Zindari",
   date: "2026-02-27",
@@ -9,6 +10,7 @@ export const post1: BlogPost = {
   image: "/blog-cover-welcome.svg",
   math: "\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",
   tags: ["optimization", "gradient descent", "smoothness"],
+  difficulty: 1,
   content: `# Convergence of Gradient Descent for Smooth Functions
 
 I want this blog to be a place for small notes about math and machine learning. As a first test, here is the standard descent argument for gradient descent on a smooth function.

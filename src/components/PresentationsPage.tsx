@@ -10,7 +10,8 @@ import deep_linear_models_pdf from '@/files/presentations/deep_linear_models.pdf
 import imprecise_ml_pdf from '@/files/presentations/imprecise_ml_seminar.pdf';
 import games_pdf from '@/files/presentations/gml_presentation.pdf';
 
-import { ExternalLink } from 'lucide-react';
+import { FileDown } from 'lucide-react';
+import { getDocumentViewerUrl } from '@/lib/documentViewer';
 
 const PresentationsPage = () => {
   const presentations = [
@@ -20,7 +21,7 @@ const PresentationsPage = () => {
       venue: "Saarland University",
       year: 2025,
       image: master_thesis_image,
-      description: "My master thesis presentation on new rates for Local SGD.",
+      description: "My master's thesis presentation on refined convergence rates for Local SGD.",
       pdfUrl: master_thesis_pdf
     },
     {
@@ -29,7 +30,7 @@ const PresentationsPage = () => {
       venue: "Saarland University",
       year: 2025,
       image: deep_linear_models,
-      description: "Presentation for a master seminar at Saarland University on deep linear networks.",
+      description: "A master's seminar presentation on deep linear networks.",
       pdfUrl: deep_linear_models_pdf
     },
     {
@@ -38,7 +39,7 @@ const PresentationsPage = () => {
       venue: "Saarland University",
       year: 2025,
       image: imprecise_ml,
-      description: "Presentation about imprecise ML for a master seminar.",
+      description: "A master's seminar presentation on imprecise linear regression.",
       pdfUrl: imprecise_ml_pdf
     },
     {
@@ -47,7 +48,7 @@ const PresentationsPage = () => {
       venue: "Saarland University",
       year: 2024,
       image: games_for_ml,
-      description: "Presentation about convergence of EG, GDA and PPM for simple quadratics.",
+      description: "A presentation on the convergence of EG, GDA, and PPM for quadratic saddle-point problems.",
       pdfUrl: games_pdf
     }
   ];
@@ -58,7 +59,7 @@ const PresentationsPage = () => {
         <header className="mb-8 sm:mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">Presentations</h1>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-            Conference talks and invited presentations on machine learning and optimization
+            Thesis and seminar presentations on machine learning and optimization
           </p>
         </header>
 
@@ -73,6 +74,7 @@ const PresentationsPage = () => {
                   <img
                     src={presentation.image}
                     alt={`${presentation.title} preview`}
+                    loading="lazy"
                     className="h-full w-full bg-white object-contain"
                   />
                 </div>
@@ -92,13 +94,13 @@ const PresentationsPage = () => {
                     {presentation.description}
                   </p>
                   <a
-                    href={presentation.pdfUrl}
+                    href={getDocumentViewerUrl(presentation.pdfUrl, presentation.title)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm sm:text-base text-primary hover:underline font-medium"
+                    className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                   >
-                    View Slides (PDF)
-                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <FileDown size={17} strokeWidth={1.9} aria-hidden="true" />
+                    PDF
                   </a>
                 </div>
               </div>

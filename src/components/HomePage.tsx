@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, FileText, GraduationCap, Linkedin, Mail } from 'lucide-react';
+import { ChevronDown, ChevronUp, FileText, Github, GraduationCap, Linkedin, Mail } from 'lucide-react';
 import cv from '@/files/homepage/CV.pdf';
+import { getDocumentViewerUrl } from '@/lib/documentViewer';
 
 const HomePage = () => {
   const newsItems = [
@@ -63,84 +64,105 @@ const HomePage = () => {
     <div className="times-page min-h-screen bg-background">
       <main className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
         <section className="border-b border-border pb-12 sm:pb-14">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl font-bold text-foreground sm:text-6xl lg:text-7xl">
-              Ali Zindari
-            </h1>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg xl:whitespace-nowrap">
-              I&apos;m a PhD student in the{' '}
-              <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                ELLIS
-              </a>{' '}
-              program, jointly at{' '}
-              <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                CISPA
-              </a>{' '}
-              and{' '}
-              <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                EPFL
-              </a>
-              , supervised by{' '}
-              <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                Prof. Sebastian U. Stich
-              </a>{' '}
-              and{' '}
-              <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                Prof. Martin Jaggi
-              </a>
-              .
-            </p>
+          <div className="grid items-center gap-9 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-12 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-14">
+            <div className="min-w-0">
+              <h1 className="text-5xl font-bold text-foreground sm:text-6xl lg:text-7xl">
+                Ali Zindari
+              </h1>
+              <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                I&apos;m a PhD student in the{' '}
+                <a href="https://ellis.eu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  ELLIS
+                </a>{' '}
+                program, jointly at{' '}
+                <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  CISPA
+                </a>{' '}
+                and{' '}
+                <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  EPFL
+                </a>
+                , supervised by{' '}
+                <a href="https://sstich.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Prof. Sebastian U. Stich
+                </a>{' '}
+                and{' '}
+                <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Prof. Martin Jaggi
+                </a>
+                .
+              </p>
 
-            <div className="mt-8 flex items-center gap-2.5" aria-label="Profile links">
-              <a
-                href={cv}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
-                aria-label="Open CV"
-                title="CV"
-              >
-                <FileText size={19} strokeWidth={1.8} />
-              </a>
-              <a
-                href="https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
-                aria-label="Google Scholar"
-                title="Google Scholar"
-              >
-                <GraduationCap size={21} strokeWidth={1.8} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ali-zindari-a64bb6187/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
-                aria-label="LinkedIn"
-                title="LinkedIn"
-              >
-                <Linkedin size={19} strokeWidth={1.8} />
-              </a>
-              <a
-                href="mailto:zindari.ali@gmail.com"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
-                aria-label="Email"
-                title="Email"
-              >
-                <Mail size={19} strokeWidth={1.8} />
-              </a>
-              <a
-                href="https://x.com/ali__zindari"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
-                aria-label="X"
-                title="X"
-              >
-                <span className="font-sans text-base font-semibold" aria-hidden="true">X</span>
-              </a>
+              <div className="mt-8 flex items-center gap-2.5" aria-label="Profile links">
+                <a
+                  href={getDocumentViewerUrl(cv, 'Curriculum Vitae')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                  aria-label="Open CV"
+                  title="CV"
+                >
+                  <FileText size={19} strokeWidth={1.8} />
+                </a>
+                <a
+                  href="https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                  aria-label="Google Scholar"
+                  title="Google Scholar"
+                >
+                  <GraduationCap size={21} strokeWidth={1.8} />
+                </a>
+                <a
+                  href="https://github.com/alizindari"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                  aria-label="GitHub"
+                  title="GitHub"
+                >
+                  <Github size={19} strokeWidth={1.8} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/ali-zindari-a64bb6187/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                  aria-label="LinkedIn"
+                  title="LinkedIn"
+                >
+                  <Linkedin size={19} strokeWidth={1.8} />
+                </a>
+                <a
+                  href="mailto:zindari.ali@gmail.com"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                  aria-label="Email"
+                  title="Email"
+                >
+                  <Mail size={19} strokeWidth={1.8} />
+                </a>
+                <a
+                  href="https://x.com/ali__zindari"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                  aria-label="X"
+                  title="X"
+                >
+                  <span className="font-sans text-base font-semibold" aria-hidden="true">X</span>
+                </a>
+              </div>
             </div>
+
+            <img
+              src="/ali-zindari-profile.jpg"
+              alt="Ali Zindari"
+              width={400}
+              height={400}
+              fetchPriority="high"
+              className="aspect-square w-36 justify-self-start rounded-md border border-border object-cover shadow-sm sm:w-44 md:w-full md:justify-self-end"
+            />
           </div>
         </section>
 

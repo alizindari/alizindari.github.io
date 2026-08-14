@@ -6,6 +6,7 @@ import gan from '@/assets/papers/gan.svg';
 import bifurcated from '@/assets/papers/bifurcated.svg';
 import learningWhenToAdapt from '@/assets/papers/learning_when_to_adapt.svg';
 import loraFullFineTuning from '@/assets/papers/lora_full_finetuning.svg';
+import { FileDown, Github } from 'lucide-react';
 
 type Publication = {
   id: number;
@@ -17,8 +18,8 @@ type Publication = {
   tags?: string[];
   image: string;
   abstract: string;
-  doi: string;
   pdf: string;
+  github?: string;
 };
 
 const PublicationsPage = () => {
@@ -32,8 +33,8 @@ const PublicationsPage = () => {
       type: "arXiv",
       image: learningWhenToAdapt,
       abstract: "This paper introduces DISeL, a dynamic input-sensitive LoRA method that gates rank-one components depending on the input. The goal is to adapt on fine-tuning data while preserving pretrained behavior elsewhere, reducing forgetting without giving up competitive task performance.",
-      doi: "arXiv:2605.19028",
-      pdf: "https://arxiv.org/pdf/2605.19028"
+      pdf: "https://arxiv.org/pdf/2605.19028",
+      github: "https://github.com/alizindari/DISeL"
     },
     {
       id: 7,
@@ -44,8 +45,8 @@ const PublicationsPage = () => {
       type: "arXiv",
       image: loraFullFineTuning,
       abstract: "This paper compares LoRA and full fine-tuning through a linear regression model and studies when low-rank adaptation can generalize better. The analysis highlights how task mismatch, rank, and sample regime shape the tradeoff between expressivity and test performance.",
-      doi: "arXiv:2605.19018",
-      pdf: "https://arxiv.org/pdf/2605.19018"
+      pdf: "https://arxiv.org/pdf/2605.19018",
+      github: "https://github.com/alizindari/lora-vs-fft"
     },
     {
       id: 6,
@@ -56,20 +57,18 @@ const PublicationsPage = () => {
       type: "NeurIPS", 
       image: localsgd_nips,
       abstract: "We establish upper and lower bounds for Local SGD under second-order data heterogeneity and third-order smoothness. The results show how Local SGD can interpolate between heterogeneous and homogeneous regimes while remaining communication-efficient.",
-      doi: "arXiv:2405.11667",
       pdf: "https://openreview.net/pdf?id=u1QFeoxnhW"
     },
     {
       id: 5,
-      title: "Decoupled SGDA for Games with Intermittent Communication",
+      title: "Decoupled SGDA for Games with Intermittent Strategy Communication",
       authors: "A.Zindari, P.Yazdkhasti, A.Rodomanov, T.Chavdarova, S.Stich",
       venue: "International Conference on Machine Learning (ICML)",
       year: "2025",
       type: "ICML", 
       image: decoupled_icml,
-      abstract: "We introduce Decoupled SGDA, a novel adaptation of Stochastic Gradient Descent Ascent (SGDA) tailored for multiplayer games with intermittent strategy communication. Our method is capble of achieving communication acceleration in weakly coupled games.",
-      doi: "arXiv:2405.11667",
-      pdf: "https://arxiv.org/pdf/2501.14652?"
+      abstract: "We introduce Decoupled SGDA, a novel adaptation of Stochastic Gradient Descent Ascent (SGDA) tailored for multiplayer games with intermittent strategy communication. Our method is capable of achieving communication acceleration in weakly coupled games.",
+      pdf: "https://arxiv.org/pdf/2501.14652"
     },
     {
       id: 4,
@@ -80,7 +79,6 @@ const PublicationsPage = () => {
       type: "COLT", 
       image: localsgd_colt,
       abstract: "We analyze the theoretical limits and potentials of Local SGD in distributed heterogeneous learning settings with intermittent communication. Our work provides new convergence guarantees and insights into the effectiveness of this popular distributed optimization method.",
-      doi: "arXiv:2405.11667",
       pdf: "https://arxiv.org/pdf/2405.11667"
     },
     {
@@ -92,31 +90,28 @@ const PublicationsPage = () => {
       type: "opt4ML",
       image: localsgd_opt, 
       abstract: "This paper investigates the convergence properties of Local SGD under third-order smoothness assumptions and Hessian similarity conditions, providing theoretical insights into distributed optimization in non-convex settings.",
-      doi: "Opt4ML 2023",
       pdf: "https://opt-ml.org/papers/2023/paper51.pdf"
     },
     {
       id: 2,
-      title: "Segmentation of Lungs COVID Infected Regions by Attention Mechanism and Synthetic Generated Data",
-      authors: "A.Zindari, P.Yazdkhasti, Z.Nabizadeh, P.Khadivi, N.Karimi, S.Samavi",
+      title: "Segmentation of Lungs COVID Infected Regions by Attention Mechanism and Synthetic Data",
+      authors: "P.Yazdekhasty, A.Zindari, Z.Nabizadeh-ShahreBabak, P.Khadivi, N.Karimi, S.Samavi",
       venue: "arXiv preprint",
       year: "2021",
       type: "Workshop",
       image: gan,
       abstract: "We propose an attention-based approach for segmenting COVID-19 infected regions in lung CT images, enhanced with synthetic data generation techniques to improve model robustness and accuracy.",
-      doi: "arXiv:2108.08895", 
       pdf: "https://arxiv.org/ftp/arxiv/papers/2108/2108.08895.pdf"
     },
     {
       id: 1,
       title: "Bifurcated Autoencoder for Segmentation of COVID-19 Infected Regions in CT Images",
-      authors: "P. Yazdkhasti, A. Zindari, Z. Nabizadeh, R. Roshandel, P. Khadvi, N. Karimi, S. Samavi",
+      authors: "P.Yazdekhasty, A.Zindari, Z.Nabizadeh-ShahreBabak, R.Roshandel, P.Khadivi, N.Karimi, S.Samavi",
       venue: "arXiv preprint", 
       year: "2020",
       type: "Workshop",
       image: bifurcated,
       abstract: "This work introduces a bifurcated autoencoder architecture specifically designed for accurate segmentation of COVID-19 infected regions in CT images, demonstrating improved performance over traditional approaches.",
-      doi: "arXiv:2011.00631",
       pdf: "https://arxiv.org/ftp/arxiv/papers/2011/2011.00631.pdf"
     }
   ];
@@ -165,6 +160,7 @@ const PublicationsPage = () => {
                   <img 
                     src={pub.image} 
                     alt={`${pub.title} visualization`}
+                    loading="lazy"
                     className="w-full h-64 sm:h-72 md:w-60 md:h-60 object-contain bg-white rounded-lg border border-border shadow-card"
                   />
                 </div>
@@ -185,30 +181,39 @@ const PublicationsPage = () => {
                     </div>
                   </div>
                   
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-2 break-words">
+                  <p className="mb-2 break-words text-sm text-muted-foreground">
                     {renderAuthors(pub.authors)}
                   </p>
                   
-                  <p className="text-sm sm:text-base text-primary font-medium mb-3 sm:mb-4">
+                  <p className="mb-3 text-sm font-medium text-primary sm:mb-4 sm:text-base">
                     {pub.venue}
                   </p>
                   
-                  <p className="text-xs sm:text-sm md:text-base text-foreground leading-relaxed mb-4 sm:mb-6">
+                  <p className="mb-4 text-sm leading-relaxed text-foreground sm:mb-6 sm:text-base">
                     {pub.abstract}
                   </p>
                   
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-wrap items-center gap-3">
                     <a 
                       href={pub.pdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium text-sm"
+                      className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                     >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
+                      <FileDown size={17} strokeWidth={1.9} aria-hidden="true" />
                       PDF
                     </a>
+                    {pub.github && (
+                      <a
+                        href={pub.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                      >
+                        <Github size={17} strokeWidth={1.9} aria-hidden="true" />
+                        GitHub
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

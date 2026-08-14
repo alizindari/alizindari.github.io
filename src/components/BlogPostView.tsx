@@ -1,17 +1,23 @@
+import { lazy, Suspense } from 'react';
 import { ArrowLeft, Home } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
+import BlogDifficulty from './BlogDifficulty';
+import BlogPostFooter from './BlogPostFooter';
 import MathRenderer from './MathRenderer';
 
+const LaundryModelPlayground = lazy(() => import('./LaundryModelPlayground'));
+const LaundryStochasticSimulator = lazy(() => import('./LaundryStochasticSimulator'));
+
 interface BlogPostViewProps {
-  postId: number;
+  postSlug: string;
   onBack: () => void;
   onHome: () => void;
   onTagClick?: (tag: string) => void;
 }
 
-const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps) => {
+const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProps) => {
 
-  const post = blogPosts.find(p => p.id === postId);
+  const post = blogPosts.find(p => p.slug === postSlug);
 
   if (!post) {
     return (
@@ -77,6 +83,17 @@ const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps)
     });
   };
 
+  const playgroundMarker = '\n## Part III:';
+  const playgroundMarkerIndex = post.id === 2
+    ? post.content.indexOf(playgroundMarker)
+    : -1;
+  const contentBeforePlayground = playgroundMarkerIndex >= 0
+    ? post.content.slice(0, playgroundMarkerIndex)
+    : post.content;
+  const contentAfterPlayground = playgroundMarkerIndex >= 0
+    ? post.content.slice(playgroundMarkerIndex + 1)
+    : '';
+
   return (
     <div className="blog-post-view min-h-screen bg-gradient-subtle">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
@@ -107,17 +124,18 @@ const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps)
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground sm:gap-4 sm:text-sm">
               <span>Written by Ali Zindari</span>
               <span>•</span>
               <time dateTime={post.date}>
-                {new Date(post.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
+                {new Date(post.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
                 })}
               </time>
             </div>
+            <BlogDifficulty level={post.difficulty} className="mt-5 max-w-lg" />
           </header>
 
           {/* Tags */}
@@ -137,11 +155,29 @@ const BlogPostView = ({ postId, onBack, onHome, onTagClick }: BlogPostViewProps)
           </div>
 
           {/* Content */}
-          <div className="card-academic p-4 sm:p-6">
-            <div className="blog-article max-w-none">
-              {renderContent(post.content)}
+          {post.content.trim() && (
+            <div className="card-academic p-4 sm:p-6">
+              <div className="blog-article max-w-none text-justify hyphens-auto">
+                {renderContent(contentBeforePlayground)}
+              </div>
+              {post.id === 2 && (
+                <Suspense fallback={<div className="mt-8 h-40 border-t border-border" />}>
+                  <LaundryModelPlayground />
+                </Suspense>
+              )}
+              {contentAfterPlayground && (
+                <div className="blog-article mt-10 max-w-none border-t border-border pt-8 text-justify hyphens-auto">
+                  {renderContent(contentAfterPlayground)}
+                </div>
+              )}
+              {post.id === 2 && contentAfterPlayground && (
+                <Suspense fallback={<div className="mt-10 h-52 border-t border-border" />}>
+                  <LaundryStochasticSimulator />
+                </Suspense>
+              )}
+              <BlogPostFooter post={post} />
             </div>
-          </div>
+          )}
 
         </article>
       </div>

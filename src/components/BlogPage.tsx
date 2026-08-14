@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { AlignLeft, FileText, Search, Tag } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
+import BlogDifficulty from './BlogDifficulty';
 
 interface BlogPageProps {
-  onPostClick?: (postId: number) => void;
+  onPostClick?: (postSlug: string) => void;
   onTagClick?: (tag: string) => void;
   selectedTag?: string;
   onBackFromTag?: () => void;
@@ -118,7 +120,9 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
               <div className="max-w-2xl mx-auto mb-6 relative px-2">
                 <div className="relative">
                   <input
+                    id="blog-search"
                     type="text"
+                    aria-label="Search blog posts or tags"
                     placeholder="Search blog posts or tags..."
                     value={searchTerm}
                     onChange={(e) => handleSearchChange(e.target.value)}
@@ -126,9 +130,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
                     className="w-full px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
-                  <svg className="absolute right-3 top-2.5 sm:top-3.5 w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
+                  <Search className="pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-muted-foreground sm:top-3.5 sm:h-5 sm:w-5" aria-hidden="true" />
                   
                   {/* Suggestions Dropdown */}
                   {showSuggestions && suggestions.length > 0 && (
@@ -141,19 +143,13 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                         >
                           <div className="flex-shrink-0 mt-1">
                             {suggestion.type === 'post' && (
-                              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                              </svg>
+                              <FileText className="h-3 w-3 text-primary sm:h-4 sm:w-4" aria-hidden="true" />
                             )}
                             {suggestion.type === 'tag' && (
-                              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                              </svg>
+                              <Tag className="h-3 w-3 text-primary sm:h-4 sm:w-4" aria-hidden="true" />
                             )}
                             {suggestion.type === 'excerpt' && (
-                              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
-                              </svg>
+                              <AlignLeft className="h-3 w-3 text-muted-foreground sm:h-4 sm:w-4" aria-hidden="true" />
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
@@ -195,57 +191,78 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
             </div>
           ) : (
             filteredPosts.map((post) => (
-              <article key={post.id} className="card-academic p-4 sm:p-6 overflow-hidden cursor-pointer hover:shadow-elegant transition-all duration-300" onClick={() => onPostClick?.(post.id)}>
-                <div className="-mx-4 sm:-mx-6 -mt-4 sm:-mt-6 mb-4 sm:mb-6 h-40 sm:h-48 overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt={`${post.title} cover image`}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = '/placeholder.svg';
-                    }}
-                  />
+              <article key={post.id} className="card-academic group overflow-hidden p-4 transition-all duration-300 hover:shadow-elegant focus-within:shadow-elegant sm:p-6">
+                <div className="-mx-4 -mt-4 mb-4 aspect-[3/1] overflow-hidden sm:-mx-6 sm:-mt-6 sm:mb-6">
+                  <button
+                    type="button"
+                    onClick={() => onPostClick?.(post.slug)}
+                    className="block h-full w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary"
+                    aria-label={`Read ${post.title}`}
+                  >
+                    <img
+                      src={post.image}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src = '/placeholder.svg';
+                      }}
+                    />
+                  </button>
                 </div>
                 <div>
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 gap-2">
                     <div className="flex-1 min-w-0">
-                      <h2 className="text-xl sm:text-2xl font-heading font-semibold text-foreground hover:text-primary transition-colors mb-2">
-                        {post.title}
+                      <h2 className="mb-2 text-xl font-heading font-semibold text-foreground sm:text-2xl">
+                        <button
+                          type="button"
+                          onClick={() => onPostClick?.(post.slug)}
+                          className="text-left transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        >
+                          {post.title}
+                        </button>
                       </h2>
                       <p className="text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
                         By {post.author}
                       </p>
                     </div>
-                    <span className="text-xs sm:text-sm text-muted-foreground sm:whitespace-nowrap sm:ml-4">
-                      {new Date(post.date).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
+                    <time
+                      dateTime={post.date}
+                      className="shrink-0 text-xs text-muted-foreground sm:ml-4 sm:whitespace-nowrap sm:text-sm"
+                    >
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
                       })}
-                    </span>
+                    </time>
                   </div>
                   
-                  <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4 sm:mb-6">
-                    {post.excerpt}
-                  </p>
+                  {post.excerpt && (
+                    <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4 sm:mb-6">
+                      {post.excerpt}
+                    </p>
+                  )}
+
+                  <BlogDifficulty level={post.difficulty} className="mb-4 sm:mb-5" />
                   
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
                         <button
                           key={tag} 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onTagClick?.(tag);
-                          }}
+                          onClick={() => onTagClick?.(tag)}
                           className="px-2.5 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-md capitalize hover:bg-primary hover:text-primary-foreground transition-colors"
                         >
                           {tag}
                         </button>
                       ))}
                     </div>
-                    <button className="text-xs sm:text-sm text-primary hover:text-primary-light font-medium transition-colors self-start sm:self-auto">
+                    <button
+                      type="button"
+                      onClick={() => onPostClick?.(post.slug)}
+                      className="self-start text-xs font-medium text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:self-auto sm:text-sm"
+                    >
                       Read more →
                     </button>
                   </div>

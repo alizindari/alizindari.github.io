@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="laundry-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#264653" stroke-width="1" opacity="0.055"/>
+    </pattern>
+    <marker id="laundry-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#2a9d8f"/>
+    </marker>
+    <clipPath id="washer-window">
+      <circle cx="932" cy="225" r="73"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="400" fill="#f7f3ea"/>
+  <rect width="1200" height="400" fill="url(#laundry-grid)"/>
+  <path d="M0 337C196 311 346 350 542 329C751 307 929 324 1200 292V400H0Z" fill="#e6ece7"/>
+
+  <!-- Wardrobe -->
+  <rect x="92" y="55" width="294" height="294" rx="7" fill="#264653"/>
+  <rect x="108" y="71" width="262" height="262" rx="3" fill="#fffdf8"/>
+  <path d="M239 71V333" stroke="#264653" stroke-width="8"/>
+  <path d="M126 111H224M254 111H352" stroke="#7a8f8d" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Hanging shirts -->
+  <g stroke-linejoin="round">
+    <path d="M154 128L175 116L196 128L211 156L195 165L195 230H155V165L139 156Z" fill="#e76f51" stroke="#b8533d" stroke-width="3"/>
+    <path d="M175 116V104M165 104Q175 91 185 104" fill="none" stroke="#264653" stroke-width="3" stroke-linecap="round"/>
+    <path d="M274 129L296 116L318 129L333 157L317 166L317 230H275V166L259 157Z" fill="#e9c46a" stroke="#c49b3e" stroke-width="3"/>
+    <path d="M296 116V104M286 104Q296 91 306 104" fill="none" stroke="#264653" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g fill="#dbe6e1">
+    <rect x="127" y="260" width="93" height="12" rx="3"/>
+    <rect x="127" y="279" width="78" height="12" rx="3"/>
+    <rect x="258" y="260" width="94" height="12" rx="3"/>
+    <rect x="274" y="279" width="78" height="12" rx="3"/>
+  </g>
+  <circle cx="226" cy="201" r="4" fill="#e9c46a"/>
+  <circle cx="253" cy="201" r="4" fill="#e9c46a"/>
+
+  <!-- Laundry basket -->
+  <g>
+    <path d="M491 238H706L680 341H517Z" fill="#f0c987" stroke="#9d6f36" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M518 259H679M513 283H685M508 307H691" stroke="#c3924e" stroke-width="3" opacity="0.75"/>
+    <path d="M542 239L551 341M582 239L586 341M622 239L620 341M663 239L654 341" stroke="#c3924e" stroke-width="3" opacity="0.75"/>
+    <path d="M524 234C534 199 571 192 591 221C605 183 659 187 671 231Z" fill="#4f78a7"/>
+    <path d="M555 224C565 192 600 188 613 220C625 198 652 202 660 230Z" fill="#e76f51"/>
+    <path d="M583 224C595 200 624 199 637 226Z" fill="#f4e0b8"/>
+    <path d="M475 238H720" stroke="#9d6f36" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- Washing machine -->
+  <g>
+    <rect x="806" y="48" width="254" height="304" rx="8" fill="#fbfcfa" stroke="#264653" stroke-width="6"/>
+    <path d="M806 116H1060" stroke="#264653" stroke-width="5"/>
+    <circle cx="838" cy="82" r="9" fill="#e76f51"/>
+    <circle cx="869" cy="82" r="9" fill="#e9c46a"/>
+    <rect x="927" y="72" width="101" height="20" rx="5" fill="#d7e5e0"/>
+    <circle cx="932" cy="225" r="86" fill="#d8e7e6" stroke="#264653" stroke-width="6"/>
+    <circle cx="932" cy="225" r="73" fill="#6088a4"/>
+    <g clip-path="url(#washer-window)">
+      <path d="M848 248C873 212 906 262 938 229C969 198 1004 224 1015 260V307H847Z" fill="#d9f0ec" opacity="0.78"/>
+      <path d="M850 199C879 228 900 182 934 205C969 229 989 177 1015 199V158H849Z" fill="#89bfc1" opacity="0.8"/>
+      <path d="M868 271C891 236 932 286 963 244C979 222 1004 233 1020 257" fill="none" stroke="#fffdf8" stroke-width="9" opacity="0.68"/>
+    </g>
+    <circle cx="932" cy="225" r="73" fill="none" stroke="#264653" stroke-width="4" opacity="0.85"/>
+  </g>
+
+  <!-- The recurring tradeoff -->
+  <path d="M404 109C512 53 683 52 786 111" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" marker-end="url(#laundry-arrow)"/>
+  <path d="M785 330C689 374 505 373 407 315" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" marker-end="url(#laundry-arrow)"/>
+</svg>
