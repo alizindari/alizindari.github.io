@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Document | Ali Zindari</title>
+    <link rel="icon" href="/microchip.png?v=2" type="image/png" />
+    <style>
+      html,
+      body,
+      iframe {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border: 0;
+      }
+
+      body {
+        background: #2f3338;
+      }
+
+      #error {
+        box-sizing: border-box;
+        max-width: 36rem;
+        margin: 4rem auto;
+        padding: 1.25rem;
+        color: #202124;
+        background: #ffffff;
+        border: 1px solid #d9dce1;
+        border-radius: 6px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1.125rem;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="document-frame" hidden></iframe>
+    <p id="error" role="alert" hidden>Unable to open this document.</p>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const file = params.get('file');
+      const title = params.get('title') || 'Document';
+      const frame = document.getElementById('document-frame');
+      const error = document.getElementById('error');
+
+      try {
+        const pdfUrl = new URL(file, window.location.origin);
+        const isLocalPdf = pdfUrl.origin === window.location.origin
+          && pdfUrl.pathname.toLowerCase().endsWith('.pdf');
+
+        if (!isLocalPdf) {
+          throw new Error('Invalid document URL');
+        }
+
+        document.title = `${title} | Ali Zindari`;
+        frame.title = title;
+        frame.src = pdfUrl.href;
+        frame.hidden = false;
+      } catch {
+        error.hidden = false;
+      }
+    </script>
+  </body>
+</html>
