@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, Sparkles, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface NavigationProps {
@@ -8,6 +8,13 @@ interface NavigationProps {
 
 const Navigation = ({ activeTab }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const newPostBadge = (
+    <span className="new-post-badge" aria-label="New blog post">
+      <Sparkles className="new-post-sparkle" size={11} strokeWidth={2.25} aria-hidden="true" />
+      <span>New post</span>
+    </span>
+  );
 
   const tabs = [
     { id: 'home', label: 'Home', path: '/' },
@@ -40,10 +47,11 @@ const Navigation = ({ activeTab }: NavigationProps) => {
                 <Link
                   key={tab.id}
                   to={tab.path}
-                  className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
+                  className={`nav-tab inline-flex items-center gap-2 ${activeTab === tab.id ? 'active' : ''}`}
                   aria-current={activeTab === tab.id ? 'page' : undefined}
                 >
                   {tab.label}
+                  {activeTab === 'home' && tab.id === 'blog' && newPostBadge}
                 </Link>
               ))}
             </div>
@@ -76,7 +84,10 @@ const Navigation = ({ activeTab }: NavigationProps) => {
                 }`}
                 aria-current={activeTab === tab.id ? 'page' : undefined}
               >
-                {tab.label}
+                <span className="flex items-center gap-2">
+                  {tab.label}
+                  {activeTab === 'home' && tab.id === 'blog' && newPostBadge}
+                </span>
               </Link>
             ))}
           </div>
