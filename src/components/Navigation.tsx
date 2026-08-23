@@ -51,7 +51,7 @@ const Navigation = ({ activeTab }: NavigationProps) => {
                   aria-current={activeTab === tab.id ? 'page' : undefined}
                 >
                   {tab.label}
-                  {activeTab === 'home' && tab.id === 'blog' && newPostBadge}
+                  {tab.id === 'blog' && newPostBadge}
                 </Link>
               ))}
             </div>
@@ -86,7 +86,7 @@ const Navigation = ({ activeTab }: NavigationProps) => {
               >
                 <span className="flex items-center gap-2">
                   {tab.label}
-                  {activeTab === 'home' && tab.id === 'blog' && newPostBadge}
+                  {tab.id === 'blog' && newPostBadge}
                 </span>
               </Link>
             ))}

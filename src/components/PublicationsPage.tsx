@@ -6,7 +6,10 @@ import gan from '@/assets/papers/gan.svg';
 import bifurcated from '@/assets/papers/bifurcated.svg';
 import learningWhenToAdapt from '@/assets/papers/learning_when_to_adapt.svg';
 import loraFullFineTuning from '@/assets/papers/lora_full_finetuning.svg';
-import { FileDown, Github } from 'lucide-react';
+import diselPoster from '@/files/posters/poster_disel.pdf';
+import loraPoster from '@/files/posters/poster_lora.pdf';
+import { getDocumentViewerUrl } from '@/lib/documentViewer';
+import { FileDown, Github, Presentation } from 'lucide-react';
 
 type Publication = {
   id: number;
@@ -19,6 +22,7 @@ type Publication = {
   image: string;
   abstract: string;
   pdf: string;
+  poster?: string;
   github?: string;
 };
 
@@ -34,6 +38,7 @@ const PublicationsPage = () => {
       image: learningWhenToAdapt,
       abstract: "This paper introduces DISeL, a dynamic input-sensitive LoRA method that gates rank-one components depending on the input. The goal is to adapt on fine-tuning data while preserving pretrained behavior elsewhere, reducing forgetting without giving up competitive task performance.",
       pdf: "https://arxiv.org/pdf/2605.19028",
+      poster: diselPoster,
       github: "https://github.com/alizindari/DISeL"
     },
     {
@@ -46,6 +51,7 @@ const PublicationsPage = () => {
       image: loraFullFineTuning,
       abstract: "This paper compares LoRA and full fine-tuning through a linear regression model and studies when low-rank adaptation can generalize better. The analysis highlights how task mismatch, rank, and sample regime shape the tradeoff between expressivity and test performance.",
       pdf: "https://arxiv.org/pdf/2605.19018",
+      poster: loraPoster,
       github: "https://github.com/alizindari/lora-vs-fft"
     },
     {
@@ -203,6 +209,17 @@ const PublicationsPage = () => {
                       <FileDown size={17} strokeWidth={1.9} aria-hidden="true" />
                       PDF
                     </a>
+                    {pub.poster && (
+                      <a
+                        href={getDocumentViewerUrl(pub.poster, `${pub.title} Poster`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-10 items-center gap-2 rounded-md border border-primary/30 bg-primary/5 px-4 text-sm font-medium text-primary transition-colors hover:border-primary/50 hover:bg-primary/10"
+                      >
+                        <Presentation size={17} strokeWidth={1.9} aria-hidden="true" />
+                        Poster
+                      </a>
+                    )}
                     {pub.github && (
                       <a
                         href={pub.github}
