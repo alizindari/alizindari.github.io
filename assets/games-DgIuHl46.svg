@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 416" role="img" aria-labelledby="title desc">
+  <title id="title">GDA, extragradient, and proximal point on a bilinear game</title>
+  <desc id="desc">For min over x max over y of x y, three methods start at the same point with step size one half. Simultaneous GDA spirals outward; extragradient and proximal point spiral toward the origin. Each panel uses the same scale. The outward GDA trajectory is clipped at the plot boundary.</desc>
+  <metadata>24 iterations from (46,26). GDA: (x,y) maps to (x-y/2,y+x/2). EG: (x,y) maps to (3x/4-y/2,3y/4+x/2). PPM: (x,y) maps to ((x-y/2)/1.25,(y+x/2)/1.25). Canvas y is negated. These are illustrative iterates for f(x,y)=xy, not experimental results.</metadata>
+  <defs>
+    <marker id="gda-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L9 4.5L0 9Z" fill="#d16a4a"/>
+    </marker>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#0b3b77" stroke-opacity=".045"/>
+    </pattern>
+    <clipPath id="trajectory"><rect x="-90" y="-90" width="180" height="180"/></clipPath>
+  </defs>
+  <rect width="720" height="416" fill="#fff"/>
+  <rect x="24" y="24" width="672" height="368" rx="8" fill="#f8fafc" stroke="#dce4ee"/>
+  <rect x="24" y="24" width="672" height="368" rx="8" fill="url(#grid)"/>
+  <text x="360" y="77" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="30" font-style="italic" fill="#17384d">minₓ maxᵧ xy</text>
+  <text x="146" y="130" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="32" fill="#d16a4a">GDA</text>
+  <g transform="translate(146 254)">
+    <circle r="80" fill="none" stroke="#dce4ee" stroke-width="2"/>
+    <path d="M-90 0H90M0-90V90" fill="none" stroke="#8aa0b5" stroke-width="2"/>
+    <g clip-path="url(#trajectory)">
+      <polyline points="46.00,-26.00 33.00,-49.00 8.50,-65.50 -24.25,-69.75 -59.13,-57.63 -82.00,-34.15" fill="none" stroke="#d16a4a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#gda-arrow)"/>
+      <circle cx="46.00" cy="-26.00" r="4" fill="#d16a4a" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-24.25" cy="-69.75" r="4" fill="#d16a4a" stroke="#fff" stroke-width="1.5"/>
+    </g>
+    <circle cx="46" cy="-26" r="6" fill="#fff" stroke="#d16a4a" stroke-width="3"/>
+    <circle r="4" fill="#17384d" stroke="#fff" stroke-width="1.5"/>
+  </g>
+  <text x="360" y="130" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="32" fill="#2a9d8f">EG</text>
+  <g transform="translate(360 254)">
+    <circle r="80" fill="none" stroke="#dce4ee" stroke-width="2"/>
+    <path d="M-90 0H90M0-90V90" fill="none" stroke="#8aa0b5" stroke-width="2"/>
+    <g clip-path="url(#trajectory)">
+      <polyline points="46.00,-26.00 21.50,-42.50 -5.13,-42.63 -25.16,-29.41 -33.57,-9.48 -29.92,9.68 -17.60,22.22 -2.09,25.46 11.16,20.14 18.44,9.52 18.59,-2.08 12.91,-10.86 4.25,-14.60 -4.11,-13.07 -9.62,-7.75 -11.09,-1.00 -8.82,4.79 -4.22,8.00 0.84,8.11 4.68,5.66 6.34,1.91 5.71,-1.74 3.41,-4.16 0.48,-4.83 -2.06,-3.86" fill="none" stroke="#2a9d8f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="46.00" cy="-26.00" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-25.16" cy="-29.41" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-17.60" cy="22.22" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="18.44" cy="9.52" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="4.25" cy="-14.60" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-11.09" cy="-1.00" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="0.84" cy="8.11" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="5.71" cy="-1.74" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-2.06" cy="-3.86" r="4" fill="#2a9d8f" stroke="#fff" stroke-width="1.5"/>
+    </g>
+    <circle cx="46" cy="-26" r="6" fill="#fff" stroke="#2a9d8f" stroke-width="3"/>
+    <circle r="4" fill="#17384d" stroke="#fff" stroke-width="1.5"/>
+  </g>
+  <text x="574" y="130" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="32" fill="#0b3b77">PPM</text>
+  <g transform="translate(574 254)">
+    <circle r="80" fill="none" stroke="#dce4ee" stroke-width="2"/>
+    <path d="M-90 0H90M0-90V90" fill="none" stroke="#8aa0b5" stroke-width="2"/>
+    <g clip-path="url(#trajectory)">
+      <polyline points="46.00,-26.00 26.40,-39.20 5.44,-41.92 -12.42,-35.71 -24.22,-23.60 -28.82,-9.20 -26.73,4.17 -19.72,14.03 -10.16,19.11 -0.49,19.35 7.35,15.68 12.15,9.60 13.56,2.82 11.98,-3.17 8.31,-7.33 3.72,-9.19 -0.70,-8.84 -4.09,-6.79 -5.99,-3.80 -6.31,-0.64 -5.30,2.01 -3.44,3.73 -1.26,4.36 0.74,3.99 2.19,2.90" fill="none" stroke="#0b3b77" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="46.00" cy="-26.00" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-12.42" cy="-35.71" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-26.73" cy="4.17" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-0.49" cy="19.35" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="13.56" cy="2.82" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="3.72" cy="-9.19" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-5.99" cy="-3.80" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="-3.44" cy="3.73" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="2.19" cy="2.90" r="4" fill="#0b3b77" stroke="#fff" stroke-width="1.5"/>
+    </g>
+    <circle cx="46" cy="-26" r="6" fill="#fff" stroke="#0b3b77" stroke-width="3"/>
+    <circle r="4" fill="#17384d" stroke="#fff" stroke-width="1.5"/>
+  </g>
+</svg>

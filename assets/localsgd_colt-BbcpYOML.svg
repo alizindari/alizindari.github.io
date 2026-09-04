@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
   <title id="title">Local SGD fixed points under heterogeneous objectives</title>
-  <desc id="desc">Local objective optima surround a global objective, with Local SGD fixed points tracing a path between the average local optimum and the true global optimum.</desc>
+  <desc id="desc">Heterogeneous local minima surround the global objective. A biased Local SGD fixed point is distinct from the global optimum at the common center of the objective contours.</desc>
   <rect width="768" height="768" fill="#ffffff"/>
   <defs>
     <marker id="limits-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
       <path d="M1 1L13 6L1 11Z" fill="#182431"/>
     </marker>
     <style>
-      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
+      .label { font-family: 'Times New Roman', Times, serif; fill: #182431; }
       .axis { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; }
       .contour { fill: none; stroke: #b9d1e3; stroke-width: 4; }
       .local-contour { fill: none; stroke: #dce3ea; stroke-width: 3; }
@@ -21,11 +21,11 @@
     <path d="M82 156H698M82 244H698M82 332H698M82 420H698M82 508H698M82 596H698"/>
   </g>
 
-  <g aria-label="average objective contours" transform="rotate(-13 420 382)">
-    <ellipse cx="420" cy="382" rx="264" ry="190" class="contour" opacity=".46"/>
-    <ellipse cx="420" cy="382" rx="215" ry="151" class="contour" opacity=".58"/>
-    <ellipse cx="420" cy="382" rx="164" ry="112" class="contour" opacity=".72"/>
-    <ellipse cx="420" cy="382" rx="110" ry="72" class="contour" opacity=".9"/>
+  <g aria-label="average objective contours" transform="rotate(-13 487 350)">
+    <ellipse cx="487" cy="350" rx="205" ry="170" class="contour" opacity=".55"/>
+    <ellipse cx="487" cy="350" rx="161" ry="133" class="contour" opacity=".68"/>
+    <ellipse cx="487" cy="350" rx="117" ry="97" class="contour" opacity=".82"/>
+    <ellipse cx="487" cy="350" rx="73" ry="60" class="contour"/>
   </g>
   <text x="581" y="205" class="label" font-size="35" font-style="italic" fill="#4d7fa3" style="fill:#4d7fa3">F</text>
 
@@ -57,21 +57,17 @@
 
   <g aria-label="fixed point path">
     <circle cx="363" cy="449" r="17" fill="#e07a5f" stroke="#182431" stroke-width="4"/>
-    <text x="314" y="487" class="label" font-size="30" font-style="italic">x̄*</text>
-    <path d="M380 437C395 425 410 412 426 399C442 386 458 373 474 360" fill="none" stroke="#182431" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#limits-arrow)"/>
+    <text x="306" y="503" class="label" font-size="36" font-style="italic">x∞(K)</text>
+    <path d="M380 437L463 369" fill="none" stroke="#182431" stroke-width="4" stroke-dasharray="7 8" marker-end="url(#limits-arrow)"/>
     <circle cx="392" cy="427" r="10" fill="#f2b66d" stroke="#182431" stroke-width="3"/>
     <circle cx="416" cy="407" r="10" fill="#d9a24f" stroke="#182431" stroke-width="3"/>
     <circle cx="440" cy="387" r="10" fill="#4d7fa3" stroke="#182431" stroke-width="3"/>
-    <circle cx="464" cy="367" r="10" fill="#159987" stroke="#182431" stroke-width="3"/>
-    <text x="424" y="337" text-anchor="middle" class="label" font-size="28" font-style="italic">x∞(K)</text>
   </g>
 
   <g aria-label="global optimum" transform="translate(487 350)">
     <circle r="25" fill="#e5f5f1" stroke="#182431" stroke-width="5"/>
     <path d="M0-14L4-5L14-4L6 3L8 13L0 8L-8 13L-6 3L-14-4L-4-5Z" fill="#159987"/>
-    <text x="28" y="-22" class="label" font-size="32" font-style="italic">x*</text>
+    <text x="28" y="-22" class="label" font-size="38" font-style="italic">x*</text>
   </g>
 
-  <path d="M540 495C584 461 611 422 624 382" fill="none" stroke="#182431" stroke-width="4" marker-end="url(#limits-arrow)"/>
-  <text x="588" y="514" text-anchor="middle" class="label" font-size="28" font-style="italic">K</text>
 </svg>

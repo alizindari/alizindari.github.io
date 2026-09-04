@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">Local SGD: Hessian similarity and consensus error</title>
+  <desc id="desc">Similar local Hessians H1, H2, and H3. Three workers start from a shared iterate, drift during local updates, and synchronize to their average. The vertical bracket highlights their disagreement before averaging.</desc>
+  <defs>
+    <style>.label { font-family: 'Times New Roman', Times, serif; fill: #182431; }</style>
+  </defs>
+  <rect width="768" height="768" fill="#fff"/>
+  <g aria-label="similar local Hessians">
+    <g transform="translate(110 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₁</text>
+    </g>
+    <g transform="translate(318 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₂</text>
+    </g>
+    <g transform="translate(526 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₃</text>
+    </g>
+    <text x="280" y="144" text-anchor="middle" class="label" font-size="42">≈</text>
+    <text x="488" y="144" text-anchor="middle" class="label" font-size="42">≈</text>
+  </g>
+  <path d="M64 274H704" stroke="#e3e9ed" stroke-width="3"/>
+  <path d="M108 324V308H326V324M428 324V308H646V324" fill="none" stroke="#a9b7c3" stroke-width="3"/>
+  <text x="217" y="357" text-anchor="middle" class="label" font-size="32" font-style="italic">K steps</text>
+  <text x="537" y="357" text-anchor="middle" class="label" font-size="32" font-style="italic">K steps</text>
+
+  <g fill="none" stroke="#b5c1cb" stroke-width="3">
+    <path d="M340 380L393 480M340 470L393 480M340 590L393 480"/>
+    <path d="M660 416L702 480M660 486L702 480M660 538L702 480"/>
+  </g>
+  <g fill="none" stroke="#214d73" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="109,480 176,444 250,404 326,380"/>
+    <polyline points="427,480 485,455 558,429 646,416"/>
+    <g fill="#fff" stroke-width="4">
+      <circle cx="176" cy="444" r="8"/>
+      <circle cx="250" cy="404" r="8"/>
+      <circle cx="326" cy="380" r="8"/>
+      <circle cx="485" cy="455" r="8"/>
+      <circle cx="558" cy="429" r="8"/>
+      <circle cx="646" cy="416" r="8"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#159987" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="109,480 176,478 250,474 326,470"/>
+    <polyline points="427,480 485,482 558,484 646,486"/>
+    <g fill="#fff" stroke-width="4">
+      <circle cx="176" cy="478" r="8"/>
+      <circle cx="250" cy="474" r="8"/>
+      <circle cx="326" cy="470" r="8"/>
+      <circle cx="485" cy="482" r="8"/>
+      <circle cx="558" cy="484" r="8"/>
+      <circle cx="646" cy="486" r="8"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#e07a5f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="109,480 176,518 250,562 326,590"/>
+    <polyline points="427,480 485,503 558,527 646,538"/>
+    <g fill="#fff" stroke-width="4">
+      <circle cx="176" cy="518" r="8"/>
+      <circle cx="250" cy="562" r="8"/>
+      <circle cx="326" cy="590" r="8"/>
+      <circle cx="485" cy="503" r="8"/>
+      <circle cx="558" cy="527" r="8"/>
+      <circle cx="646" cy="538" r="8"/>
+    </g>
+  </g>
+  <g stroke="#182431" stroke-width="4">
+    <circle cx="80" cy="480" r="27" fill="#fff"/>
+    <circle cx="400" cy="480" r="27" fill="#e5f5f1"/>
+    <circle cx="710" cy="480" r="27" fill="#e5f5f1"/>
+  </g>
+  <g class="label" font-size="32" font-style="italic" text-anchor="middle">
+    <text x="80" y="491">x⁰</text>
+    <text x="400" y="491">x̄</text>
+    <text x="710" y="491">x̄</text>
+  </g>
+  <path d="M344 380H354V590H344M354 605V642H252" fill="none" stroke="#182431" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="252" y="694" text-anchor="middle" class="label" font-size="36">consensus error</text>
+</svg>

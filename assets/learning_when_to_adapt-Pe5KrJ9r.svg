@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
+  <title id="title">DISeL: input-dependent low-rank adaptation</title>
+  <desc id="desc">The frozen W0 path is added to the adapter A G(x) B x. Below, two inputs produce different diagonal gate strengths: a nearly closed adapter and a selectively active adapter. Gate strengths are continuous, not binary.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L11 6L1 11Z" fill="#182431"/>
+    </marker>
+    <style>
+      .label { font-family: 'Times New Roman', Times, serif; fill: #182431; font-size: 36px; font-style: italic; }
+      .flow { fill: none; stroke: #182431; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .matrix { stroke: #182431; stroke-width: 4; }
+    </style>
+    <pattern id="gate-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#e3e9ed" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="768" height="768" fill="#fff"/>
+
+  <g aria-label="frozen model and additive adapter">
+    <path d="M90 284V112H311" class="flow"/>
+    <rect x="326" y="78" width="116" height="68" rx="6" fill="#f1f4f7" class="matrix"/>
+    <text x="384" y="124" text-anchor="middle" class="label">W₀</text>
+    <path d="M442 112H642V247" class="flow"/>
+
+    <circle cx="54" cy="284" r="25" fill="#fff" class="matrix"/>
+    <text x="54" y="295" text-anchor="middle" class="label">x</text>
+    <path d="M79 284H120" class="flow"/>
+    <circle cx="90" cy="284" r="5" fill="#182431"/>
+
+    <rect x="134" y="250" width="120" height="68" rx="6" fill="#214d73" class="matrix"/>
+    <path d="M148 264H240M148 278H240M148 292H240M148 306H240" stroke="#b9d1e3" stroke-width="4"/>
+    <text x="194" y="398" text-anchor="middle" class="label">B</text>
+    <path d="M254 284H292" class="flow"/>
+
+    <g transform="translate(320 220)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <rect x="4" y="4" width="24" height="24" rx="2" fill="#159987"/>
+      <rect x="36" y="36" width="24" height="24" rx="2" fill="#72c3b4"/>
+      <rect x="68" y="68" width="24" height="24" rx="2" fill="#dceee9"/>
+      <rect x="100" y="100" width="24" height="24" rx="2" fill="#35a895"/>
+    </g>
+    <text x="384" y="398" text-anchor="middle" class="label">G(x)</text>
+    <path d="M458 284H499" class="flow"/>
+
+    <rect x="514" y="210" width="64" height="148" rx="6" fill="#159987" class="matrix"/>
+    <path d="M526 224V344M539 224V344M552 224V344M565 224V344" stroke="#d5eee8" stroke-width="4"/>
+    <text x="546" y="398" text-anchor="middle" class="label">A</text>
+    <path d="M578 284H608" class="flow"/>
+
+    <circle cx="642" cy="284" r="24" fill="#fff" class="matrix"/>
+    <path d="M631 284H653M642 273V295" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
+    <path d="M666 284H689" class="flow"/>
+    <text x="718" y="295" text-anchor="middle" class="label">y</text>
+  </g>
+
+  <path d="M64 458H704" stroke="#e3e9ed" stroke-width="3"/>
+  <g aria-label="the same adapter, different input-dependent gates">
+    <circle cx="100" cy="582" r="27" fill="#f1f4f7" class="matrix"/>
+    <text x="100" y="593" text-anchor="middle" class="label">x₁</text>
+    <path d="M138 582H185" class="flow"/>
+    <g transform="translate(212 518)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <g fill="#dceee9">
+        <rect x="4" y="4" width="24" height="24" rx="2"/>
+        <rect x="36" y="36" width="24" height="24" rx="2"/>
+        <rect x="68" y="68" width="24" height="24" rx="2"/>
+        <rect x="100" y="100" width="24" height="24" rx="2"/>
+      </g>
+    </g>
+    <text x="276" y="706" text-anchor="middle" class="label">G(x₁)</text>
+
+    <circle cx="440" cy="582" r="27" fill="#e5f5f1" class="matrix"/>
+    <text x="440" y="593" text-anchor="middle" class="label">x₂</text>
+    <path d="M478 582H525" class="flow"/>
+    <g transform="translate(552 518)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <rect x="4" y="4" width="24" height="24" rx="2" fill="#159987"/>
+      <rect x="36" y="36" width="24" height="24" rx="2" fill="#72c3b4"/>
+      <rect x="68" y="68" width="24" height="24" rx="2" fill="#dceee9"/>
+      <rect x="100" y="100" width="24" height="24" rx="2" fill="#35a895"/>
+    </g>
+    <text x="616" y="706" text-anchor="middle" class="label">G(x₂)</text>
+  </g>
+</svg>
