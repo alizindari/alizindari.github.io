@@ -57,7 +57,7 @@ const PresentationsPage = () => {
   return (
     <main className="times-page min-h-screen py-8 sm:py-12 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
-        <header className="mb-8 sm:mb-12">
+        <header className="mb-8 text-center sm:mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">Presentations</h1>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
             Thesis and seminar presentations on machine learning and optimization
