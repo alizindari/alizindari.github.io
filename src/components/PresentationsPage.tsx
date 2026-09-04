@@ -12,6 +12,7 @@ import games_pdf from '@/files/presentations/gml_presentation.pdf';
 
 import { FileDown } from 'lucide-react';
 import { getDocumentViewerUrl } from '@/lib/documentViewer';
+import AcademicTemplateLink from './AcademicTemplateLink';
 
 const PresentationsPage = () => {
   const presentations = [
@@ -61,6 +62,7 @@ const PresentationsPage = () => {
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
             Thesis and seminar presentations on machine learning and optimization
           </p>
+          <AcademicTemplateLink className="mt-4" />
         </header>
 
         <div className="space-y-6 sm:space-y-8">

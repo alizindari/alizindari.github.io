@@ -10,6 +10,7 @@ import diselPoster from '@/files/posters/poster_disel.pdf';
 import loraPoster from '@/files/posters/poster_lora.pdf';
 import { getDocumentViewerUrl } from '@/lib/documentViewer';
 import { FileDown, Github, Presentation } from 'lucide-react';
+import AcademicTemplateLink from './AcademicTemplateLink';
 
 type Publication = {
   id: number;
@@ -153,9 +154,7 @@ const PublicationsPage = () => {
           <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
             Publications
           </h1>
-          {/* <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
-            Peer-reviewed research contributions to the fields of machine learning and computer science
-          </p> */}
+          <AcademicTemplateLink />
         </div>
 
         <div className="max-w-6xl mx-auto space-y-6 sm:space-y-7">
