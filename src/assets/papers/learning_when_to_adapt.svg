@@ -1,103 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
-  <title id="title">DISeL input-sensitive low-rank adaptation</title>
-  <desc id="desc">Two inputs produce different rank gate patterns, followed by the factorization A G of x B x.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
-
+  <title id="title">DISeL: input-dependent low-rank adaptation</title>
+  <desc id="desc">The frozen W0 path is added to the adapter A G(x) B x. Below, two inputs produce different diagonal gate strengths: a nearly closed adapter and a selectively active adapter. Gate strengths are continuous, not binary.</desc>
   <defs>
-    <marker id="disel-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L11 6L1 11Z" fill="#182431"/>
     </marker>
     <style>
-      .disel-label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
-      .disel-line { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-      .disel-box { fill: #ffffff; stroke: #182431; stroke-width: 5; }
+      .label { font-family: 'Times New Roman', Times, serif; fill: #182431; font-size: 36px; font-style: italic; }
+      .flow { fill: none; stroke: #182431; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .matrix { stroke: #182431; stroke-width: 4; }
     </style>
+    <pattern id="gate-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#e3e9ed" stroke-width="2"/>
+    </pattern>
   </defs>
+  <rect width="768" height="768" fill="#fff"/>
 
-  <g aria-label="input-dependent gate patterns">
-    <circle cx="132" cy="118" r="25" fill="#e9f1f7" stroke="#182431" stroke-width="4"/>
-    <text x="132" y="127" text-anchor="middle" class="disel-label" font-size="28" font-style="italic">x₁</text>
-    <path d="M166 118H202" class="disel-line" marker-end="url(#disel-arrow)"/>
-    <rect x="222" y="84" width="338" height="68" rx="12" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-    <g fill="#dce3ea" stroke="#bdc8d2" stroke-width="2">
-      <rect x="259" y="101" width="34" height="34" rx="5"/>
-      <rect x="337" y="101" width="34" height="34" rx="5"/>
-      <rect x="415" y="101" width="34" height="34" rx="5"/>
-      <rect x="493" y="101" width="34" height="34" rx="5"/>
-    </g>
-    <text x="615" y="128" class="disel-label" font-size="31" font-style="italic">G(x₁)</text>
+  <g aria-label="frozen model and additive adapter">
+    <path d="M90 284V112H311" class="flow"/>
+    <rect x="326" y="78" width="116" height="68" rx="6" fill="#f1f4f7" class="matrix"/>
+    <text x="384" y="124" text-anchor="middle" class="label">W₀</text>
+    <path d="M442 112H642V247" class="flow"/>
 
-    <circle cx="132" cy="214" r="25" fill="#e5f5f1" stroke="#182431" stroke-width="4"/>
-    <text x="132" y="223" text-anchor="middle" class="disel-label" font-size="28" font-style="italic">x₂</text>
-    <path d="M166 214H202" class="disel-line" marker-end="url(#disel-arrow)"/>
-    <rect x="222" y="180" width="338" height="68" rx="12" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-    <g stroke-width="2">
-      <rect x="259" y="197" width="34" height="34" rx="5" fill="#159987" stroke="#117a6c"/>
-      <rect x="337" y="197" width="34" height="34" rx="5" fill="#159987" stroke="#117a6c"/>
-      <rect x="415" y="197" width="34" height="34" rx="5" fill="#dce3ea" stroke="#bdc8d2"/>
-      <rect x="493" y="197" width="34" height="34" rx="5" fill="#159987" stroke="#117a6c"/>
+    <circle cx="54" cy="284" r="25" fill="#fff" class="matrix"/>
+    <text x="54" y="295" text-anchor="middle" class="label">x</text>
+    <path d="M79 284H120" class="flow"/>
+    <circle cx="90" cy="284" r="5" fill="#182431"/>
+
+    <rect x="134" y="250" width="120" height="68" rx="6" fill="#214d73" class="matrix"/>
+    <path d="M148 264H240M148 278H240M148 292H240M148 306H240" stroke="#b9d1e3" stroke-width="4"/>
+    <text x="194" y="398" text-anchor="middle" class="label">B</text>
+    <path d="M254 284H292" class="flow"/>
+
+    <g transform="translate(320 220)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <rect x="4" y="4" width="24" height="24" rx="2" fill="#159987"/>
+      <rect x="36" y="36" width="24" height="24" rx="2" fill="#72c3b4"/>
+      <rect x="68" y="68" width="24" height="24" rx="2" fill="#dceee9"/>
+      <rect x="100" y="100" width="24" height="24" rx="2" fill="#35a895"/>
     </g>
-    <text x="615" y="224" class="disel-label" font-size="31" font-style="italic">G(x₂)</text>
+    <text x="384" y="398" text-anchor="middle" class="label">G(x)</text>
+    <path d="M458 284H499" class="flow"/>
+
+    <rect x="514" y="210" width="64" height="148" rx="6" fill="#159987" class="matrix"/>
+    <path d="M526 224V344M539 224V344M552 224V344M565 224V344" stroke="#d5eee8" stroke-width="4"/>
+    <text x="546" y="398" text-anchor="middle" class="label">A</text>
+    <path d="M578 284H608" class="flow"/>
+
+    <circle cx="642" cy="284" r="24" fill="#fff" class="matrix"/>
+    <path d="M631 284H653M642 273V295" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
+    <path d="M666 284H689" class="flow"/>
+    <text x="718" y="295" text-anchor="middle" class="label">y</text>
   </g>
 
-  <path d="M390 266V306" class="disel-line" marker-end="url(#disel-arrow)"/>
-
-  <g aria-label="DISeL factorization">
-    <circle cx="66" cy="421" r="28" fill="#ffffff" stroke="#182431" stroke-width="5"/>
-    <text x="66" y="431" text-anchor="middle" class="disel-label" font-size="32" font-style="italic">x</text>
-    <path d="M101 421H126" class="disel-line" marker-end="url(#disel-arrow)"/>
-
-    <g transform="translate(146 376)">
-      <rect width="168" height="90" rx="8" fill="#214d73" stroke="#182431" stroke-width="5"/>
-      <g fill="#dceaf4">
-        <rect x="18" y="18" width="26" height="22" rx="3"/>
-        <rect x="56" y="18" width="26" height="22" rx="3"/>
-        <rect x="94" y="18" width="26" height="22" rx="3"/>
-        <rect x="132" y="18" width="18" height="22" rx="3"/>
-        <rect x="18" y="51" width="26" height="21" rx="3"/>
-        <rect x="56" y="51" width="26" height="21" rx="3"/>
-        <rect x="94" y="51" width="26" height="21" rx="3"/>
-        <rect x="132" y="51" width="18" height="21" rx="3"/>
+  <path d="M64 458H704" stroke="#e3e9ed" stroke-width="3"/>
+  <g aria-label="the same adapter, different input-dependent gates">
+    <circle cx="100" cy="582" r="27" fill="#f1f4f7" class="matrix"/>
+    <text x="100" y="593" text-anchor="middle" class="label">x₁</text>
+    <path d="M138 582H185" class="flow"/>
+    <g transform="translate(212 518)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <g fill="#dceee9">
+        <rect x="4" y="4" width="24" height="24" rx="2"/>
+        <rect x="36" y="36" width="24" height="24" rx="2"/>
+        <rect x="68" y="68" width="24" height="24" rx="2"/>
+        <rect x="100" y="100" width="24" height="24" rx="2"/>
       </g>
-      <text x="84" y="130" text-anchor="middle" class="disel-label" font-size="32" font-style="italic">B</text>
     </g>
+    <text x="276" y="706" text-anchor="middle" class="label">G(x₁)</text>
 
-    <path d="M324 421H345" class="disel-line" marker-end="url(#disel-arrow)"/>
-
-    <g transform="translate(365 341)">
-      <rect width="160" height="160" rx="8" class="disel-box"/>
-      <g stroke-width="2">
-        <rect x="18" y="18" width="32" height="32" rx="5" fill="#159987" stroke="#117a6c"/>
-        <rect x="55" y="55" width="32" height="32" rx="5" fill="#159987" stroke="#117a6c"/>
-        <rect x="92" y="92" width="32" height="32" rx="5" fill="#dce3ea" stroke="#bdc8d2"/>
-        <rect x="129" y="129" width="18" height="18" rx="4" fill="#159987" stroke="#117a6c"/>
-      </g>
-      <g fill="#dce3ea">
-        <circle cx="34" cy="71" r="3.5"/><circle cx="34" cy="108" r="3.5"/><circle cx="34" cy="140" r="3.5"/>
-        <circle cx="71" cy="34" r="3.5"/><circle cx="71" cy="108" r="3.5"/><circle cx="71" cy="140" r="3.5"/>
-        <circle cx="108" cy="34" r="3.5"/><circle cx="108" cy="71" r="3.5"/><circle cx="108" cy="140" r="3.5"/>
-        <circle cx="140" cy="34" r="3.5"/><circle cx="140" cy="71" r="3.5"/><circle cx="140" cy="108" r="3.5"/>
-      </g>
-      <text x="80" y="204" text-anchor="middle" class="disel-label" font-size="32" font-style="italic">G(x)</text>
+    <circle cx="440" cy="582" r="27" fill="#e5f5f1" class="matrix"/>
+    <text x="440" y="593" text-anchor="middle" class="label">x₂</text>
+    <path d="M478 582H525" class="flow"/>
+    <g transform="translate(552 518)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <rect x="4" y="4" width="24" height="24" rx="2" fill="#159987"/>
+      <rect x="36" y="36" width="24" height="24" rx="2" fill="#72c3b4"/>
+      <rect x="68" y="68" width="24" height="24" rx="2" fill="#dceee9"/>
+      <rect x="100" y="100" width="24" height="24" rx="2" fill="#35a895"/>
     </g>
-
-    <path d="M535 421H554" class="disel-line" marker-end="url(#disel-arrow)"/>
-
-    <g transform="translate(574 326)">
-      <rect width="72" height="190" rx="8" fill="#159987" stroke="#182431" stroke-width="5"/>
-      <g fill="#e2f5f1">
-        <rect x="18" y="20" width="36" height="25" rx="3"/>
-        <rect x="18" y="61" width="36" height="25" rx="3"/>
-        <rect x="18" y="102" width="36" height="25" rx="3"/>
-        <rect x="18" y="143" width="36" height="25" rx="3"/>
-      </g>
-      <text x="36" y="234" text-anchor="middle" class="disel-label" font-size="32" font-style="italic">A</text>
-    </g>
-
-    <path d="M656 421H681" class="disel-line" marker-end="url(#disel-arrow)"/>
-    <circle cx="718" cy="421" r="28" fill="#e5f5f1" stroke="#182431" stroke-width="5"/>
-    <text x="718" y="431" text-anchor="middle" class="disel-label" font-size="30" font-style="italic">f</text>
+    <text x="616" y="706" text-anchor="middle" class="label">G(x₂)</text>
   </g>
-
-  <text x="384" y="683" text-anchor="middle" class="disel-label" font-size="38" font-style="italic">f(x) = A G(x) B x</text>
 </svg>

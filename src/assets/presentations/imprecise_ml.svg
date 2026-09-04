@@ -12,7 +12,7 @@
   <rect x="24" y="24" width="672" height="368" rx="8" fill="url(#grid)"/>
 
   <g clip-path="url(#plot)">
-    <path d="M70 328 654 76 654 176 70 374Z" fill="#2a9d8f" fill-opacity=".13"/>
+    <path d="M70 332 654 70 654 122 70 360Z" fill="#2a9d8f" fill-opacity=".13"/>
     <path d="M70 346 654 92" fill="none" stroke="#0b3b77" stroke-linecap="round" stroke-width="5"/>
     <path d="M70 332 654 122" fill="none" stroke="#2a9d8f" stroke-linecap="round" stroke-width="4"/>
     <path d="M70 360 654 70" fill="none" stroke="#d4a72c" stroke-linecap="round" stroke-width="4"/>
@@ -29,9 +29,4 @@
     <circle cx="142" cy="300" r="3"/><circle cx="205" cy="270" r="3"/><circle cx="274" cy="256" r="3"/><circle cx="346" cy="208" r="3"/><circle cx="415" cy="187" r="3"/><circle cx="488" cy="153" r="3"/><circle cx="558" cy="121" r="3"/>
   </g>
 
-  <g transform="translate(520 285)">
-    <rect width="104" height="50" rx="7" fill="#fff" stroke="#dce4ee" stroke-width="2"/>
-    <path d="M14 15H44" stroke="#0b3b77" stroke-width="4"/><path d="M14 25H44" stroke="#2a9d8f" stroke-width="4"/><path d="M14 35H44" stroke="#d4a72c" stroke-width="4"/>
-    <path d="M56 15H90M56 25H90M56 35H90" stroke="#b4c1ce" stroke-linecap="round" stroke-width="3"/>
-  </g>
 </svg>

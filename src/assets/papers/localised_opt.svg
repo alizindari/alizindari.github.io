@@ -1,78 +1,67 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
-  <title id="title">Third-order smoothness and Hessian similarity for Local SGD</title>
-  <desc id="desc">Three nearly matching local Hessian matrices above a smooth objective and its close second-order approximation, with local iterates moving toward a shared average.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
+  <title id="title">Hessian similarity and local quadratic approximation</title>
+  <desc id="desc">Similar local Hessians above a smooth objective and its second-order Taylor approximation at x0. The curves agree in value, slope, and curvature at x0 and separate farther away.</desc>
+  <metadata>The plotted objective is F(t)=0.0025 t^2+0.000000008 t^4 and its Taylor approximation is T2F(t)=0.0025 t^2 at t=0. SVG coordinates are x=384+t and y=610-F(t).</metadata>
   <defs>
-    <marker id="third-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
+    <style>.label { font-family: 'Times New Roman', Times, serif; fill: #182431; }</style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L11 6L1 11Z" fill="#182431"/>
     </marker>
-    <marker id="third-teal-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1 1L13 6L1 11Z" fill="#159987"/>
-    </marker>
-    <style>
-      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
-      .axis { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; }
-      .guide { fill: none; stroke: #bdc8d2; stroke-width: 3; stroke-dasharray: 8 8; }
-    </style>
   </defs>
-
-  <g aria-label="similar Hessians">
-    <g transform="translate(72 56)">
-      <rect width="142" height="142" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-      <g stroke="#ffffff" stroke-width="4">
-        <rect x="18" y="18" width="32" height="32" rx="4" fill="#214d73"/><rect x="55" y="18" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="18" width="32" height="32" rx="4" fill="#dceaf4"/>
-        <rect x="18" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="55" y="55" width="32" height="32" rx="4" fill="#159987"/><rect x="92" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/>
-        <rect x="18" y="92" width="32" height="32" rx="4" fill="#dceaf4"/><rect x="55" y="92" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="92" width="32" height="32" rx="4" fill="#214d73"/>
-      </g>
-      <text x="71" y="176" text-anchor="middle" class="label" font-size="29" font-style="italic">∇²F₁</text>
+  <rect width="768" height="768" fill="#fff"/>
+  <g aria-label="similar local Hessians">
+    <g transform="translate(110 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₁</text>
     </g>
-    <text x="252" y="140" text-anchor="middle" class="label" font-size="39">≈</text>
-    <g transform="translate(313 56)">
-      <rect width="142" height="142" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-      <g stroke="#ffffff" stroke-width="4">
-        <rect x="18" y="18" width="32" height="32" rx="4" fill="#214d73"/><rect x="55" y="18" width="32" height="32" rx="4" fill="#86adc9"/><rect x="92" y="18" width="32" height="32" rx="4" fill="#dceaf4"/>
-        <rect x="18" y="55" width="32" height="32" rx="4" fill="#86adc9"/><rect x="55" y="55" width="32" height="32" rx="4" fill="#159987"/><rect x="92" y="55" width="32" height="32" rx="4" fill="#86adc9"/>
-        <rect x="18" y="92" width="32" height="32" rx="4" fill="#dceaf4"/><rect x="55" y="92" width="32" height="32" rx="4" fill="#86adc9"/><rect x="92" y="92" width="32" height="32" rx="4" fill="#214d73"/>
-      </g>
-      <text x="71" y="176" text-anchor="middle" class="label" font-size="29" font-style="italic">∇²F₂</text>
+    <g transform="translate(318 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₂</text>
     </g>
-    <text x="493" y="140" text-anchor="middle" class="label" font-size="39">≈</text>
-    <g transform="translate(554 56)">
-      <rect width="142" height="142" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-      <g stroke="#ffffff" stroke-width="4">
-        <rect x="18" y="18" width="32" height="32" rx="4" fill="#214d73"/><rect x="55" y="18" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="18" width="32" height="32" rx="4" fill="#dceaf4"/>
-        <rect x="18" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="55" y="55" width="32" height="32" rx="4" fill="#159987"/><rect x="92" y="55" width="32" height="32" rx="4" fill="#8fb5d0"/>
-        <rect x="18" y="92" width="32" height="32" rx="4" fill="#dceaf4"/><rect x="55" y="92" width="32" height="32" rx="4" fill="#8fb5d0"/><rect x="92" y="92" width="32" height="32" rx="4" fill="#214d73"/>
-      </g>
-      <text x="71" y="176" text-anchor="middle" class="label" font-size="29" font-style="italic">∇²F₃</text>
+    <g transform="translate(526 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₃</text>
     </g>
+    <text x="280" y="144" text-anchor="middle" class="label" font-size="42">≈</text>
+    <text x="488" y="144" text-anchor="middle" class="label" font-size="42">≈</text>
   </g>
-
-  <line x1="58" y1="276" x2="710" y2="276" stroke="#dce3ea" stroke-width="3"/>
-
-  <g aria-label="smooth objective and quadratic approximation">
-    <path d="M76 676H706" class="axis" marker-end="url(#third-arrow)"/>
-    <path d="M76 676V320" class="axis" marker-end="url(#third-arrow)"/>
-    <path d="M102 346C192 548 278 633 387 636C502 639 589 535 682 342" fill="none" stroke="#214d73" stroke-width="8" stroke-linecap="round"/>
-    <path d="M111 356C204 532 287 615 387 619C491 623 575 525 671 354" fill="none" stroke="#159987" stroke-width="6" stroke-dasharray="13 11" stroke-linecap="round"/>
-    <text x="132" y="336" class="label" font-size="31" font-style="italic" style="fill:#214d73">F</text>
-    <text x="628" y="330" class="label" font-size="31" font-style="italic" style="fill:#159987">T₂F</text>
-
-    <path d="M240 520V548M530 530V555" class="guide"/>
-    <circle cx="240" cy="520" r="9" fill="#214d73"/>
-    <circle cx="240" cy="548" r="9" fill="#159987"/>
-    <circle cx="530" cy="530" r="9" fill="#214d73"/>
-    <circle cx="530" cy="555" r="9" fill="#159987"/>
-
-    <path d="M140 390C205 470 263 530 331 589" fill="none" stroke="#4d7fa3" stroke-width="6" stroke-linecap="round" marker-end="url(#third-arrow)"/>
-    <path d="M635 410C578 487 524 544 445 594" fill="none" stroke="#e07a5f" stroke-width="6" stroke-linecap="round" marker-end="url(#third-arrow)"/>
-    <circle cx="151" cy="405" r="14" fill="#ffffff" stroke="#4d7fa3" stroke-width="5"/>
-    <circle cx="622" cy="424" r="14" fill="#ffffff" stroke="#e07a5f" stroke-width="5"/>
-    <circle cx="343" cy="600" r="14" fill="#ffffff" stroke="#4d7fa3" stroke-width="5"/>
-    <circle cx="432" cy="603" r="14" fill="#ffffff" stroke="#e07a5f" stroke-width="5"/>
-    <path d="M359 604H413" fill="none" stroke="#182431" stroke-width="5" marker-end="url(#third-teal-arrow)"/>
-    <path d="M416 604H369" fill="none" stroke="#182431" stroke-width="5" marker-end="url(#third-arrow)"/>
-    <rect x="370" y="586" width="36" height="36" rx="7" fill="#159987" stroke="#182431" stroke-width="5" transform="rotate(45 388 604)"/>
-    <text x="388" y="725" text-anchor="middle" class="label" font-size="30" font-style="italic">x̄</text>
+  <path d="M64 274H704" stroke="#e3e9ed" stroke-width="3"/>
+  <g fill="none" stroke="#182431" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)">
+    <path d="M76 676H710"/>
+    <path d="M76 676V318"/>
   </g>
+  <path d="M100.00 356.32 L107.89 372.91 L115.78 388.74 L123.67 403.82 L131.56 418.19 L139.44 431.87 L147.33 444.87 L155.22 457.24 L163.11 468.98 L171.00 480.11 L178.89 490.66 L186.78 500.65 L194.67 510.10 L202.56 519.02 L210.44 527.44 L218.33 535.36 L226.22 542.81 L234.11 549.80 L242.00 556.34 L249.89 562.45 L257.78 568.14 L265.67 573.42 L273.56 578.31 L281.44 582.82 L289.33 586.95 L297.22 590.72 L305.11 594.13 L313.00 597.19 L320.89 599.92 L328.78 602.30 L336.67 604.36 L344.56 606.09 L352.44 607.50 L360.33 608.60 L368.22 609.38 L376.11 609.84 L384.00 610.00 L391.89 609.84 L399.78 609.38 L407.67 608.60 L415.56 607.50 L423.44 606.09 L431.33 604.36 L439.22 602.30 L447.11 599.92 L455.00 597.19 L462.89 594.13 L470.78 590.72 L478.67 586.95 L486.56 582.82 L494.44 578.31 L502.33 573.42 L510.22 568.14 L518.11 562.45 L526.00 556.34 L533.89 549.80 L541.78 542.81 L549.67 535.36 L557.56 527.44 L565.44 519.02 L573.33 510.10 L581.22 500.65 L589.11 490.66 L597.00 480.11 L604.89 468.98 L612.78 457.24 L620.67 444.87 L628.56 431.87 L636.44 418.19 L644.33 403.82 L652.22 388.74 L660.11 372.91 L668.00 356.32" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round"/>
+  <path d="M100.00 408.36 L107.89 419.41 L115.78 430.14 L123.67 440.57 L131.56 450.68 L139.44 460.48 L147.33 469.97 L155.22 479.15 L163.11 488.02 L171.00 496.58 L178.89 504.82 L186.78 512.76 L194.67 520.38 L202.56 527.69 L210.44 534.70 L218.33 541.39 L226.22 547.77 L234.11 553.83 L242.00 559.59 L249.89 565.04 L257.78 570.17 L265.67 574.99 L273.56 579.51 L281.44 583.71 L289.33 587.60 L297.22 591.17 L305.11 594.44 L313.00 597.40 L320.89 600.04 L328.78 602.38 L336.67 604.40 L344.56 606.11 L352.44 607.51 L360.33 608.60 L368.22 609.38 L376.11 609.84 L384.00 610.00 L391.89 609.84 L399.78 609.38 L407.67 608.60 L415.56 607.51 L423.44 606.11 L431.33 604.40 L439.22 602.38 L447.11 600.04 L455.00 597.40 L462.89 594.44 L470.78 591.17 L478.67 587.60 L486.56 583.71 L494.44 579.51 L502.33 574.99 L510.22 570.17 L518.11 565.04 L526.00 559.59 L533.89 553.83 L541.78 547.77 L549.67 541.39 L557.56 534.70 L565.44 527.69 L573.33 520.38 L581.22 512.76 L589.11 504.82 L597.00 496.58 L604.89 488.02 L612.78 479.15 L620.67 469.97 L628.56 460.48 L636.44 450.68 L644.33 440.57 L652.22 430.14 L660.11 419.41 L668.00 408.36" fill="none" stroke="#159987" stroke-width="5" stroke-dasharray="12 10" stroke-linecap="round"/>
+  <text x="133" y="360" class="label" font-size="38" font-style="italic" style="fill:#214d73">F</text>
+  <text x="609" y="558" class="label" font-size="38" font-style="italic" style="fill:#159987">T₂F</text>
+  <path d="M384 676V624" stroke="#a9b7c3" stroke-width="3" stroke-dasharray="7 8"/>
+  <circle cx="384" cy="610" r="10" fill="#fff" stroke="#182431" stroke-width="4"/>
+  <text x="384" y="724" text-anchor="middle" class="label" font-size="36" font-style="italic">x₀</text>
 </svg>

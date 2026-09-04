@@ -1,110 +1,108 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
-  <title id="title">Consensus error under second-order data heterogeneity</title>
-  <desc id="desc">Nearly matching local Hessians above Local SGD trajectories that diverge during local updates and merge at synchronization rounds.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
+  <title id="title">Local SGD: Hessian similarity and consensus error</title>
+  <desc id="desc">Similar local Hessians H1, H2, and H3. Three workers start from a shared iterate, drift during local updates, and synchronize to their average. The vertical bracket highlights their disagreement before averaging.</desc>
   <defs>
-    <marker id="consensus-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M1 1L13 6L1 11Z" fill="#182431"/>
-    </marker>
-    <style>
-      .label { font-family: Georgia, 'Times New Roman', serif; fill: #182431; }
-      .line { fill: none; stroke: #182431; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-      .soft { fill: none; stroke: #bdc8d2; stroke-width: 3; }
-    </style>
+    <style>.label { font-family: 'Times New Roman', Times, serif; fill: #182431; }</style>
   </defs>
-
+  <rect width="768" height="768" fill="#fff"/>
   <g aria-label="similar local Hessians">
-    <g transform="translate(86 58)">
-      <rect width="128" height="128" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-      <g stroke="#ffffff" stroke-width="4">
-        <rect x="18" y="18" width="28" height="28" rx="4" fill="#214d73"/>
-        <rect x="50" y="18" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="82" y="18" width="28" height="28" rx="4" fill="#dceaf4"/>
-        <rect x="18" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="50" y="50" width="28" height="28" rx="4" fill="#159987"/>
-        <rect x="82" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="18" y="82" width="28" height="28" rx="4" fill="#dceaf4"/>
-        <rect x="50" y="82" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="82" y="82" width="28" height="28" rx="4" fill="#214d73"/>
-      </g>
-      <text x="64" y="161" text-anchor="middle" class="label" font-size="28" font-style="italic">∇²F₁</text>
+    <g transform="translate(110 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₁</text>
     </g>
-    <text x="254" y="132" text-anchor="middle" class="label" font-size="38">≈</text>
-    <g transform="translate(298 58)">
-      <rect width="128" height="128" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-      <g stroke="#ffffff" stroke-width="4">
-        <rect x="18" y="18" width="28" height="28" rx="4" fill="#214d73"/>
-        <rect x="50" y="18" width="28" height="28" rx="4" fill="#86adc9"/>
-        <rect x="82" y="18" width="28" height="28" rx="4" fill="#dceaf4"/>
-        <rect x="18" y="50" width="28" height="28" rx="4" fill="#86adc9"/>
-        <rect x="50" y="50" width="28" height="28" rx="4" fill="#159987"/>
-        <rect x="82" y="50" width="28" height="28" rx="4" fill="#86adc9"/>
-        <rect x="18" y="82" width="28" height="28" rx="4" fill="#dceaf4"/>
-        <rect x="50" y="82" width="28" height="28" rx="4" fill="#86adc9"/>
-        <rect x="82" y="82" width="28" height="28" rx="4" fill="#214d73"/>
-      </g>
-      <text x="64" y="161" text-anchor="middle" class="label" font-size="28" font-style="italic">∇²F₂</text>
+    <g transform="translate(318 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#86adc9"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₂</text>
     </g>
-    <text x="466" y="132" text-anchor="middle" class="label" font-size="38">≈</text>
-    <g transform="translate(510 58)">
-      <rect width="128" height="128" rx="10" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
-      <g stroke="#ffffff" stroke-width="4">
-        <rect x="18" y="18" width="28" height="28" rx="4" fill="#214d73"/>
-        <rect x="50" y="18" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="82" y="18" width="28" height="28" rx="4" fill="#dceaf4"/>
-        <rect x="18" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="50" y="50" width="28" height="28" rx="4" fill="#159987"/>
-        <rect x="82" y="50" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="18" y="82" width="28" height="28" rx="4" fill="#dceaf4"/>
-        <rect x="50" y="82" width="28" height="28" rx="4" fill="#8fb5d0"/>
-        <rect x="82" y="82" width="28" height="28" rx="4" fill="#214d73"/>
-      </g>
-      <text x="64" y="161" text-anchor="middle" class="label" font-size="28" font-style="italic">∇²F₃</text>
+    <g transform="translate(526 64)">
+      <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
+      <rect x="16" y="16" width="30" height="30" rx="3" fill="#214d73"/>
+      <rect x="51" y="16" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="16" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="16" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="51" y="51" width="30" height="30" rx="3" fill="#159987"/>
+      <rect x="86" y="51" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="16" y="86" width="30" height="30" rx="3" fill="#dceaf4"/>
+      <rect x="51" y="86" width="30" height="30" rx="3" fill="#8fb5d0"/>
+      <rect x="86" y="86" width="30" height="30" rx="3" fill="#214d73"/>
+      <text x="66" y="181" text-anchor="middle" class="label" font-size="38" font-style="italic">H₃</text>
+    </g>
+    <text x="280" y="144" text-anchor="middle" class="label" font-size="42">≈</text>
+    <text x="488" y="144" text-anchor="middle" class="label" font-size="42">≈</text>
+  </g>
+  <path d="M64 274H704" stroke="#e3e9ed" stroke-width="3"/>
+  <path d="M108 324V308H326V324M428 324V308H646V324" fill="none" stroke="#a9b7c3" stroke-width="3"/>
+  <text x="217" y="357" text-anchor="middle" class="label" font-size="32" font-style="italic">K steps</text>
+  <text x="537" y="357" text-anchor="middle" class="label" font-size="32" font-style="italic">K steps</text>
+
+  <g fill="none" stroke="#b5c1cb" stroke-width="3">
+    <path d="M340 380L393 480M340 470L393 480M340 590L393 480"/>
+    <path d="M660 416L702 480M660 486L702 480M660 538L702 480"/>
+  </g>
+  <g fill="none" stroke="#214d73" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="109,480 176,444 250,404 326,380"/>
+    <polyline points="427,480 485,455 558,429 646,416"/>
+    <g fill="#fff" stroke-width="4">
+      <circle cx="176" cy="444" r="8"/>
+      <circle cx="250" cy="404" r="8"/>
+      <circle cx="326" cy="380" r="8"/>
+      <circle cx="485" cy="455" r="8"/>
+      <circle cx="558" cy="429" r="8"/>
+      <circle cx="646" cy="416" r="8"/>
     </g>
   </g>
-
-  <line x1="64" y1="252" x2="704" y2="252" stroke="#dce3ea" stroke-width="3"/>
-  <path d="M102 290V274H362V290M406 290V274H666V290" class="soft"/>
-  <text x="232" y="312" text-anchor="middle" class="label" font-size="27" font-style="italic">K steps</text>
-  <text x="536" y="312" text-anchor="middle" class="label" font-size="27" font-style="italic">K steps</text>
-
-  <g aria-label="local trajectories and synchronization">
-    <circle cx="96" cy="468" r="26" fill="#e5f5f1" stroke="#182431" stroke-width="5"/>
-    <text x="96" y="478" text-anchor="middle" class="label" font-size="30" font-style="italic">x⁰</text>
-
-    <path d="M127 458C188 424 253 364 344 350" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round"/>
-    <path d="M128 465C206 447 270 425 344 414" fill="none" stroke="#4d7fa3" stroke-width="7" stroke-linecap="round"/>
-    <path d="M128 474C206 489 270 510 344 522" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round"/>
-    <path d="M124 482C188 526 257 584 344 602" fill="none" stroke="#e07a5f" stroke-width="7" stroke-linecap="round"/>
-    <g fill="#ffffff" stroke-width="5">
-      <circle cx="176" cy="424" r="8" stroke="#214d73"/><circle cx="252" cy="380" r="8" stroke="#214d73"/><circle cx="344" cy="350" r="9" stroke="#214d73"/>
-      <circle cx="184" cy="450" r="8" stroke="#4d7fa3"/><circle cx="265" cy="426" r="8" stroke="#4d7fa3"/><circle cx="344" cy="414" r="9" stroke="#4d7fa3"/>
-      <circle cx="184" cy="490" r="8" stroke="#159987"/><circle cx="265" cy="510" r="8" stroke="#159987"/><circle cx="344" cy="522" r="9" stroke="#159987"/>
-      <circle cx="176" cy="526" r="8" stroke="#e07a5f"/><circle cx="252" cy="574" r="8" stroke="#e07a5f"/><circle cx="344" cy="602" r="9" stroke="#e07a5f"/>
+  <g fill="none" stroke="#159987" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="109,480 176,478 250,474 326,470"/>
+    <polyline points="427,480 485,482 558,484 646,486"/>
+    <g fill="#fff" stroke-width="4">
+      <circle cx="176" cy="478" r="8"/>
+      <circle cx="250" cy="474" r="8"/>
+      <circle cx="326" cy="470" r="8"/>
+      <circle cx="485" cy="482" r="8"/>
+      <circle cx="558" cy="484" r="8"/>
+      <circle cx="646" cy="486" r="8"/>
     </g>
-
-    <line x1="382" y1="330" x2="382" y2="624" stroke="#9eabb7" stroke-width="3" stroke-dasharray="10 10"/>
-    <path d="M354 350L380 445M354 414L380 455M354 522L380 479M354 602L380 489" class="soft"/>
-    <circle cx="386" cy="468" r="29" fill="#159987" stroke="#182431" stroke-width="5"/>
-    <text x="386" y="478" text-anchor="middle" class="label" font-size="29" fill="#ffffff" style="fill:#ffffff">x̄</text>
-
-    <path d="M419 458C476 427 540 392 642 380" fill="none" stroke="#214d73" stroke-width="7" stroke-linecap="round"/>
-    <path d="M420 464C492 449 552 434 642 426" fill="none" stroke="#4d7fa3" stroke-width="7" stroke-linecap="round"/>
-    <path d="M420 474C492 485 552 497 642 505" fill="none" stroke="#159987" stroke-width="7" stroke-linecap="round"/>
-    <path d="M418 481C476 510 542 542 642 554" fill="none" stroke="#e07a5f" stroke-width="7" stroke-linecap="round"/>
-    <g fill="#ffffff" stroke-width="5">
-      <circle cx="486" cy="426" r="8" stroke="#214d73"/><circle cx="560" cy="396" r="8" stroke="#214d73"/><circle cx="642" cy="380" r="9" stroke="#214d73"/>
-      <circle cx="492" cy="450" r="8" stroke="#4d7fa3"/><circle cx="565" cy="434" r="8" stroke="#4d7fa3"/><circle cx="642" cy="426" r="9" stroke="#4d7fa3"/>
-      <circle cx="492" cy="486" r="8" stroke="#159987"/><circle cx="565" cy="498" r="8" stroke="#159987"/><circle cx="642" cy="505" r="9" stroke="#159987"/>
-      <circle cx="486" cy="511" r="8" stroke="#e07a5f"/><circle cx="560" cy="540" r="8" stroke="#e07a5f"/><circle cx="642" cy="554" r="9" stroke="#e07a5f"/>
-    </g>
-    <line x1="684" y1="354" x2="684" y2="580" stroke="#9eabb7" stroke-width="3" stroke-dasharray="10 10"/>
-    <path d="M652 380L680 450M652 426L680 458M652 505L680 479M652 554L680 487" class="soft"/>
-    <circle cx="688" cy="468" r="29" fill="#159987" stroke="#182431" stroke-width="5"/>
-    <text x="688" y="478" text-anchor="middle" class="label" font-size="29" style="fill:#ffffff">x̄</text>
   </g>
-
-  <path d="M360 350H372M360 602H372M366 350V602" fill="none" stroke="#182431" stroke-width="4" stroke-linecap="round"/>
-  <text x="248" y="696" text-anchor="middle" class="label" font-size="30" font-style="italic">consensus error</text>
-  <path d="M390 684H604" class="line" marker-end="url(#consensus-arrow)"/>
+  <g fill="none" stroke="#e07a5f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="109,480 176,518 250,562 326,590"/>
+    <polyline points="427,480 485,503 558,527 646,538"/>
+    <g fill="#fff" stroke-width="4">
+      <circle cx="176" cy="518" r="8"/>
+      <circle cx="250" cy="562" r="8"/>
+      <circle cx="326" cy="590" r="8"/>
+      <circle cx="485" cy="503" r="8"/>
+      <circle cx="558" cy="527" r="8"/>
+      <circle cx="646" cy="538" r="8"/>
+    </g>
+  </g>
+  <g stroke="#182431" stroke-width="4">
+    <circle cx="80" cy="480" r="27" fill="#fff"/>
+    <circle cx="400" cy="480" r="27" fill="#e5f5f1"/>
+    <circle cx="710" cy="480" r="27" fill="#e5f5f1"/>
+  </g>
+  <g class="label" font-size="32" font-style="italic" text-anchor="middle">
+    <text x="80" y="491">x⁰</text>
+    <text x="400" y="491">x̄</text>
+    <text x="710" y="491">x̄</text>
+  </g>
+  <path d="M344 380H354V590H344M354 605V642H252" fill="none" stroke="#182431" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="252" y="694" text-anchor="middle" class="label" font-size="36">consensus error</text>
 </svg>
