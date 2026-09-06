@@ -1,0 +1,74 @@
+.jelly-cube {
+  width: 100%;
+  min-width: 0;
+  max-width: 232px;
+  flex: 1 1 0;
+}
+
+.jelly-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.jelly-stage canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.jelly-stage canvas:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.jelly-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: hsl(var(--muted-foreground) / 0.45);
+  pointer-events: none;
+}
+
+.jelly-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+.jelly-loading { animation: jelly-loading 1.5s linear infinite; }
+@keyframes jelly-loading { to { transform: rotate(360deg); } }
+
+.jelly-controls {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.jelly-controls button {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 28px;
+  flex: 0 0 auto;
+  color: hsl(var(--muted-foreground));
+  border-radius: 4px;
+  transition: color 150ms, background-color 150ms;
+}
+
+.jelly-controls button:hover:not(:disabled) { color: hsl(var(--foreground)); background: hsl(var(--muted)); }
+.jelly-controls button:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 1px; }
+.jelly-controls button:disabled { opacity: 0.3; cursor: default; }
+.jelly-controls .jelly-color { width: 24px; }
+.jelly-color span { width: 10px; height: 10px; border-radius: 50%; }
+.jelly-color[aria-pressed="true"] span { outline: 1px solid currentColor; outline-offset: 3px; }
+.jelly-control-divider { width: 1px; height: 12px; margin: 0 2px; background: hsl(var(--border)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .jelly-loading { animation: none; }
+  .jelly-controls button { transition: none; }
+}

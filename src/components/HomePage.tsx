@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp, FileText, Github, GraduationCap, Linkedin, Mail } from 'lucide-react';
 import cv from '@/files/homepage/CV.pdf';
 import { getDocumentViewerUrl } from '@/lib/documentViewer';
+import JellyCube from './JellyCube';
 
 const HomePage = () => {
   const newsItems = [
@@ -64,7 +65,7 @@ const HomePage = () => {
     <div className="times-page min-h-screen bg-background">
       <main className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
         <section className="border-b border-border pb-12 sm:pb-14">
-          <div className="grid items-center gap-9 md:grid-cols-[minmax(0,1fr)_12rem] md:gap-12 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-14">
+          <div className="grid min-w-0 grid-cols-1 items-center gap-9 md:grid-cols-[minmax(0,1fr)_11rem] md:gap-9 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-8">
             <div className="min-w-0">
               <h1 className="text-5xl font-bold text-foreground sm:text-6xl lg:text-7xl">
                 Ali Zindari
@@ -155,14 +156,17 @@ const HomePage = () => {
               </div>
             </div>
 
-            <img
-              src="/ali-zindari-profile.jpg"
-              alt="Ali Zindari"
-              width={400}
-              height={400}
-              fetchPriority="high"
-              className="aspect-square w-36 justify-self-start rounded-md border border-border object-cover shadow-sm sm:w-44 md:w-full md:justify-self-end"
-            />
+            <div className="flex w-full min-w-0 max-w-sm items-center gap-1 md:flex-col lg:flex-row">
+              <img
+                src="/ali-zindari-profile.jpg"
+                alt="Ali Zindari"
+                width={400}
+                height={400}
+                fetchPriority="high"
+                className="aspect-square w-32 shrink-0 rounded-md border border-border object-cover shadow-sm sm:w-44 md:w-full lg:w-44"
+              />
+              <JellyCube />
+            </div>
           </div>
         </section>
 
