@@ -62,6 +62,14 @@ export default function JellyCube() {
   return (
     <div className="jelly-cube" role="group" aria-label="Jelly cube">
       <div className="jelly-stage" ref={host} data-jelly-status={status}>
+        {status === 'ready' && (
+          <div className="jelly-invitation">
+            <span>play with the jelly :)</span>
+            <svg viewBox="0 0 50 38" fill="none" aria-hidden="true">
+              <path d="M9 3C3 15 9 27 22 30C29 32 36 32 44 30M36 24L44 30L36 36" />
+            </svg>
+          </div>
+        )}
         {status !== 'ready' && (
           <div className="jelly-placeholder" role="status" aria-label={status === 'loading' ? 'Loading jelly' : 'Interactive 3D unavailable'}>
             {status === 'loading' ? <LoaderCircle size={18} className="jelly-loading" aria-hidden="true" /> : (

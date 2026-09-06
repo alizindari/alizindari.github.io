@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/caveat-latin-500.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
 .jelly-cube {
   width: 100%;
   min-width: 0;
@@ -26,6 +34,48 @@
 .jelly-stage canvas:focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
+}
+
+.jelly-invitation {
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  inset-inline: 0;
+  color: hsl(var(--foreground) / 0.68);
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 150ms ease 800ms;
+}
+
+.jelly-invitation span {
+  display: block;
+  width: max-content;
+  max-width: calc(100% - 8px);
+  margin-inline: auto;
+  font-family: 'Caveat', 'Segoe Print', cursive;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transform: rotate(-5deg);
+}
+
+.jelly-invitation svg {
+  position: absolute;
+  top: 25px;
+  left: 13%;
+  width: 28%;
+  height: auto;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.jelly-stage:active .jelly-invitation {
+  opacity: 0;
+  transition-delay: 0ms;
 }
 
 .jelly-placeholder {
@@ -71,4 +121,5 @@
 @media (prefers-reduced-motion: reduce) {
   .jelly-loading { animation: none; }
   .jelly-controls button { transition: none; }
+  .jelly-invitation { transition: none; }
 }
