@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { ArrowLeft, Home } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import BlogDifficulty from './BlogDifficulty';
+import BlogVisitCounter from './BlogVisitCounter';
 import BlogPostFooter from './BlogPostFooter';
 import MathRenderer from './MathRenderer';
 
@@ -134,6 +135,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
                   day: 'numeric'
                 })}
               </time>
+              <BlogVisitCounter postSlug={post.slug} recordVisit />
             </div>
             <BlogDifficulty level={post.difficulty} className="mt-5 max-w-lg" />
           </header>

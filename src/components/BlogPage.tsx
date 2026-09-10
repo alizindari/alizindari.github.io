@@ -72,7 +72,8 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
     if (suggestion.type === 'tag') {
       onTagClick?.(suggestion.value);
     } else if (suggestion.postId) {
-      onPostClick?.(suggestion.postId);
+      const post = blogPosts.find(post => post.id === suggestion.postId);
+      if (post) onPostClick?.(post.slug);
     }
     setShowSuggestions(false);
     setSearchTerm('');

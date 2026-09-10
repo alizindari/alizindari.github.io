@@ -78,8 +78,10 @@ const HomePage = () => {
                 program, jointly at{' '}
                 <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   CISPA
-                </a>{' '}
-                and{' '}
+                </a>,{' '}
+                <a href="https://www.uni-saarland.de/en/home.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  Universit&auml;t des Saarlandes
+                </a>, and{' '}
                 <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   EPFL
                 </a>

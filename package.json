@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "test:jelly": "node --experimental-strip-types --test scripts/jelly-physics.test.mjs",
+    "test:blog-visits": "node --experimental-strip-types --test scripts/blog-visits.test.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
