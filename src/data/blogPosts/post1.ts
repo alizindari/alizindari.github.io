@@ -7,7 +7,7 @@ export const post1: BlogPost = {
   author: "Ali Zindari",
   date: "2026-02-27",
   excerpt: "A short proof of the standard descent guarantee for gradient descent on smooth nonconvex functions.",
-  image: "/blog-cover-welcome.svg",
+  image: "/blog-cover-gd-v2.png",
   math: "\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",
   tags: ["optimization", "gradient descent", "smoothness"],
   difficulty: 1,
