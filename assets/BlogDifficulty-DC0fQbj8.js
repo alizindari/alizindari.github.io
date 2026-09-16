@@ -1,4 +1,4 @@
-import{c as o,j as e}from"./index-CAmO-2ZN.js";import{c as r}from"./utils-CytzSlOG.js";/**
+import{c as o,j as e}from"./index-B9DmDYDg.js";import{c as r}from"./utils-CytzSlOG.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -50,7 +50,7 @@ $$
 $$
 
 This is the basic $O(1/T)$ convergence guarantee for reaching an approximate stationary point.
-`},d={id:2,slug:"washing-machine-dilemma",title:"How Many Shirts Should You Own? The Washing Machine Dilemma",author:"Ali Zindari",date:"2026-08-08",excerpt:"",image:"/blog-cover-laundry.svg",math:"",tags:["optimization","probability","simulation"],difficulty:2,content:String.raw`Recently, I've been thinking about a problem I have to deal with every week. There isn't a washing machine in my apartment. There is just one for the whole building, and everyone shares it. Each wash costs 1.25 €.
+`},d={id:2,slug:"washing-machine-dilemma",title:"How Many Shirts Should You Own? The Washing Machine Dilemma",author:"Ali Zindari",date:"2026-08-08",excerpt:"",image:"/blog-cover-laundry-v2.png",math:"",tags:["optimization","probability","simulation"],difficulty:2,content:String.raw`Recently, I've been thinking about a problem I have to deal with every week. There isn't a washing machine in my apartment. There is just one for the whole building, and everyone shares it. Each wash costs 1.25 €.
 
 I usually do laundry on the weekends. Sometimes the machine is already occupied, so I can't use it right away and have to go back and check several times. And then there is drying, which is slow and boring because I don't use a dryer.
 
