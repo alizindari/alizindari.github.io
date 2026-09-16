@@ -1,9 +1,9 @@
-import{c as o,j as e}from"./index-B9DmDYDg.js";import{c as r}from"./utils-CytzSlOG.js";/**
+import{c as o,j as e}from"./index-Bsx1-Xjo.js";import{c as r}from"./utils-CytzSlOG.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const h=o("Gauge",[["path",{d:"m12 14 4-4",key:"9kzdfg"}],["path",{d:"M3.34 19a10 10 0 1 1 17.32 0",key:"19p75a"}]]),l={id:1,slug:"convergence-of-gradient-descent-for-smooth-functions",title:"Convergence of Gradient Descent for Smooth Functions",author:"Ali Zindari",date:"2026-02-27",excerpt:"A short proof of the standard descent guarantee for gradient descent on smooth nonconvex functions.",image:"/blog-cover-welcome.svg",math:"\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",tags:["optimization","gradient descent","smoothness"],difficulty:1,content:`# Convergence of Gradient Descent for Smooth Functions
+ */const h=o("Gauge",[["path",{d:"m12 14 4-4",key:"9kzdfg"}],["path",{d:"M3.34 19a10 10 0 1 1 17.32 0",key:"19p75a"}]]),l={id:1,slug:"convergence-of-gradient-descent-for-smooth-functions",title:"Convergence of Gradient Descent for Smooth Functions",author:"Ali Zindari",date:"2026-02-27",excerpt:"A short proof of the standard descent guarantee for gradient descent on smooth nonconvex functions.",image:"/blog-cover-gd-v2.png",math:"\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",tags:["optimization","gradient descent","smoothness"],difficulty:1,content:`# Convergence of Gradient Descent for Smooth Functions
 
 I want this blog to be a place for small notes about math and machine learning. As a first test, here is the standard descent argument for gradient descent on a smooth function.
 
