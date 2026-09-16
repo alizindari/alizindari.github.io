@@ -245,7 +245,9 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     </p>
                   )}
 
-                  <BlogDifficulty level={post.difficulty} className="mb-4 sm:mb-5" />
+                  {post.difficulty !== null && (
+                    <BlogDifficulty level={post.difficulty} className="mb-4 sm:mb-5" />
+                  )}
                   
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                     <div className="flex flex-wrap gap-2">

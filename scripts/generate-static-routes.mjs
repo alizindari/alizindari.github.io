@@ -13,6 +13,12 @@ const routes = [
     type: 'website',
   },
   {
+    path: 'blog/the-iced-tea-no-one-wanted',
+    title: 'The Iced Tea No One Wanted | Ali Zindari',
+    description: 'Some personal thoughts on free iced tea, doing theory, and wondering whether any of it matters.',
+    type: 'article',
+  },
+  {
     path: 'blog/washing-machine-dilemma',
     title: 'The Washing Machine Dilemma | Ali Zindari',
     description: 'A playful optimization model for balancing wardrobe size, laundry costs, capacity, drying time, and uncertainty.',

@@ -16,6 +16,10 @@ const PageLoading = () => (
 );
 
 const postMetadata: Record<string, { title: string; description: string }> = {
+  'the-iced-tea-no-one-wanted': {
+    title: 'The Iced Tea No One Wanted | Ali Zindari',
+    description: 'Some personal thoughts on free iced tea, doing theory, and wondering whether any of it matters.',
+  },
   'convergence-of-gradient-descent-for-smooth-functions': {
     title: 'Convergence of Gradient Descent for Smooth Functions | Ali Zindari',
     description: 'A concise derivation of the standard convergence guarantee for gradient descent on smooth nonconvex functions.',

@@ -137,7 +137,9 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
               </time>
               <BlogVisitCounter postSlug={post.slug} recordVisit />
             </div>
-            <BlogDifficulty level={post.difficulty} className="mt-5 max-w-lg" />
+            {post.difficulty !== null && (
+              <BlogDifficulty level={post.difficulty} className="mt-5 max-w-lg" />
+            )}
           </header>
 
           {/* Tags */}
@@ -176,6 +178,20 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
                 <Suspense fallback={<div className="mt-10 h-52 border-t border-border" />}>
                   <LaundryStochasticSimulator />
                 </Suspense>
+              )}
+              {post.feedbackIntro && (
+                <div className="blog-article max-w-none text-justify hyphens-auto">
+                  <p className="text-base sm:text-lg text-foreground leading-[1.5] mb-3">
+                    {post.feedbackIntro}{' '}
+                    <a
+                      href="mailto:zindari.ali@gmail.com"
+                      className="text-primary underline decoration-primary/35 underline-offset-4 transition-colors hover:text-primary-light"
+                    >
+                      send me an email
+                    </a>
+                    .
+                  </p>
+                </div>
               )}
               <BlogPostFooter post={post} />
             </div>

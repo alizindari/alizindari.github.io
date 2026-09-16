@@ -56,19 +56,21 @@ const BlogPostFooter = ({ post }: BlogPostFooterProps) => {
         <code>{citation}</code>
       </pre>
 
-      <p className="mt-6 flex items-start gap-2 text-base leading-relaxed text-foreground sm:text-lg">
-        <Mail size={18} className="mt-1 shrink-0 text-primary" aria-hidden="true" />
-        <span>
-          If you have any questions or feedback,{' '}
-          <a
-            href="mailto:zindari.ali@gmail.com"
-            className="font-medium text-primary underline decoration-primary/35 underline-offset-4 transition-colors hover:text-primary-light"
-          >
-            send me an email
-          </a>
-          .
-        </span>
-      </p>
+      {!post.feedbackIntro && (
+        <p className="mt-6 flex items-start gap-2 text-base leading-relaxed text-foreground sm:text-lg">
+          <Mail size={18} className="mt-1 shrink-0 text-primary" aria-hidden="true" />
+          <span>
+            If you have any questions or feedback,{' '}
+            <a
+              href="mailto:zindari.ali@gmail.com"
+              className="font-medium text-primary underline decoration-primary/35 underline-offset-4 transition-colors hover:text-primary-light"
+            >
+              send me an email
+            </a>
+            .
+          </span>
+        </p>
+      )}
     </footer>
   );
 };

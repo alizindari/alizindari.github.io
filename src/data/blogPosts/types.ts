@@ -10,6 +10,7 @@ export interface BlogPost {
   image: string;
   math: string;
   tags: string[];
-  difficulty: BlogDifficultyLevel;
+  difficulty: BlogDifficultyLevel | null;
+  feedbackIntro?: string;
   content: string;
 }
