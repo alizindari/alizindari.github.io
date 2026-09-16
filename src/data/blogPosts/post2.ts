@@ -7,7 +7,7 @@ export const post2: BlogPost = {
   author: "Ali Zindari",
   date: "2026-08-08",
   excerpt: "",
-  image: "/blog-cover-laundry.svg",
+  image: "/blog-cover-laundry-v2.png",
   math: "",
   tags: ["optimization", "probability", "simulation"],
   difficulty: 2,
