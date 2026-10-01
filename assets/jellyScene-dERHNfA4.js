@@ -1,4 +1,4 @@
-import{b as Tct,d as Dct}from"./index-Bsx1-Xjo.js";/**
+import{b as Tct,d as Dct}from"./index-Cv2y4hSB.js";/**
  * @license
  * Copyright 2010-2026 Three.js Authors
  * SPDX-License-Identifier: MIT
