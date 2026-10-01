@@ -28,7 +28,7 @@ const PageMetadata = ({ title, description, type = 'website', noIndex = false }:
       ? '/'
       : `${location.pathname.replace(/\/+$/, '')}/`;
     const canonicalUrl = `${window.location.origin}${canonicalPath}`;
-    const imageUrl = `${window.location.origin}/ali-zindari-profile.jpg`;
+    const imageUrl = `${window.location.origin}/ali-zindari-acropolis.png`;
 
     document.title = title;
     setMeta('name', 'description', description);

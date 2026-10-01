@@ -159,14 +159,19 @@ const HomePage = () => {
             </div>
 
             <div className="flex w-full min-w-0 max-w-sm items-center gap-1 md:flex-col lg:flex-row">
-              <img
-                src="/ali-zindari-profile.jpg"
-                alt="Ali Zindari"
-                width={400}
-                height={400}
-                fetchPriority="high"
-                className="aspect-square w-32 shrink-0 rounded-md border border-border object-cover shadow-sm sm:w-44 md:w-full lg:w-44"
-              />
+              <figure className="w-32 shrink-0 sm:w-44 md:w-full lg:w-44">
+                <img
+                  src="/ali-zindari-acropolis.png"
+                  alt="Ali Zindari at the Acropolis in Athens"
+                  width={1086}
+                  height={1448}
+                  fetchPriority="high"
+                  className="aspect-square w-full rounded-md border border-border object-cover shadow-sm"
+                />
+                <figcaption className="mt-2 text-center text-sm leading-snug text-muted-foreground">
+                  Athens Acropolis
+                </figcaption>
+              </figure>
               <JellyCube />
             </div>
           </div>
