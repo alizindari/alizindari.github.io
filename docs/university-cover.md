@@ -1,0 +1,24 @@
+# University Blog Cover
+
+Asset: `public/blog-cover-university-v2.png` (2172 x 724).
+Previous cover: `public/blog-cover-university.png`, retained but no longer used.
+Generated with the built-in image generation tool, using `public/blog-cover-iced-tea-v2.png` as a style reference.
+The current illustration depicts a lone student at a dead end in a concrete campus maze: effort without progress, isolation, and lost time. It is symbolic, not an accurate depiction of the campus.
+
+## Current Prompt
+
+Use case: illustration-story.
+Create a NEW thoughtful editorial cover for a Persian autobiographical essay about deep disappointment with undergraduate university life. Its emotional essence is five years of wasted effort, institutional arrogance and hollow prestige, an isolated barren concrete campus, and trying hard without getting anywhere. This is not a cozy studying illustration or a university advertisement.
+The attached iced-tea drawing is a STYLE reference ONLY: match its loose imperfect black pen lines, economical crosshatching, clean white paper, a little muted teal and amber, and intimate notebook-sketch quality. Do not copy its objects.
+One clear visual metaphor: THE CAMPUS AS A DEAD END. Draw a spare, compact concrete university labyrinth in a shallow elevated three-quarter view. Three or four low blocky brutalist academic buildings with small repetitive windows merge into a few simple tall corridor walls; the open tops let us see the path. Not a complex puzzle, just two or three bends, with one path visibly terminating at a solid blank concrete wall. A single small but clearly recognizable student seen from behind, with a muted teal backpack, stands facing that dead end, shoulders slightly dropped. A thin muted amber worn path runs from the open foreground through the bends to the student's feet, making the effort-to-nowhere idea immediately readable. The student must not be hidden by a wall. A few rough ground marks imply an empty, dry campus with no greenery. Surround the whole small isolated architectural group with abundant white paper. Concrete mostly unfilled white, grey hatching and a few dark windows; retain air and visual simplicity. This is an expressive metaphor, not an accurate architectural portrait of a specific university.
+Panoramic exact 3:1 composition, approximately 2172 x 724. Entire drawing, all building tops, person and path fully in frame with white margins; main composition about 75 percent of width and 75 percent of height. Make both person and dead-end wall visible at thumbnail size. Emotion: loneliness, futility, lost time, quiet bitterness rather than melodrama. Strong coherent ink contours, not fussy technical drafting.
+No text, numbers, labels, logos, equations, signs, graduation cap, books or classroom chair still life. No barbed wire, prison bars, locked cages, fires, skulls, clocks, arrows or infographic symbols. No photorealism, 3D render, polished vector art, beige background, gradients or decorative circles. White, black, muted teal, tiny amber accents only.
+
+## Previous Prompt
+
+Use case: illustration-story.
+Create a panoramic 3:1 blog cover, approximately 2172 x 724, for a candid Persian personal essay looking back critically on an unhappy undergraduate university experience: too much coursework, frustrating classes and wasted time.
+Use the supplied iced-tea image ONLY as a style reference: loose black ink sketch on white paper, slightly imperfect human lines, sparse crosshatching, small muted teal and amber accents. It should clearly belong to the same illustration series.
+Subject: a single empty university lecture-hall chair with a small attached writing tablet, beside an uneven tall pile of well-used textbooks and loose assignment papers. A pencil rests on the tablet, and one lightly crumpled page lies at the foot of the pile. This is one simple, observant still life suggesting years of study and frustration. Do not add readable text to books or papers. Chair is modest and utilitarian, not a luxurious desk chair. Small muted teal seat/back and an occasional amber book spine, predominantly black ink and white.
+Composition: balanced central group across about 65-75 percent of width and 75 percent of height. All parts of chair, books, papers and ground line fully visible with generous clear top/bottom margins. Plain white background with just one lightly sketched ground line and subtle ink contact shadows. Easily readable at thumbnail size, no crowding.
+Avoid: photorealism, glossy 3D, vector infographic, architectural campus advertising, celebratory graduation caps, diplomas, institutional logos, readable text, title, people, faces, angry caricatures, scenic background, decorative circles, arrows, gradients or beige paper. Do not copy the bottle, plate or FREE note from the reference. Output only the finished illustration.

@@ -46,6 +46,15 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
         );
       }
 
+      if (post.language === 'fa') {
+        // Isolate English parentheticals so their brackets stay in reading order.
+        return part.split(/(\([^()\n]*[A-Za-z][^()\n]*\))/g).map((fragment, fragmentIndex) => (
+          fragment.startsWith('(') && /[A-Za-z]/.test(fragment)
+            ? <bdi dir="auto" key={`${keyPrefix}-${index}-${fragmentIndex}`}>{fragment}</bdi>
+            : fragment
+        ));
+      }
+
       return part;
     });
   };
@@ -122,7 +131,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
         <article className="max-w-6xl mx-auto">
           {/* Header */}
           <header className="mb-6 sm:mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
+            <h1 lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="text-start text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground sm:gap-4 sm:text-sm">
@@ -161,7 +170,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
           {/* Content */}
           {post.content.trim() && (
             <div className="card-academic p-4 sm:p-6">
-              <div className="blog-article max-w-none text-justify hyphens-auto">
+              <div lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="blog-article max-w-none text-justify hyphens-auto">
                 {renderContent(contentBeforePlayground)}
               </div>
               {post.id === 2 && (

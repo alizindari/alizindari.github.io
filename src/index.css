@@ -235,6 +235,14 @@
     font-family: 'Times New Roman', Times, serif;
   }
 
+  .blog-article[lang="fa"] {
+    hyphens: none;
+  }
+
+  .blog-article[lang="fa"] p {
+    line-height: 1.75;
+  }
+
   .math-inline .katex {
     font-size: 0.9em;
   }

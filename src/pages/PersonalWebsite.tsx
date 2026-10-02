@@ -16,6 +16,10 @@ const PageLoading = () => (
 );
 
 const postMetadata: Record<string, { title: string; description: string }> = {
+  'my-undergraduate-years-at-iut': {
+    title: 'چرا باید شدیدا از صنعتی اصفهان متنفر باشید؟ | Ali Zindari',
+    description: 'تجربه‌ها و خاطرات من از دوران کارشناسی در دانشگاه صنعتی اصفهان.',
+  },
   'the-iced-tea-no-one-wanted': {
     title: 'The Iced Tea No One Wanted | Ali Zindari',
     description: 'Some personal thoughts on free iced tea, doing theory, and wondering whether any of it matters.',

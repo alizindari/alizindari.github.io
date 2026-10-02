@@ -37,6 +37,12 @@ const routes = [
     type: 'website',
   },
   {
+    path: 'blog/my-undergraduate-years-at-iut',
+    title: 'چرا باید شدیدا از صنعتی اصفهان متنفر باشید؟ | Ali Zindari',
+    description: 'تجربه‌ها و خاطرات من از دوران کارشناسی در دانشگاه صنعتی اصفهان.',
+    type: 'article',
+  },
+  {
     path: 'presentations',
     title: 'Presentations | Ali Zindari',
     description: 'Thesis and seminar presentations by Ali Zindari on machine learning and optimization.',

@@ -123,6 +123,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                   <input
                     id="blog-search"
                     type="text"
+                    dir="auto"
                     aria-label="Search blog posts or tags"
                     placeholder="Search blog posts or tags..."
                     value={searchTerm}
@@ -154,7 +155,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="text-xs sm:text-sm font-medium text-foreground truncate">
+                            <div dir="auto" className="text-start text-xs sm:text-sm font-medium text-foreground truncate">
                               {suggestion.value}
                             </div>
                             <div className="text-[10px] sm:text-xs text-muted-foreground capitalize">
@@ -214,11 +215,11 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                 <div>
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 gap-2">
                     <div className="flex-1 min-w-0">
-                      <h2 className="mb-2 text-xl font-heading font-semibold text-foreground sm:text-2xl">
+                      <h2 lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="mb-2 text-start text-xl font-heading font-semibold text-foreground sm:text-2xl">
                         <button
                           type="button"
                           onClick={() => onPostClick?.(post.slug)}
-                          className="text-left transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          className="text-start transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                         >
                           {post.title}
                         </button>
@@ -240,7 +241,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                   </div>
                   
                   {post.excerpt && (
-                    <p className="text-sm sm:text-base text-foreground leading-relaxed mb-4 sm:mb-6">
+                    <p lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="text-start text-sm sm:text-base text-foreground leading-relaxed mb-4 sm:mb-6">
                       {post.excerpt}
                     </p>
                   )}

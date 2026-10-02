@@ -11,6 +11,7 @@ export interface BlogPost {
   math: string;
   tags: string[];
   difficulty: BlogDifficultyLevel | null;
+  language?: 'en' | 'fa';
   feedbackIntro?: string;
   content: string;
 }
