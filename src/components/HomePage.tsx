@@ -78,10 +78,7 @@ const HomePage = () => {
                 program, jointly at{' '}
                 <a href="https://cispa.de" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   CISPA
-                </a>,{' '}
-                <a href="https://www.uni-saarland.de/en/home.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                  Universit&auml;t des Saarlandes
-                </a>, and{' '}
+                </a> and{' '}
                 <a href="https://www.epfl.ch" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                   EPFL
                 </a>
@@ -197,7 +194,7 @@ const HomePage = () => {
               Generally speaking, I&apos;m interested in how useful capabilities <span className="font-semibold text-primary">emerge</span> in transformers with many parameters. It seems that to have useful models, we need several elements to come together: a proper architecture, a good optimizer, enough <span className="font-semibold text-primary">degrees of freedom</span> in the model (high overparameterization), and <span className="font-semibold text-primary">randomness</span> and <span className="font-semibold text-primary">noise</span> in the optimization process. I would like to use tools from high-dimensional statistics, dynamical systems, and optimization to see what we can explain about these models.
             </p>
             <p>
-              Lately, I&apos;ve been curious about the role of <strong className="font-semibold text-primary">memory</strong> in models and how it can actually help. I want to understand the best way to add memory to transformer architectures, how <strong className="font-semibold text-primary">compression</strong> can preserve useful <strong className="font-semibold text-primary">information</strong> and lead to good predictions, and what kind of memory <strong className="font-semibold text-primary">hierarchy</strong> we need, perhaps something closer to human memory, with both fast and slow parts. This could help models avoid forgetting and truly learn continuously.
+              Lately, I&apos;ve become interested in developing architectures that use both <strong className="font-semibold text-primary">long-term and short-term memory</strong> during inference, with mechanisms for deciding which <strong className="font-semibold text-primary">information</strong> to keep and which to erase.
             </p>
           </div>
         </section>

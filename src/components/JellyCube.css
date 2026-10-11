@@ -116,7 +116,6 @@
 .jelly-controls .jelly-color { width: 24px; }
 .jelly-color span { width: 10px; height: 10px; border-radius: 50%; }
 .jelly-color[aria-pressed="true"] span { outline: 1px solid currentColor; outline-offset: 3px; }
-.jelly-control-divider { width: 1px; height: 12px; margin: 0 2px; background: hsl(var(--border)); }
 
 @media (prefers-reduced-motion: reduce) {
   .jelly-loading { animation: none; }

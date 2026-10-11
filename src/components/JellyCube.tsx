@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUp, LoaderCircle, Pause, Play, RotateCcw } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
 import type { JellyColor, JellyScene } from '@/lib/jellyScene';
 import './JellyCube.css';
 
@@ -14,8 +14,6 @@ export default function JellyCube() {
   const scene = useRef<JellyScene | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'unavailable'>('loading');
   const [color, setColor] = useState<JellyColor>('berry');
-  const [paused, setPaused] = useState(false);
-  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
     const element = host.current;
@@ -37,11 +35,10 @@ export default function JellyCube() {
       try {
         const { createJellyScene } = await import('@/lib/jellyScene');
         if (cancelled) return;
-        instance = await createJellyScene(element, () => { if (!cancelled) setPaused(false); });
+        instance = await createJellyScene(element);
         if (cancelled) { instance.dispose(); return; }
         scene.current = instance;
         setColor('berry');
-        setPaused(false);
         setStatus('ready');
       } catch (error) {
         console.error('Could not initialize the jelly cube.', error);
@@ -57,7 +54,7 @@ export default function JellyCube() {
       instance?.dispose();
       scene.current = null;
     };
-  }, [attempt]);
+  }, []);
 
   return (
     <div className="jelly-cube" role="group" aria-label="Jelly cube">
@@ -93,29 +90,6 @@ export default function JellyCube() {
             <span style={{ backgroundColor: item.swatch }} />
           </button>
         ))}
-        <span className="jelly-control-divider" aria-hidden="true" />
-        <button type="button" title="Bounce" aria-label="Bounce jelly" disabled={status !== 'ready'} onClick={() => scene.current?.nudge()}>
-          <ArrowUp size={15} aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          title={paused ? 'Resume' : 'Pause'}
-          aria-label={paused ? 'Resume jelly' : 'Pause jelly'}
-          aria-pressed={paused}
-          disabled={status !== 'ready'}
-          onClick={() => { scene.current?.setPaused(!paused); setPaused(!paused); }}
-        >
-          {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-        </button>
-        <button
-          type="button"
-          title={status === 'unavailable' ? 'Retry 3D' : 'Reset'}
-          aria-label={status === 'unavailable' ? 'Retry jelly' : 'Reset jelly'}
-          disabled={status === 'loading'}
-          onClick={() => status === 'unavailable' ? setAttempt(value => value + 1) : scene.current?.reset()}
-        >
-          <RotateCcw size={14} aria-hidden="true" />
-        </button>
       </div>
     </div>
   );
