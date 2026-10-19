@@ -1,0 +1,67 @@
+.cv-document {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #e4e6e8;
+  color: #202326;
+  color-scheme: light;
+}
+
+.cv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  padding: 8px 16px;
+  background: #fff;
+  border-bottom: 1px solid #d2d5d8;
+  font-family: 'Times New Roman', Times, serif;
+  z-index: 10;
+}
+
+.cv-toolbar h1 {
+  flex: 1;
+  margin: 0;
+  font: bold 18px 'Times New Roman', Times, serif;
+  white-space: nowrap;
+}
+
+.cv-toolbar h1 span { font-weight: normal; color: #656b71; }
+.cv-controls, .cv-control-group { display: flex; align-items: center; gap: 4px; }
+.cv-controls { gap: 20px; }
+
+.cv-tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 4px;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cv-tool:hover:not(:disabled) { background: #e9edf1; }
+.cv-tool:disabled { opacity: 0.35; cursor: default; }
+.cv-tool:focus-visible, .cv-toolbar input:focus-visible { outline: 2px solid #234669; outline-offset: 2px; }
+.cv-toolbar input { width: 32px; height: 30px; border: 1px solid #ccd1d6; border-radius: 3px; text-align: center; background: #fff; }
+.cv-page-count { min-width: 22px; white-space: nowrap; }
+.cv-zoom { width: 46px; text-align: center; font-variant-numeric: tabular-nums; }
+.cv-pages-region { position: relative; flex: 1; min-height: 0; }
+.cv-scroll { position: absolute; inset: 0; overflow: auto; overscroll-behavior: contain; }
+.cv-scroll .pdfViewer { padding: 12px 0 2px; --page-bg-color: #fff; }
+.cv-scroll .pdfViewer .page { box-shadow: 0 1px 5px #0003; }
+.cv-scroll .annotationLayer .linkAnnotation > a:focus-visible { outline: 2px solid #234669; background: #23466918; }
+.cv-status { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; background: #e4e6e8; font-family: 'Times New Roman', Times, serif; }
+.cv-status a { color: #234669; text-decoration: underline; }
+
+@media (max-width: 639px) {
+  .cv-toolbar { padding: 6px 8px; gap: 4px 8px; }
+  .cv-controls { order: 3; width: 100%; justify-content: space-between; gap: 4px; }
+  .cv-control-group { gap: 2px; }
+  .cv-scroll .pdfViewer { padding-top: 8px; }
+}

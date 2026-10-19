@@ -1,6 +1,7 @@
 Edit main.tex for CV content. resume.cls controls the layout.
 Publication entries use \publication{title}{authors}{venue/year}{URL}.
-All publications are grouped on the first page, without headers or footers.
+All publications are grouped on the first page. Footers show only a centered
+page number; there are no headers.
 
 Requirements: a LaTeX installation with pdflatex, latexmk, fontawesome5,
 tabularx, and needspace (available in TeX Live / MacTeX), plus make.

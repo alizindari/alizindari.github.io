@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, FileText, Github, GraduationCap, Linkedin, Mail } from 'lucide-react';
-import cv from '@/files/homepage/CV.pdf';
 import JellyCube from './JellyCube';
 
 const HomePage = () => {
@@ -46,9 +45,14 @@ const HomePage = () => {
       description: "I started my master's in Mathematics & Computer Science at Saarland University."
     },
     {
-      date: "2022-01-01",
+      date: "2022-06-01",
       title: "Internship at LIONS Lab @ EPFL",
-      description: "Joined LIONS Lab @ EPFL as an intern."
+      description: "I joined LIONS Lab @ EPFL as a research intern, working on the adversarial robustness of self-supervised models."
+    },
+    {
+      date: "2021-07-01",
+      title: "Internship at VITA Lab @ EPFL",
+      description: "I joined VITA Lab @ EPFL as a research intern, working on motion forecasting for self-driving cars."
     }
   ];
 
@@ -94,7 +98,7 @@ const HomePage = () => {
 
               <div className="mt-8 flex items-center gap-2.5" aria-label="Profile links">
                 <a
-                  href={cv}
+                  href="/cv/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"

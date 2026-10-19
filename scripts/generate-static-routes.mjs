@@ -7,6 +7,12 @@ const siteUrl = 'https://alizindari.github.io';
 
 const routes = [
   {
+    path: 'cv',
+    title: 'Curriculum Vitae | Ali Zindari',
+    description: 'Curriculum vitae of Ali Zindari, including education, publications, and research experience.',
+    type: 'website',
+  },
+  {
     path: 'blog',
     title: 'Blog | Ali Zindari',
     description: 'Notes and explorations by Ali Zindari on machine learning, mathematics, optimization, and related questions.',

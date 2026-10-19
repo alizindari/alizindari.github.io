@@ -64,7 +64,7 @@ const PublicationsPage = () => {
       type: "NeurIPS", 
       image: localsgd_nips,
       abstract: "We establish upper and lower bounds for Local SGD under second-order data heterogeneity and third-order smoothness. The results show how Local SGD can interpolate between heterogeneous and homogeneous regimes while remaining communication-efficient.",
-      pdf: "https://openreview.net/pdf?id=u1QFeoxnhW"
+      pdf: "https://proceedings.neurips.cc/paper_files/paper/2025/file/54cee855c7eb9429b4b3668d06bf670f-Paper-Conference.pdf"
     },
     {
       id: 5,
@@ -108,7 +108,7 @@ const PublicationsPage = () => {
       type: "Workshop",
       image: gan,
       abstract: "We propose an attention-based approach for segmenting COVID-19 infected regions in lung CT images, enhanced with synthetic data generation techniques to improve model robustness and accuracy.",
-      pdf: "https://arxiv.org/ftp/arxiv/papers/2108/2108.08895.pdf"
+      pdf: "https://arxiv.org/pdf/2108.08895"
     },
     {
       id: 1,
@@ -119,7 +119,7 @@ const PublicationsPage = () => {
       type: "Workshop",
       image: bifurcated,
       abstract: "This work introduces a bifurcated autoencoder architecture specifically designed for accurate segmentation of COVID-19 infected regions in CT images, demonstrating improved performance over traditional approaches.",
-      pdf: "https://arxiv.org/ftp/arxiv/papers/2011/2011.00631.pdf"
+      pdf: "https://arxiv.org/pdf/2011.00631"
     }
   ];
 
