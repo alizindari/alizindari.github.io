@@ -1,0 +1,153 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{resume}
+
+\usepackage[left=0.5in,top=0.6in,right=0.5in,bottom=0.65in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+
+\definecolor{linkaccent}{RGB}{35,70,105}
+\definecolor{secondary}{RGB}{80,80,80}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkaccent,
+    filecolor=linkaccent,
+    urlcolor=linkaccent,
+    pdftitle={Ali Zindari CV},
+    pdfauthor={Ali Zindari}
+}
+
+\name{Ali Zindari}
+\address{
+\href{mailto:zindari.ali@gmail.com}{\faEnvelope\ Email} \\
+\href{https://alizindari.github.io/}{\faGlobe\ Website} \\
+\href{https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en}{\faGraduationCap\ Scholar} \\
+\href{https://www.linkedin.com/in/ali-zindari-a64bb6187/}{\faLinkedin\ LinkedIn} \\
+\href{https://github.com/alizindari}{\faGithub\ GitHub}
+}
+
+\begin{document}
+
+\begin{rSection}{Research Interests}
+Theory of Deep Learning, Memory
+\end{rSection}
+
+\begin{rSection}{Education}
+
+{\bfseries Ph.D. in Computer Science (ELLIS Program)} \hfill {\em Nov. 2025 -- Present} \\
+CISPA and EPFL \hfill Saarbr\"ucken, Germany \\
+\textit{Co-supervised by Prof. Sebastian U. Stich and Prof. Martin Jaggi.}
+\par\smallskip
+
+{\bfseries M.Sc. in Mathematics \& Computer Science} \hfill {\em 2023 -- 2025} \\
+Saarland University \hfill Saarbr\"ucken, Germany \\
+\textit{Thesis: Fine-Grained Analysis of Local SGD under Intermittent Communication.}
+\par\smallskip
+
+{\bfseries B.Sc. in Computer Engineering} \hfill {\em 2017 -- 2022} \\
+Isfahan University of Technology \hfill Isfahan, Iran \\
+\textit{Thesis: Segmentation of Lungs COVID Infected Regions by Attention Mechanism and Synthetic Data.}
+
+\end{rSection}
+
+\begin{rSection}{Publications}
+
+% Each entry takes a title, authors, venue/year, and URL.
+\publication
+  {Learning When to Adapt}
+  {\underline{A.Zindari}, X.Jiang, R.Mulayoff, S.U.Stich}
+  {arXiv 2026}
+  {https://arxiv.org/abs/2605.19028}
+
+\publication
+  {LoRA vs. Full Fine-Tuning: A Theoretical Perspective}
+  {\underline{A.Zindari}*, R.Mulayoff*, S.U.Stich}
+  {arXiv 2026}
+  {https://arxiv.org/abs/2605.19018}
+
+\publication
+  {Revisiting Consensus Error: A Fine-grained Analysis of Local SGD under Second-order Data Heterogeneity}
+  {K.K.Patel, \underline{A.Zindari}, S.U.Stich, L.Wang}
+  {NeurIPS 2025}
+  {https://proceedings.neurips.cc/paper_files/paper/2025/hash/54cee855c7eb9429b4b3668d06bf670f-Abstract-Conference.html}
+
+\publication
+  {Decoupled SGDA for Games with Intermittent Strategy Communication}
+  {\underline{A.Zindari}*, P.Yazdkhasti*, A.Rodomanov, T.Chavdarova, S.U.Stich}
+  {ICML 2025}
+  {https://arxiv.org/abs/2501.14652}
+
+\publication
+  {The Limits and Potentials of Local SGD for Distributed Heterogeneous Learning with Intermittent Communication}
+  {K.K.Patel, M.Glasgow, \underline{A.Zindari}, L.Wang, S.U.Stich, Z.Cheng, N.Joshi, N.Srebro}
+  {COLT 2024}
+  {https://arxiv.org/pdf/2405.11667}
+
+\publication
+  {On the Convergence of Local SGD Under Third-Order Smoothness and Hessian Similarity}
+  {\underline{A.Zindari}, R.Luo, S.U.Stich}
+  {Opt4ML @ NeurIPS 2023}
+  {https://openreview.net/pdf?id=OnJa9N4VwY}
+
+\publication
+  {Segmentation of Lungs COVID Infected Regions by Attention Mechanism and Synthetic Generated Data}
+  {\underline{A.Zindari}*, P.Yazdkhasti*, Z.Nabizadeh, P.Khadivi, N.Karimi, S.Samavi}
+  {arXiv 2021}
+  {https://arxiv.org/ftp/arxiv/papers/2108/2108.08895.pdf}
+
+\begin{samepage}
+\publication
+  {Bifurcated Autoencoder for Segmentation of COVID-19 Infected Regions in CT Image}
+  {P.Yazdkhasti*, \underline{A.Zindari}*, Z.Nabizadeh, R.Roshandel, P.Khadivi, N.Karimi, S.Samavi}
+  {ICPR 2021 Workshops}
+  {https://arxiv.org/ftp/arxiv/papers/2011/2011.00631.pdf}
+
+{\small\textcolor{secondary}{* Equal contribution}}
+\par
+\end{samepage}
+
+\end{rSection}
+
+\begin{rSection}{Research Experience}
+
+\begin{rSubsection}{CISPA Helmholtz Center for Information Security - MLO Lab}{Oct. 2022 -- Nov. 2025}{\textbf{Supervisors}: Prof. Sebastian U. Stich - Prof. Tatjana Chavdarova}{Saarbr\"ucken, Germany}
+    \item Worked on theory of distributed optimization and minimax games.
+\end{rSubsection}
+
+\begin{rSubsection}{\'Ecole polytechnique f\'ed\'erale de Lausanne (EPFL) - LIONS Lab}{Jun. 2022 -- Oct. 2022}{\textbf{Supervisors}: Prof. Ali Ramezani-Kebrya - Prof. Reza Shokri (NUS)}{Lausanne, Switzerland}
+    \item Worked on the adversarial robustness of self-supervised models.
+\end{rSubsection}
+
+\begin{rSubsection}{\'Ecole polytechnique f\'ed\'erale de Lausanne (EPFL) - VITA Lab}{Jul. 2021 -- Oct. 2021}{\textbf{Supervisors}: Prof. Alexandre Alahi - Yuejiang Liu - Mohammadhossein Bahari}{Lausanne, Switzerland}
+    \item Worked on the Motion Forecasting problem for self-driving cars.
+\end{rSubsection}
+
+\begin{rSubsection}{Isfahan University of Technology - Biomedical Imaging Lab}{Jun. 2020 -- Feb. 2021}{\textbf{Supervisors}: Prof. Shadrokh Samavi - Prof. Nader Karimi}{Isfahan, Iran}
+    \item Proposed a bifurcated neural network for segmentation of COVID-19 infected regions in CT images.
+\end{rSubsection}
+
+\end{rSection}
+
+\end{document}

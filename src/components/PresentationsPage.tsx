@@ -3,12 +3,14 @@ import master_thesis_image from '@/assets/presentations/Master_Thesis.svg';
 import deep_linear_models from '@/assets/presentations/deep_linear_models.svg';
 import imprecise_ml from '@/assets/presentations/imprecise_ml.svg';
 import games_for_ml from '@/assets/presentations/games.svg';
+import qualifying_exam_image from '@/assets/presentations/qualifying_exam.svg';
 
 // Import PDF files for links
 import master_thesis_pdf from '@/files/presentations/Master_Thesis_Presentation.pdf';
 import deep_linear_models_pdf from '@/files/presentations/deep_linear_models.pdf';
 import imprecise_ml_pdf from '@/files/presentations/imprecise_ml_seminar.pdf';
 import games_pdf from '@/files/presentations/gml_presentation.pdf';
+import qualifying_exam_pdf from '@/files/presentations/Ali_Zindari_QE_Slides_Handout.pdf';
 
 import { FileDown } from 'lucide-react';
 import { getDocumentViewerUrl } from '@/lib/documentViewer';
@@ -16,6 +18,15 @@ import AcademicTemplateLink from './AcademicTemplateLink';
 
 const PresentationsPage = () => {
   const presentations = [
+    {
+      id: 5,
+      title: "Learning When to Adapt",
+      venue: "PhD Qualifying Exam",
+      year: 2026,
+      image: qualifying_exam_image,
+      description: "My PhD qualifying exam presentation on fine-tuning with less forgetting, focusing on DISeL, LoRA, and the theory of adaptation and retention.",
+      pdfUrl: qualifying_exam_pdf
+    },
     {
       id: 4,
       title: "Fine-Grained Analysis of Local SGD",

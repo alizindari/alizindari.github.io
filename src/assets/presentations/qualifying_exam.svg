@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 444" role="img" aria-labelledby="title desc">
+  <title id="title">Learning when to adapt</title>
+  <desc id="desc">A frozen model W0 is combined with an input-dependent low-rank adapter A G(x) B. The square diagonal gate controls the strength of the correction.</desc>
+  <defs>
+    <!-- Outlined KaTeX Main glyphs match the slides' Computer Modern math,
+         including bold matrices/vectors and upright delimiters/subscripts. -->
+    <path id="math-A" d="M296 0Q283 3 164 3Q63 3 49 0H40V62H92Q144 62 144 64Q144 65 268.0 375.0Q392 685 397 689Q400 694 406 696Q411 698 434 698Q463 698 471 689Q476 685 600.0 375.0Q724 65 724 64Q724 62 776 62H828V0H817Q799 3 658 3Q503 3 485 0H472V62H517Q561 62 561 63Q551 89 539 119L517 175H262L240 120Q218 65 217 64Q217 62 261 62H306V0ZM390 237 492 238 440 365Q390 491 388 491Q287 238 287 237Z"/>
+    <path id="math-B" d="M39 624V686H264Q494 686 503 685Q588 680 646.0 642.0Q704 604 718 540Q720 532 720 510Q720 493 719 487Q698 391 564 359Q565 358 579 356Q642 345 690 312Q752 256 752 189Q752 160 741 125Q698 19 547 2Q543 1 288 0H39V62H147V624ZM563 513Q563 560 542.5 588.5Q522 617 486 622Q479 624 385 624H293V382H375Q458 383 467 385Q563 405 563 513ZM590 192Q590 308 503 330L398 331H293V62H391Q490 63 499 65Q590 86 590 192Z"/>
+    <path id="math-G" d="M648 46Q592 -10 465 -10Q306 -10 203 64Q89 146 66 300Q64 320 64 343Q64 447 116 531Q178 631 298 670Q372 697 449 697Q452 697 459.0 696.5Q466 696 470 696Q553 696 617 658Q643 643 652 634L656 632L732 695Q736 697 745.0 697.0Q754 697 758 695L759 694Q764 692 765 660V627V489Q765 424 759 422L758 421Q754 419 731.0 419.0Q708 419 704 421Q698 424 695 444Q686 501 654.5 547.0Q623 593 579 616Q540 635 495 635Q365 635 295 563Q261 528 246.5 476.5Q232 425 232.0 343.0Q232 261 246.5 209.5Q261 158 295 123Q365 51 498 51Q538 51 569.5 66.0Q601 81 607 108Q608 111 608 164V214H464V276H479Q508 273 680 273Q692 273 716.5 273.5Q741 274 755.0 274.0Q769 274 789.5 274.5Q810 275 820.5 275.5Q831 276 834 276H845V214H765V113Q765 29 764.0 17.0Q763 5 758 2Q755 0 750 0Q739 2 706.0 16.5Q673 31 658 40Z"/>
+    <path id="math-W" d="M915 686Q934 683 1052 683Q1060 683 1077.0 683.5Q1094 684 1103.0 684.0Q1112 684 1126.0 684.5Q1140 685 1147.5 685.5Q1155 686 1157 686H1164V624H1073L957 320Q930 249 900.0 170.0Q870 91 854.5 51.5Q839 12 839 10Q834 0 826 -5Q821 -7 799 -7Q776 -7 771.5 -5.0Q767 -3 759 10Q757 13 751 30Q706 151 594 442Q482 151 437 30Q431 13 429 10Q424 2 423.0 0.0Q422 -2 417.0 -4.5Q412 -7 407.5 -7.0Q403 -7 389 -7Q367 -7 363 -5Q354 0 349 10Q349 12 333.5 51.5Q318 91 288.0 170.0Q258 249 231 320L116 624H24V686H35Q53 683 183 683Q330 683 355 686H368V624H323Q278 624 278 623L437 207L499 369L561 531Q539 585 526 624H434V686H445Q463 683 593 683Q740 683 765 686H778V624H733Q688 624 688 623L847 207Q848 207 927.0 415.0Q1006 623 1006 624H905V686Z"/>
+    <path id="math-x" d="M227 0Q214 3 121 3Q37 3 28 0H21V62H117L145 96Q174 129 209 171L245 213Q179 294 109 382H26V444H34Q46 441 143 441Q247 441 265 444H274V382H246L281 339Q315 297 316 297Q318 297 354 341L389 382H352V444H360Q374 441 466 441Q550 441 559 444H566V382H471L419 321Q358 249 355 246Q419 165 504 63L545 62H586V0H578Q566 3 469 3Q365 3 347 0H338V62H366Q366 63 326.0 112.5Q286 162 285 163Q265 141 241 113L198 63L217 62H235V0Z"/>
+    <path id="math-y" d="M84 -102Q84 -123 97.5 -136.0Q111 -149 133 -149Q188 -146 224 -94Q232 -82 252 -37L269 0Q212 128 96 382H26V444H34Q46 441 146 441Q257 441 270 444H279V382H255Q232 382 232 380L337 151Q361 203 390 266L442 382H394V444H401Q414 441 495 441Q566 441 574 444H580V382H510L406 152Q298 -84 297 -87Q261 -154 201 -183Q167 -200 131 -200Q55 -200 29 -135Q23 -121 23 -100Q23 -70 40.5 -52.5Q58 -35 87 -35Q112 -35 130.5 -51.0Q149 -67 152 -92V-100H84Z"/>
+    <path id="math-left-paren" d="M333 -241Q333 -250 315 -250H302Q295 -244 274 -226Q94 -62 94 250Q94 372 123 473Q169 630 274 726Q281 732 290.0 739.5Q299 747 302 750H315Q327 750 330.0 747.0Q333 744 333 741Q333 737 322 726Q167 562 167.0 250.0Q167 -62 322 -226Q333 -237 333 -241Z"/>
+    <path id="math-right-paren" d="M60 749 64 750Q69 750 74 750H86Q93 744 114 726Q294 562 294 250Q294 127 265 28Q219 -130 114 -226Q107 -232 98.0 -239.5Q89 -247 86 -250H74Q62 -250 58.5 -248.0Q55 -246 55 -238Q56 -237 66 -225Q221 -64 221.0 250.0Q221 564 66 725Q56 737 55 738Q55 746 60 749Z"/>
+    <path id="math-zero" d="M96 585Q152 666 249 666Q322 666 377 616Q404 590 423 548Q460 465 460 320Q460 165 417 83Q389 25 335 -1Q293 -22 250 -22Q135 -22 82 83Q39 165 39 320Q39 413 51.5 473.5Q64 534 96 585ZM321 597Q292 629 250.0 629.0Q208 629 178 597Q156 574 148.0 541.0Q140 508 138 427Q138 421 137.5 388.0Q137 355 137 333Q137 237 139 199Q143 129 151.0 98.5Q159 68 181 46Q208 16 250 16Q291 16 318 46Q340 68 348.0 98.5Q356 129 360 199Q362 237 362 333Q362 355 361.5 388.0Q361 421 361 427Q359 508 351.0 541.0Q343 574 321 597Z"/>
+    <path id="math-plus" d="M70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722.0 250.0Q722 238 707 230H409V-68Q402 -82 389.0 -82.0Q376 -82 369 -68V230H70Q56 237 56.0 250.0Q56 263 70 270Z"/>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M1 1L11 6L1 11Z" fill="#182431"/>
+    </marker>
+    <style>
+      .label { fill: #182431; }
+      .flow { fill: none; stroke: #182431; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .matrix { stroke: #182431; stroke-width: 4; }
+    </style>
+    <pattern id="gate-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#e3e9ed" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="768" height="444" fill="#fff"/>
+  <g aria-label="frozen model and additive adapter">
+    <path d="M90 284V112H311" class="flow"/>
+    <rect x="326" y="78" width="116" height="68" rx="6" fill="#f1f4f7" class="matrix"/>
+    <g aria-label="W subscript zero" class="label">
+      <use href="#math-W" transform="translate(356.298 121.5) scale(.036 -.036)"/>
+      <use href="#math-zero" transform="translate(399.102 126.9) scale(.0252 -.0252)"/>
+    </g>
+    <path d="M442 112H642V247" class="flow"/>
+
+    <circle cx="54" cy="284" r="25" fill="#fff" class="matrix"/>
+    <use href="#math-x" transform="translate(43.074 292) scale(.036 -.036)" class="label" aria-label="x"/>
+    <path d="M79 284H120" class="flow"/>
+    <circle cx="90" cy="284" r="5" fill="#182431"/>
+
+    <rect x="134" y="250" width="120" height="68" rx="6" fill="#214d73" class="matrix"/>
+    <path d="M148 264H240M148 278H240M148 292H240M148 306H240" stroke="#b9d1e3" stroke-width="4"/>
+    <use href="#math-B" transform="translate(179.276 398) scale(.036 -.036)" class="label" aria-label="B"/>
+    <path d="M254 284H292" class="flow"/>
+
+    <g transform="translate(320 220)">
+      <rect x="-10" y="-10" width="148" height="148" rx="6" fill="#fff" class="matrix"/>
+      <rect width="128" height="128" fill="url(#gate-grid)"/>
+      <rect x="4" y="4" width="24" height="24" rx="2" fill="#159987"/>
+      <rect x="36" y="36" width="24" height="24" rx="2" fill="#72c3b4"/>
+      <rect x="68" y="68" width="24" height="24" rx="2" fill="#dceee9"/>
+      <rect x="100" y="100" width="24" height="24" rx="2" fill="#35a895"/>
+    </g>
+    <g transform="translate(342.798 398) scale(.036 -.036)" class="label" aria-label="G of x">
+      <use href="#math-G"/>
+      <use href="#math-left-paren" x="904"/>
+      <use href="#math-x" x="1293"/>
+      <use href="#math-right-paren" x="1900"/>
+    </g>
+    <path d="M458 284H499" class="flow"/>
+
+    <rect x="514" y="210" width="64" height="148" rx="6" fill="#159987" class="matrix"/>
+    <path d="M526 224V344M539 224V344M552 224V344M565 224V344" stroke="#d5eee8" stroke-width="4"/>
+    <use href="#math-A" transform="translate(530.358 398) scale(.036 -.036)" class="label" aria-label="A"/>
+    <path d="M578 284H608" class="flow"/>
+
+    <circle cx="642" cy="284" r="24" fill="#fff" class="matrix"/>
+    <use href="#math-plus" transform="translate(629.552 292) scale(.032 -.032)" class="label" aria-label="plus"/>
+    <path d="M666 284H689" class="flow"/>
+    <use href="#math-y" transform="translate(707.074 292) scale(.036 -.036)" class="label" aria-label="y"/>
+  </g>
+</svg>
