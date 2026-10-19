@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, FileText, Github, GraduationCap, Linkedin, Mail } from 'lucide-react';
 import cv from '@/files/homepage/CV.pdf';
-import { getDocumentViewerUrl } from '@/lib/documentViewer';
 import JellyCube from './JellyCube';
 
 const HomePage = () => {
@@ -95,7 +94,7 @@ const HomePage = () => {
 
               <div className="mt-8 flex items-center gap-2.5" aria-label="Profile links">
                 <a
-                  href={getDocumentViewerUrl(cv, 'Curriculum Vitae')}
+                  href={cv}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
