@@ -95,9 +95,9 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
   });
 
   return (
-    <div className="blog-page min-h-screen bg-gradient-subtle">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="text-center mb-8 sm:mb-12">
+    <div className="blog-page min-h-screen">
+      <div className="site-container site-page-content">
+        <div className="page-heading blog-heading text-center mb-8 sm:mb-12">
           {selectedTag && (
             <div className="mb-6">
               <button 
@@ -130,7 +130,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     onChange={(e) => handleSearchChange(e.target.value)}
                     onFocus={() => searchTerm.length >= 2 && setShowSuggestions(true)}
                     onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                    className="w-full px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full pl-4 pr-11 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                   <Search className="pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-muted-foreground sm:top-3.5 sm:h-5 sm:w-5" aria-hidden="true" />
                   
@@ -176,7 +176,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                   <button
                     key={tag}
                     onClick={() => onTagClick?.(tag)}
-                    className="px-2.5 sm:px-3 py-1 rounded-full text-xs sm:text-sm transition-colors capitalize bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground"
+                    className="topic-tag px-2.5 sm:px-3 py-1 rounded-md text-xs sm:text-sm transition-colors capitalize bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground"
                   >
                     {tag}
                   </button>
@@ -186,15 +186,15 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
           )}
         </div>
 
-        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
+        <div className="journal-grid mx-auto">
           {filteredPosts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-sm sm:text-base text-muted-foreground">No blog posts found matching your search criteria.</p>
             </div>
           ) : (
             filteredPosts.map((post) => (
-              <article key={post.id} className="card-academic group overflow-hidden p-4 transition-all duration-300 hover:shadow-elegant focus-within:shadow-elegant sm:p-6">
-                <div className="-mx-4 -mt-4 mb-4 aspect-[3/1] overflow-hidden sm:-mx-6 sm:-mt-6 sm:mb-6">
+              <article key={post.id} className="journal-entry card-academic group overflow-hidden p-4 sm:p-6">
+                <div className="journal-cover overflow-hidden">
                   <button
                     type="button"
                     onClick={() => onPostClick?.(post.slug)}
@@ -212,8 +212,8 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     />
                   </button>
                 </div>
-                <div>
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 gap-2">
+                <div className="journal-copy">
+                  <div className="journal-meta flex flex-col mb-3 sm:mb-4 gap-2">
                     <div className="flex-1 min-w-0">
                       <h2 lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="mb-2 text-start text-xl font-heading font-semibold text-foreground sm:text-2xl">
                         <button
@@ -230,7 +230,7 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     </div>
                     <time
                       dateTime={post.date}
-                      className="shrink-0 text-xs text-muted-foreground sm:ml-4 sm:whitespace-nowrap sm:text-sm"
+                      className="shrink-0 text-xs text-muted-foreground sm:text-sm"
                     >
                       {new Date(post.date).toLocaleDateString('en-US', {
                         year: 'numeric',
@@ -250,13 +250,13 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     <BlogDifficulty level={post.difficulty} className="mb-4 sm:mb-5" />
                   )}
                   
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                  <div className="journal-actions flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
                         <button
                           key={tag} 
                           onClick={() => onTagClick?.(tag)}
-                          className="px-2.5 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-md capitalize hover:bg-primary hover:text-primary-foreground transition-colors"
+                          className="topic-tag px-2.5 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-md capitalize hover:bg-primary hover:text-primary-foreground transition-colors"
                         >
                           {tag}
                         </button>

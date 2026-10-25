@@ -148,25 +148,25 @@ const PublicationsPage = () => {
   };
 
   return (
-    <div className="times-page min-h-screen bg-gradient-subtle">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="text-center mb-8 sm:mb-12">
+    <div className="publications-page times-page min-h-screen">
+      <div className="site-container site-page-content">
+        <div className="page-heading text-center mb-8 sm:mb-12">
           <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
             Publications
           </h1>
           <AcademicTemplateLink />
         </div>
 
-        <div className="max-w-6xl mx-auto space-y-6 sm:space-y-7">
+        <div className="publication-list mx-auto space-y-6 sm:space-y-7">
           {publications.map((pub) => (
-            <article key={pub.id} className="card-academic p-4 sm:p-5">
+            <article key={pub.id} className="publication-entry card-academic p-4 sm:p-5">
               <div className="flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6">
-                <div className="flex-shrink-0 w-full md:w-60">
+                <div className="publication-cover flex-shrink-0 w-full md:w-60">
                   <img 
                     src={pub.image} 
                     alt={`${pub.title} visualization`}
                     loading="lazy"
-                    className="w-full h-64 sm:h-72 md:w-60 md:h-60 object-contain bg-white rounded-lg border border-border shadow-card"
+                    className="w-full h-64 sm:h-72 md:w-60 md:h-60 object-contain bg-white"
                   />
                 </div>
                 <div className="flex flex-1 min-w-0 flex-col">
@@ -198,7 +198,7 @@ const PublicationsPage = () => {
                     {pub.abstract}
                   </p>
                   
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="paper-actions flex flex-wrap items-center gap-3">
                     <a 
                       href={pub.pdf}
                       target="_blank"

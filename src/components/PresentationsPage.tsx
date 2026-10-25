@@ -66,9 +66,9 @@ const PresentationsPage = () => {
   ];
 
   return (
-    <main className="times-page min-h-screen py-8 sm:py-12 px-4 sm:px-6">
-      <div className="container mx-auto max-w-6xl">
-        <header className="mb-8 text-center sm:mb-12">
+    <main className="presentations-page times-page min-h-screen">
+      <div className="site-container site-page-content">
+        <header className="page-heading mb-8 text-center sm:mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 sm:mb-4">Presentations</h1>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
             Thesis and seminar presentations on machine learning and optimization
@@ -80,10 +80,10 @@ const PresentationsPage = () => {
           {presentations.map((presentation) => (
             <article 
               key={presentation.id}
-              className="bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow"
+              className="presentation-entry bg-card rounded-lg border border-border overflow-hidden transition-shadow"
             >
               <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 h-48 sm:h-64 md:h-52 overflow-hidden bg-muted flex-shrink-0">
+                <div className="presentation-cover md:w-1/3 h-48 sm:h-64 md:h-52 overflow-hidden bg-white flex-shrink-0">
                   <img
                     src={presentation.image}
                     alt={`${presentation.title} preview`}

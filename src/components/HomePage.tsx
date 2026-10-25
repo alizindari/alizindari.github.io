@@ -65,12 +65,12 @@ const HomePage = () => {
   const [showAllNews, setShowAllNews] = useState(false);
 
   return (
-    <div className="times-page min-h-screen bg-background">
-      <main className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
-        <section className="border-b border-border pb-12 sm:pb-14">
-          <div className="grid min-w-0 grid-cols-1 items-center gap-9 md:grid-cols-[minmax(0,1fr)_11rem] md:gap-9 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-8">
-            <div className="min-w-0">
-              <h1 className="text-5xl font-bold text-foreground sm:text-6xl lg:text-7xl">
+    <div className="home-page times-page min-h-screen">
+      <main>
+        <section className="home-intro">
+          <div className="site-container home-intro-grid">
+            <div className="home-intro-copy min-w-0">
+              <h1 className="home-name text-foreground">
                 Ali Zindari
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -96,7 +96,7 @@ const HomePage = () => {
                 .
               </p>
 
-              <div className="mt-8 flex items-center gap-2.5" aria-label="Profile links">
+              <div className="profile-links mt-8 flex items-center gap-2.5" aria-label="Profile links">
                 <a
                   href="/cv/"
                   target="_blank"
@@ -158,15 +158,15 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="flex w-full min-w-0 max-w-sm items-center gap-1 md:flex-col lg:flex-row">
-              <figure className="w-32 shrink-0 sm:w-44 md:w-full lg:w-44">
+            <div className="home-portrait-group">
+              <figure className="home-portrait">
                 <img
                   src="/ali-zindari-acropolis.png"
                   alt="Ali Zindari at the Acropolis in Athens"
                   width={1086}
                   height={1448}
                   fetchPriority="high"
-                  className="aspect-square w-full rounded-md border border-border object-cover shadow-sm"
+                  className="aspect-square w-full object-cover"
                 />
                 <figcaption className="mt-2 text-center text-sm leading-snug text-muted-foreground">
                   Athens Acropolis
@@ -177,80 +177,84 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="grid gap-8 py-12 sm:py-14 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-14" aria-labelledby="about-heading">
-          <div>
-            <h2 id="about-heading" className="text-3xl font-bold text-foreground">
-              About
-            </h2>
-            <p className="mt-2 text-base text-muted-foreground">Research interests</p>
-            <ul className="mt-6 border-t border-border text-base sm:text-lg">
-              {researchAreas.map((area) => (
-                <li key={area} className="border-b border-border py-3.5 leading-snug text-foreground">
-                  {area}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <section className="home-about" aria-labelledby="about-heading">
+          <div className="site-container home-section-grid">
+            <div className="home-section-heading">
+              <h2 id="about-heading" className="text-3xl font-bold text-foreground">
+                About
+              </h2>
+              <p className="mt-2 text-base text-muted-foreground">Research interests</p>
+              <ul className="research-areas mt-6 text-base sm:text-lg">
+                {researchAreas.map((area) => (
+                  <li key={area} className="leading-snug text-foreground">
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="space-y-6 text-justify text-lg leading-8 text-foreground hyphens-auto">
-            <p>
-              Generally speaking, I&apos;m interested in how useful capabilities <span className="font-semibold text-primary">emerge</span> in transformers with many parameters. It seems that to have useful models, we need several elements to come together: a proper architecture, a good optimizer, enough <span className="font-semibold text-primary">degrees of freedom</span> in the model (high overparameterization), and <span className="font-semibold text-primary">randomness</span> and <span className="font-semibold text-primary">noise</span> in the optimization process. I would like to use tools from high-dimensional statistics, dynamical systems, and optimization to see what we can explain about these models.
-            </p>
-            <p>
-              Lately, I&apos;ve become interested in developing architectures that use both <strong className="font-semibold text-primary">long-term and short-term memory</strong> during inference, with mechanisms for deciding which <strong className="font-semibold text-primary">information</strong> to keep and which to erase.
-            </p>
+            <div className="about-copy space-y-6 text-justify text-lg leading-8 text-foreground hyphens-auto">
+              <p>
+                Generally speaking, I&apos;m interested in how useful capabilities <span className="font-semibold text-primary">emerge</span> in transformers with many parameters. It seems that to have useful models, we need several elements to come together: a proper architecture, a good optimizer, enough <span className="font-semibold text-primary">degrees of freedom</span> in the model (high overparameterization), and <span className="font-semibold text-primary">randomness</span> and <span className="font-semibold text-primary">noise</span> in the optimization process. I would like to use tools from high-dimensional statistics, dynamical systems, and optimization to see what we can explain about these models.
+              </p>
+              <p>
+                Lately, I&apos;ve become interested in developing architectures that use both <strong className="font-semibold text-primary">long-term and short-term memory</strong> during inference, with mechanisms for deciding which <strong className="font-semibold text-primary">information</strong> to keep and which to erase.
+              </p>
+            </div>
           </div>
         </section>
 
-        <section className="grid gap-8 border-t border-border py-12 sm:py-14 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-14" aria-labelledby="news-heading">
-          <div>
-            <h2 id="news-heading" className="text-3xl font-bold text-foreground">
-              News
-            </h2>
-            <p className="mt-2 text-base text-muted-foreground">Recent updates</p>
-          </div>
+        <section className="home-news" aria-labelledby="news-heading">
+          <div className="site-container home-section-grid">
+            <div className="home-section-heading">
+              <h2 id="news-heading" className="text-3xl font-bold text-foreground">
+                News
+              </h2>
+              <p className="mt-2 text-base text-muted-foreground">Recent updates</p>
+            </div>
 
-          <div>
-            {(showAllNews ? newsItems : newsItems.slice(0, 4)).map((item, index) => (
-              <article
-                key={`${item.date}-${item.title}`}
-                className={`grid gap-2 border-t border-border py-5 first:border-t-0 first:pt-0 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-5 ${
-                  index === (showAllNews ? newsItems.length : 4) - 1 ? 'pb-3' : ''
-                }`}
+            <div className="news-list">
+              {(showAllNews ? newsItems : newsItems.slice(0, 4)).map((item, index) => (
+                <article
+                  key={`${item.date}-${item.title}`}
+                  className={`news-item grid gap-2 border-t border-border py-5 first:border-t-0 first:pt-0 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-5 ${
+                    index === (showAllNews ? newsItems.length : 4) - 1 ? 'pb-3' : ''
+                  }`}
+                >
+                  <time dateTime={item.date} className="text-sm text-muted-foreground sm:pt-1">
+                    {new Date(item.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short'
+                    })}
+                  </time>
+                  <div>
+                    <h3 className="text-lg font-semibold leading-snug text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-base leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+              <button
+                onClick={() => setShowAllNews(!showAllNews)}
+                className="mt-5 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline sm:ml-[8rem]"
+                aria-expanded={showAllNews}
               >
-                <time dateTime={item.date} className="text-sm text-muted-foreground sm:pt-1">
-                  {new Date(item.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short'
-                  })}
-                </time>
-                <div>
-                  <h3 className="text-lg font-semibold leading-snug text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-base leading-relaxed text-muted-foreground">
-                    {item.description}
-                  </p>
-                </div>
-              </article>
-            ))}
-            <button
-              onClick={() => setShowAllNews(!showAllNews)}
-              className="mt-5 inline-flex items-center gap-2 text-base font-medium text-primary hover:underline sm:ml-[8rem]"
-              aria-expanded={showAllNews}
-            >
-              {showAllNews ? (
-                <>
-                  Hide older news
-                  <ChevronUp size={17} aria-hidden="true" />
-                </>
-              ) : (
-                <>
-                  Show older news
-                  <ChevronDown size={17} aria-hidden="true" />
-                </>
-              )}
-            </button>
+                {showAllNews ? (
+                  <>
+                    Hide older news
+                    <ChevronUp size={17} aria-hidden="true" />
+                  </>
+                ) : (
+                  <>
+                    Show older news
+                    <ChevronDown size={17} aria-hidden="true" />
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </section>
       </main>

@@ -105,8 +105,8 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
     : '';
 
   return (
-    <div className="blog-post-view min-h-screen bg-gradient-subtle">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <div className="blog-post-view min-h-screen">
+      <div className="article-container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Navigation */}
         <div className="flex items-center justify-between mb-6 sm:mb-8 gap-2">
           <button 
@@ -130,7 +130,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
         {/* Article */}
         <article className="max-w-6xl mx-auto">
           {/* Header */}
-          <header className="mb-6 sm:mb-8">
+          <header className="article-heading mb-6 sm:mb-8">
             <h1 lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="text-start text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4">
               {post.title}
             </h1>
@@ -158,7 +158,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
                 <button
                   key={tag}
                   onClick={() => onTagClick?.(tag)}
-                  className="px-2.5 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-md capitalize hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="topic-tag px-2.5 sm:px-3 py-1 text-xs sm:text-sm bg-primary/10 text-primary rounded-md capitalize hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label={`View posts tagged ${tag}`}
                 >
                   {tag}
@@ -169,7 +169,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
 
           {/* Content */}
           {post.content.trim() && (
-            <div className="card-academic p-4 sm:p-6">
+            <div className="article-content">
               <div lang={post.language ?? 'en'} dir={post.language === 'fa' ? 'rtl' : 'ltr'} className="blog-article max-w-none text-justify hyphens-auto">
                 {renderContent(contentBeforePlayground)}
               </div>

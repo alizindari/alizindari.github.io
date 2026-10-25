@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import HomePage from '../components/HomePage';
 import PageMetadata from '../components/PageMetadata';
+import '../styles/site.css';
 
 const BlogPage = lazy(() => import('../components/BlogPage'));
 const BlogPostView = lazy(() => import('../components/BlogPostView'));
@@ -156,7 +157,7 @@ const PersonalWebsite = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="personal-site min-h-screen bg-background">
       <PageMetadata
         title={metadata.title}
         description={metadata.description}

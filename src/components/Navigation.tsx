@@ -25,24 +25,24 @@ const Navigation = ({ activeTab }: NavigationProps) => {
 
   return (
     <nav
-      className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50"
+      className="site-navigation border-b border-border sticky top-0 z-50"
       style={{ fontFamily: "'Times New Roman', Times, serif" }}
       aria-label="Primary navigation"
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+      <div className="site-container">
         {/* Desktop Navigation */}
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-4 md:space-x-8 w-full">
+        <div className="flex items-center justify-between h-[72px]">
+          <div className="flex items-center justify-between gap-6 w-full">
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="font-heading text-lg font-semibold text-foreground transition-colors hover:text-primary md:text-xl"
+              className="site-brand shrink-0 text-xl font-semibold text-foreground transition-colors hover:text-primary"
             >
               Ali Zindari
             </Link>
             
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-1 flex-1">
+            <div className="hidden md:flex items-center gap-1">
               {tabs.map((tab) => (
                 <Link
                   key={tab.id}
