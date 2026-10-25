@@ -126,7 +126,7 @@
 .journal-cover { aspect-ratio: 3 / 1; margin: -24px -24px 24px; background: white; border-bottom: 1px solid hsl(var(--border) / 0.55); }
 .journal-copy { display: flex; flex-direction: column; flex: 1; min-width: 0; }
 .journal-meta h2 { font-size: 24px; line-height: 1.25; }
-.journal-meta > time { color: hsl(var(--terracotta)); }
+.journal-meta time { color: hsl(var(--terracotta)); }
 .journal-actions { margin-top: auto; }
 .journal-actions > button { white-space: nowrap; }
 .personal-site .topic-tag { border-radius: 4px; }

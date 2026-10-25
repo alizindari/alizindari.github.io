@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { AlignLeft, FileText, Search, Tag } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import BlogDifficulty from './BlogDifficulty';
+import BlogVisitCounter from './BlogVisitCounter';
 
 interface BlogPageProps {
   onPostClick?: (postSlug: string) => void;
@@ -228,16 +229,19 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                         By {post.author}
                       </p>
                     </div>
-                    <time
-                      dateTime={post.date}
-                      className="shrink-0 text-xs text-muted-foreground sm:text-sm"
-                    >
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </time>
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+                      <time
+                        dateTime={post.date}
+                        className="shrink-0 text-xs text-muted-foreground sm:text-sm"
+                      >
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </time>
+                      <BlogVisitCounter postSlug={post.slug} recordVisit={false} />
+                    </div>
                   </div>
                   
                   {post.excerpt && (
