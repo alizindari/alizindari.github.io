@@ -1,14 +1,14 @@
-import{c as v,j as e,r as b}from"./index-CoCNPrsq.js";import{c as k}from"./utils-CytzSlOG.js";/**
+import{c as v,j as e,r as y}from"./index-B7yJ6Mo-.js";import{c as q}from"./utils-CytzSlOG.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const j=v("Eye",[["path",{d:"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",key:"1nclc0"}],["circle",{cx:"12",cy:"12",r:"3",key:"1v7zrd"}]]);/**
+ */const _=v("Eye",[["path",{d:"M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",key:"1nclc0"}],["circle",{cx:"12",cy:"12",r:"3",key:"1v7zrd"}]]);/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const N=v("Gauge",[["path",{d:"m12 14 4-4",key:"9kzdfg"}],["path",{d:"M3.34 19a10 10 0 1 1 17.32 0",key:"19p75a"}]]),F={id:1,slug:"convergence-of-gradient-descent-for-smooth-functions",title:"Convergence of Gradient Descent for Smooth Functions",author:"Ali Zindari",date:"2026-02-27",excerpt:"A short proof of the standard descent guarantee for gradient descent on smooth nonconvex functions.",image:"/blog-cover-gd-v2.png",math:"\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",tags:["optimization","gradient descent","smoothness"],difficulty:1,content:`# Convergence of Gradient Descent for Smooth Functions
+ */const j=v("Gauge",[["path",{d:"m12 14 4-4",key:"9kzdfg"}],["path",{d:"M3.34 19a10 10 0 1 1 17.32 0",key:"19p75a"}]]),A={id:1,slug:"convergence-of-gradient-descent-for-smooth-functions",title:"Convergence of Gradient Descent for Smooth Functions",author:"Ali Zindari",date:"2026-02-27",excerpt:"A short proof of the standard descent guarantee for gradient descent on smooth nonconvex functions.",image:"/blog-cover-gd-v2.png",math:"\\min_{0 \\le t < T}\\lVert\\nabla f(x_t)\\rVert^2 = O(1/T)",tags:["optimization","gradient descent","smoothness"],difficulty:1,content:`# Convergence of Gradient Descent for Smooth Functions
 
 I want this blog to be a place for small notes about math and machine learning. As a first test, here is the standard descent argument for gradient descent on a smooth function.
 
@@ -512,7 +512,7 @@ $$
 
 which is much safer, but those three extra buffer days also require more clothes.
 
-The expected-cost derivation tells us what should be optimized and why. The simulator below carries out the remaining discrete search, runs the random process repeatedly, and compares both average cost and shortage risk.`},_={id:3,slug:"the-iced-tea-no-one-wanted",title:"The Iced Tea No One Wanted",author:"Ali Zindari",date:"2026-09-16",excerpt:"Some personal thoughts on free iced tea, doing theory, and wondering whether any of it matters.",image:"/blog-cover-iced-tea-v2.png",math:"",tags:["personal","research","PhD life"],difficulty:null,feedbackIntro:"I'd be happy to hear your thoughts. Feel free to",content:`The building we work in has a kitchen, and people sometimes leave food or cake there for everyone to share, with a note inviting people to take some if they like. It's free, so almost everything is gone within a few hours. Of course it is. We all love free stuff, right?
+The expected-cost derivation tells us what should be optimized and why. The simulator below carries out the remaining discrete search, runs the random process repeatedly, and compares both average cost and shortage risk.`},N={id:3,slug:"the-iced-tea-no-one-wanted",title:"The Iced Tea No One Wanted",author:"Ali Zindari",date:"2026-09-16",excerpt:"Some personal thoughts on free iced tea, doing theory, and wondering whether any of it matters.",image:"/blog-cover-iced-tea-v2.png",math:"",tags:["personal","research","PhD life"],difficulty:null,feedbackIntro:"I'd be happy to hear your thoughts. Feel free to",content:`The building we work in has a kitchen, and people sometimes leave food or cake there for everyone to share, with a note inviting people to take some if they like. It's free, so almost everything is gone within a few hours. Of course it is. We all love free stuff, right?
 
 One day, someone left some iced tea with the usual note: "Please help yourself." I came back the next day, and it was untouched. Days passed, then weeks, and the free iced tea was still there. No one touched it. That was quite unusual since, as I said, people normally take free stuff within a few hours. Eventually, someone just threw it in the trash.
 
@@ -529,7 +529,7 @@ So yeah, I don't know what the answer is, if there even is one. I enjoy theory, 
 And let's be honest, come on. What percentage of people working in theory produce results that eventually give us something useful? Most papers end up going nowhere and have no real impact.
 
 So should I bet my whole life on being one of those very, very few people who really contribute something through theory? We'll see.
-`},z={id:4,slug:"my-undergraduate-years-at-iut",title:"چرا باید شدیدا از صنعتی اصفهان متنفر باشید؟",author:"Ali Zindari",date:"2023-11-11",excerpt:"تجربه‌ها و خاطرات من از دوران کارشناسی در دانشگاه صنعتی اصفهان.",image:"/blog-cover-university-v2.png",math:"",tags:["personal","university","persian"],difficulty:null,language:"fa",content:`## کنکور
+`},F={id:4,slug:"my-undergraduate-years-at-iut",title:"چرا باید شدیدا از صنعتی اصفهان متنفر باشید؟",author:"Ali Zindari",date:"2023-11-11",excerpt:"تجربه‌ها و خاطرات من از دوران کارشناسی در دانشگاه صنعتی اصفهان.",image:"/blog-cover-university-v2.png",math:"",tags:["personal","university","persian"],difficulty:null,language:"fa",content:`## کنکور
 
 ماجرای ورود من به صنعتی صرفا یک اجبار بود. همه چیز به کنکور وابسته بود که من اصلا توش خوب نبودم. تراز های قلمچی یکی از یکی بدتر! یادمه بیشترین ترازم 6100 بود که یک فاجعه ای در مدرسه ی اژه ای 2 به حساب میومد. نهایتا کنکور رو دادم و رتبه ی 2500 منطقه 1 شدم. متاسفانه یا خوشبختانه دوستای من در هر زمینه ای جزو بهترین ها بودن و کنکور رو هم ترکوندن! همه 2و3 رقمی و راهی تهران. با رتبه ای که من آورده بودم هم برق و کامپیوتر تهران نمیشد آورد. واسه ی همین مجبور شدم به ترتیب برق، کامپیوتر و صنایع صنعتی اصفهان رو بزنم. برق و کامپیوتر رو قبول نشدم و نهایتا مجبور به صنایع صنعتی شدم که هیچ علاقه ای بش نداشتم! این در شرایطی بود که تموم دوستام به جز یکی دونفر شریف و تهران قبول شده بودن و باید از همه جدا میشدم.
 
@@ -620,4 +620,167 @@ So should I bet my whole life on being one of those very, very few people who re
 ## سخن آخر
 
 در آخر میخوام بگم که صنعتی اشتباه ترین تصمیم زندگی من بود. و خواهد بود. با تک تک سلول های بدنم و از سانت به سانت اون دانشگاه متنفرم. امیدورام هیچوقت به هیچ دلیلی مجبور نشم برگردم به اون خراب شده. شمایی که شاید کنکوری هستی و داری این متنو میخونی. تجربیات من مال کامپیوتره که مطمعنم خیلیش رو میشه تعمیم داد. ولی ازت خواهش میکنم اگه اعصابو روان و معدلت واست مهمه نیا کامپیوتر اینجا. با کله برو دانشگاه اصفهان. اینجا نه اسمی داره نه رسمی. اینجا هیچی نداره. یه غرور کاذبه که اساتید و کادر دارن. توی هیچ رنکینگی نیستن. خلاصه که وقتتو تلف نکن و برو هر جای دیگه به جز اینجا. اینجا اولویت چزوندن دانشجوعه. ازار روانی و متنفر کردن دانشجو نسبت به هر چی اینجا اولویت اینه که بیوفتی و مشروط بشی و هیچی یادنگیری. وای که چه وقتی از من و دوستام تلف شد اینجا. چه کار هایی که میشد با این وقت کرد و نشد. حیف. نیا خلاصه نیا. دیگه چجوری بگم؟
-`},D=[_,S,F,z],A={1:"Easy",2:"Introductory",3:"Intermediate",4:"Advanced",5:"Research-level"},L=["#2a9d8f","#69a85d","#d4a72c","#df713f","#c3454f"],O=({level:t,className:c})=>{const o=A[t];return e.jsxs("div",{className:k("border-y border-border/80 py-3",c),"aria-label":`Difficulty: ${o}, ${t} out of 5`,title:`Difficulty: ${o} (${t}/5)`,children:[e.jsxs("div",{className:"flex items-center justify-between gap-4",children:[e.jsxs("div",{className:"flex min-w-0 items-center gap-2 text-sm font-medium text-foreground",children:[e.jsx(N,{size:17,className:"shrink-0 text-muted-foreground","aria-hidden":"true"}),e.jsx("span",{children:"Technical difficulty"})]}),e.jsxs("div",{className:"flex shrink-0 items-baseline gap-2",children:[e.jsx("span",{className:"text-sm font-semibold text-foreground",children:o}),e.jsxs("span",{className:"text-xs tabular-nums text-muted-foreground",children:[t,"/5"]})]})]}),e.jsxs("div",{className:"mt-3","aria-hidden":"true",children:[e.jsx("div",{className:"relative grid h-2.5 grid-cols-5 gap-1",children:L.map((l,r)=>e.jsx("span",{className:"rounded-[2px] transition-all duration-300",style:{backgroundColor:l,opacity:r<t?1:.18,transform:r===t-1?"scaleY(1.45)":void 0,boxShadow:r===t-1?`0 0 0 2px hsl(var(--background)), 0 0 0 3px ${l}`:void 0}},l))}),e.jsxs("div",{className:"mt-2 flex justify-between text-[11px] text-muted-foreground",children:[e.jsx("span",{children:"Easy"}),e.jsx("span",{children:"Hard"})]})]})]})},V="alizindari.github.io",E="https://alizinless.goatcounter.com",C=6e4;function P(t,c,o=!1){return c&&t===V&&!o}function R({siteUrl:t,canRecordVisit:c,getSessionStorage:o,fetcher:l=fetch,timeoutMs:r=6e3}){const i=/^https:\/\/[a-z0-9]+(?:-[a-z0-9]+)*\.goatcounter\.com\/?$/.test(t)?new URL(t).origin:null,f=`blog-visit:goatcounter:${i}:`,u=new Map,$=new Set,I=s=>{if($.has(s))return!0;try{return o().getItem(f+s)==="1"}catch{return!1}},x=s=>{$.add(s);try{o().setItem(f+s,"1")}catch{}},y=async(s,d=!1)=>{const a=new AbortController,m=setTimeout(()=>a.abort(),r);try{const n=await l(s,{signal:a.signal,credentials:"omit",referrerPolicy:"no-referrer",cache:"no-store",mode:d?"no-cors":"cors",keepalive:d});if(!d&&!n.ok&&n.status!==404)throw new Error("Visit counter unavailable");const h=d?null:await n.json();return{status:n.status,data:h}}finally{clearTimeout(m)}},T=async(s,d)=>{const a=`/blog/${s}/`;if(d){const q=new URLSearchParams({p:a,rnd:Math.random().toString(36).slice(2)});try{await y(`${i}/count?${q}`,!0)}catch{}}const m=await y(`${i}/counter/${encodeURIComponent(a)}.json`),n=m.data;if(!n||typeof n!="object"||!("count"in n)||typeof n.count!="string"||!/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(n.count))throw new Error("Invalid visit count");const h=Number(n.count.replace(/,/g,""));if(!Number.isSafeInteger(h)||m.status===404&&h!==0)throw new Error("Invalid visit count");return h},p=async(s,d=!1)=>{if(!i)throw new Error("Visit counter is not configured");if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s))throw new Error("Invalid blog slug");let a=u.get(s);a||(a={fetchedAt:0},u.set(s,a));const m=()=>d&&c()&&!I(s);if(a.pending){try{await a.pending}catch(h){if(!m())throw h}return p(s,d)}const n=m();return!n&&a.count!==void 0&&Date.now()-a.fetchedAt<C?a.count:(n&&x(s),a.pending=T(s,n).then(h=>(a.count=h,a.fetchedAt=Date.now(),h)).finally(()=>{a.pending=void 0}),a.pending)};return{getCount:p,configured:i!==null}}const g=R({siteUrl:E,canRecordVisit:()=>P(window.location.hostname,!0,navigator.doNotTrack==="1"||navigator.globalPrivacyControl===!0),getSessionStorage:()=>window.sessionStorage}),w=new Intl.NumberFormat("en-US"),B=new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:1}),M=({postSlug:t,recordVisit:c=!1})=>{const[o,l]=b.useState();b.useEffect(()=>{let u=!0;return l(void 0),g.getCount(t,c).then($=>{u&&l({slug:t,count:$})},()=>{u&&l({slug:t,failed:!0})}),()=>{u=!1}},[t,c]);const r=(o==null?void 0:o.slug)===t?o:void 0,i=r==null?void 0:r.count,f=g.configured?i===void 0?r!=null&&r.failed?"Visit count temporarily unavailable":"Loading visit count":`${w.format(i)} ${i===1?"visit":"visits"}`:"Visit counter awaiting setup";return g.configured?e.jsxs("span",{role:"status","aria-live":"off","aria-label":f,title:`${f}. Visits since tracking began, updated periodically. Repeat opens in the same tab count once.`,"data-post-visits":t,className:"inline-flex h-8 w-[8.5rem] shrink-0 items-center justify-center gap-2 rounded-md border border-emerald-700/15 bg-emerald-50/80 px-2.5 text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-200",children:[e.jsx(j,{size:17,strokeWidth:1.7,className:"shrink-0","aria-hidden":"true"}),e.jsxs("span",{"aria-hidden":"true",className:"flex items-baseline gap-1.5 whitespace-nowrap text-sm",children:[e.jsx("span",{className:`text-base font-semibold tabular-nums ${g.configured&&!r?"motion-safe:animate-pulse":""}`,children:i===void 0?e.jsx(e.Fragment,{children:"–"}):i<1e4?w.format(i):B.format(i)}),e.jsx("span",{children:i===1?"visit":"visits"})]})]}):null};export{M as B,O as a,D as b};
+`},W={id:5,slug:"self-attention-one-matrix-at-a-time",title:"Self-Attention from Scratch",author:"Ali Zindari",date:"2026-11-16",excerpt:"Building self-attention from two matrix multiplications.",image:"/blog/self-attention/cover.png",math:"",tags:["self-attention","transformers","deep learning","linear algebra"],difficulty:1,theme:"attention-slides",feedbackIntro:"Questions, corrections, or a different way of thinking about this? Feel free to",figures:{transformer:{src:"/blog/self-attention/transformer.svg",alt:"Capital, of, Iran, and is become rows of X and pass through repeated Transformer blocks. A zoomed pre-norm block contains attention and an MLP, each with a residual connection.",caption:"",width:1176,height:490},tokens:{src:"/blog/self-attention/token-vectors.svg",alt:"Matrix X has four rows: x_1 transpose for Capital, x_2 transpose for of, x_3 transpose for Iran, and x_4 transpose for is.",caption:"One row per token, one column per feature.",width:510,height:440,maxWidth:500},right:{src:"/blog/self-attention/right-multiplication.svg",alt:"Right multiplication Z equals X W applies the same W to each row x_i transpose independently. No rows are combined.",caption:"Right multiplication transforms features within each token.",width:1055,height:445},left:{src:"/blog/self-attention/left-multiplication.svg",alt:"Left multiplication Z equals A X replaces row i with a weighted sum of input rows, using row i of A as the weights.",caption:"Left multiplication combines information across tokens.",width:1106,height:470},fixed:{src:"/blog/self-attention/fixed-weights.svg",alt:"The prompts Capital of Iran is and Iran's capital city is use the same fourth row of a fixed matrix A. The illustrative weight a_43 equals 0.8 points to Iran in the first prompt but city in the second.",caption:"A fixed routing pattern follows positions, even when the relevant word moves.",width:1144,height:462},roles:{src:"/blog/self-attention/queries-and-keys.svg",alt:"The query q_4 at is searches keys k_1, k_2, and k_3 at Capital, of, and Iran. Every position also has its own query, key, and value; the drawing focuses on one query.",caption:"The same token plays different roles when it searches and when it is searched.",width:940,height:216},readout:{src:"/blog/self-attention/next-token.svg",alt:"Select h_4 from the final matrix H, multiply by the vocabulary matrix W_out, and apply softmax. Tehran is an illustrative next-token completion, not a measured model prediction.",caption:"After the Transformer stack, the last row is used to predict the next token.",width:1144,height:412}},references:[{title:"Attention Is All You Need",url:"https://arxiv.org/abs/1706.03762"},{title:"Introduction to Modern AI (Zico Kolter)",url:"https://modernaicourse.org/"}],content:String.raw`Self-attention is a central part of LLMs. There are all sorts of fancy variants now, but it's still useful to know the basic version. There are many ways to learn it but the explanation I liked best is in [Prof. Zico Kolter's Introduction to Modern AI course](https://modernaicourse.org/).
+
+Here's the idea: given an embedding matrix $\mathbf{X}$ of $T$ tokens, self-attention is just a left and right multiplication of this matrix by two other matrices. 
+
+## Start with the tokens
+
+Take the prompt "Capital of Iran is". A possible next word is "Tehran". I'll treat each word as one token to keep the pictures simple but an actual tokenizer might split things differently. Look at the following picture for an overview of the a very simple LLM. 
+
+[[figure:transformer]]
+
+The matrix $\mathbf{X}$ goes through several transformer blocks. Each block is basically self-attention followed by a simple MLP plus some normalization which is not the topic of this post. Now we focus on self-attention block. 
+
+First put the token vectors into the rows of a matrix $\mathbf X\in\mathbb R^{T\times d}$. Here $T$ is the number of tokens and $d$ is the number of features in each vector. In our example, $T=4$.
+
+[[figure:tokens]]
+
+I'll write $\mathbf x_i\in\mathbb R^d$ as a column vector, so row $i$ of $\mathbf X$ is $\mathbf x_i^\top$. Position information matters too, but isn't drawn in these figures. At a deeper layer, each row can already contain information gathered from earlier tokens.
+
+## Multiply from the right: change the features
+
+Suppose we multiply $\mathbf X$ by a learned matrix $\mathbf W\in\mathbb R^{d\times d}$:
+
+$$
+\mathbf Z=\mathbf X{\color{#842B40}\mathbf W}.
+$$
+
+[[figure:right]]
+
+Row $i$ of the result is $\mathbf z_i^\top=\mathbf x_i^\top\mathbf W$. The same transformation is applied to every row, independently. It can combine and change features inside each token vector, but this operation alone doesn't move information between tokens.
+
+That's the first piece: changing what each token has to say.
+
+## Multiply from the left: mix the tokens
+
+Now put a matrix $\mathbf A\in\mathbb R^{T\times T}$ on the other side:
+
+$$
+\mathbf Z={\color{#842B40}\mathbf A}\mathbf X,
+\qquad
+\mathbf z_i^\top=\sum_{j=1}^{T}{\color{#842B40}a_{ij}}\mathbf x_j^\top.
+$$
+
+[[figure:left]]
+
+This time, row $i$ is a weighted sum of the input rows. The number $a_{ij}$ says how much token $j$ contributes to the output at position $i$. So row $i$ of $\mathbf A$ contains the mixing weights for that position. We haven't yet said where those weights come from, or required them to be probabilities.
+
+Combine the two operations and we get $\mathbf Z=\mathbf A\mathbf X\mathbf W$: transform the features and mix information across tokens. That is the basic shape of an attention head. The important part still missing is how we choose $\mathbf A$.
+
+## Why shouldn't the mixing weights stay fixed?
+
+Imagine that the last position always puts a large weight on position 3. That might be useful for "Capital of Iran is", where position 3 contains "Iran". Now change the prompt to "Iran's capital city is". The country has moved, but the large weight hasn't.
+
+[[figure:fixed]]
+
+The value $a_{43}=0.8$ in the picture is just an example. Both prompts use exactly the same row of $\mathbf A$, so the same strong connection now points to "city". The arrows show where position 4 looks for information. Basically it gets info from all other past tokens but what matter is how strong from each past token. It also receives information from itself but it isn't shown in the picture. 
+
+Now let's make a more flexible choice: let the mixing weights depend on the input.
+
+$$
+\mathbf Z={\color{#842B40}\mathbf A(\mathbf X)}\,\mathbf X\mathbf W.
+$$
+
+Training learns a rule for producing the weights. At ordinary inference time, the rule's parameters stay fixed, but the matrix it produces changes with the prompt.
+
+## Queries, keys, and values
+
+Let's first give a name to the transformed vectors we're going to mix. Rename the earlier $\mathbf W$ as $\mathbf W_V$ and define the values:
+
+$$
+{\color{#2C6292}\mathbf V}=\mathbf X\mathbf W_V,
+\qquad
+{\color{#2C6292}\mathbf v_j^\top}=\mathbf x_j^\top\mathbf W_V.
+$$
+
+Then the output at position 4 is simply
+
+$$
+\mathbf z_4^\top=\sum_{j=1}^{4}{\color{#842B40}a_{4j}}{\color{#2C6292}\mathbf v_j^\top}.
+$$
+
+The values are the information being combined. We still need to decide how much of each one to use. For that, a token gets two more representations: a query for searching, and a key for being searched.
+
+[[figure:roles]]
+
+A useful way to think about a query is "What information does this position need?" A key describes a token for matching against that query. Every token has a query, a key, and a value, even though the picture focuses on just one query.
+
+We get these representations through two more learned transformations:
+
+$$
+\mathbf q_i^\top=\mathbf x_i^\top{\color{#842B40}\mathbf W_Q},
+\qquad
+\mathbf k_j^\top=\mathbf x_j^\top{\color{#2C6292}\mathbf W_K}.
+$$
+
+Why use separate matrices? Searching and being searched are different roles. Separate projections let the model learn different combinations of features for each. Comparing a query with a key gives
+
+$$
+\mathbf q_i^\top\mathbf k_j
+=\mathbf x_i^\top{\color{#842B40}\mathbf W_Q}{\color{#2C6292}\mathbf W_K^\top}\mathbf x_j.
+$$
+
+So this is a learned comparison, not just the dot product between the original token vectors. The key helps determine the weight; the value supplies what gets mixed. 
+
+## Turn the matches into weights
+
+A dot product gives us a score, which can be positive or negative. For the last position of our four-token prompt, scaled dot-product attention turns those scores into weights using softmax:
+
+$$
+{\color{#842B40}a_{4j}}
+=\frac{\exp(\mathbf q_4^\top\mathbf k_j/\sqrt{d_k})}
+{\sum_{r=1}^{4}\exp(\mathbf q_4^\top\mathbf k_r/\sqrt{d_k})}.
+$$
+
+Here $d_k$ is the dimension of the queries and keys. For this query, a larger score gets a larger weight. The weights are nonnegative and sum to one, so the output is a weighted average of the value vectors. That doesn't mean the model has found something useful automatically and the projections have to be learned.
+
+The factor $1/\sqrt{d_k}$ controls the score scale. For example, if query and key coordinates were independent, zero-mean, and unit-variance, their dot product would have variance $d_k$. Dividing by $\sqrt{d_k}$ brings that variance back to one. 
+
+## Put all the positions together
+
+Stack the queries, keys, and values into matrices:
+
+$$
+\mathbf Q=\mathbf X\mathbf W_Q,\qquad
+\mathbf K=\mathbf X\mathbf W_K,\qquad
+\mathbf V=\mathbf X\mathbf W_V.
+$$
+
+The matrix $\mathbf Q\mathbf K^\top$ contains every query-key score. Applying softmax separately to each row gives the mixing matrix. For unrestricted single-head attention, the whole calculation is
+
+$$
+\mathbf Z=
+\underbrace{\operatorname{softmax}_{\mathrm{row}}\!\left(
+\frac{\mathbf Q\mathbf K^\top}{\sqrt{d_k}}
+\right)}_{{\color{#842B40}\mathbf A(\mathbf X)}}
+\underbrace{\mathbf X\mathbf W_V}_{{\color{#2C6292}\mathbf V}}.
+$$
+
+It's called self-attention because the queries, keys, and values all come from the same sequence. The multiplication picture is useful, but this isn't a fixed linear map of $\mathbf X$: the weights themselves depend on $\mathbf X$.
+
+For the dimensions, $\mathbf W_Q,\mathbf W_K\in\mathbb R^{d\times d_k}$ and $\mathbf W_V\in\mathbb R^{d\times d_v}$. Thus $\mathbf Q,\mathbf K\in\mathbb R^{T\times d_k}$, $\mathbf V\in\mathbb R^{T\times d_v}$, $\mathbf A\in\mathbb R^{T\times T}$, and $\mathbf Z\in\mathbb R^{T\times d_v}$. The earlier square $\mathbf W$ was the special case $d_v=d$.
+
+### One detail for a language model: no looking ahead
+
+In a causal decoder, position $i$ can use only positions $j\leq i$. We enforce that with a mask before softmax:
+
+$$
+M_{ij}=\begin{cases}0,&j\leq i,\\-\infty,&j>i,\end{cases}
+\qquad
+\mathbf A(\mathbf X)=\operatorname{softmax}_{\mathrm{row}}\!\left(
+\frac{\mathbf Q\mathbf K^\top}{\sqrt{d_k}}+\mathbf M\right).
+$$
+
+The masked entries receive zero weight. In our example, position 4 is the final position, so all four tokens are available to it; its earlier softmax formula already has the correct causal range. Earlier positions have fewer available keys. 
+
+## And how do we get the next word?
+
+The attention output $\mathbf Z$ is still a collection of vectors, not a distribution over words. It goes through the rest of the block and the remaining Transformer layers. After the stack and final normalization, call the resulting matrix $\mathbf H$.
+
+[[figure:readout]]
+
+To predict the next token, use the last row, written as the column vector $\mathbf h_4$, and apply a vocabulary projection followed by softmax. This gives one probability per vocabulary token. Again remember that after all layers and mixups, the token "is" is the only one allowed to look back and see the whole prompt so it receives information from all the tokens in the context. That's why we take this last vector for the final prediction. 
+
+This blog simplified lots of stuffs and nowadays there are more modern versions with other ingredients but this is the core of how attention works. Hope you liked it :)
+`},P=[W,N,S,A,F],z={1:"Easy",2:"Introductory",3:"Intermediate",4:"Advanced",5:"Research-level"},L=["#2a9d8f","#69a85d","#d4a72c","#df713f","#c3454f"],O=({level:t,className:d})=>{const n=z[t];return e.jsxs("div",{className:q("border-y border-border/80 py-3",d),"aria-label":`Difficulty: ${n}, ${t} out of 5`,title:`Difficulty: ${n} (${t}/5)`,children:[e.jsxs("div",{className:"flex items-center justify-between gap-4",children:[e.jsxs("div",{className:"flex min-w-0 items-center gap-2 text-sm font-medium text-foreground",children:[e.jsx(j,{size:17,className:"shrink-0 text-muted-foreground","aria-hidden":"true"}),e.jsx("span",{children:"Technical difficulty"})]}),e.jsxs("div",{className:"flex shrink-0 items-baseline gap-2",children:[e.jsx("span",{className:"text-sm font-semibold text-foreground",children:n}),e.jsxs("span",{className:"text-xs tabular-nums text-muted-foreground",children:[t,"/5"]})]})]}),e.jsxs("div",{className:"mt-3","aria-hidden":"true",children:[e.jsx("div",{className:"relative grid h-2.5 grid-cols-5 gap-1",children:L.map((l,r)=>e.jsx("span",{className:"rounded-[2px] transition-all duration-300",style:{backgroundColor:l,opacity:r<t?1:.18,transform:r===t-1?"scaleY(1.45)":void 0,boxShadow:r===t-1?`0 0 0 2px hsl(var(--background)), 0 0 0 3px ${l}`:void 0}},l))}),e.jsxs("div",{className:"mt-2 flex justify-between text-[11px] text-muted-foreground",children:[e.jsx("span",{children:"Easy"}),e.jsx("span",{children:"Hard"})]})]})]})},V="alizindari.github.io",X="https://alizinless.goatcounter.com",C=6e4;function R(t,d,n=!1){return d&&t===V&&!n}function B({siteUrl:t,canRecordVisit:d,getSessionStorage:n,fetcher:l=fetch,timeoutMs:r=6e3}){const s=/^https:\/\/[a-z0-9]+(?:-[a-z0-9]+)*\.goatcounter\.com\/?$/.test(t)?new URL(t).origin:null,u=`blog-visit:goatcounter:${s}:`,f=new Map,$=new Set,x=o=>{if($.has(o))return!0;try{return n().getItem(u+o)==="1"}catch{return!1}},T=o=>{$.add(o);try{n().setItem(u+o,"1")}catch{}},b=async(o,c=!1)=>{const a=new AbortController,m=setTimeout(()=>a.abort(),r);try{const i=await l(o,{signal:a.signal,credentials:"omit",referrerPolicy:"no-referrer",cache:"no-store",mode:c?"no-cors":"cors",keepalive:c});if(!c&&!i.ok&&i.status!==404)throw new Error("Visit counter unavailable");const h=c?null:await i.json();return{status:i.status,data:h}}finally{clearTimeout(m)}},I=async(o,c)=>{const a=`/blog/${o}/`;if(c){const k=new URLSearchParams({p:a,rnd:Math.random().toString(36).slice(2)});try{await b(`${s}/count?${k}`,!0)}catch{}}const m=await b(`${s}/counter/${encodeURIComponent(a)}.json`),i=m.data;if(!i||typeof i!="object"||!("count"in i)||typeof i.count!="string"||!/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(i.count))throw new Error("Invalid visit count");const h=Number(i.count.replace(/,/g,""));if(!Number.isSafeInteger(h)||m.status===404&&h!==0)throw new Error("Invalid visit count");return h},g=async(o,c=!1)=>{if(!s)throw new Error("Visit counter is not configured");if(!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(o))throw new Error("Invalid blog slug");let a=f.get(o);a||(a={fetchedAt:0},f.set(o,a));const m=()=>c&&d()&&!x(o);if(a.pending){try{await a.pending}catch(h){if(!m())throw h}return g(o,c)}const i=m();return!i&&a.count!==void 0&&Date.now()-a.fetchedAt<C?a.count:(i&&T(o),a.pending=I(o,i).then(h=>(a.count=h,a.fetchedAt=Date.now(),h)).finally(()=>{a.pending=void 0}),a.pending)};return{getCount:g,configured:s!==null}}const p=B({siteUrl:X,canRecordVisit:()=>R(window.location.hostname,!0,navigator.doNotTrack==="1"||navigator.globalPrivacyControl===!0),getSessionStorage:()=>window.sessionStorage}),w=new Intl.NumberFormat("en-US"),E=new Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:1}),D=({postSlug:t,recordVisit:d=!1})=>{const[n,l]=y.useState();y.useEffect(()=>{let f=!0;return l(void 0),p.getCount(t,d).then($=>{f&&l({slug:t,count:$})},()=>{f&&l({slug:t,failed:!0})}),()=>{f=!1}},[t,d]);const r=(n==null?void 0:n.slug)===t?n:void 0,s=r==null?void 0:r.count,u=p.configured?s===void 0?r!=null&&r.failed?"Visit count temporarily unavailable":"Loading visit count":`${w.format(s)} ${s===1?"visit":"visits"}`:"Visit counter awaiting setup";return p.configured?e.jsxs("span",{role:"status","aria-live":"off","aria-label":u,title:`${u}. Visits since tracking began, updated periodically. Repeat opens in the same tab count once.`,"data-post-visits":t,className:"inline-flex h-8 w-[8.5rem] shrink-0 items-center justify-center gap-2 rounded-md border border-emerald-700/15 bg-emerald-50/80 px-2.5 text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-200",children:[e.jsx(_,{size:17,strokeWidth:1.7,className:"shrink-0","aria-hidden":"true"}),e.jsxs("span",{"aria-hidden":"true",className:"flex items-baseline gap-1.5 whitespace-nowrap text-sm",children:[e.jsx("span",{className:`text-base font-semibold tabular-nums ${p.configured&&!r?"motion-safe:animate-pulse":""}`,children:s===void 0?e.jsx(e.Fragment,{children:"–"}):s<1e4?w.format(s):E.format(s)}),e.jsx("span",{children:s===1?"visit":"visits"})]})]}):null};export{D as B,O as a,P as b};
