@@ -6,7 +6,7 @@
   font-display: swap;
 }
 
-.jelly-cube {
+.jelly-cat {
   width: 100%;
   min-width: 0;
   max-width: 232px;
@@ -64,8 +64,8 @@
 .jelly-invitation svg {
   position: absolute;
   top: 25px;
-  left: 13%;
-  width: 28%;
+  left: 8%;
+  width: 21%;
   height: auto;
   stroke: currentColor;
   stroke-width: 1.5;

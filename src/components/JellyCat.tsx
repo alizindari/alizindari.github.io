@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { LoaderCircle } from 'lucide-react';
 import type { JellyColor, JellyScene } from '@/lib/jellyScene';
-import './JellyCube.css';
+import './JellyCat.css';
 
 const colors: { id: JellyColor; name: string; swatch: string }[] = [
   { id: 'berry', name: 'Berry', swatch: '#cf3b75' },
@@ -9,7 +9,7 @@ const colors: { id: JellyColor; name: string; swatch: string }[] = [
   { id: 'honey', name: 'Honey', swatch: '#dca23f' },
 ];
 
-export default function JellyCube() {
+export default function JellyCat() {
   const host = useRef<HTMLDivElement>(null);
   const scene = useRef<JellyScene | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'unavailable'>('loading');
@@ -41,7 +41,7 @@ export default function JellyCube() {
         setColor('berry');
         setStatus('ready');
       } catch (error) {
-        console.error('Could not initialize the jelly cube.', error);
+        console.error('Could not initialize the jelly cat.', error);
         fail();
       }
     }, { rootMargin: '120px' });
@@ -57,11 +57,11 @@ export default function JellyCube() {
   }, []);
 
   return (
-    <div className="jelly-cube" role="group" aria-label="Jelly cube">
+    <div className="jelly-cat" role="group" aria-label="Jelly cat">
       <div className="jelly-stage" ref={host} data-jelly-status={status}>
         {status === 'ready' && (
           <div className="jelly-invitation">
-            <span>play with the jelly :)</span>
+            <span>jelly cat :)</span>
             <svg viewBox="0 0 50 38" fill="none" aria-hidden="true">
               <path d="M9 3C3 15 9 27 22 30C29 32 36 32 44 30M36 24L44 30L36 36" />
             </svg>
@@ -70,7 +70,7 @@ export default function JellyCube() {
         {status !== 'ready' && (
           <div className="jelly-placeholder" role="status" aria-label={status === 'loading' ? 'Loading jelly' : 'Interactive 3D unavailable'}>
             {status === 'loading' ? <LoaderCircle size={18} className="jelly-loading" aria-hidden="true" /> : (
-              <img src="/jelly-fallback.png" alt="A translucent berry-colored jelly cube" width={400} height={400} />
+              <img src="/jelly-fallback.png?v=cat1" alt="A berry-colored jelly cat with tiny whiskers" width={400} height={400} />
             )}
           </div>
         )}

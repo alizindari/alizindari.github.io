@@ -48,19 +48,9 @@
   border-bottom-color: hsl(var(--border) / 0.7);
 }
 
-.personal-site .site-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Times New Roman', Times, serif;
-}
+.personal-site .nav-home { color: hsl(var(--muted-foreground)); }
+.personal-site .nav-home:hover, .personal-site .nav-home.active { color: hsl(var(--primary)); }
 
-.site-brand::before {
-  content: '';
-  width: 4px;
-  height: 22px;
-  background: hsl(var(--terracotta));
-}
 
 .personal-site .nav-tab { padding: 22px 18px; color: hsl(var(--muted-foreground)); }
 .personal-site .nav-tab:hover { color: hsl(var(--foreground)); border-color: hsl(var(--terracotta) / 0.35); }

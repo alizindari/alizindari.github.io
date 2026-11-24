@@ -1,0 +1,46 @@
+[
+  {
+    "slide": "14",
+    "title": "A Transformer and its blocks"
+  },
+  {
+    "slide": "15",
+    "title": "The last row predicts the next token"
+  },
+  {
+    "slide": "16",
+    "title": "Represent the input as vectors"
+  },
+  {
+    "slide": "17",
+    "title": "Right multiplication transforms token features"
+  },
+  {
+    "slide": "18",
+    "title": "Left multiplication mixes token rows"
+  },
+  {
+    "slide": "19",
+    "title": "Self-attention is just right and left multiplication"
+  },
+  {
+    "slide": "20",
+    "title": "A fixed A uses the same weights for every prompt"
+  },
+  {
+    "slide": "21",
+    "title": "Make the weights depend on the input"
+  },
+  {
+    "slide": "22",
+    "title": "The searching token uses a query"
+  },
+  {
+    "slide": "23",
+    "title": "Different roles need different features"
+  },
+  {
+    "slide": "24",
+    "title": "Self-attention"
+  }
+]

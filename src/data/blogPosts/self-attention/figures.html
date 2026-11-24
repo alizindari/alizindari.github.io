@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Self-attention figure sources</title>
+<link rel="stylesheet" href="../../../../node_modules/katex/dist/katex.min.css">
+<link rel="stylesheet" href="figures.css">
+<style>.speaker-notes,.slide__number,.slide-citation{display:none}.reveal-hidden{visibility:visible!important}</style>
+</head><body><main class="deck"><section id="14" class="slide" data-title="A Transformer and its blocks">
+<h1 class="slide__title">A Transformer and its blocks</h1><div class="slide__rule"></div>
+<div class="slide__content"><div class="intro-diagram transformer-overview" role="img" aria-label="Tokens become embeddings, pass through repeated transformer blocks to produce the embedding matrix H, then predict a next token. A pre-norm block contains attention and an MLP, each with a residual connection. The input X is in R^(T by d). Its four illustrated rows correspond to Capital, of, Iran, and is. Small cells represent embedding features. Burgundy attention and MLP blocks contain weight matrices updated during full fine-tuning.">
+<svg viewBox="0 0 1144 500" aria-hidden="true">
+<defs><marker id="tr-arrow" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#667079" stroke="none"></path></marker></defs>
+<rect class="token-tile" x="0" y="111" width="94" height="52" rx="5"></rect><rect class="token-tile" x="102" y="111" width="42" height="52" rx="5"></rect><rect class="token-tile" x="152" y="111" width="112" height="52" rx="5"></rect><rect class="token-tile" x="272" y="111" width="38" height="52" rx="5"></rect>
+<rect class="diagram-base" x="350" y="88" width="135" height="98" rx="5"></rect>
+<path d="M350 112.5H485M350 137H485M350 161.5H485" fill="none" stroke="#BAC2CB" stroke-width="1"></path>
+<text class="overview-input-token" x="360" y="100.25" dominant-baseline="central">Capital</text>
+<rect x="442" y="95.25" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="454" y="95.25" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="466" y="95.25" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<text class="overview-input-token" x="360" y="124.75" dominant-baseline="central">of</text>
+<rect x="442" y="119.75" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="454" y="119.75" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="466" y="119.75" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<text class="overview-input-token" x="360" y="149.25" dominant-baseline="central">Iran</text>
+<rect x="442" y="144.25" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="454" y="144.25" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="466" y="144.25" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<text class="overview-input-token" x="360" y="173.75" dominant-baseline="central">is</text>
+<rect x="442" y="168.75" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="454" y="168.75" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect x="466" y="168.75" width="8" height="10" rx="1" fill="#A7B3C0"></rect>
+<rect class="block-shadow" x="579" y="66" width="225" height="114" rx="8"></rect><rect class="block-shadow" x="572" y="73" width="225" height="114" rx="8"></rect>
+<rect class="diagram-base" x="565" y="80" width="225" height="114" rx="8"></rect>
+<rect class="token-tile" x="944" y="84" width="170" height="106" rx="8"></rect>
+<g class="intro-wires" marker-end="url(#tr-arrow)"><path d="M310 137H350"></path><path d="M485 137H565"></path><path d="M804 137H944"></path></g>
+<path class="zoom-guide" d="M582 197L133 262M773 197L1008 262"></path>
+<rect class="zoom-frame" x="130" y="267" width="884" height="214" rx="9"></rect>
+<g class="transformer-block-content" transform="translate(-3 13)">
+<g class="intro-wires" marker-end="url(#tr-arrow)">
+<path d="M160 350H215"></path><path d="M290 350H330"></path><path d="M501 350H534"></path><path d="M570 350H610"></path><path d="M685 350H725"></path><path d="M896 350H929"></path><path d="M965 350H990"></path>
+<path d="M187 350V294H552V332"></path><path d="M582 350V294H947V332"></path>
+</g>
+<rect class="norm-block" x="215" y="318" width="75" height="64" rx="5"></rect>
+<rect class="transformer-weight-block" x="330" y="310" width="171" height="80" rx="7"></rect>
+<circle class="diagram-sum" cx="552" cy="350" r="18"></circle>
+<rect class="norm-block" x="610" y="318" width="75" height="64" rx="5"></rect>
+<rect class="transformer-weight-block" x="725" y="310" width="171" height="80" rx="7"></rect>
+<circle class="diagram-sum" cx="947" cy="350" r="18"></circle>
+</g>
+</svg>
+<span class="diagram-label" style="left:874px;top:109px;font-size:23px;">\(\mathbf H\in\mathbb R^{T\times d}\)</span>
+<span class="diagram-label" style="left:13.54895%;top:15.60000%;font-size:24px;">\(T\) tokens</span><span class="diagram-label" style="left:4.10839%;top:27.40000%;font-size:23px;">Capital</span><span class="diagram-label" style="left:10.75175%;top:27.40000%;font-size:23px;">of</span><span class="diagram-label" style="left:18.18182%;top:27.40000%;font-size:23px;">Iran</span><span class="diagram-label" style="left:25.43706%;top:27.40000%;font-size:23px;">is</span><span class="diagram-label" style="left:36.49476%;top:11.40000%;font-size:23px;">\(\mathbf{X}\in\mathbb{R}^{T\times d}\)</span><span class="diagram-label" style="left:36.49476%;top:41.00000%;font-size:20px;">\(d\)-dimensional embeddings</span><span class="diagram-label" style="left:59.22203%;top:27.40000%;font-size:29px;">Transformer<br>block</span><span class="diagram-label" style="left:59.22203%;top:9.40000%;font-size:21px;">\(\times L\) blocks</span><span class="diagram-label" style="left:1029px;top:22.20000%;font-size:22px;">Next token</span><span class="diagram-label" style="left:1029px;top:30.60000%;font-size:38px;">Tehran</span><span class="diagram-label" style="left:249.5px;top:363px;font-size:20px;">Norm</span><span class="diagram-label" style="left:412.5px;top:363px;font-size:28px;color:#FFF;">Attention</span><span class="diagram-label" style="left:549px;top:363px;font-size:26px;">\(+\)</span><span class="diagram-label" style="left:644.5px;top:363px;font-size:20px;">Norm</span><span class="diagram-label" style="left:807.5px;top:363px;font-size:29px;color:#FFF;">MLP</span><span class="diagram-label" style="left:944px;top:363px;font-size:26px;">\(+\)</span><span class="diagram-label" style="left:412.5px;top:428px;font-size:23px;">Mix tokens</span><span class="diagram-label" style="left:807.5px;top:428px;font-size:23px;">Transform features</span></div>
+</div>
+<p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a> · Pre-norm: <a href="https://proceedings.mlr.press/v119/xiong20b.html">Xiong et al., ICML 2020 [10]</a>.</p>
+  <div class="slide__number">14 / 38</div>
+<aside class="speaker-notes">Use “Capital of Iran is” followed by “Tehran” as an illustrative next-token completion, not a measured model prediction. Word-sized tiles illustrate a token sequence; exact subword tokenization depends on the tokenizer. Tokens are mapped to vectors; position information is also included but omitted from this drawing. Repeated transformer blocks update these vectors. Attention exchanges information between tokens; the MLP transforms each token's features. The zoom shows a decoder-style pre-norm block, with normalization before each sublayer and two residual additions. This is not a reproduction of the original 2017 post-norm encoder-decoder architecture. H labels the final embedding matrix after the Transformer stack, including final normalization. Its last row is used for next-token prediction as shown on the following slide. Final normalization and the language-model head are not drawn separately. X belongs to R^(T by d), with T tokens and embedding dimension d: one row per token and one column per embedding feature. The input matrix labels each illustrated row with its corresponding token. Small cells stand for vector components, not measured embedding values. For one block, its input and output have the same sequence shape. Burgundy highlights the attention and MLP modules, which contain trainable weight matrices; the blocks are not themselves single matrices. These matrices are updated during full fine-tuning. Full fine-tuning also trains other model parameters, including embeddings and normalization parameters; the highlights focus on the matrix-bearing sublayers adapted by the methods in this talk. X is an activation matrix, not a trainable weight matrix. Sources: <a href="https://arxiv.org/html/1706.03762v7#S3">Vaswani et al., Attention Is All You Need, §3</a>; <a href="https://arxiv.org/abs/2002.04745">Xiong et al., On Layer Normalization in the Transformer Architecture</a>.</aside>
+</section>
+
+<section id="15" class="slide next-token-readout-slide" data-title="The last row predicts the next token">
+  <h1 class="slide__title">The last row predicts the next token</h1><div class="slide__rule"></div>
+  <div class="slide__content">
+    <div class="next-token-readout" role="img" aria-label="After the Transformer, the four prompt tokens have four updated embeddings in matrix H. The last row, h_4 transpose, corresponds to is. Select h_4, multiply it by W_out and apply softmax to obtain next-token probabilities. Tehran is an illustrative next token.">
+      <svg viewBox="0 0 1144 420" aria-hidden="true">
+        <defs><marker id="readout-row-arrow" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#842B40" stroke="none"></path></marker><marker id="readout-token-arrow" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#667079" stroke="none"></path></marker></defs>
+        <path class="loss-output-brackets" d="M195 100H180V334H195 M325 100H340V334H325"></path>
+        <rect class="loss-output-last-row" x="193" y="276" width="134" height="46" rx="2"></rect>
+        <path class="loss-selected-row-wire" marker-end="url(#readout-row-arrow)" d="M327 299H405V227H466"></path>
+        <path class="loss-selected-row-wire" marker-end="url(#readout-row-arrow)" d="M562 227H663"></path>
+        <path class="intro-wires" marker-end="url(#readout-token-arrow)" d="M877 309V336"></path>
+      </svg>
+      <span class="diagram-label" style="left:260px;top:54px;font-size:27px;">\(\mathbf H\in\mathbb R^{4\times d}\)</span>
+      <span class="diagram-label" style="left:88px;top:125px;font-size:27px;">Capital</span><span class="diagram-label" style="left:260px;top:125px;font-size:30px;">\(\mathbf h_1^\top\)</span>
+      <span class="diagram-label" style="left:88px;top:183px;font-size:27px;">of</span><span class="diagram-label" style="left:260px;top:183px;font-size:30px;">\(\mathbf h_2^\top\)</span>
+      <span class="diagram-label" style="left:88px;top:241px;font-size:27px;">Iran</span><span class="diagram-label" style="left:260px;top:241px;font-size:30px;">\(\mathbf h_3^\top\)</span>
+      <span class="diagram-label accent-text" style="left:88px;top:299px;font-size:27px;">is</span><span class="diagram-label accent-text" style="left:260px;top:299px;font-size:30px;">\(\mathbf h_4^\top\)</span>
+      <span class="diagram-label accent-text" style="left:514px;top:165px;font-size:25px;">Last row</span><span class="diagram-label accent-text" style="left:514px;top:227px;font-size:43px;">\(\mathbf h_4\)</span><span class="diagram-label" style="left:514px;top:278px;font-size:25px;">\(\mathbb R^d\)</span>
+      <span class="diagram-label" style="left:877px;top:165px;font-size:25px;">Next-token probabilities</span><span class="diagram-label" style="left:877px;top:227px;font-size:34px;">\(\operatorname{softmax}(\mathbf W_{\mathrm{out}}\mathbf h_4)\)</span>
+      <span class="diagram-label" style="left:877px;top:278px;font-size:22px;">\(\mathbf W_{\mathrm{out}}\in\mathbb R^{V\times d}\) &nbsp;·&nbsp; \(V\): vocabulary size</span>
+      <span class="diagram-label accent-text" style="left:877px;top:374px;font-size:43px;">Tehran</span>
+    </div>
+    <div class="takeaway attention-takeaway"><span class="callout-label">Prediction</span><p>The last row carries information gathered from the whole prompt.</p></div>
+  </div>
+  <p class="slide-citation" role="doc-footnote"><a href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Radford et al., 2019 [11]</a> · Attention and vocabulary projection: <a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a>.</p>
+  <div class="slide__number">15 / 38</div>
+  <aside class="speaker-notes">This continues the preceding Transformer overview at the final embedding matrix H. The word-sized example has T = 4 illustrative tokens, so H has shape 4 by d. In general its shape is T by d and the selected row is h_T transpose. H includes final normalization. The left-hand words identify positions, not unchanged embeddings. Every row has already been processed by the Transformer. Select the last row and write it as the column vector h_4 in R^d. The output matrix W_out has shape vocabulary size by d. Its product with h_4 gives one score per vocabulary token, and softmax produces a probability distribution. A token is chosen from this distribution, with Tehran used as an illustrative completion rather than a measured prediction. The last embedding can incorporate earlier prompt information through causal attention. Selecting it does not mean predicting from the isolated word is. During training, the output projection can be applied to every supervised position. The figure uses the same H and h notation as the later two-loss slide. Exact subword tokenization may differ.</aside>
+</section>
+
+<section id="16" class="slide transformer-template" data-template-page="5" data-title="Represent the input as vectors">
+      <h1 class="slide__title">Represent the input as vectors</h1>
+      <div class="slide__rule"></div>
+      <div class="slide__content s3-layout">
+        <div class="matrix-card s3-general">
+          <div class="eyebrow">Tokens are represented by vectors.</div>
+          <div class="matrix-symbol">\(\mat{X}\in\mathbb R^{T\times d}\)</div>
+          <div class="label-matrix">
+            <div class="row-labels">
+              <div>Capital</div><div>of</div><div>Iran</div><div>is</div>
+            </div>
+            <div class="matrix">
+              <div class="matrix-row"><span class="row-vector blue">\(\vect{x}_{1}^{\top}\)</span></div>
+              <div class="matrix-row"><span class="row-vector coral">\(\vect{x}_{2}^{\top}\)</span></div>
+              <div class="matrix-row"><span class="row-vector green">\(\vect{x}_{3}^{\top}\)</span></div>
+              <div class="matrix-row"><span class="row-vector">\(\vect{x}_{4}^{\top}\)</span></div>
+            </div>
+          </div>
+          <div class="s3-caption caption">\(\vect{x}_{i}^{\top}\in\mathbb{R}^{1\times d}\)</div>
+        </div>
+      </div>
+      <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a>.</p>
+  <div class="slide__number">16 / 38</div>
+    </section>
+
+<section id="17" class="slide transformer-template" data-template-page="6" data-title="Right multiplication transforms token features">
+      <h1 class="slide__title">Right multiplication transforms token features</h1>
+      <div class="slide__rule"></div>
+      <div class="slide__content matrix-operation">
+        <div class="operation-formula math-xl">\(\mat{Z}=\mat{X}{\color{#842B40}\mat{W}},\quad {\color{#842B40}\mat W}\in\mathbb R^{d\times d}\)</div>
+        <div class="operation-stage input">
+          <div class="matrix-symbol">\(\mat{X}\)</div>
+          <div class="matrix operation-matrix">
+            <div class="matrix-row"><span class="row-vector blue">\(\vect{x}_{1}^{\top}\)</span></div>
+            <div class="matrix-row"><span class="row-vector coral">\(\vect{x}_{2}^{\top}\)</span></div>
+            <div class="matrix-row"><span class="row-vector green">\(\vect{x}_{3}^{\top}\)</span></div>
+            <div class="matrix-row"><span class="row-vector">\(\vect{x}_{4}^{\top}\)</span></div>
+          </div>
+        </div>
+        <div class="operation-symbols">
+          <span>\(\times\)</span><span class="weight">\(\mat{W}\)</span><span>\(=\)</span>
+        </div>
+        <div class="operation-stage output">
+          <div class="matrix-symbol">\(\mat{Z}\)</div>
+          <div class="matrix operation-matrix">
+            <div class="matrix-row"><span class="row-vector blue">\(\vect{x}_{1}^{\top}{\color{#842B40}\mat W}\)</span></div>
+            <div class="matrix-row"><span class="row-vector coral">\(\vect{x}_{2}^{\top}{\color{#842B40}\mat W}\)</span></div>
+            <div class="matrix-row"><span class="row-vector green">\(\vect{x}_{3}^{\top}{\color{#842B40}\mat W}\)</span></div>
+            <div class="matrix-row"><span class="row-vector">\(\vect{x}_{4}^{\top}{\color{#842B40}\mat W}\)</span></div>
+          </div>
+        </div>
+        <div class="takeaway attention-takeaway"><span class="callout-label">Features</span><p>Applies the same transformation to every token.</p></div>
+      </div>
+      <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a>.</p>
+  <div class="slide__number">17 / 38</div>
+    </section>
+
+<section id="18" class="slide transformer-template" data-template-page="7" data-title="Left multiplication mixes token rows">
+      <h1 class="slide__title">Left multiplication mixes token rows</h1>
+      <div class="slide__rule"></div>
+      <div class="slide__content matrix-operation s6">
+        <div class="operation-formula operation-formula-pair"><span>\(\mat{Z}={\color{#842B40}\mat{A}}\mat{X},\quad {\color{#842B40}\mat A}\in\mathbb R^{T\times T}\)</span><span>\(\displaystyle \vect z_i^\top=\sum_{j=1}^{T}{\color{#842B40}a_{ij}}\vect x_j^\top\)</span></div>
+        <div class="operation-symbols"><span class="mix">\(\mat A\)</span><span>\(\times\)</span></div>
+        <div class="operation-stage input">
+          <div class="matrix-symbol">\(\mat{X}\)</div>
+          <div class="matrix operation-matrix">
+            <div class="matrix-row"><span class="row-vector blue">\(\vect{x}_{1}^{\top}\)</span></div>
+            <div class="matrix-row"><span class="row-vector coral">\(\vect{x}_{2}^{\top}\)</span></div>
+            <div class="matrix-row"><span class="row-vector green">\(\vect{x}_{3}^{\top}\)</span></div>
+            <div class="matrix-row"><span class="row-vector">\(\vect{x}_{4}^{\top}\)</span></div>
+          </div>
+        </div>
+        <div class="s6-equals">\(=\)</div>
+        <div class="operation-stage output">
+          <div class="matrix-symbol">\(\mat{Z}\)</div>
+          <div class="matrix operation-matrix">
+            <div class="matrix-row mix-vector"><span class="row-vector">\({\color{#842B40}\vect{a}_{1}^{\top}}\mat X\)</span></div>
+            <div class="matrix-row mix-vector"><span class="row-vector">\({\color{#842B40}\vect{a}_{2}^{\top}}\mat X\)</span></div>
+            <div class="matrix-row mix-vector"><span class="row-vector">\({\color{#842B40}\vect{a}_{3}^{\top}}\mat X\)</span></div>
+            <div class="matrix-row mix-vector"><span class="row-vector">\({\color{#842B40}\vect{a}_{4}^{\top}}\mat X\)</span></div>
+          </div>
+        </div>
+        <div class="takeaway attention-takeaway"><span class="callout-label">Mixing</span><p>The matrix \(\mathbf A\) mixes information across tokens to help predict the next word.</p></div>
+      </div>
+      <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a>.</p>
+  <div class="slide__number">18 / 38</div>
+    </section>
+
+<section id="19" class="slide transformer-template" data-template-page="8" data-title="Self-attention is just right and left multiplication">
+      <h1 class="slide__title">Self-attention is just right and left multiplication</h1>
+      <div class="slide__rule"></div>
+      <div class="slide__content s7-simple">
+        <div class="s7-io-symbol s7-io-input">\(\mat X\)</div>
+        <div class="s7-io-arrow s7-io-arrow--input arrow"></div>
+        <div class="s7-one-box panel">
+          \(\displaystyle {\color{#842B40}\mat A}\mat X{\color{#842B40}\mat W}\)
+        </div>
+        <div class="s7-io-arrow s7-io-arrow--output arrow"></div>
+        <div class="s7-io-symbol s7-io-output">\(\mat Z\)</div>
+        <div class="s7-simple-statement">Self-attention</div>
+        <div class="takeaway attention-takeaway"><span class="callout-label">Core idea</span><p>Transforms token features and combines information across tokens.</p></div>
+      </div>
+      <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a>.</p>
+  <div class="slide__number">19 / 38</div>
+    </section>
+
+<section id="20" class="slide fixed-attention-slide" data-title="A fixed A uses the same weights for every prompt">
+  <h1 class="slide__title">A fixed \(\mathbf A\) uses the same weights for every prompt</h1><div class="slide__rule"></div>
+  <div class="slide__content">
+    <div class="fixed-routing-pair">
+      <div class="fixed-routing-case" role="img" aria-label="For Capital of Iran is, the fourth position attends to earlier positions. The strong arrow with weight a_43 = 0.8 points to Iran at position 3.">
+        <svg viewBox="0 0 850 220" aria-hidden="true"><defs><marker id="fixed-route-first-thin" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7F8A94" stroke="none"></path></marker><marker id="fixed-route-first-strong" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#842B40" stroke="none"></path></marker></defs>
+          <path d="M755 130C755 -5 95 -5 95 129" fill="none" stroke="#7F8A94" stroke-width="1.4" marker-end="url(#fixed-route-first-thin)"></path>
+          <path d="M755 130C755 40 315 40 315 129" fill="none" stroke="#7F8A94" stroke-width="1.4" marker-end="url(#fixed-route-first-thin)"></path>
+          <path d="M755 130C755 78 535 78 535 112L535 129" fill="none" stroke="#842B40" stroke-width="2.4" marker-end="url(#fixed-route-first-strong)"></path>
+          <rect class="token-tile" x="15" y="130" width="160" height="54" rx="3"></rect>
+          <rect class="token-tile" x="235" y="130" width="160" height="54" rx="3"></rect>
+          <rect class="token-tile" x="455" y="130" width="160" height="54" rx="3"></rect>
+          <rect x="675" y="130" width="160" height="54" rx="3" fill="#F5ECEF" stroke="#963F56" stroke-width="1.6"></rect>
+        </svg>
+        <span class="lookback-label fixed-route-weight" style="left:425px;top:29px">\(a_{41}\)</span>
+        <span class="lookback-label fixed-route-weight" style="left:535px;top:63px">\(a_{42}\)</span>
+        <span class="lookback-label fixed-route-weight fixed-route-strong" style="left:645px;top:114px">\(a_{43}=0.8\)</span>
+        <span class="lookback-label fixed-route-token" style="left:95px;top:157px">Capital</span>
+        <span class="lookback-label fixed-route-index" style="left:95px;top:205px">\(\mathbf x_1\)</span>
+        <span class="lookback-label fixed-route-token" style="left:315px;top:157px">of</span>
+        <span class="lookback-label fixed-route-index" style="left:315px;top:205px">\(\mathbf x_2\)</span>
+        <span class="lookback-label fixed-route-token accent-text" style="left:535px;top:157px">Iran</span>
+        <span class="lookback-label fixed-route-index" style="left:535px;top:205px">\(\mathbf x_3\)</span>
+        <span class="lookback-label fixed-route-token accent-text" style="left:755px;top:157px">is</span>
+        <span class="lookback-label fixed-route-index" style="left:755px;top:205px">\(\mathbf x_4\)</span>
+      </div>
+      <div class="fixed-routing-case" role="img" aria-label="The same fixed weights are used after reordering. The strong arrow from is still points to position 3, now city. Iran’s is at position 1.">
+        <svg viewBox="0 0 850 220" aria-hidden="true"><defs><marker id="fixed-route-second-thin" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7F8A94" stroke="none"></path></marker><marker id="fixed-route-second-strong" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#842B40" stroke="none"></path></marker></defs>
+          <path d="M755 130C755 -5 95 -5 95 129" fill="none" stroke="#7F8A94" stroke-width="1.4" marker-end="url(#fixed-route-second-thin)"></path>
+          <path d="M755 130C755 40 315 40 315 129" fill="none" stroke="#7F8A94" stroke-width="1.4" marker-end="url(#fixed-route-second-thin)"></path>
+          <path d="M755 130C755 78 535 78 535 112L535 129" fill="none" stroke="#842B40" stroke-width="2.4" marker-end="url(#fixed-route-second-strong)"></path>
+          <rect class="token-tile" x="15" y="130" width="160" height="54" rx="3"></rect>
+          <rect class="token-tile" x="235" y="130" width="160" height="54" rx="3"></rect>
+          <rect class="token-tile" x="455" y="130" width="160" height="54" rx="3"></rect>
+          <rect x="675" y="130" width="160" height="54" rx="3" fill="#F5ECEF" stroke="#963F56" stroke-width="1.6"></rect>
+        </svg>
+        <span class="lookback-label fixed-route-weight" style="left:425px;top:29px">\(a_{41}\)</span>
+        <span class="lookback-label fixed-route-weight" style="left:535px;top:63px">\(a_{42}\)</span>
+        <span class="lookback-label fixed-route-weight fixed-route-strong" style="left:645px;top:114px">\(a_{43}=0.8\)</span>
+        <span class="lookback-label fixed-route-token accent-text" style="left:95px;top:157px">Iran’s</span>
+        <span class="lookback-label fixed-route-index" style="left:95px;top:205px">\(\widehat{\mathbf x}_1\)</span>
+        <span class="lookback-label fixed-route-token" style="left:315px;top:157px">capital</span>
+        <span class="lookback-label fixed-route-index" style="left:315px;top:205px">\(\widehat{\mathbf x}_2\)</span>
+        <span class="lookback-label fixed-route-token" style="left:535px;top:157px">city</span>
+        <span class="lookback-label fixed-route-index" style="left:535px;top:205px">\(\widehat{\mathbf x}_3\)</span>
+        <span class="lookback-label fixed-route-token accent-text" style="left:755px;top:157px">is</span>
+        <span class="lookback-label fixed-route-index" style="left:755px;top:205px">\(\widehat{\mathbf x}_4\)</span>
+      </div>
+    </div>
+    <div class="fixed-routing-sum">\(\displaystyle \mathbf z_4^\top=\sum_{j=1}^{4}{\color{#842B40}a_{4j}}\mathbf x_j^\top\mathbf W\)</div>
+    <div class="fixed-entry-key" role="img" aria-label="A four-by-four matrix A. The entire last row, a_41 through a_44, is highlighted in burgundy.">
+      <div class="fixed-entry-title">\(\mathbf A\)</div>
+      <div class="fixed-entry-matrix">\(\begin{bmatrix}a_{11}&amp;a_{12}&amp;a_{13}&amp;a_{14}\\ \cdot&amp;\cdot&amp;\cdot&amp;\cdot\\ \cdot&amp;\cdot&amp;\cdot&amp;\cdot\\ {\color{#842B40}a_{41}}&amp;{\color{#842B40}a_{42}}&amp;{\color{#842B40}a_{43}}&amp;{\color{#842B40}a_{44}}\end{bmatrix}\)</div>
+      <p>Row 4</p>
+    </div>
+    <div class="takeaway attention-takeaway"><span class="callout-label">Fixed weights</span><p>The same large weight now falls on “city” instead of the country.</p></div>
+  </div>
+  <div class="slide__number">20 / 38</div>
+  <aside class="speaker-notes">The two diagrams use exactly the same mixing weights from row 4 of A. They correspond to two prompts X and X hat. Position 4 is is in both, but the country moves from position 3 to position 1. The large coefficient a_43 = 0.8 is an illustrative choice, not a measurement. It weights Iran in the first prompt and city in the second. Arrows point from the receiving position to the positions it attends to. Information contributes in the other direction, to the updated embedding at position 4. The self-weight a_44 remains present in row 4 of the matrix, with its arrow omitted to keep the diagrams simple. The small matrix highlights all four weights used at position 4. This is a limitation of fixed mixing coefficients, not an impossibility theorem for every model using a fixed mixer. Input embeddings and resulting outputs still depend on the prompt. Word-sized tokens are schematic.</aside>
+</section>
+
+<section id="21" class="slide adaptive-attention-slide" data-title="Make the weights depend on the input">
+  <h1 class="slide__title">Make the weights depend on the input</h1><div class="slide__rule"></div>
+  <div class="slide__content">
+    <div class="adaptive-rule-math">\(\displaystyle \mathbf A\;\longrightarrow\;{\color{#842B40}\mathbf A(\mathbf X)}\)</div>
+    <div class="adaptive-output-math"><span>\(\mathbf Z={\color{#842B40}\mathbf A(\mathbf X)}\,\mathbf X\mathbf W={\color{#842B40}\mathbf A(\mathbf X)}\,{\color{#2C6292}\mathbf V}\)</span><span class="adaptive-value-definition">Values: \(\mathbf V=\mathbf X\mathbf W\)</span></div>
+    <div class="takeaway attention-takeaway"><span class="callout-label">Adaptive weights</span><p>The mixing weights now depend on the input.</p></div>
+  </div>
+  <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a> · Section 3.2.</p>
+  <div class="slide__number">21 / 38</div>
+  <aside class="speaker-notes">The arrow replaces a fixed mixing matrix A with input-dependent weights A(X). It denotes a change in the model, not a computation that takes A as input. A(X) is computed from the current input. Training learns a rule for producing this matrix. At inference the rule's parameters stay fixed, while its output changes with X. Name the transformed embeddings V = XW the values. Each row is one token's transformed embedding, and A(X)V mixes those rows. W remains the shared learned value projection, called W_V later.</aside>
+</section>
+
+<section id="22" class="slide looking-back-slide query-key-roles-slide" data-title="The searching token uses a query">
+  <h1 class="slide__title">The searching token uses a query</h1><div class="slide__rule"></div>
+  <div class="slide__content">
+    <div class="lookback-diagram" role="img" aria-label="In Capital of Iran is, the fourth position uses its query q_4 to search keys k_1, k_2, and k_3 at the preceding positions.">
+      <svg viewBox="0 0 850 292" aria-hidden="true">
+        <path d="M27 166C27 154 33 149 46 149H291C305 149 315 145 315 134C315 145 325 149 339 149H584C597 149 603 154 603 166" fill="none" stroke="#667079" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+        <rect x="27" y="180" width="136" height="54" rx="3" fill="#FAF9F6" stroke="#99A1A7" stroke-width="1.4"></rect>
+        <rect x="247" y="180" width="136" height="54" rx="3" fill="#FAF9F6" stroke="#99A1A7" stroke-width="1.4"></rect>
+        <rect x="467" y="180" width="136" height="54" rx="3" fill="#FAF9F6" stroke="#99A1A7" stroke-width="1.4"></rect>
+        <rect x="687" y="180" width="136" height="54" rx="3" fill="#F5ECEF" stroke="#963F56" stroke-width="1.6"></rect>
+      </svg>
+      <span class="lookback-label lookback-role-action" style="left:315px;top:109px">Being searched</span>
+      <span class="lookback-label lookback-role-action lookback-current" style="left:755px;top:145px">Searching for information</span>
+      <span class="lookback-label lookback-token" style="left:95px;top:207px">Capital</span>
+      <span class="lookback-label lookback-token" style="left:315px;top:207px">of</span>
+      <span class="lookback-label lookback-token" style="left:535px;top:207px">Iran</span>
+      <span class="lookback-label lookback-token lookback-current" style="left:755px;top:207px">is</span>
+      <span class="lookback-label lookback-caption" style="left:95px;top:263px">Key \(\mathbf k_1\)</span>
+      <span class="lookback-label lookback-caption" style="left:315px;top:263px">Key \(\mathbf k_2\)</span>
+      <span class="lookback-label lookback-caption" style="left:535px;top:263px">Key \(\mathbf k_3\)</span>
+      <span class="lookback-label lookback-caption lookback-current" style="left:755px;top:263px">Query \(\mathbf q_4\)</span>
+    </div>
+    <div class="query-key-output" data-layout-box="">\(\displaystyle \mathbf z_4^\top=\sum_{j=1}^{4}{\color{#842B40}a_{4j}}{\color{#2C6292}\mathbf v_j^\top}\)</div>
+    <div class="takeaway attention-takeaway"><span class="callout-label">Queries and keys</span><p>Queries and keys determine how much each value contributes to the output.</p></div>
+  </div>
+  <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a> · Section 3.2.</p>
+  <div class="slide__number">22 / 38</div>
+  <aside class="speaker-notes">Return to Capital of Iran is and name the two roles involved in deciding where to attend. Position 4 uses query q_4 to search the keys k_1, k_2, and k_3 of earlier positions. A query or key is a representation of a token for a particular role, not a separate type of token. The next slide explains how learned transformations create these representations. Position 4 also has its own key and can attend to itself. Self-links are omitted from the diagrams for clarity. Earlier positions have queries for their own outputs too. The diagram focuses on the current query and earlier keys.</aside>
+</section>
+
+<section id="23" class="slide role-features-slide" data-title="Different roles need different features">
+  <h1 class="slide__title">Different roles need different features</h1><div class="slide__rule"></div>
+  <div class="slide__content">
+    <div class="role-features-columns">
+      <div class="role-features-query" data-layout-box="">
+        <h2>Query</h2>
+        <div class="role-features-equation">\(\mathbf q_4^\top=\mathbf x_4^\top{\color{#842B40}\mathbf W_Q}\)</div>
+        <p>What information does this position need?</p>
+      </div>
+      <div class="role-features-key" data-layout-box="">
+        <h2>Key</h2>
+        <div class="role-features-equation">\(\mathbf k_j^\top=\mathbf x_j^\top{\color{#2C6292}\mathbf W_K}\)</div>
+        <p>What information can this token provide?</p>
+      </div>
+    </div>
+    <div class="role-features-match" data-layout-box="">
+      <div>\(\mathbf q_4^\top\mathbf k_j=\mathbf x_4^\top{\color{#842B40}\mathbf W_Q}{\color{#2C6292}\mathbf W_K^\top}\mathbf x_j\)</div>
+      <p>Compare the features selected for these two roles.</p>
+    </div>
+    <div class="takeaway attention-takeaway"><span class="callout-label">Queries and keys</span><p>\(\mathbf W_Q\) and \(\mathbf W_K\) turn each token’s embedding into a query and a key.</p></div>
+  </div>
+  <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a> · Section 3.2.2.</p>
+  <div class="slide__number">23 / 38</div>
+  <aside class="speaker-notes">The input representation contains features used for different purposes. W_Q transforms it into a query used when the position seeks information. W_K transforms it into a key used when the position is considered as a source. The questions on the slide describe the roles intuitively, not literal natural-language questions encoded in individual coordinates. These are learned linear transformations that can combine features, not necessarily select individual coordinates. Their dot product defines a learned comparison x_4 transpose W_Q W_K transpose x_j. Using x_4 transpose x_j directly would instead compare the original representations by their dot product, which is possible but imposes a more restricted comparison at this layer. Both projection matrices are learned during training and shared across positions. They remain fixed at inference, while their outputs change with the input representations. Every position has both a query and a key. In deeper layers a position's representation already contains context, so the query at is can reflect the preceding phrase. A first-layer representation of is alone does not already know the complete context. The key describes information for matching. The value supplies the information actually mixed, as introduced on the next slide.</aside>
+</section>
+
+<section id="24" class="slide final-attention-slide" data-title="Self-attention">
+  <h1 class="slide__title">Self-attention</h1><div class="slide__rule"></div>
+  <div class="slide__content">
+    <p class="final-position-heading">For “is” at position 4</p>
+    <div class="final-position-equations">
+      <div class="final-position-output" data-layout-box="">\(\displaystyle \mathbf z_4^\top=\sum\nolimits_{j=1}^{4}{\color{#842B40}a_{4j}}{\color{#2C6292}\mathbf v_j^\top}\)</div>
+      <div class="final-position-weights" data-layout-box="">\(\displaystyle {\color{#842B40}a_{4j}}=\frac{\exp(\mathbf q_4^\top\mathbf k_j/\sqrt{d_k})}{\sum\nolimits_{r=1}^{4}\exp(\mathbf q_4^\top\mathbf k_r/\sqrt{d_k})}\)</div>
+    </div>
+    <p class="final-matrix-heading">For all positions</p>
+    <div class="final-attention-projections">
+      <span>\(\mathbf Q={\color{#2C6292}\mathbf X}\mathbf W_Q\)</span>
+      <span>\(\mathbf K={\color{#2C6292}\mathbf X}\mathbf W_K\)</span>
+      <span>\(\mathbf V={\color{#2C6292}\mathbf X}\mathbf W_V\)</span>
+    </div>
+    <div class="final-attention-equation">\(\displaystyle \mathbf Z=\underbrace{\operatorname{softmax}_{\mathrm{row}}\!\left(\frac{\mathbf Q\mathbf K^\top}{\sqrt{d_k}}\right)}_{{\color{#842B40}\mathbf A({\color{#2C6292}\mathbf X})}}\,\underbrace{{\color{#2C6292}\mathbf X}\mathbf W_V}_{{\color{#2C6292}\mathbf V}}\)</div>
+    <div class="takeaway attention-takeaway"><span class="callout-label">Self-attention</span><p>Query–key matches determine how much each value contributes to the output.</p></div>
+  </div>
+  <p class="slide-citation" role="doc-footnote"><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NeurIPS 2017 [9]</a> · Scaled dot-product attention, Section 3.2.</p>
+  <div class="slide__number">24 / 38</div>
+  <aside class="speaker-notes">Start with the position-4 example from the preceding slides. Compare query q_4 with each key k_j by the dot product q_4 transpose k_j, divide by the square root of their dimension d_k, exponentiate, and normalize over the four positions. This gives a_4j, with nonnegative weights summing to one. Combine the four values with these weights to produce the updated embedding z_4. A value is the transformed embedding v_j transpose = x_j transpose W_V, with W_V the earlier matrix W. Position 4 includes its own key and value even though its self-link was omitted from the preceding figure. Then collect the queries, keys, and values into matrices to express the same operations for all positions. The matrix formula shows basic single-head attention with the causal restriction omitted from its notation for readability. For a causal decoder, earlier positions normalize only over keys at or before their own position. The position-4 equations are exact for the final position of this four-token prompt, because all four keys are available there. Larger query–key dot products give larger weights for this query. This does not guarantee a semantically useful match before learning. Z is an attention output, not final vocabulary probabilities. Learned matrices stay fixed during inference, while queries, keys, values, and weights depend on the prompt. For X of shape T by d, Q and K have shape T by d_k, V has shape T by d_v, A has shape T by T, and Z has shape T by d_v. Multiple heads, output projection, residual connections, normalization, feed-forward blocks, and positional mechanisms are not expanded on this slide.</aside>
+</section></main>
+<script src="../../../../node_modules/katex/dist/katex.min.js"></script>
+<script src="../../../../node_modules/katex/dist/contrib/auto-render.min.js"></script>
+<script>
+renderMathInElement(document.querySelector('.deck'),{delimiters:[{left:'\\(',right:'\\)',display:false}],macros:{'\\mat':'\\mathbf{#1}','\\vect':'\\mathbf{#1}'},throwOnError:true,strict:false});
+document.querySelector('.slide').classList.add('is-active');
+document.fonts.ready.then(()=>document.documentElement.dataset.ready='true');
+</script></body></html>

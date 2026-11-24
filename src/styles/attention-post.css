@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Attention Termes';
+  src: url('/blog/self-attention/fonts/texgyretermes-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Attention Termes';
+  src: url('/blog/self-attention/fonts/texgyretermes-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Attention Termes';
+  src: url('/blog/self-attention/fonts/texgyretermes-italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Attention Termes';
+  src: url('/blog/self-attention/fonts/texgyretermes-bolditalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+.attention-post {
+  --foreground: 210 11% 14%;
+  --primary: 346 51% 34%;
+  --primary-light: 346 42% 43%;
+  --muted-foreground: 210 7% 41%;
+  --border: 206 10% 82%;
+  background: #FAF9F6;
+  font-family: 'Attention Termes', 'Times New Roman', Times, serif;
+}
+
+.attention-post :is(h1, h2, h3, p, li, figcaption, button, a, time),
+.attention-post .blog-article {
+  font-family: 'Attention Termes', 'Times New Roman', Times, serif;
+  letter-spacing: 0;
+}
+
+.attention-post .blog-article :is(p, li) { font-size: 19px; line-height: 1.55; }
+.attention-post .blog-article h2 { border-left-color: #963F56; }
+.attention-post .math-inline .katex { font-size: 1em; }
+.attention-post .math-display { font-size: 20px; margin-block: 22px; }
+.attention-post .math-display .katex { font-size: 1em; }
+.attention-post .blog-references { margin-bottom: 28px; text-align: left; }
+
+.blog-figure { width: 100%; margin: 28px auto 34px; }
+.blog-figure > a { display: block; }
+.blog-figure img { display: block; width: 100%; height: auto; }
+.blog-figure figcaption { margin-top: 12px; color: hsl(var(--muted-foreground)); font-size: 16px; line-height: 1.4; text-align: left; }

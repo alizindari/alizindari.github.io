@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, FileText, Github, GraduationCap, Linkedin, Mail } from 'lucide-react';
-import JellyCube from './JellyCube';
+import JellyCat from './JellyCat';
 
 const HomePage = () => {
   const newsItems = [
@@ -172,7 +172,7 @@ const HomePage = () => {
                   Athens Acropolis
                 </figcaption>
               </figure>
-              <JellyCube />
+              <JellyCat />
             </div>
           </div>
         </section>

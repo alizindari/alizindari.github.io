@@ -1,15 +1,25 @@
 import { MeshPhysicalMaterial } from 'three';
-import type { BufferAttribute } from 'three';
+import type { BufferAttribute, Texture } from 'three';
 import { FloatVertexAttributeTexture, MeshBVHUniformStruct, shaderIntersectFunction, shaderStructs } from 'three-mesh-bvh';
 import type { MeshBVH } from 'three-mesh-bvh';
+import { catFaceBottom, catFaceHeight, catFaceWidth } from './jellyCatFace';
 
 // Trace through the actual deformed surface, rather than using a constant glass thickness.
-export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH) {
+export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH, face: Texture) {
   const uniform = new MeshBVHUniformStruct();
   const normals = new FloatVertexAttributeTexture();
   material.onBeforeCompile = shader => {
     shader.uniforms.jellyBVH = { value: uniform };
     shader.uniforms.jellyNormals = { value: normals };
+    shader.uniforms.jellyFace = { value: face };
+    shader.vertexShader = shader.vertexShader.replace('#include <common>', `
+      #include <common>
+      attribute vec3 jellyRestPosition;
+      varying vec3 vJellyRest;
+    `).replace('#include <begin_vertex>', `
+      #include <begin_vertex>
+      vJellyRest = jellyRestPosition;
+    `);
     shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `
       #include <common>
       precision highp usampler2D;
@@ -17,6 +27,8 @@ export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH) {
       ${shaderIntersectFunction}
       uniform BVH jellyBVH;
       uniform sampler2D jellyNormals;
+      uniform sampler2D jellyFace;
+      varying vec3 vJellyRest;
     `).replace('#include <transmission_fragment>', `
       material.transmission = transmission;
       material.transmissionAlpha = 1.0;
@@ -60,9 +72,15 @@ export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH) {
       }
       vec3 fresnel = EnvironmentBRDF(jellyNormal, jellyView, material.specularColorBlended, material.specularF90, material.roughness);
       totalDiffuse = transmitted * material.diffuseContribution * (1.0 - fresnel);
+    `).replace('#include <opaque_fragment>', `
+      // Rest coordinates keep the face attached while the surface stretches.
+      vec2 faceUV = vec2(0.5 + vJellyRest.x / ${catFaceWidth}, (vJellyRest.y - ${catFaceBottom}) / ${catFaceHeight});
+      vec4 faceInk = texture2D(jellyFace, faceUV);
+      outgoingLight = mix(outgoingLight, faceInk.rgb, faceInk.a * smoothstep(0.30, 0.42, vJellyRest.z));
+      #include <opaque_fragment>
     `);
   };
-  material.customProgramCacheKey = () => 'jelly-refraction-v1';
+  material.customProgramCacheKey = () => 'jelly-cat-refraction-v1';
   return {
     update() {
       uniform.updateFrom(bvh);

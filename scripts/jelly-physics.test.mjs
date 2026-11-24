@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { Vector3 } from 'three';
-import { bindJellySurface, createJellyGeometry, createJellyPhysics } from '../src/lib/jellyPhysics.ts';
+import { bindJellySurface, createJellyCatGeometry, createJellyGeometry, createJellyPhysics } from '../src/lib/jellyPhysics.ts';
 
 function advance(physics, steps) {
   for (let i = 0; i < steps; i++) physics.step();
@@ -74,4 +74,45 @@ test('repeated bounces, extreme pointer targets, and resets stay bounded', async
       assert(physics.min.z > -1.6 && physics.max.z < 1.6);
     }
   } finally { physics.dispose(); }
+});
+
+test('the cat has two ears on a closed surface and can be stretched by an ear', async () => {
+  const physics = await createJellyPhysics();
+  const cat = createJellyCatGeometry(12);
+  try {
+    const rest = cat.attributes.jellyRestPosition;
+    const crown = [-Infinity, -Infinity, -Infinity];
+    for (let i = 0; i < rest.count; i++) {
+      const x = rest.getX(i);
+      const region = x < -0.20 ? 0 : x > 0.20 ? 2 : 1;
+      crown[region] = Math.max(crown[region], rest.getY(i));
+    }
+    assert(crown[0] > crown[1] + 0.35 && crown[2] > crown[1] + 0.35);
+    const edges = new Map();
+    const indices = cat.index.array;
+    for (let i = 0; i < indices.length; i += 3) {
+      for (let j = 0; j < 3; j++) {
+        const a = indices[i + j], b = indices[i + (j + 1) % 3];
+        const key = a < b ? `${a}:${b}` : `${b}:${a}`;
+        edges.set(key, (edges.get(key) ?? 0) + 1);
+      }
+    }
+    assert([...edges.values()].every(count => count === 2));
+    assert.equal(cat.groups.length, 0);
+
+    const update = bindJellySurface(cat, physics);
+    advance(physics, 420);
+    update();
+    const tip = topPoint({ geometry: cat });
+    const paintedRest = Float32Array.from(rest.array);
+    physics.grab(tip);
+    assert(physics.dragging, 'An ear beyond the simulation cage must still grab the jelly.');
+    physics.move(tip.clone().add(new Vector3(0.15, 0.5, 0.03)));
+    advance(physics, 100);
+    update();
+    assert(topPoint({ geometry: cat }).y > tip.y + 0.08);
+    assert.deepEqual(rest.array, paintedRest, 'The face coordinates must stay fixed as the skin moves.');
+    assert(Array.from(cat.attributes.position.array).every(Number.isFinite));
+    physics.release();
+  } finally { cat.dispose(); physics.dispose(); }
 });

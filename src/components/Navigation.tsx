@@ -17,7 +17,6 @@ const Navigation = ({ activeTab }: NavigationProps) => {
   );
 
   const tabs = [
-    { id: 'home', label: 'Home', path: '/' },
     { id: 'blog', label: 'Blog', path: '/blog/' },
     { id: 'publications', label: 'Publications', path: '/publications/' },
     { id: 'presentations', label: 'Presentations', path: '/presentations/' }
@@ -35,10 +34,12 @@ const Navigation = ({ activeTab }: NavigationProps) => {
           <div className="flex items-center justify-between gap-6 w-full">
             <Link
               to="/"
+              className={`nav-home inline-flex items-center gap-2 py-3 ${activeTab === 'home' ? 'active' : ''}`}
+              aria-current={activeTab === 'home' ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
-              className="site-brand shrink-0 text-xl font-semibold text-foreground transition-colors hover:text-primary"
             >
-              Ali Zindari
+              <img src="/home-cottage.svg" alt="" className="shrink-0" width={30} height={30} />
+              Home
             </Link>
             
             {/* Desktop Menu */}

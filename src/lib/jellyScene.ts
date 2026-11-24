@@ -6,7 +6,8 @@ import {
 } from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { MeshBVH } from 'three-mesh-bvh';
-import { bindJellySurface, createJellyGeometry, createJellyPhysics } from './jellyPhysics';
+import { bindJellySurface, createJellyCatGeometry, createJellyPhysics } from './jellyPhysics';
+import { createJellyCatFace } from './jellyCatFace';
 import { createJellyCaustics } from './jellyCaustics';
 import { addJellyOptics } from './jellyMaterial';
 
@@ -40,15 +41,16 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
     renderer.toneMapping = ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
     const canvas = renderer.domElement;
-    canvas.setAttribute('aria-label', 'Interactive jelly cube. Drag to stretch; press Enter to bounce, or R to reset.');
+    canvas.setAttribute('aria-label', 'Interactive jelly cat. Drag to stretch; press Enter to bounce, or R to reset.');
     canvas.tabIndex = 0;
     canvas.style.touchAction = 'none';
     host.appendChild(canvas);
 
     const scene = new Scene();
-    const camera = new OrthographicCamera(-1.9, 1.9, 1.9, -1.9, 0.01, 30);
-    camera.position.set(4.5, 3.2, 5);
-    camera.lookAt(0, 0.85, 0);
+    const frameRadius = 1.63;
+    const camera = new OrthographicCamera(-frameRadius, frameRadius, frameRadius, -frameRadius, 0.01, 30);
+    camera.position.set(2.05, 2.8, 7);
+    camera.lookAt(0, 0.92, 0);
     const environment = own(new RoomEnvironment());
     const pmrem = own(new PMREMGenerator(renderer));
     const environmentMap = own(pmrem.fromScene(environment, 0.025));
@@ -78,7 +80,7 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
     contact.position.y = 0.005;
     scene.add(contact);
 
-    const geometry = own(createJellyGeometry(12));
+    const geometry = own(createJellyCatGeometry(14));
     const updateSurface = bindJellySurface(geometry, physics);
     const material = own(new MeshPhysicalMaterial({
       color: jellyColors.berry.surface,
@@ -96,7 +98,7 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
     jelly.frustumCulled = false;
     scene.add(jelly);
     const bvh = new MeshBVH(geometry, { maxLeafSize: 8 });
-    const optics = own(addJellyOptics(material, bvh));
+    const optics = own(addJellyOptics(material, bvh, own(createJellyCatFace())));
     const caustics = own(createJellyCaustics());
     scene.add(caustics.mesh);
     const raycaster = new Raycaster();
@@ -221,9 +223,9 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
       const { width, height } = host.getBoundingClientRect();
       if (!width || !height) return;
       const aspect = width / height;
-      camera.left = -1.9 * Math.max(1, aspect);
+      camera.left = -frameRadius * Math.max(1, aspect);
       camera.right = -camera.left;
-      camera.top = 1.9 / Math.min(1, aspect);
+      camera.top = frameRadius / Math.min(1, aspect);
       camera.bottom = -camera.top;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);

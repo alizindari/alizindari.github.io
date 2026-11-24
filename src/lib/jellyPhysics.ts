@@ -1,11 +1,11 @@
 import AmmoFactory from 'ammojs-typed';
 import type Ammo from 'ammojs-typed';
-import { BoxGeometry, BufferAttribute, BufferGeometry, Vector3 } from 'three';
+import { BoxGeometry, BufferAttribute, BufferGeometry, MathUtils, Vector3 } from 'three';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
 
 let engine: ReturnType<typeof AmmoFactory> | undefined;
 
-export function createJellyGeometry(segments: number) {
+function createWeldedJellySurface(segments: number) {
   // Uniform face subdivisions are essential: a bevel-only mesh cannot be pinched in the middle.
   const box = new BoxGeometry(1.3, 1.3, 1.3, segments * 2, segments * 2, segments * 2);
   box.deleteAttribute('normal');
@@ -13,6 +13,11 @@ export function createJellyGeometry(segments: number) {
   const geometry = mergeVertices(box, 0.00001);
   geometry.clearGroups();
   box.dispose();
+  return geometry;
+}
+
+export function createJellyGeometry(segments: number) {
+  const geometry = createWeldedJellySurface(segments);
   const vertices = geometry.getAttribute('position');
   for (let i = 0; i < vertices.count; i++) {
     const x = vertices.getX(i), y = vertices.getY(i), z = vertices.getZ(i);
@@ -25,6 +30,26 @@ export function createJellyGeometry(segments: number) {
   }
   geometry.rotateY(-0.12);
   geometry.translate(0, 0.71, 0);
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+export function createJellyCatGeometry(segments: number) {
+  const geometry = createWeldedJellySurface(segments);
+  const vertices = geometry.getAttribute('position');
+  for (let i = 0; i < vertices.count; i++) {
+    const u = vertices.getX(i), v = vertices.getY(i), w = vertices.getZ(i);
+    const scale = (Math.abs(u) ** 2.9 + Math.abs(v) ** 2.9 + Math.abs(w) ** 2.9) ** (-1 / 2.9);
+    const height = v * scale;
+    const x = u * scale * 0.84 * (1 - 0.10 * height);
+    const z = w * scale * 0.64;
+
+    // Raise two softened ear tips on the closed body, with no seams in the jelly surface.
+    const ear = Math.max(0, 1 - ((Math.abs(x) - 0.47) / 0.32) ** 2 - ((z - 0.23) / 0.36) ** 2);
+    const y = 0.69 + 0.63 * height + 0.50 * ear ** 2 * MathUtils.smoothstep(height, 0.33, 0.75);
+    vertices.setXYZ(i, x, y, z);
+  }
+  geometry.setAttribute('jellyRestPosition', vertices.clone());
   geometry.computeVertexNormals();
   return geometry;
 }
@@ -90,7 +115,7 @@ export async function createJellyPhysics() {
   bending.set_m_kLST(0.04);
   body.generateBendingConstraints(2, bending);
 
-  // Interior cross-links resist collapse without inflating the cube like a balloon.
+  // Interior cross-links resist collapse without inflating the jelly like a balloon.
   const volume = body.appendMaterial();
   volume.set_m_kLST(0.12);
   const count = rest.length / 3;
@@ -174,11 +199,17 @@ export async function createJellyPhysics() {
 
   function grab(point: Vector3) {
     target.copy(point);
-    grabbed = nodes.flatMap((node, index) => {
+    const offsets = nodes.map(node => {
       const p = node.get_m_x();
-      const offset = new Vector3(p.x(), p.y(), p.z()).sub(point);
+      return new Vector3(p.x(), p.y(), p.z()).sub(point);
+    });
+    // The render surface extends above the cage at the ears.
+    const nearest = Math.min(...offsets.map(offset => offset.length()));
+    const reach = Math.max(0.46, nearest + 0.14);
+    grabbed = offsets.flatMap((offset, index) => {
       const distance = offset.length();
-      return distance < 0.46 ? [{ index, offset, weight: Math.exp(-distance * distance / 0.055) }] : [];
+      const effective = distance - Math.max(0, nearest - 0.22);
+      return distance < reach ? [{ index, offset, weight: Math.exp(-effective * effective / 0.055) }] : [];
     });
   }
 

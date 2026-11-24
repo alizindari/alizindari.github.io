@@ -5,6 +5,8 @@ import BlogDifficulty from './BlogDifficulty';
 import BlogVisitCounter from './BlogVisitCounter';
 import BlogPostFooter from './BlogPostFooter';
 import MathRenderer from './MathRenderer';
+import BlogFigure from './BlogFigure';
+import '../styles/attention-post.css';
 
 const LaundryModelPlayground = lazy(() => import('./LaundryModelPlayground'));
 const LaundryStochasticSimulator = lazy(() => import('./LaundryStochasticSimulator'));
@@ -36,13 +38,22 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
     );
   }
 
-  const renderInlineMath = (text: string, keyPrefix: string) => {
-    return text.split(/(\$[^$\n]+\$)/g).map((part, index) => {
+  const renderInline = (text: string, keyPrefix: string) => {
+    return text.split(/(\$[^$\n]+\$|\[[^\]\n]+\]\(https?:\/\/[^\s)]+\))/g).map((part, index) => {
       if (part.startsWith('$') && part.endsWith('$')) {
         return (
           <MathRenderer key={`${keyPrefix}-math-${index}`}>
             {part.slice(1, -1)}
           </MathRenderer>
+        );
+      }
+
+      const link = part.match(/^\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)$/);
+      if (link) {
+        return (
+          <a key={`${keyPrefix}-link-${index}`} href={link[2]} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">
+            {link[1]}
+          </a>
         );
       }
 
@@ -71,23 +82,28 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
 
       return block.split('\n').map((line, lineIndex) => {
         const key = `${blockIndex}-${lineIndex}`;
+        const figureMatch = line.match(/^\[\[figure:([a-z-]+)\]\]$/);
+
+        if (figureMatch && post.figures?.[figureMatch[1]]) {
+          return <BlogFigure key={key} figure={post.figures[figureMatch[1]]} />;
+        }
 
         if (line.startsWith('# ')) {
-          return <h1 key={key} className="text-2xl sm:text-3xl font-heading font-bold text-foreground mb-4 sm:mb-6 mt-6 sm:mt-8 first:mt-0">{renderInlineMath(line.slice(2), key)}</h1>;
+          return <h1 key={key} className="text-2xl sm:text-3xl font-heading font-bold text-foreground mb-4 sm:mb-6 mt-6 sm:mt-8 first:mt-0">{renderInline(line.slice(2), key)}</h1>;
         } else if (line.startsWith('## ')) {
-          return <h2 key={key} className="text-xl sm:text-2xl font-heading font-semibold text-foreground mb-3 sm:mb-4 mt-4 sm:mt-6">{renderInlineMath(line.slice(3), key)}</h2>;
+          return <h2 key={key} className="text-xl sm:text-2xl font-heading font-semibold text-foreground mb-3 sm:mb-4 mt-4 sm:mt-6">{renderInline(line.slice(3), key)}</h2>;
         } else if (line.startsWith('### ')) {
-          return <h3 key={key} className="text-lg sm:text-xl font-heading font-medium text-foreground mb-2 sm:mb-3 mt-3 sm:mt-5">{renderInlineMath(line.slice(4), key)}</h3>;
+          return <h3 key={key} className="text-lg sm:text-xl font-heading font-medium text-foreground mb-2 sm:mb-3 mt-3 sm:mt-5">{renderInline(line.slice(4), key)}</h3>;
         } else if (line.startsWith('- ')) {
-          return <li key={key} className="text-base sm:text-lg text-foreground leading-[1.5] ml-4">{renderInlineMath(line.slice(2), key)}</li>;
+          return <li key={key} className="text-base sm:text-lg text-foreground leading-[1.5] ml-4">{renderInline(line.slice(2), key)}</li>;
         } else if (line.trim() === '') {
           return null;
         } else if (line.match(/^\d+\./)) {
-          return <li key={key} className="text-base sm:text-lg text-foreground leading-[1.5] ml-4 list-decimal">{renderInlineMath(line.replace(/^\d+\.\s*/, ''), key)}</li>;
+          return <li key={key} className="text-base sm:text-lg text-foreground leading-[1.5] ml-4 list-decimal">{renderInline(line.replace(/^\d+\.\s*/, ''), key)}</li>;
         } else if (line.startsWith('**') && line.endsWith('**')) {
-          return <p key={key} className="text-base sm:text-lg text-foreground leading-[1.5] mb-3 font-semibold">{renderInlineMath(line.slice(2, -2), key)}</p>;
+          return <p key={key} className="text-base sm:text-lg text-foreground leading-[1.5] mb-3 font-semibold">{renderInline(line.slice(2, -2), key)}</p>;
         } else {
-          return <p key={key} className="text-base sm:text-lg text-foreground leading-[1.5] mb-3">{renderInlineMath(line, key)}</p>;
+          return <p key={key} className="text-base sm:text-lg text-foreground leading-[1.5] mb-3">{renderInline(line, key)}</p>;
         }
       });
     });
@@ -105,7 +121,7 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
     : '';
 
   return (
-    <div className="blog-post-view min-h-screen">
+    <div className={`blog-post-view min-h-screen${post.theme === 'attention-slides' ? ' attention-post' : ''}`}>
       <div className="article-container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Navigation */}
         <div className="flex items-center justify-between mb-6 sm:mb-8 gap-2">
@@ -187,6 +203,19 @@ const BlogPostView = ({ postSlug, onBack, onHome, onTagClick }: BlogPostViewProp
                 <Suspense fallback={<div className="mt-10 h-52 border-t border-border" />}>
                   <LaundryStochasticSimulator />
                 </Suspense>
+              )}
+              {post.references && (
+                <section className="blog-references mt-8 border-t border-border pt-6" aria-labelledby="references-heading">
+                  <h2 id="references-heading" className="text-xl font-semibold mb-4">References</h2>
+                  <ol className="space-y-4 text-base">
+                    {post.references.map((reference) => (
+                      <li key={reference.url}>
+                        <a href={reference.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">{reference.title}</a>
+                        {reference.description && <p className="mt-1 text-muted-foreground">{reference.description}</p>}
+                      </li>
+                    ))}
+                  </ol>
+                </section>
               )}
               {post.feedbackIntro && (
                 <div className="blog-article max-w-none text-justify hyphens-auto">

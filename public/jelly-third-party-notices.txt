@@ -1,4 +1,4 @@
-Libraries used by the interactive jelly cube
+Libraries used by the interactive jelly cat
 
 three.js 0.185.1 - https://github.com/mrdoob/three.js
 Copyright (c) 2010-2026 three.js authors

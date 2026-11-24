@@ -17,6 +17,10 @@ const PageLoading = () => (
 );
 
 const postMetadata: Record<string, { title: string; description: string }> = {
+  'self-attention-one-matrix-at-a-time': {
+    title: 'Self-Attention from Scratch | Ali Zindari',
+    description: 'Building self-attention from two matrix multiplications.',
+  },
   'my-undergraduate-years-at-iut': {
     title: 'چرا باید شدیدا از صنعتی اصفهان متنفر باشید؟ | Ali Zindari',
     description: 'تجربه‌ها و خاطرات من از دوران کارشناسی در دانشگاه صنعتی اصفهان.',

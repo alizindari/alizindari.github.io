@@ -19,6 +19,12 @@ const routes = [
     type: 'website',
   },
   {
+    path: 'blog/self-attention-one-matrix-at-a-time',
+    title: 'Self-Attention from Scratch | Ali Zindari',
+    description: 'Building self-attention from two matrix multiplications.',
+    type: 'article',
+  },
+  {
     path: 'blog/the-iced-tea-no-one-wanted',
     title: 'The Iced Tea No One Wanted | Ali Zindari',
     description: 'Some personal thoughts on free iced tea, doing theory, and wondering whether any of it matters.',
