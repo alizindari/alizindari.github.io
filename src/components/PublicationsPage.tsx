@@ -11,6 +11,7 @@ import loraPoster from '@/files/posters/poster_lora.pdf';
 import { getDocumentViewerUrl } from '@/lib/documentViewer';
 import { FileDown, Github, Presentation } from 'lucide-react';
 import AcademicTemplateLink from './AcademicTemplateLink';
+import YearArchive from './YearArchive';
 
 type Publication = {
   id: number;
@@ -157,85 +158,69 @@ const PublicationsPage = () => {
           <AcademicTemplateLink />
         </div>
 
-        <div className="publication-list mx-auto space-y-6 sm:space-y-7">
-          {publications.map((pub) => (
-            <article key={pub.id} className="publication-entry card-academic p-4 sm:p-5">
-              <div className="flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6">
-                <div className="publication-cover flex-shrink-0 w-full md:w-60">
-                  <img 
-                    src={pub.image} 
-                    alt={`${pub.title} visualization`}
-                    loading="lazy"
-                    className="w-full h-64 sm:h-72 md:w-60 md:h-60 object-contain bg-white"
-                  />
+        <YearArchive entries={publications}>
+          {(pub) => (
+            <article key={pub.id} className="archive-entry">
+              <header className="archive-entry-heading">
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  {[pub.type, ...(pub.tags ?? [])].map((tag) => (
+                    <span key={tag} className={`px-3 py-1 text-xs font-medium rounded-full ${getTagColor(tag)}`}>
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                <div className="flex flex-1 min-w-0 flex-col">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 gap-2">
-                    <h2 className="text-lg sm:text-xl font-heading font-semibold text-foreground leading-tight flex-1">
-                      {pub.title}
-                    </h2>
-                    <div className="flex items-center gap-2 flex-wrap sm:justify-end">
-                      {[pub.type, ...(pub.tags ?? [])].map((tag) => (
-                        <span key={tag} className={`px-3 py-1 text-xs font-medium rounded-full ${getTagColor(tag)}`}>
-                          {tag}
-                        </span>
-                      ))}
-                      <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
-                        {pub.year}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <p className="mb-2 break-words text-sm text-muted-foreground">
-                    {renderAuthors(pub.authors)}
-                  </p>
-                  
-                  <p className="mb-3 text-sm font-medium text-primary sm:mb-4 sm:text-base">
-                    {pub.venue}
-                  </p>
-                  
-                  <p className="mb-4 text-sm leading-relaxed text-foreground sm:mb-6 sm:text-base">
-                    {pub.abstract}
-                  </p>
-                  
-                  <div className="paper-actions flex flex-wrap items-center gap-3">
-                    <a 
-                      href={pub.pdf}
+                <h3>{pub.title}</h3>
+                <p className="mb-2 break-words text-sm text-muted-foreground">
+                  {renderAuthors(pub.authors)}
+                </p>
+
+                <p className="text-sm font-medium text-primary sm:text-base">
+                  {pub.venue}
+                </p>
+              </header>
+              <div className="archive-entry-body">
+                <p className="mb-4 text-base leading-relaxed text-foreground">
+                  {pub.abstract}
+                </p>
+
+                <div className="paper-actions flex flex-wrap items-center gap-3">
+                  <a
+                    href={pub.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  >
+                    <FileDown size={17} strokeWidth={1.9} aria-hidden="true" />
+                    PDF
+                  </a>
+                  {pub.poster && (
+                    <a
+                      href={getDocumentViewerUrl(pub.poster, `${pub.title} Poster`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                      className="inline-flex h-10 items-center gap-2 rounded-md border border-primary/30 bg-primary/5 px-4 text-sm font-medium text-primary transition-colors hover:border-primary/50 hover:bg-primary/10"
                     >
-                      <FileDown size={17} strokeWidth={1.9} aria-hidden="true" />
-                      PDF
+                      <Presentation size={17} strokeWidth={1.9} aria-hidden="true" />
+                      Poster
                     </a>
-                    {pub.poster && (
-                      <a
-                        href={getDocumentViewerUrl(pub.poster, `${pub.title} Poster`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-10 items-center gap-2 rounded-md border border-primary/30 bg-primary/5 px-4 text-sm font-medium text-primary transition-colors hover:border-primary/50 hover:bg-primary/10"
-                      >
-                        <Presentation size={17} strokeWidth={1.9} aria-hidden="true" />
-                        Poster
-                      </a>
-                    )}
-                    {pub.github && (
-                      <a
-                        href={pub.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
-                      >
-                        <Github size={17} strokeWidth={1.9} aria-hidden="true" />
-                        GitHub
-                      </a>
-                    )}
-                  </div>
+                  )}
+                  {pub.github && (
+                    <a
+                      href={pub.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-10 items-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:bg-muted hover:text-primary"
+                    >
+                      <Github size={17} strokeWidth={1.9} aria-hidden="true" />
+                      GitHub
+                    </a>
+                  )}
                 </div>
               </div>
+              <img className="archive-figure" src={pub.image} alt={`${pub.title} visualization`} loading="lazy" />
             </article>
-          ))}
-        </div>
+          )}
+        </YearArchive>
       </div>
     </div>
   );

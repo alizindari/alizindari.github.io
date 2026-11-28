@@ -96,7 +96,7 @@ const HomePage = () => {
                 .
               </p>
 
-              <div className="profile-links mt-8 flex items-center gap-2.5" aria-label="Profile links">
+              <div className="profile-links mt-8 flex flex-wrap items-center gap-2" aria-label="Profile links">
                 <a
                   href="/cv/"
                   target="_blank"
@@ -106,6 +106,7 @@ const HomePage = () => {
                   title="CV"
                 >
                   <FileText size={19} strokeWidth={1.8} />
+                  CV
                 </a>
                 <a
                   href="https://scholar.google.com/citations?user=gy3ALNoAAAAJ&hl=en"
@@ -178,19 +179,11 @@ const HomePage = () => {
         </section>
 
         <section className="home-about" aria-labelledby="about-heading">
-          <div className="site-container home-section-grid">
+          <div className="site-container home-section-grid about-layout">
             <div className="home-section-heading">
               <h2 id="about-heading" className="text-3xl font-bold text-foreground">
                 About
               </h2>
-              <p className="mt-2 text-base text-muted-foreground">Research interests</p>
-              <ul className="research-areas mt-6 text-base sm:text-lg">
-                {researchAreas.map((area) => (
-                  <li key={area} className="leading-snug text-foreground">
-                    {area}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div className="about-copy space-y-6 text-justify text-lg leading-8 text-foreground hyphens-auto">
@@ -200,6 +193,14 @@ const HomePage = () => {
               <p>
                 Lately, I&apos;ve become interested in developing architectures that use both <strong className="font-semibold text-primary">long-term and short-term memory</strong> during inference, with mechanisms for deciding which <strong className="font-semibold text-primary">information</strong> to keep and which to erase.
               </p>
+            </div>
+            <div className="about-interests">
+              <h3 className="mb-4 text-base text-muted-foreground">Research interests</h3>
+              <ul className="research-areas text-base sm:text-lg">
+                {researchAreas.map((area) => (
+                  <li key={area} className="leading-snug text-foreground">{area}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>

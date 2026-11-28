@@ -41,9 +41,8 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
     renderer.toneMapping = ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
     const canvas = renderer.domElement;
-    canvas.setAttribute('aria-label', 'Interactive jelly cat. Drag to stretch; press Enter to bounce, or R to reset.');
+    canvas.setAttribute('aria-label', 'Interactive jelly cat. Tap to poke, drag to stretch, press Enter to bounce, or R to reset.');
     canvas.tabIndex = 0;
-    canvas.style.touchAction = 'none';
     host.appendChild(canvas);
 
     const scene = new Scene();
@@ -117,6 +116,11 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
     let dragDistance = 0;
     let pressX = 0;
     let pressY = 0;
+    let touchDrag = false;
+    let earSide = 0;
+    let blinkTime = Infinity;
+    const touchEvents = 'TouchEvent' in window;
+    const pressPoint = new Vector3(), inward = new Vector3(), pull = new Vector3();
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function setRay(clientX: number, clientY: number) {
@@ -157,62 +161,113 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
         while (accumulator >= 1 / 120) { physics.step(); accumulator -= 1 / 120; }
       }
       opticalTime += elapsed;
+      blinkTime += elapsed;
+      const t = blinkTime / 0.18;
+      optics.setBlink(t >= 0 && t < 1 && !reducedMotion.matches ? Math.sin(Math.PI * t) ** 2 : 0);
       draw();
       if (!paused && (physics.dragging || physics.energy > 0.0005 || now - idleSince < 1800)) {
         frame = requestAnimationFrame(animate);
       }
     }
 
-    function beginDrag(id: number, hit: Vector3) {
+    function beginDrag(id: number, x: number, y: number, touch: boolean) {
+      if (activePointer !== null) return false;
+      setRay(x, y);
+      const hit = bvh.raycastFirst(raycaster.ray, DoubleSide);
+      if (!hit) return false;
+      pressX = x; pressY = y;
+      pressPoint.copy(hit.point);
+      inward.copy(hit.normal ?? hit.face!.normal).normalize().negate();
+      earSide = 0;
+      if (hit.face && hit.barycoord) {
+        const { a, b, c } = hit.face, w = hit.barycoord, rest = geometry.getAttribute('jellyRestPosition');
+        if (rest.getY(a) * w.x + rest.getY(b) * w.y + rest.getY(c) * w.z > 1.40) {
+          earSide = Math.sign(rest.getX(a) * w.x + rest.getX(b) * w.y + rest.getX(c) * w.z);
+        }
+      }
       activePointer = id;
+      touchDrag = touch;
       dragDistance = 0;
-      physics.grab(hit);
+      pull.set(0, 0, 0);
+      physics.grab(hit.point);
       camera.getWorldDirection(point);
-      dragPlane.setFromNormalAndCoplanarPoint(point, hit);
-      canvas.setPointerCapture(id);
+      dragPlane.setFromNormalAndCoplanarPoint(point, hit.point);
+      if (!touch) canvas.setPointerCapture(id);
       canvas.style.cursor = 'grabbing';
-      canvas.style.touchAction = 'none';
       paused = false;
       onPlay();
       wake();
+      return true;
     }
 
     function pointerDown(event: PointerEvent) {
-      if (activePointer !== null || event.button !== 0) return;
-      setRay(event.clientX, event.clientY);
-      const hit = bvh.raycastFirst(raycaster.ray, DoubleSide);
-      if (!hit) return;
-      pressX = event.clientX;
-      pressY = event.clientY;
-      event.preventDefault();
-      beginDrag(event.pointerId, hit.point);
+      if ((touchEvents && event.pointerType === 'touch') || event.button !== 0) return;
+      if (beginDrag(event.pointerId, event.clientX, event.clientY, false)) event.preventDefault();
+    }
+
+    function moveDrag(x: number, y: number) {
+      dragDistance = Math.max(dragDistance, Math.hypot(x - pressX, y - pressY));
+      setRay(x, y);
+      if (raycaster.ray.intersectPlane(dragPlane, point)) {
+        physics.move(point);
+        pull.copy(point).sub(pressPoint);
+      }
+      wake();
     }
 
     function pointerMove(event: PointerEvent) {
-      setRay(event.clientX, event.clientY);
+      if (touchDrag || (touchEvents && event.pointerType === 'touch')) return;
       if (activePointer === event.pointerId) {
         event.preventDefault();
-        dragDistance = Math.max(dragDistance, Math.hypot(event.clientX - pressX, event.clientY - pressY));
-        if (raycaster.ray.intersectPlane(dragPlane, point)) physics.move(point);
-        wake();
+        moveDrag(event.clientX, event.clientY);
       } else if (event.pointerType !== 'touch') {
+        setRay(event.clientX, event.clientY);
         canvas.style.cursor = bvh.raycastFirst(raycaster.ray, DoubleSide) ? 'grab' : 'default';
       }
     }
 
-    function release(event?: PointerEvent) {
-      if (activePointer === null || (event && event.pointerId !== activePointer)) return;
+    function release(completed = false) {
+      if (activePointer === null) return;
       const id = activePointer;
       activePointer = null;
+      if (completed) {
+        const tap = dragDistance < 4;
+        if (tap) physics.poke(pressPoint, inward);
+        if (earSide && !reducedMotion.matches) {
+          const flick = tap ? point.set(earSide * 4, -1, -0.4) : point.copy(pull).multiplyScalar(-8);
+          physics.flickEar(earSide, flick);
+        }
+        if (!tap && physics.compression > 0.04 && !reducedMotion.matches) blinkTime = 0;
+      }
       physics.release();
       canvas.style.cursor = 'grab';
-      canvas.style.touchAction = 'none';
-      if (canvas.hasPointerCapture(id)) canvas.releasePointerCapture(id);
-      if (event?.type === 'pointerup' && dragDistance < 4) physics.nudge();
+      if (!touchDrag && canvas.hasPointerCapture(id)) canvas.releasePointerCapture(id);
+      touchDrag = false;
       wake();
     }
+    function pointerEnd(event: PointerEvent) {
+      if (!touchDrag && event.pointerId === activePointer) release(event.type === 'pointerup');
+    }
+    // Decide at touchstart, before native scrolling begins. Misses stay ordinary page gestures.
+    function touchStart(event: TouchEvent) {
+      if (event.touches.length !== 1 || !event.cancelable) return;
+      const t = event.changedTouches[0];
+      if (beginDrag(t.identifier, t.clientX, t.clientY, true)) event.preventDefault();
+    }
+    function touchMove(event: TouchEvent) {
+      if (!touchDrag) return;
+      const t = Array.from(event.changedTouches).find(t => t.identifier === activePointer);
+      if (!t) return;
+      if (event.cancelable) event.preventDefault();
+      moveDrag(t.clientX, t.clientY);
+    }
+    function touchEnd(event: TouchEvent) {
+      if (touchDrag && Array.from(event.changedTouches).some(t => t.identifier === activePointer)) {
+        release(event.type === 'touchend');
+      }
+    }
 
-    function reset() { release(); physics.reset(); paused = false; onPlay(); opticalTime = 1; wake(); }
+    function reset() { release(); physics.reset(); blinkTime = Infinity; paused = false; onPlay(); opticalTime = 1; wake(); }
     function blur() { release(); }
     function keyDown(event: KeyboardEvent) {
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); paused = false; onPlay(); physics.nudge(); wake(); }
@@ -252,9 +307,13 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
     resizeObserver.observe(host);
     canvas.addEventListener('pointerdown', pointerDown);
     canvas.addEventListener('pointermove', pointerMove);
-    canvas.addEventListener('pointerup', release);
-    canvas.addEventListener('pointercancel', release);
-    canvas.addEventListener('lostpointercapture', release);
+    canvas.addEventListener('pointerup', pointerEnd);
+    canvas.addEventListener('pointercancel', pointerEnd);
+    canvas.addEventListener('lostpointercapture', pointerEnd);
+    canvas.addEventListener('touchstart', touchStart, { passive: false });
+    canvas.addEventListener('touchmove', touchMove, { passive: false });
+    canvas.addEventListener('touchend', touchEnd);
+    canvas.addEventListener('touchcancel', touchEnd);
     canvas.addEventListener('keydown', keyDown);
     canvas.addEventListener('webglcontextlost', contextLost);
     document.addEventListener('visibilitychange', visibility);
@@ -267,9 +326,13 @@ export async function createJellyScene(host: HTMLElement, onPlay: () => void = (
       window.removeEventListener('blur', blur);
       canvas.removeEventListener('pointerdown', pointerDown);
       canvas.removeEventListener('pointermove', pointerMove);
-      canvas.removeEventListener('pointerup', release);
-      canvas.removeEventListener('pointercancel', release);
-      canvas.removeEventListener('lostpointercapture', release);
+      canvas.removeEventListener('pointerup', pointerEnd);
+      canvas.removeEventListener('pointercancel', pointerEnd);
+      canvas.removeEventListener('lostpointercapture', pointerEnd);
+      canvas.removeEventListener('touchstart', touchStart);
+      canvas.removeEventListener('touchmove', touchMove);
+      canvas.removeEventListener('touchend', touchEnd);
+      canvas.removeEventListener('touchcancel', touchEnd);
       canvas.removeEventListener('keydown', keyDown);
       canvas.removeEventListener('webglcontextlost', contextLost);
     });

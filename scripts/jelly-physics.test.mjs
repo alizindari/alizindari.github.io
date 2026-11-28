@@ -116,3 +116,61 @@ test('the cat has two ears on a closed surface and can be stretched by an ear', 
     physics.release();
   } finally { cat.dispose(); physics.dispose(); }
 });
+
+test('a cheek or crown poke dents the contact patch more than it moves the whole cat', async () => {
+  const p = await createJellyPhysics();
+  try {
+    const vertices = p.geometry.attributes.position;
+    for (const target of [new Vector3(-0.6, 0.7, 0.4), new Vector3(0.6, 0.7, 0.4), new Vector3(0, 1.35, 0)]) {
+      p.reset();
+      advance(p, 320);
+      const at = i => new Vector3().fromBufferAttribute(vertices, i);
+      const i = Array.from({ length: vertices.count }, (_, n) => n)
+        .reduce((a, b) => at(a).distanceToSquared(target) < at(b).distanceToSquared(target) ? a : b);
+      const contact = at(i), center = p.center.clone(), inward = center.clone().sub(contact).normalize();
+      p.poke(contact, inward);
+      advance(p, 8);
+      const dent = at(i).sub(contact).dot(inward);
+      assert(dent > 0.025 && dent > 3 * p.center.distanceTo(center), `Local dent: ${dent}`);
+      advance(p, 420);
+      assert(p.energy < 0.015);
+    }
+  } finally { p.dispose(); }
+});
+
+test('an ear flick rings down on one side only, and reset clears it', async () => {
+  const p = await createJellyPhysics();
+  try {
+    advance(p, 240);
+    const center = p.center.clone();
+    p.flickEar(-1, new Vector3(-4, -1, 0));
+    advance(p, 8);
+    assert(p.earOffsets[0].x < -0.1);
+    assert.equal(p.earOffsets[1].length(), 0);
+    assert(p.center.distanceTo(center) < 0.005);
+    advance(p, 20);
+    assert(p.earOffsets[0].x > 0, 'The ear should overshoot once rather than slide back.');
+    advance(p, 160);
+    assert(p.earOffsets[0].length() < 0.001);
+    p.flickEar(1, new Vector3(6, 0, 0));
+    p.reset();
+    advance(p, 4);
+    assert(p.earOffsets.every(offset => offset.length() === 0));
+  } finally { p.dispose(); }
+});
+
+test('a firm crown squish registers compression but a lift or gentle press does not', async () => {
+  const p = await createJellyPhysics();
+  try {
+    for (const [down, strong] of [[0.05, false], [-0.5, false], [0.6, true]]) {
+      p.reset();
+      advance(p, 350);
+      const crown = new Vector3(0, p.max.y, 0);
+      p.grab(crown);
+      p.move(crown.clone().add(new Vector3(0, -down, 0)));
+      advance(p, 50);
+      assert.equal(p.compression > 0.04, strong);
+      p.release();
+    }
+  } finally { p.dispose(); }
+});

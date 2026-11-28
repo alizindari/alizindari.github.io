@@ -34,12 +34,13 @@ const Navigation = ({ activeTab }: NavigationProps) => {
           <div className="flex items-center justify-between gap-6 w-full">
             <Link
               to="/"
-              className={`nav-home inline-flex items-center gap-2 py-3 ${activeTab === 'home' ? 'active' : ''}`}
+              className={`nav-home inline-flex h-12 w-12 items-center justify-center ${activeTab === 'home' ? 'active' : ''}`}
+              aria-label="Home"
+              title="Home"
               aria-current={activeTab === 'home' ? 'page' : undefined}
               onClick={() => setMobileMenuOpen(false)}
             >
-              <img src="/home-cottage.svg" alt="" className="shrink-0" width={30} height={30} />
-              Home
+              <img src="/home-cottage.svg" alt="" width={48} height={48} />
             </Link>
             
             {/* Desktop Menu */}

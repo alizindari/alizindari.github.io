@@ -8,10 +8,12 @@ import { catFaceBottom, catFaceHeight, catFaceWidth } from './jellyCatFace';
 export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH, face: Texture) {
   const uniform = new MeshBVHUniformStruct();
   const normals = new FloatVertexAttributeTexture();
+  const blink = { value: 0 };
   material.onBeforeCompile = shader => {
     shader.uniforms.jellyBVH = { value: uniform };
     shader.uniforms.jellyNormals = { value: normals };
     shader.uniforms.jellyFace = { value: face };
+    shader.uniforms.jellyBlink = blink;
     shader.vertexShader = shader.vertexShader.replace('#include <common>', `
       #include <common>
       attribute vec3 jellyRestPosition;
@@ -28,6 +30,7 @@ export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH, fac
       uniform BVH jellyBVH;
       uniform sampler2D jellyNormals;
       uniform sampler2D jellyFace;
+      uniform float jellyBlink;
       varying vec3 vJellyRest;
     `).replace('#include <transmission_fragment>', `
       material.transmission = transmission;
@@ -76,12 +79,20 @@ export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH, fac
       // Rest coordinates keep the face attached while the surface stretches.
       vec2 faceUV = vec2(0.5 + vJellyRest.x / ${catFaceWidth}, (vJellyRest.y - ${catFaceBottom}) / ${catFaceHeight});
       vec4 faceInk = texture2D(jellyFace, faceUV);
+      // Close just the two painted eyes; leave the cheeks, whiskers and mouth untouched.
+      float eyeY = vJellyRest.y - 0.877;
+      if (jellyBlink > 0.0 && abs(abs(vJellyRest.x) - 0.26) < 0.085 && abs(eyeY) < 0.103) {
+        float openY = eyeY / mix(1.0, 0.13, jellyBlink);
+        vec2 eyeUV = faceUV + vec2(0.0, (openY - eyeY) / ${catFaceHeight});
+        faceInk = abs(openY) < 0.103 ? texture2D(jellyFace, eyeUV) : vec4(0.0);
+      }
       outgoingLight = mix(outgoingLight, faceInk.rgb, faceInk.a * smoothstep(0.30, 0.42, vJellyRest.z));
       #include <opaque_fragment>
     `);
   };
-  material.customProgramCacheKey = () => 'jelly-cat-refraction-v1';
+  material.customProgramCacheKey = () => 'jelly-cat-refraction-v2';
   return {
+    setBlink(value: number) { blink.value = value; },
     update() {
       uniform.updateFrom(bvh);
       normals.updateFrom(bvh.geometry.attributes.normal as BufferAttribute);

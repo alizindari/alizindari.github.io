@@ -142,6 +142,13 @@ export async function createJellyPhysics() {
   let energy = 0;
   let disposed = false;
   let grabbed: { index: number; weight: number; offset: Vector3 }[] = [];
+  let pokeNodes: typeof grabbed = [];
+  let pokeTicks = 0;
+  const pokeDirection = new Vector3();
+  const earOffsets = [new Vector3(), new Vector3()];
+  const earVelocities = [new Vector3(), new Vector3()];
+  const grabCenter = new Vector3(), grabStart = new Vector3(), outward = new Vector3();
+  let compression = 0;
   const target = new Vector3();
   const acceleration = new Vector3();
   const grabMin = new Vector3(-1.15, 0.15, -0.9);
@@ -169,6 +176,9 @@ export async function createJellyPhysics() {
 
   function reset() {
     grabbed = [];
+    pokeTicks = 0;
+    compression = 0;
+    for (const vector of [...earOffsets, ...earVelocities]) vector.set(0, 0, 0);
     nodes.forEach((node, i) => {
       node.get_m_x().setValue(rest[i * 3], rest[i * 3 + 1], rest[i * 3 + 2]);
       node.get_m_q().setValue(rest[i * 3], rest[i * 3 + 1], rest[i * 3 + 2]);
@@ -180,6 +190,22 @@ export async function createJellyPhysics() {
 
   function step() {
     if (disposed) return;
+    if (pokeTicks > 0) {
+      // Spread a fingertip press over 0.1 s rather than kicking the whole body in one frame.
+      const envelope = Math.sin(Math.PI * (12.5 - pokeTicks) / 12);
+      pokeTicks--;
+      const strength = 185 + 160 * Math.max(0, -pokeDirection.y);
+      for (const { index, weight } of pokeNodes) {
+        const magnitude = strength * weight * envelope / nodes[index].get_m_im();
+        force.setValue(pokeDirection.x * magnitude, pokeDirection.y * magnitude, pokeDirection.z * magnitude);
+        body.addForce(force, index);
+      }
+    }
+    for (let i = 0; i < 2; i++) {
+      const v = earVelocities[i], x = earOffsets[i];
+      v.addScaledVector(x, -310 / 120).multiplyScalar(Math.exp(-9 / 120));
+      x.addScaledVector(v, 1 / 120);
+    }
     for (const grip of grabbed) {
       const node = nodes[grip.index];
       const p = node.get_m_x(), v = node.get_m_v();
@@ -194,11 +220,20 @@ export async function createJellyPhysics() {
     }
     world.stepSimulation(1 / 120, 0);
     readPositions();
+    if (grabbed.length) {
+      // Subtract translation: carrying the cat across the canvas is not a squish.
+      let inward = 0, total = 0;
+      for (const { index, offset, weight } of grabbed) {
+        acceleration.fromBufferAttribute(positions, index).sub(offset).sub(grabStart).sub(center).add(grabCenter);
+        inward -= acceleration.dot(outward) * weight;
+        total += weight;
+      }
+      compression = Math.max(compression, inward / total);
+    }
     if (!Number.isFinite(center.lengthSq()) || min.y < -0.3 || max.y > 5) reset();
   }
 
-  function grab(point: Vector3) {
-    target.copy(point);
+  function neighbors(point: Vector3) {
     const offsets = nodes.map(node => {
       const p = node.get_m_x();
       return new Vector3(p.x(), p.y(), p.z()).sub(point);
@@ -206,11 +241,31 @@ export async function createJellyPhysics() {
     // The render surface extends above the cage at the ears.
     const nearest = Math.min(...offsets.map(offset => offset.length()));
     const reach = Math.max(0.46, nearest + 0.14);
-    grabbed = offsets.flatMap((offset, index) => {
+    return offsets.flatMap((offset, index) => {
       const distance = offset.length();
       const effective = distance - Math.max(0, nearest - 0.22);
       return distance < reach ? [{ index, offset, weight: Math.exp(-effective * effective / 0.055) }] : [];
     });
+  }
+
+  function grab(point: Vector3) {
+    compression = 0;
+    pokeTicks = 0;
+    grabCenter.copy(center);
+    grabStart.copy(point);
+    outward.copy(point).sub(center).normalize();
+    target.copy(point);
+    grabbed = neighbors(point);
+  }
+
+  function poke(point: Vector3, direction: Vector3) {
+    pokeNodes = neighbors(point);
+    pokeDirection.copy(direction).normalize();
+    pokeTicks = 12;
+  }
+
+  function flickEar(side: number, direction: Vector3) {
+    earVelocities[side < 0 ? 0 : 1].add(direction).clampLength(0, 6);
   }
 
   function nudge() {
@@ -223,7 +278,8 @@ export async function createJellyPhysics() {
 
   readPositions();
   return {
-    geometry, rest, center, min, max, step, reset, grab, nudge,
+    geometry, rest, center, min, max, step, reset, grab, nudge, poke, flickEar, earOffsets,
+    get compression() { return compression; },
     get energy() { return energy; },
     get dragging() { return grabbed.length > 0; },
     move(point: Vector3) { target.copy(point).clamp(grabMin, grabMax); },
@@ -246,6 +302,8 @@ export type JellyPhysics = Awaited<ReturnType<typeof createJellyPhysics>>;
 export function bindJellySurface(geometry: BufferGeometry, physics: JellyPhysics) {
   const position = geometry.getAttribute('position') as BufferAttribute;
   const rest = Float32Array.from(position.array);
+  const earWeights = Array.from({ length: position.count }, (_, i) =>
+    MathUtils.smoothstep(rest[3 * i + 1], 1.32, 1.78));
   const bindings = Array.from({ length: position.count }, (_, i) => {
     const nearest: { index: number; distance: number; weight: number }[] = [];
     for (let j = 0; j < physics.rest.length / 3; j++) {
@@ -268,6 +326,10 @@ export function bindJellySurface(geometry: BufferGeometry, physics: JellyPhysics
         y += (cage.getY(index) - physics.rest[index * 3 + 1]) * weight;
         z += (cage.getZ(index) - physics.rest[index * 3 + 2]) * weight;
       });
+      if (earWeights[i]) {
+        const tip = physics.earOffsets[rest[i * 3] < 0 ? 0 : 1], w = earWeights[i];
+        x += tip.x * w; y += tip.y * w; z += tip.z * w;
+      }
       position.setXYZ(i, x, Math.max(0.006, y), z);
     });
     position.needsUpdate = true;

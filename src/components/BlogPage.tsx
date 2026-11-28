@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AlignLeft, FileText, Search, Tag } from 'lucide-react';
+import { AlignLeft, ChevronDown, FileText, ListFilter, Search, Tag } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import BlogDifficulty from './BlogDifficulty';
 import BlogVisitCounter from './BlogVisitCounter';
@@ -14,6 +14,7 @@ interface BlogPageProps {
 const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogPageProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [topicsOpen, setTopicsOpen] = useState(false);
   const [suggestions, setSuggestions] = useState<{ type: string; value: string; postId?: number }[]>([]);
 
   // Generate search suggestions
@@ -112,15 +113,11 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
           <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground mb-3 sm:mb-4 px-2">
             {selectedTag ? `Posts tagged: ${selectedTag}` : 'Blog Posts'}
           </h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
-            Insights and explorations in machine learning, mathematics, and computer science
-          </p>
-          
+
           {!selectedTag && (
-            <div>
-              {/* Search Section */}
-              <div className="max-w-2xl mx-auto mb-6 relative px-2">
-                <div className="relative">
+            <div className="journal-tools">
+              <div className="journal-toolbar">
+                <div className="relative min-w-0 flex-1">
                   <input
                     id="blog-search"
                     type="text"
@@ -131,9 +128,9 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     onChange={(e) => handleSearchChange(e.target.value)}
                     onFocus={() => searchTerm.length >= 2 && setShowSuggestions(true)}
                     onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                    className="w-full pl-4 pr-11 py-2.5 sm:py-3 text-sm sm:text-base rounded-lg border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="h-11 w-full rounded border border-border bg-card pl-4 pr-10 text-base text-foreground"
                   />
-                  <Search className="pointer-events-none absolute right-3 top-2.5 h-4 w-4 text-muted-foreground sm:top-3.5 sm:h-5 sm:w-5" aria-hidden="true" />
+                  <Search className="pointer-events-none absolute right-3 top-3.5 h-4 w-4 text-muted-foreground" aria-hidden="true" />
                   
                   {/* Suggestions Dropdown */}
                   {showSuggestions && suggestions.length > 0 && (
@@ -169,14 +166,17 @@ const BlogPage = ({ onPostClick, onTagClick, selectedTag, onBackFromTag }: BlogP
                     </div>
                   )}
                 </div>
+                <button type="button" className="topic-disclosure" aria-expanded={topicsOpen} aria-controls="blog-topics" onClick={() => setTopicsOpen(!topicsOpen)}>
+                  <ListFilter size={16} aria-hidden="true" /> Topics <ChevronDown size={14} aria-hidden="true" />
+                </button>
               </div>
               
               {/* Filter Section */}
-              <div className="flex flex-wrap gap-2 justify-center px-2">
+              <div id="blog-topics" hidden={!topicsOpen} className="journal-topics">
                 {allTags.map((tag) => (
                   <button
                     key={tag}
-                    onClick={() => onTagClick?.(tag)}
+                    onClick={() => { setTopicsOpen(false); onTagClick?.(tag); }}
                     className="topic-tag px-2.5 sm:px-3 py-1 rounded-md text-xs sm:text-sm transition-colors capitalize bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground"
                   >
                     {tag}
