@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
   <title id="title">Local SGD fixed points under heterogeneous objectives</title>
   <desc id="desc">Heterogeneous local minima surround the global objective. A biased Local SGD fixed point is distinct from the global optimum at the common center of the objective contours.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
   <defs>
     <!-- LaTeX Computer Modern math outlined with dvisvgm; data-tex preserves each label. -->
     <path id="math-g0-120" d="M3.44707-2.45081L4.6127-3.74595C4.74222-3.88543 4.80199-3.95517 5.62889-3.95517V-4.42341C5.2802-4.40349 4.76214-4.39352 4.71233-4.39352C4.46326-4.39352 3.96513-4.41345 3.68618-4.42341V-3.95517C3.82565-3.95517 3.94521-3.93524 4.06476-3.8655C4.02491-3.80573 4.02491-3.7858 3.98506-3.74595L3.14819-2.80946L2.17186-3.95517H2.57036V-4.42341C2.31133-4.41345 1.68369-4.39352 1.36488-4.39352S.59776-4.41345 .26899-4.42341V-3.95517H.97634L2.53051-2.12204L1.2254-.65753C1.05604-.46824 .69738-.46824 .21918-.46824V0C.56787-.01993 1.08593-.02989 1.13574-.02989C1.38481-.02989 1.96264-.00996 2.16189 0V-.46824C1.98257-.46824 1.79328-.51806 1.79328-.57783C1.79328-.5878 1.79328-.59776 1.86301-.67746L2.82939-1.76339L3.92528-.46824H3.53674V0C3.79577-.00996 4.40349-.02989 4.73225-.02989C5.05106-.02989 5.49938-.00996 5.82814 0V-.46824H5.1208L3.44707-2.45081Z"/>

@@ -6,14 +6,8 @@
     <marker id="gda-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
       <path d="M0 0L9 4.5L0 9Z" fill="#d16a4a"/>
     </marker>
-    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-      <path d="M32 0H0V32" fill="none" stroke="#0b3b77" stroke-opacity=".045"/>
-    </pattern>
     <clipPath id="trajectory"><rect x="-90" y="-90" width="180" height="180"/></clipPath>
   </defs>
-  <rect width="720" height="416" fill="#fff"/>
-  <rect x="24" y="24" width="672" height="368" rx="8" fill="#f8fafc" stroke="#dce4ee"/>
-  <rect x="24" y="24" width="672" height="368" rx="8" fill="url(#grid)"/>
   <text x="360" y="77" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="30" font-style="italic" fill="#17384d">minₓ maxᵧ xy</text>
   <text x="146" y="130" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="32" fill="#d16a4a">GDA</text>
   <g transform="translate(146 254)">

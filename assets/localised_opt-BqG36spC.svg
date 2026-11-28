@@ -18,7 +18,6 @@
       <path d="M1 1L11 6L1 11Z" fill="#182431"/>
     </marker>
   </defs>
-  <rect width="768" height="768" fill="#fff"/>
   <g aria-label="similar local Hessians">
     <g transform="translate(110 64)">
       <rect width="132" height="132" rx="8" fill="#f8fafc" stroke="#182431" stroke-width="4"/>
