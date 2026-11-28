@@ -27,7 +27,6 @@
       <path d="M32 0H0V32" fill="none" stroke="#e3e9ed" stroke-width="2"/>
     </pattern>
   </defs>
-  <rect width="768" height="768" fill="#fff"/>
 
   <g aria-label="frozen model and additive adapter">
     <path d="M90 284V112H311" class="flow"/>

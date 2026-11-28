@@ -1,6 +1,6 @@
 import AmmoFactory from 'ammojs-typed';
 import type Ammo from 'ammojs-typed';
-import { BoxGeometry, BufferAttribute, BufferGeometry, MathUtils, Vector3 } from 'three';
+import { BoxGeometry, BufferAttribute, BufferGeometry, DynamicDrawUsage, MathUtils, Vector3 } from 'three';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
 
 let engine: ReturnType<typeof AmmoFactory> | undefined;
@@ -301,37 +301,52 @@ export type JellyPhysics = Awaited<ReturnType<typeof createJellyPhysics>>;
 // Skin a denser rounded surface to the simulated cage, preserving the rest shape.
 export function bindJellySurface(geometry: BufferGeometry, physics: JellyPhysics) {
   const position = geometry.getAttribute('position') as BufferAttribute;
+  position.setUsage(DynamicDrawUsage);
+  (geometry.getAttribute('normal') as BufferAttribute).setUsage(DynamicDrawUsage);
   const rest = Float32Array.from(position.array);
-  const earWeights = Array.from({ length: position.count }, (_, i) =>
+  const earWeights = Float64Array.from({ length: position.count }, (_, i) =>
     MathUtils.smoothstep(rest[3 * i + 1], 1.32, 1.78));
-  const bindings = Array.from({ length: position.count }, (_, i) => {
-    const nearest: { index: number; distance: number; weight: number }[] = [];
-    for (let j = 0; j < physics.rest.length / 3; j++) {
-      const distance = (rest[i * 3] - physics.rest[j * 3]) ** 2
-        + (rest[i * 3 + 1] - physics.rest[j * 3 + 1]) ** 2
-        + (rest[i * 3 + 2] - physics.rest[j * 3 + 2]) ** 2;
-      if (distance < 0.65) {
-        nearest.push({ index: j, distance, weight: Math.exp(-distance / 0.065) });
-      }
+  const cageRest = physics.rest;
+  const cage = (physics.geometry.getAttribute('position') as BufferAttribute).array;
+  const delta = new Float64Array(cageRest.length);
+  const distanceSq = (i: number, j: number) => (rest[i] - cageRest[j]) ** 2
+    + (rest[i + 1] - cageRest[j + 1]) ** 2 + (rest[i + 2] - cageRest[j + 2]) ** 2;
+
+  // Each vertex owns one contiguous run of influences, in the original summation order.
+  const starts = new Uint32Array(position.count + 1);
+  for (let i = 0; i < position.count; i++) {
+    let n = starts[i];
+    for (let j = 0; j < cageRest.length; j += 3) if (distanceSq(3 * i, j) < 0.65) n++;
+    starts[i + 1] = n;
+  }
+  const indices = new Uint32Array(starts[position.count]);
+  const weights = new Float64Array(indices.length);
+  for (let i = 0; i < position.count; i++) {
+    let k = starts[i], total = 0;
+    for (let j = 0; j < cageRest.length; j += 3) {
+      const d = distanceSq(3 * i, j);
+      if (d >= 0.65) continue;
+      indices[k] = j;
+      weights[k] = Math.exp(-d / 0.065);
+      total += weights[k];
+      k++;
     }
-    const total = nearest.reduce((sum, item) => sum + item.weight, 0);
-    return nearest.map(item => ({ ...item, weight: item.weight / total }));
-  });
+    for (let j = starts[i]; j < k; j++) weights[j] /= total;
+  }
   return () => {
-    const cage = physics.geometry.getAttribute('position');
-    bindings.forEach((binding, i) => {
+    for (let j = 0; j < cageRest.length; j++) delta[j] = cage[j] - cageRest[j];
+    for (let i = 0; i < position.count; i++) {
       let x = rest[i * 3], y = rest[i * 3 + 1], z = rest[i * 3 + 2];
-      binding.forEach(({ index, weight }) => {
-        x += (cage.getX(index) - physics.rest[index * 3]) * weight;
-        y += (cage.getY(index) - physics.rest[index * 3 + 1]) * weight;
-        z += (cage.getZ(index) - physics.rest[index * 3 + 2]) * weight;
-      });
+      for (let k = starts[i]; k < starts[i + 1]; k++) {
+        const j = indices[k], w = weights[k];
+        x += delta[j] * w; y += delta[j + 1] * w; z += delta[j + 2] * w;
+      }
       if (earWeights[i]) {
         const tip = physics.earOffsets[rest[i * 3] < 0 ? 0 : 1], w = earWeights[i];
         x += tip.x * w; y += tip.y * w; z += tip.z * w;
       }
       position.setXYZ(i, x, Math.max(0.006, y), z);
-    });
+    }
     position.needsUpdate = true;
     geometry.computeVertexNormals();
     geometry.computeBoundingSphere();

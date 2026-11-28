@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
   <title id="title">Decoupled SGDA with intermittent strategy communication</title>
   <desc id="desc">Two players take independent local updates while repeatedly using stale copies of the opponent strategy, then exchange strategies at the round boundary.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
   <defs>
     <!-- LaTeX Computer Modern math outlined with dvisvgm; data-tex preserves each label. -->
     <path id="math-g1-101" d="M4.22416-1.56413L4.06476-1.63387C3.58655-.87671 3.15816-.5878 2.52055-.5878C1.9726-.5878 1.55417-.84682 1.26526-1.38481C1.066-1.77335 .9863-2.12204 .96638-2.75965H4.03487C3.95517-3.40722 3.85554-3.69614 3.60648-4.01494C3.3076-4.3736 2.84932-4.58281 2.33126-4.58281C1.09589-4.58281 .24907-3.58655 .24907-2.132C.24907-.75716 .96638 .09963 2.11208 .09963C3.06849 .09963 3.80573-.48817 4.22416-1.56413ZM3.01868-3.07846H.9863C1.09589-3.8655 1.43462-4.22416 2.04234-4.22416S2.88917-3.94521 3.01868-3.07846Z"/>

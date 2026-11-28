@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
   <title id="title">Bifurcated autoencoder for lung and infection segmentation</title>
   <desc id="desc">A CT image passes through a shared encoder, splits into separate lung and infection decoders, and fuses both masks into the final segmentation.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
   <defs>
     <marker id="bif-arrow" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
       <path d="M1 1L13 6L1 11Z" fill="#182431"/>

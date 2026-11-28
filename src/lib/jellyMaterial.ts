@@ -1,17 +1,17 @@
 import { MeshPhysicalMaterial } from 'three';
-import type { BufferAttribute, Texture } from 'three';
-import { FloatVertexAttributeTexture, MeshBVHUniformStruct, shaderIntersectFunction, shaderStructs } from 'three-mesh-bvh';
+import type { Texture } from 'three';
+import { shaderIntersectFunction, shaderStructs } from 'three-mesh-bvh';
 import type { MeshBVH } from 'three-mesh-bvh';
 import { catFaceBottom, catFaceHeight, catFaceWidth } from './jellyCatFace';
+import { createJellyOpticsBuffers } from './jellyOpticsBuffers';
 
 // Trace through the actual deformed surface, rather than using a constant glass thickness.
 export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH, face: Texture) {
-  const uniform = new MeshBVHUniformStruct();
-  const normals = new FloatVertexAttributeTexture();
+  const buffers = createJellyOpticsBuffers(bvh);
   const blink = { value: 0 };
   material.onBeforeCompile = shader => {
-    shader.uniforms.jellyBVH = { value: uniform };
-    shader.uniforms.jellyNormals = { value: normals };
+    shader.uniforms.jellyBVH = { value: buffers.uniform };
+    shader.uniforms.jellyNormals = { value: buffers.normals };
     shader.uniforms.jellyFace = { value: face };
     shader.uniforms.jellyBlink = blink;
     shader.vertexShader = shader.vertexShader.replace('#include <common>', `
@@ -93,10 +93,7 @@ export function addJellyOptics(material: MeshPhysicalMaterial, bvh: MeshBVH, fac
   material.customProgramCacheKey = () => 'jelly-cat-refraction-v2';
   return {
     setBlink(value: number) { blink.value = value; },
-    update() {
-      uniform.updateFrom(bvh);
-      normals.updateFrom(bvh.geometry.attributes.normal as BufferAttribute);
-    },
-    dispose() { uniform.dispose(); normals.dispose(); },
+    update: buffers.update,
+    dispose: buffers.dispose,
   };
 }

@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 768" role="img" aria-labelledby="title desc">
   <title id="title">Full fine-tuning and LoRA update geometry</title>
   <desc id="desc">A dense unconstrained update and a low-rank factorized update with their corresponding singular spectra.</desc>
-  <rect width="768" height="768" fill="#ffffff"/>
 
   <defs>
     <!-- LaTeX Computer Modern math outlined with dvisvgm; data-tex preserves each label. -->

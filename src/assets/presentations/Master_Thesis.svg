@@ -2,16 +2,10 @@
   <title id="title">Local SGD trajectories</title>
   <desc id="desc">Four local optimization paths diverge from a shared model and are averaged into a new shared model.</desc>
   <defs>
-    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-      <path d="M32 0H0V32" fill="none" stroke="#0b3b77" stroke-opacity=".055"/>
-    </pattern>
     <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0 0 10 5 0 10Z" fill="context-stroke"/>
     </marker>
   </defs>
-  <rect width="720" height="416" fill="#fff"/>
-  <rect x="24" y="24" width="672" height="368" rx="8" fill="#f8fafc" stroke="#dce4ee"/>
-  <rect x="24" y="24" width="672" height="368" rx="8" fill="url(#grid)"/>
 
   <ellipse cx="602" cy="208" rx="68" ry="132" fill="none" stroke="#0b3b77" stroke-opacity=".08" stroke-width="2"/>
   <ellipse cx="602" cy="208" rx="45" ry="91" fill="none" stroke="#0b3b77" stroke-opacity=".11" stroke-width="2"/>
